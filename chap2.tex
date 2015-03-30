@@ -83,559 +83,261 @@
 	给定一个规则的集合$R$，$head(R)=\bigcup_{r\in R}head(r)$表示$R$中所有规则的头部出现的原子的集合。
 	
 	给定一个正规逻辑程序$P$,$Atoms(P)$表示$P$中出现的所有原子的集合。$Lit(P)$表示有$Atoms(P)$构成的文字的集合，即：
-	$$Lit(P)=Atoms(P) \cup \left\lbrace \neg\ a|a \in Atoms(P)\right\rbrace $$
+	$$Lit(P)=Atoms(P) \cup \lbrace \neg\ a|a \in Atoms(P)\rbrace $$
 	
 	给定文字$l$，它的补(complement)记为$\overline{l}$。若$l$为原子$a$，则$l$的补为$\neg\ a$；若$l$为$\neg\ a$，则$l$的补为$a$。对于任意文字集合$L$，$\overline{L}=\left\lbrace \overline{l}|l \in L \right\rbrace$。
 \end{definition}
-\begin{example}
+\begin{example}\label{program:p1}
 	考虑以下的程序$P_1$：
 	$$p \rightarrow .$$
 	$$p \rightarrow r.$$
 	$$q \rightarrow r.$$
 	$$r \rightarrow p.$$
 	$$r \rightarrow q.$$
+	
 	则$P_1$为正规逻辑程序。
 \end{example}
 
 \subsection{析取逻辑程序}
 \begin{definition}[析取逻辑程序]
 	析取规则(disjunctive rule)的有限集合称为析取逻辑程序(disjunctive logic program，DLP)。一个析取规则具有如下形式：
+	$$a_1 \vee ... \vee a_k \leftarrow a_{k+1}, ..., a_m, not\ a_{m+1}, ..., not\ a_n.$$
+	
+	其中，$1 \le k \le m \le n$，$a_1, ..., a_n$为原子，即正文字。若$k=1$，则为普通规则。类似地，我们定义$head(r)=\lbrace a_1, ..., a_k\rbrace$，$body^+(r)=\lbrace a_{k+1}, ..., a_m\rbrace$，$body^-(r)=\lbrace a_{m+1}, ..., a_n\rbrace$。
 \end{definition}
+\begin{example}\label{program:p2}
+	考虑以下的程序$P_2$:
+	$$p \vee q \leftarrow r.$$
+	$$r \leftarrow p.$$
+	$$r \leftarrow q.$$
+	$$p \leftarrow .$$
 
-
-
-
-
-
-
-\begin{enumerate}
-  \item 如果$X$是一个$n$元谓词变元，$t_0,...,t_{n-1}$是$v$-二阶项，则$X(t_0,...,t_{n-1})$ 是$L_{II}^{v}$-公式；
-  \item 如果$\varphi$是一个$L_{II}^{v}$-公式且$X$是一个谓词变元，则$\exists X\varphi$和$\forall X\varphi$均是$L_{II}^{v}$-公式；
-  \item 如果$\varphi$是一个$L_{II}^{v}$-公式且$h$是一个谓词变元，则$\exists h\varphi$和$\forall h\varphi$均是$L_{II}^{v}$-公式。
-\end{enumerate}
-其中，所有作用于谓词变元和函词变元的量词均被称为{\kai 二阶量词}，而作用于个
-体变元的量词将被称为一阶量词。与一阶语言类似，我们定义二阶量词$Q\xi$(其
-中$Q \in \{\forall, \exists\}$，$\xi$为谓词变元或函词变元)在公式$Q\xi\varphi$中的辖域为$\varphi$。
-若某一谓词
-变元(或函词变元)在某一公式中存在不在任何二阶量词辖域中的出现，则称
-该变元为{\kai 自由谓词变元}(或{\kai 自由函词变元})。所有自由谓词变元、函词变元及
-个体变元均统称为{\kai 自由变元}。称无自由变元的$L_{II}^{v}$-公式为$L_{II}^{v}$-{\kai 语句}。
-
-有时为了叙述简单，我们不严格区分常元与变元，统称谓词常元与谓词变元为{\kai 谓词}，
-统称函词常元与函词变元为{\kai 函词}。
-设$\sigma=\{\xi_1,\xi_2,...,\xi_n\}$是由谓词变元、函词变元和个体变元组成的集合，
-为方便起见，我们通常将$Q\xi_1Q\xi_2...Q\xi_n\varphi$简写为$Q\sigma\varphi$。
-由后面即将给出的语义我们不难看出$\sigma$中变元的顺序完全不影响公式
-的语义，因此这样的简写不会产生任何本质上的歧义。
-
-类似于一阶逻辑，下面定义二阶逻辑的语义。
-结构$\mu$上的一个二阶赋值$\alpha$是从所有
-变元(谓词、函词、个体)到其论域$A$上相应对象(关系、函数、元素)的一个映
-射，其中被映射的变元元数与映射到的对象元素应当匹配。
-在无歧义的情况下，我们不区分二阶赋值和一阶赋值，统称为{\kai 赋值}(Assignment)。
-在一阶逻辑的基础上，增加下述规则来定义二阶逻辑$L-{II}$的满足关系：
-\begin{itemize}
-  \item $(\mu,\alpha)\models X(t_1,t_2,...,t_n)$ iff $(\alpha(t_1),\alpha(t_2),...,\alpha(t_n)) \in \alpha(X)$
-  \item $(\mu,\alpha)\models \forall X \varphi$ iff 对$A$上所有$n$元关系$R$均有 $(\mu,\alpha^{X}_{R})\models \varphi$
-  \item $(\mu,\alpha)\models \exists X \varphi$ 存在$A$上某个$n$元关系$R$满足 $(\mu,\alpha^{X}_{R})\models \varphi$
-  \item $(\mu,\alpha)\models \forall h \varphi$ iff 对$A$上所有$m$元全函数$f$均有 $(\mu,\alpha^{h}_{f})\models \varphi$
-  \item $(\mu,\alpha)\models \exists h \varphi$ 存在$A$上某个$m$元全函数$f$满足 $(\mu,\alpha^{h}_{f})\models \varphi$
-\end{itemize}
-其中，$n$为任意正整数，$X$为任意$n$元谓词变元，$t_1,t_2,...,t_n$为任意$v$-二阶项，
-$\alpha(t_i)$~$(i=1,2,...,n)$表示$v$-二阶项$t_i$在赋值$\alpha$下的新$v$-二阶项，
-$\alpha(X)$表示谓词变元$X$在赋值$\alpha$下的$n$元关系；
-$m$为任意非负整数，$h$为任意$n$元谓词变元；
-$\alpha^{X}_{R}$(或$\alpha^{h}_{f}$)表示将赋值$\alpha$中谓词变元$X$(或函词变元$h$)重新赋值为关系$R$(或全函数$f$)后得到的新赋值。
-
-二阶逻辑的语义定义建立在一阶逻辑语义的基础上。
-此处不作详细介绍，具体参阅文献\cite{enderton2001mathematical}。
-
-\section{一阶限定理论}
-
-{\kai 限定理论}\cite{McCarthy1980,McCarthy1986}(Circumscription)最早由John McCarthy在上世纪八十年代提出，用于形式化常识推理。在过去几十年中，限定理论一直是非单调逻辑研究的一个重要分支。
-
-限定理论实际上是一种二阶逻辑，同时也可以看作是一种语义。
-本节将介绍两种限定理论：并行限定理论以及其扩充带优先级的限定理论。
-当并行限定理论或带优先级的限定理论作为一种语义应用在一个一阶理论中，我们统称为一阶限定理论语义下的理论，在无歧义的情况下，简称为{\kai 一阶限定理论}。
-
-\subsection{一阶并行限定理论}
-Vladimir Lifschitz在1994年对John McCarthy提出的限定理论提供了一个精确的数学定义\cite{Lifschitz1994}，称之为{\kai 并行限定理论}，本文就沿用他的定义。
-设$\varphi$是任意一个一阶语句，我们将它的符号集划分为三个互不相交的集合：{\kai 极小化谓词常元}$\sigma_m$(Minimized predicates)，{\kai 可变常元}$\sigma_v$(Varied constants)，{\kai 不变常元}(Fixed constants)。
-其中，$\varphi$称为{被限定的语句}，符号集的划分称为{\kai 限定策略}(Policy)。
-一阶限定理论是二阶逻辑的一个片段，需要引入谓词变元和函词变元。
-对每一个极小化谓词常元$P\in \sigma_m$，我们都相应的引入一个与其具有相同元数的谓词变元$P^*$，用$\sigma^*_m$表示这些谓词变元组成的集合；
-对每一个在$\sigma_v$中的可变谓词、函词、个体常元，我们都相应的引入一个与其具有相同元数的谓词、函词、个体变元，用$\sigma^*_v$表示这些变元组成的集合。
-在给出一阶限定理论的定义前，我们需要用到某些简写：
-\begin{itemize}
-  \item $P^{*}~=~P$表示$\forall \bar{x}(P(\bar{x})~\leftrightarrow~P^{*}(\bar{x}))$
-  \item $P^{*}~\leq~P$表示$\forall \bar{x}(P^{*}(\bar{x})~\rightarrow~P(\bar{x}))$
-  \item $P^{*}~<~P$表示$(P^{*}~\leq~P)~\wedge~\neg(P^{*}~=~P)$
-\end{itemize}
-其中，$\bar{x}$是个体变元元组，$P$是任意一个谓词常元，$P^*$是与$P$具有相同元数的谓词变元。
-
-这种简写实际上说明了谓词间的比较关系，比较的是{\kai 谓词外延}(Extension)。
-谓词外延，指谓词被解释或赋值为论域上的关系时所包含的元素。
-具体地说，$n$元谓词$P$的外延就是那些使$P(\bar{x})$为真的$n$元个体变元元组$\bar{x}$组成的集合。
-$=$表示两谓词外延相等，$P^* \leq P$表示$P^*$的外延是$P$的子集，$P^* < P$表示$P^*$的外延是$P$的真子集。
-限定理论的直观含义是，在保持原一阶语句成立的情况下，使极小化谓词的外延在集合包含关系下最小。
-
-进一步地，我们可以将这种简写扩展到谓词集合间的比较：
-\begin{itemize}
-  \item $\sigma^{*}~=\sigma$表示对于任意的$P~\in~\sigma$及其对应的$P^{*}~\in~\sigma^{*}$，满足$P^{*}~=~P$
-  \item $\sigma^{*}~\leq\sigma$表示对于任意的$P~\in~\sigma$及其对应的$P^{*}~\in~\sigma^{*}$，满足$P^{*}~\leq~P$
-  \item $\sigma^{*}~<\sigma$表示$(\sigma^{*}~\leq\sigma)~\wedge~\neg(\sigma^{*}~=\sigma)$
-\end{itemize}
-其中，$\sigma$和$\sigma^{*}$是具有相同谓词个数的两个谓词常元集，对$\sigma$中每个谓词$P$，在$\sigma^{*}$中都存在与之对应的具有相同元数的谓词$P^*$。
-
-接下来，我们用一个二阶公式来定义并行限定理论：
-\begin{definition}
-设$\varphi$是任意一阶语句，$\sigma_m$是$\varphi$的符号集$v(\varphi)$中的一集谓词常元，$\sigma_v$是~$v(\varphi)$中的一集常元，并且$\sigma_m$与$\sigma_v$互不相交，
-我们定义在并行限定理论语义下的一阶语句为：
-\begin{eqnarray}
-\textrm{CIRC}[\varphi;\sigma_m;\sigma_{v}]=\varphi\wedge\forall \sigma^*_m\sigma^{*}_{v}(\sigma^*_m < \sigma_m \rightarrow \neg\varphi(\sigma^*_m, \sigma^{*}_{v}))
-\end{eqnarray}
-其中，
-$\sigma^*_m$和$\sigma^*_v$分别是与$\sigma_m$和$\sigma_v$中每一常元相对应的具有相同元数的变元组成的集合；
-$\varphi(\sigma^*_m, \sigma^{*}_{v})$表示在一阶语句$\varphi$中将所有$\sigma_m$(或$\sigma_v$)中的常元的出现替换为相应的$\sigma^*_m$(或$\sigma^*_v$)中的变元后得到的公式。
-\end{definition}
-
-直观地，并行限定理论对多个谓词整体极小化，在保持原一阶语句成立的情况下，可以随意改变可变常元的解释，使得每个极小化谓词的外延在集合包含关系下最小，
-换句话说，不能使至少一个极小化谓词的外延更小，除非扩展其它极小化谓词的外延。
-
-下面我们来定义并行限定理论的语义。
-在公式(\ref{defcirc})中，令$\sigma$表示$\varphi$的符号集。
-设$\mu$和$\nu$为任意的两个$\sigma$-结构，定义$\mu~\preceq_{\sigma_m,\sigma_v}~\nu$ 当且仅当以下条件成立：
-\begin{enumerate}
-  \item $\mu$与$\nu$具有相同的论域；
-  \item 对于$\sigma$中所有的极小谓词常元$P$，均有$\mu(P)~\subseteq~\nu(P)$；
-  \item 对于$\sigma$中所有不变常元$C$，均有$\mu(C)~=~\nu(C)$。
-\end{enumerate}
-容易看出，$\preceq_{\sigma_m,\sigma_v}$是所有$\sigma$-结构上的一个偏序关系，具有自反性和传递性。
-特别地，如果$\mu~\preceq_{\sigma_m,\sigma_v}~\nu$ 成立但是$\nu~\preceq_{\sigma_m,\sigma_v}~\mu$ 不成立，
-我们用$\mu~\prec_{\sigma_m,\sigma_v}~\nu$表示。
-
-\begin{definition}
-设$\varphi$是任意一阶语句，若$\mu$是$\varphi$的一个模型，并且不存在$\varphi$的任何模型满足$\nu~\prec_{\sigma_m,\sigma_v}~\mu$，
-则称$\mu$为$\varphi$在关系$\prec_{\sigma_m,\sigma_v}$下的极小模型(Minimal model)。
-\end{definition}
-
-并行限定理论实际上就是描述了极小模型，用下面的命题来说明。
-\begin{proposition}\textbf{(文献\cite{Lifschitz1994})}
-设$\varphi$是任意一阶语句，$\mu$是一个$v(\varphi)$-结构，则$\mu \models \textrm{CIRC}[\varphi;$~$\sigma_m;\sigma_{v}]$ 当且仅当$\mu$是语句$\varphi$在关系$\prec_{\sigma_m,\sigma_v}$下的极小模型。
-\end{proposition}
-
-为简单起见，我们将在并行限定理论语义下的一阶理论称为{\kai 一阶并行限定理论}。
-此外，我们通常将$\textrm{CIRC}[\varphi;\sigma_m \cup \tau_m;\sigma_{v}\cup \tau_v]$简写成$\textrm{CIRC}[\varphi;\sigma_m,\tau_m;\sigma_{v},\tau_v]$。
-特别地，当$\tau_m=\{P\}$和$\tau_v=\{Q\}$时，我们简写成$\textrm{CIRC}[\varphi;\sigma_m,P;\sigma_{v},Q]$。
-
-在实际生活中，我们对事物的理解都是带着常识知识进行推理的，实际上是用了将“异常”的事物“极小化”的思想。
-用上一章的例子：在正常情况下鸟会飞。我们可以用一个一阶语句
-$\varphi$简单对其形式化，$\forall x Bird(x)\wedge \neg Ab(x) \rightarrow fly(x)$。
-如果我们只知道Tweety是一只鸟，即$Bird(Tweety)$，我们一般会尽可能的认为鸟都是正常的，也就是极小化“异常”的因素，通过
-计算$\textrm{CIRC}[\varphi\wedge Bird(Tweety);\{Ab,fly\};\emptyset]$得到结论$fly(Tweety)$，即Tweety会飞。
-但当我们还知道Tweety的翅膀断了，它不是一只正常的鸟，即$Ab(Tweety)$，
-用同样的限定策略对$\varphi\wedge Bird(Tweety)\wedge Ab(Tweety)$进行限定，我们会推理到Tweety不会飞，而这结论与我们日常的推理是一致的。
-通过对“异常”因素的极小化，我们用限定理论形式化了常识推理。
-
-我们将$\forall \bar{x}(P(\bar{x}) \vee \neg P(\bar{x}))$称为谓词$P$的{\kai 选择规则}(Choice Rule)，记为$choice(P)$。
-
-\begin{theorem}\label{theorem_cfixed}
-\textbf{(文献\cite{de1989})}
-设$\varphi$是任意一阶语句，令$\sigma_c$表示$v(\varphi)$中的不变谓词常元之集，
-则有$\textrm{CIRC}[\varphi;\sigma_m;\sigma_{v}]$逻辑等价于$\textrm{CIRC}[\varphi \wedge \bigwedge_{P\in \sigma_c}choice(P);\sigma_m,\sigma_c;\sigma_{v}]$。
-\end{theorem}
-
-该定理说明了一阶并行限定理论中的不变谓词常元可转换为极小化谓词，因此我们在计算一阶并行理论时，一般不讨论不变谓词常元，更关注的是极小化谓词常元和可变常元。
-
-\subsection{一阶带优先级的限定理论}
-Vladimir Lifschitz在\cite{Lifschitz1994}中除了为并行限定理论提供了一个数学定义，还引入“优先级”的思想，提出了{\kai 带优先级的限定理论}(Prioritized circumscription)。
-
-我们将极小化谓词集合$\sigma_m$划分为$k$个互不相交的子集合$\sigma_1,\sigma_2,...,\sigma_k$，将这样的划分称为优先级限定策略。
-我们认为$\sigma_i$中的谓词比$\sigma_j(i\leq j)$中的谓词具有更高的优先级来极小化。
-类似地，在定义带优先级的限定理论前，我们先定义一个简写：
-设$\sigma_1,\sigma_2,...,\sigma_k$是$k$个互不相交的谓词常元集合，
-$\sigma^*_1,\sigma^*_2,...,\sigma^*_k$是按照上一子节的方法引入谓词变元组成的并且互不相交的集合。
-令$\sigma_m$表示$\sigma_1 \cup \sigma_2\cup...\cup\sigma_k$，$\sigma^*_m$表示$\sigma^*_1\cup\sigma^*_2\cup...\cup\sigma^*_k$，
-则我们用$\sigma^*_m \preceq \sigma_m$表示
-$$\bigwedge^k_{i=1}~\Bigl[~\bigl(\bigwedge^{i-1}_{j=1}~(\sigma^*_j = \sigma_j)\bigr) \rightarrow (\sigma^*_i \leq \sigma_i)\Bigr]$$
-其中，$=$、$\leq$沿用上一字节的简写。
-
-实际上，$\preceq$描述了两组谓词集合在一定优先级序列下的比较关系，在高优先级的谓词外延相同的情况下，再比较那些具有相同优先级的谓词。
-例如，当$k=1$时，$\sigma^*_m \preceq \sigma_m$就等价于$\sigma^*_m \leq \sigma_m$，或者$\sigma^*_1 \leq \sigma_1$；
-当$k=2$时，$\sigma^*_m \preceq \sigma_m$就等价于$(\sigma^*_1 \leq \sigma_1) \wedge ((\sigma^*_1 = \sigma_1) \rightarrow (\sigma^*_2 \leq \sigma_2))$。
-
-特别地，当$\sigma^*_m \preceq \sigma_m$成立但是$\sigma_m \preceq \sigma^*_m$不成立，我们简写成$\sigma^*_m \prec \sigma_m$。
-我们同样可以用一个二阶公式来定义带优先级的限定理论。
-\begin{definition}
-设$\varphi$是任意一阶语句，$\sigma_m$是$\varphi$的符号集$v(\varphi)$中的一集谓词常元，$\sigma_v$是$~$
-$v(\varphi)$中的一集常元，
-令$\sigma_m$划分为$k$个互不相交的谓词集合$\sigma_1,\sigma_2,...,\sigma_k$，并且$\sigma_i(1\leq i\leq k)$与$\sigma_v$互不相交，
-我们定义在带优先级的限定理论语义下的一阶语句为：
-\begin{eqnarray}
-\textrm{CIRC}[\varphi;\sigma_1>\sigma_2>\cdots>\sigma_k;\sigma_{v}]=\varphi\wedge\forall \sigma^*_m\sigma^{*}_{v}(\sigma^*_m \prec \sigma_m \rightarrow \neg\varphi(\sigma^*_m, \sigma^{*}_{v}))
-\end{eqnarray}
-其中，
-$\sigma^*_i(1 \leq i \leq k)$和$\sigma^*_v$分别是与$\sigma_i(1 \leq i \leq k)$和$\sigma_v$中每一常元相对应的具有相同元数的变元组成的集合，
-$\sigma^*_m$表示这些$\sigma_i(1 \leq i \leq k)$的并集，
-$\varphi(\sigma^*_m, \sigma^{*}_{v})$表示在一阶语句$\varphi$中将所有$\sigma_m$(或$\sigma_v$)中的常元的出现替换为相应的$\sigma^*_m$(或$\sigma^*_v$)中的变元后得到的公式。
-\end{definition}
-
-为简单起见，我们将在带优先级的限定理论语义下的一阶理论简称为{\kai 一阶带优先级的限定理论}。
-实际上，当$k=1$时，一阶带优先级的限定理论就变成了一阶并行理论，因此后者是前者的一个特例，前者是后者的扩充或者泛化。
-
-直观地，带优先级的限定理论优先让那些具有高优先级的极小化谓词的外延最小，再考虑极小化那些低优先级的极小化谓词的外延。
-根据优先级的直观思想，我们可以逐级逐级地讨论极小化谓词，
-在讨论当前优先级的时候，在保证原一阶语句成立和不改变较高优先级的极小化谓词的外延的情况下，
-可以随意改变较低优先级的极小化谓词的外延和可变常元的解释，使得当前优先级的极小化谓词的外延最小。
-下面的命题就叙述了这一思路：
-\begin{proposition}\label{equ_pri_circ}
-\textbf{(文献\cite{Lifschitz1994} 命题15)}带优先级的限定理论$\mathbf{CIRC}[\varphi;\sigma_1>\sigma_2>\cdots>\sigma_k;\sigma_v]$ 等价于$k$个并行限定的合取：
-\begin{equation}
-    \bigwedge\limits_{1 \leq j \leq k}\textrm{CIRC}[\varphi;\sigma_j;\sigma_{j+1},\sigma_{j+2},...,\sigma_k,\sigma_v].
-\end{equation}
-\end{proposition}
-
-下面给出一个具体的例子介绍一阶带优先级的限定理论与一阶并行限定理论：
-\begin{example}\label{emp_pacifist}
-\textbf{(文献\cite{McCarthy1986} 第7节)}设$\varphi$表示如下一阶公式的合取的全称闭包：
-\begin{eqnarray}
-% \nonumber to remove numbering (before each equation)
-  Quaker(x)~\wedge~\neg Ab_1(x)~\rightarrow~Pacifist(x) \label{form_example1_1} \\
-  Republican(x)~\wedge~\neg Ab_2(x)~\rightarrow~\neg Pacifist(x) \label{form_example1_2}
-\end{eqnarray}
-其中$Quaker(x)$表示$x$是教友派信徒，$Republican(x)$表示$x$是共和党人，$Pacifist(x)$~表示$x$是和平主义者，$Ab_1(x)$表示$x$是不普通的教友派信徒，$Ab_2(x)$表示$x$是不普通的共和党人。
-整个理论$\varphi$表示每个普通的教友派信徒都是和平主义者，每个普通的共和党人都不是和平主义者。
-如果一个人$Nixon$既是教友派信徒又是共和党人，当我们尽可能排除那些“异常”的因素，即同时极小化$Ab_1$和$Ab_2$两个谓词，
-那么我们会得到两个解释：一个认为$Nixon$是和平主义者，另一个认为他不是和平主义者。
-但是，当我们认为共和党人的异常几率会高于教友派信徒的异常几率时，我们通过计算$\textrm{CIRC}[\varphi;Ab_1>Ab_2;Pacifist]$得到结论：$Nixon$是一个和平主义者。
+	则$P_2$为析取逻辑程序。
 \end{example}
 
-\section{一阶稳定理论}
+\subsection{逻辑程序的回答集}
+现在，我们介绍逻辑程序的回答集\cite{gelfond1988stable}。
 
-本节我们将介绍另一种二阶逻辑——{\kai 一阶稳定模型语义}。
-Paolo Ferraris等人在2005年在\cite{ferraris2005mathematical}提出了一阶稳定模型语义的思想，
-随后在\cite{Ferraris2007}以二阶公式的形式给出它的精确的数学定义。
-
-设$\psi$是任意一个一阶语句，我们将它的符号集划分为两部分：
-{\kai 内涵谓词常元}$\sigma_i$(Intensional predicates)和{\kai 外延常元}(Extensional constants)。
-在不引起歧义的情况下，我们将一阶稳定模型语义下的一阶理论，简称为{\kai 一阶稳定理论}。
-需要注意的是，这里的稳定理论与经典模型论中的稳定理论是两个不同的概念，不能混淆。
-一阶稳定理论实际上是二阶逻辑的一个片段，也需要引入谓词变元和函词变元。
-类似于一阶限定理论，对每一个内涵谓词常元$P\in \sigma_i$，我们都相应的引入一个与其具有相同元数的谓词变元$P^*$，用$\sigma^*_i$表示这些谓词变元组成的集合。
-下面我们给出一阶稳定理论的定义：
-\begin{definition}
-设$\psi$是任意一阶语句，$\sigma_i$是$\varphi$的符号集$v(\varphi)$中的一集谓词常元，
-我们定义一阶稳定理论为：
-\begin{eqnarray}
-\textrm{SM}[\psi;\sigma_i]=\psi\wedge\forall\sigma^*_i(\sigma^*_i<\sigma_i\rightarrow\neg\mathrm{St}(\psi;\sigma_i))
-\end{eqnarray}
-其中$\sigma^*_i$是与$\sigma_i$中每一常元相对应的具有相同元数的变元组成的集合，$St(\psi;\sigma_{i})$递归地定义如下：
-\begin{itemize}
-  \item 若$P\in\sigma_{i}$，则$\mathrm{St}(P(\bar{x}); \sigma_i) = P^{*}(\bar{x})$ ；
-  \item 若谓词常元$Q$不在$\sigma_i$中，则$\mathrm{St}(Q(\bar{x});\sigma_i)=Q(\bar{x})$；
-  \item $\mathrm{St}(\psi_1\circ \psi_2;\sigma_i) = \mathrm{St}(\psi_1;\sigma_i)\circ\mathrm{St}(\psi_2;\sigma_i)$，其中$\circ~\in~\{\wedge,\vee\}$；
-  \item $\mathrm{St}(\psi_1 \rightarrow \psi_2; \sigma_i) = (\mathrm{St}(\psi_1; \sigma_i)\rightarrow\mathrm{St}(\psi_2; \sigma_i)) \wedge (\psi_1 \rightarrow \psi_2)$；
-  \item $\mathrm{St}(Qx\psi; \sigma_i) = Qx\mathrm{St}(\psi;\sigma_i)$，其中$Q\in\{\forall,\exists\}$。
-\end{itemize}
+\begin{definition}[$GL$规约]
+	给定一个不含约束的正规逻辑程序$P$和原子集合$S$， $P$基于$S$的$GL$规约(Gelfond-Lifschitz reduction)[14]，记为$P^S$，是对$P$做以下操作所得到的程序：
+	\begin{enumerate}
+		\item 删除所有体部存在$not\ q$的规则，其中，$q \in S$；
+		\item 删除剩下的规则中的所有负文字；
+	\end{enumerate}
+	
+	对于任意的原子集合$S$，其对应的$P^S$不含任何形式的负文字。所以，$P^S$只有唯一的最小模型(model)，记为$\Gamma(P^S)$。
 \end{definition}
-在$\mathrm{St}$的定义中，我们没有对$\neg$进行讨论，因为我们将$\neg \psi$看作$\psi \rightarrow \bot$，而$\bot$可看作是一个特别的谓词常元符号，也就是说，
-$\mathrm{St}(\neg \psi; \sigma_i) = \neg(\mathrm{St}(\psi; \sigma_i)\wedge \neg \psi$。
-此外，关于否定词$\neg$，操作$\mathrm{St}$还具有一下性质：
-\begin{proposition}\label{negst}
-\textbf{(文献\cite{Ferraris2007} 命题2)}设$\psi$为任意一个一阶公式，设$\sigma_i$表示内涵谓词集。
-若$\sigma^*_i<\sigma_i$，则有$\mathrm{St}(\neg \psi; \sigma_i) \equiv \neg \psi$。
-\end{proposition}
-
-
-另外，在一阶稳定理论的定义中，我们没有对个体变元和函词变元作任何的变换。实际上，国外已有不少工作关注于内涵函词，
-但这不在本文的讨论范围中，详细的可参考\cite{bartholomew2013functional,bartholomew2013stable}。
-
-为简便起见，若$\sigma_i$包含$\psi$中出现的所有谓词常元，我们将$\textrm{SM}[\psi;\sigma_i]$简写为$\textrm{SM}[\psi]$，
-将$\mathrm{St}(\psi; \sigma_i)$简写为$\mathrm{St}(\psi)$。
-类似于一阶限定理论，我们通常将$\textrm{SM}[\psi;\sigma_i \cup \tau_i]$简写成$\textrm{SM}[\psi;\sigma_i,\tau_i]$；
-若$\tau_i=P$，则简写成$\textrm{SM}[\psi;\sigma_i,P]$。
-
-设$\psi$是任意一个一阶语句，如果$v(\psi)$-结构$\mu$是$\mathbf{SM}[\psi;\sigma_i]$的一个模型，则$\mu$被称为$\psi$的一个$\sigma_i$-稳定模型(Stable model)。
-特别地，$\mu$是$\psi$的稳定模型当且仅当$\mu$是$\textrm{SM}[\psi]$的模型。
-
-设$(\varphi,\sigma_i)$是一个稳定模型语义下的一阶逻辑，$v$为$\varphi$的符号集，则称一个$v$- 结构$\mu$是$\varphi$关于$\sigma_i$的{\kai 稳定模型}(Stable Model)当且仅当$\mu$是公式$\mathbf{SM}[\varphi,\sigma_i]$的模型。
-
-接下来我们介绍稳定模型语义中的{\kai 强等价关系}\cite{Ferraris2011}。设$\varphi$和$\psi$为任意两个一阶公式，$\sigma_i$是任意一集谓词常元。
-如果对任意的一阶公式$\theta$，
-将$\varphi$在$\theta$
-中的任意一个或多个出现替换为$\psi$后得到的公式$\theta'$，
-均有$\textrm{SM}[\theta;\sigma_i]$逻辑等价于$\textrm{SM}[\theta';\sigma_i]$，
-则称$\varphi$和$\psi$强等价，记为$\varphi \equiv^s \psi$。
-
-\begin{proposition}\label{strongequv}
-\textbf{(文献\cite{pearce2005first} 定理6.4)}设$\varphi$和$\psi$为任意的一阶公式，则下列强等价关系成立：
-\begin{align*}
-  (1)~~&\forall x\varphi(x)~\wedge~\psi~\equiv~\forall x(\varphi(x)~\wedge~\psi) &(2)~~&\exists x\varphi(x)~\wedge~\psi~\equiv~\exists x(\varphi(x)~\wedge~\psi) \\
-  (3)~~&\forall x\varphi(x)~\vee~\psi~\equiv~\forall x(\varphi(x)~\vee~\psi) &(4)~~&\exists x\varphi(x)~\vee~\psi~\equiv~\exists x(\varphi(x)~\vee~\psi) \\
-  (5)~~&\exists x\varphi(x)~\rightarrow~\psi~\equiv~\forall x(\varphi(x)~\rightarrow~\psi) &(6)~~&\forall x\varphi(x)~\rightarrow~\psi~\equiv~\exists x(\varphi(x)~\rightarrow~\psi) \\
-  (7)~~&\psi~\rightarrow~\forall x\varphi(x)~\equiv~\forall x(\psi~\rightarrow~\varphi(x)) &(8)~~&\psi~\rightarrow~\exists x\varphi(x)~\equiv~\exists x(\psi~\rightarrow~\varphi(x)) \\
-  (9)~~&\neg\exists x\varphi(x)~\equiv~\forall x\neg\varphi(x) &(10)~~&\neg\forall x\varphi(x)~\equiv~\exists x\neg\varphi(x)
-\end{align*}
-其中个体变元$x$不在公式$\psi$中自由出现。
-\end{proposition}
-
-通过对个体变元进行适当的改名，然后应用命题\ref{strongequv}，我们可得到下面的定理：
-\begin{theorem}\label{pnf}
-对任意一个一阶理论都存在一个前缀范式与之强等价。
-\end{theorem}
-
-类似于一阶限定理论，一阶稳定理论同样可以在不引入新的谓词常元的情况下，
-使用上一节定义的选择规则，来消去外延谓词常元。
-下面我们通过一定理来说明。
-\begin{theorem}\label{theorem_smextensional}
-\textbf{(文献\cite{Ferraris2011} 定理2)}
-设$\psi$是任意一阶语句，令$\sigma_i$和$\sigma_e$分别表示$v(\psi)$中的内涵谓词常元之集合和外延谓词常元之集合，
-则有$\textrm{SM}[\psi;\sigma_i]$逻辑等价于$\textrm{SM}[\psi \wedge \bigwedge_{P\in \sigma_e}choice(P);\sigma_i,\sigma_e]$。
-\end{theorem}
-
-一阶稳定理论的另一重要性质是{\kai 分割定理}\cite{Ferrais2009}。
-首先，我们需要定义若干概念。
-我们称表达式$\epsilon$在一阶公式$\varphi$中的{\kai 负度}为$n$当且仅当$\epsilon$出现在$\varphi$中的子公式$\psi$恰好有$n$个满足后述条件：
-子公式$\psi$是否定式；或者$\psi$是蕴含式且$\epsilon$出现在$\psi$的前件中。
-若表达式$\epsilon$在一阶公式$\varphi$中的负度为偶数，则称$\epsilon$在$\varphi$中的出现是{\kai 正}的；
-进一步地，若负度为零，则称$\epsilon$在$\varphi$中的出现是{\kai 严格正}的。
-若表达式$\epsilon$出现在在$\varphi$中的某个子公式是否定式，则称$\epsilon$在$\varphi$中的出现是{\kai 否定}的，否则是{\kai 非否定}的。
-给定一个一阶稳定理论$\textrm{SM}[\psi;\sigma_i]$，我们定义$\psi$关于谓词集$\sigma_i$的{\kai 谓词依赖图}$\textrm{DG}[\psi;\sigma_i]$为如下有向图：
-\begin{itemize}
-  \item 图$\textrm{DG}[\psi;\sigma_i]$的顶点集是内涵谓词集$\sigma_i$；
-  \item 对$\sigma_i$中任何两个内涵谓词$P$和$Q$，图$\textrm{DG}[\psi;\sigma_i]$中存在从$P$到$Q$的一条边，当且仅当存在一个$\psi$的子公式$\psi_1 \rightarrow \psi_2$满足下述条件：
-      \begin{itemize}
-        \item 该子公式$\psi_1 \rightarrow \psi_2$在$\psi$中的出现是严格正的；
-        \item 谓词$P$在$\psi_2$中的出现是严格正的；
-        \item 谓词$Q$在$\psi_1$中的出现是正的并且非否定的。
-      \end{itemize}
-\end{itemize}
-
-\begin{theorem}\textbf{(文献\cite{Ferrais2009})}
-给定一个一阶稳定理论$\textrm{SM}[\psi;\sigma_i]$，若将$\sigma_i$划分为两个子集$\sigma_1$和$\sigma_2$，
-并且谓词依赖图$\textrm{DG}[\psi;\sigma_i]$的任一强连通分量或者是$\sigma_1$的子集，或者是$\sigma_2$的子集，
-则有$\textrm{SM}[\psi;\sigma_i]$逻辑等价于$\textrm{SM}[\psi;\sigma_1]\wedge \textrm{SM}[\psi;\sigma_2]$。
-\end{theorem}
-
-\begin{theorem}\textbf{(文献\cite{Ferrais2009})}\label{splittingtheorem}
-给定一个一阶稳定理论$\textrm{SM}[\psi_1\wedge\psi_2;\sigma_i]$，若将$\sigma_i$划分为两个子集$\sigma_1$和$\sigma_2$，
-并且谓词依赖图$\textrm{DG}[\psi_1\wedge\psi_2;\sigma_i]$的任一强连通分量或者是$\sigma_1$的子集，或者是$\sigma_2$的子集；
-且$\sigma_1$中任一谓词在公式$\psi_2$中没有严格正的出现；且$\sigma_2$中任一谓词在公式$\psi_1$中没有严格正的出现，
-则有$\textrm{SM}[\psi_1\wedge\psi_2;\sigma_i]$逻辑等价于$\textrm{SM}[\psi_1;\sigma_1]\wedge \textrm{SM}[\psi_2;\sigma_2]$。
-\end{theorem}
-
-上述两个定理被称为分割定理，根据这两个定理，我们可以采用分而治之的思想计算稳定模型；
-反过来说，我们也可以通过计算一次稳定理论来得到若干个一阶稳定理论的结果。
-
-Heng Zhang等人在\cite{Heng2011}中将一阶限定理论的计算嵌入到一阶稳定理论的计算中，但他们的方法不允许可变谓词的存在。
-
-\begin{definition}\label{def_c2sm}
-设$\varphi$为任意具有否定范式形式的一阶语句，$\sigma_m$表示$v(\varphi)$中的谓词常元子集，
-$Tr(\varphi;\sigma_m)$为如下公式的合取：
-\begin{eqnarray}
-  \varphi^{\neg\neg}~\wedge~(\tilde{\varphi} \vee \bigwedge_{P\in\sigma_m}choice(P))
-\end{eqnarray}
-其中，$choice(P)$表示谓词$P$的选择规则$\forall \bar{x}(P(\bar{x}) \vee \neg P(\bar{x}))$；
-$\varphi^{\neg\neg}$是将$\varphi$中所有形如$P(\bar{x})(P~\in~\sigma_m)$的正文字替换为$\neg\neg P(\bar{x})$后所得到的公式；
-$\tilde{\varphi}$是将$\varphi$中所有形如$\neg P(\bar{x})(P~\in~\sigma_m)$的负文字替换为后$(P(\bar{x} \rightarrow \bigwedge_{P\in\sigma_m}choice(P))$得到的公式。
+\begin{definition}[不含约束的程序的回答集]
+	给定一个不含约束的正规逻辑程序$P$，原子集合$S$是$P$的一个回答集当且仅当$S=\Gamma(P^S)$。
 \end{definition}
 
-\begin{theorem}\label{theorem_c2sm}
-设$\varphi$为任意具有否定范式形式的一阶语句，$\sigma_m$表示$v(\varphi)$中的谓词常元子集，则$\mathbf{SM}[Tr(\varphi;\sigma_m);\sigma_i]$与$\mathbf{CIRC}[\varphi;\sigma_i;\sigma_v]$逻辑等价。
-\end{theorem}
+更一般的情况是，逻辑程序$P$中是含有约束的。
 
-Heng Zhang等人提出的将不带可变谓词常元的一阶并行限定理论转换为一阶稳定理论的翻译，为两者的计算建起了一座桥梁。
-如果我们能够实现一阶稳定理论的计算方法，那么我们也就实现了不带可变谓词常元的一阶并行限定理论的计算方法了。
-幸运的是，我们能够将一阶稳定理论转换为逻辑程序，通过求解逻辑程序的模型来求得一阶理论的稳定模型。
-详细的转换方法将在下一子节介绍。
-
-
-%章衡\cite{zhang2011Decidability}在近几年的研究中提出了将稳定模型语义下一阶语句翻译成稳定模型语义下的全称一阶语句的方法，即消去了存在量词。该方法的主要思想如下定义：
-%\begin{definition}\label{def_smfo2smufo}
-%\textbf{(文献\cite{zhang2011Decidability}定义5.3)} 任意给定形如$\forall\bar{x}\exists\bar{y}\theta(\bar{x},\bar{y})$ 的一个一阶语句$\varphi$，定义$Tr_{QE}(\varphi)$
-%为下述公式的合取式的一阶全称闭包：
-%\begin{eqnarray}
-%    \neg\neg S(\bar{x},\overline{min}) \\
-%    (\overline{succ}(\bar{y},\bar{z})~\wedge~S(\bar{x},\bar{z}))~\vee~\theta^{\neg\neg}(\bar{x},\bar{y})~\rightarrow~S(\bar{x},\bar{y}) \\
-%    T(\bar{x},\overline{min})~\vee~\theta(\bar{x},\overline{min}) \\
-%    \neg(\overline{succ}(\bar{y},\bar{z})~\wedge~S(\bar{x},\bar{z}))~\wedge~S(\bar{x},\bar{y})~\rightarrow~(T(\bar{x},\overline{max})~\leftrightarrow~\theta(\bar{x},\bar{y})) \\
-%    \overline{succ}(\bar{y},\bar{z})~\rightarrow~(T(\bar{x},\bar{y})~\leftrightarrow~\theta(\bar{x},\bar{z})~\vee~T(\bar{x},\bar{z}))
-%\end{eqnarray}
-%
-%令$n$为序列$\bar{x}$与$\bar{y}$的长度之和，其中：
-%\begin{enumerate}
-%  \item $\theta^{\neg\neg}$是由$\theta$将所有原子公式$P(\bar{t})$替换为$\neg\neg P(\bar{t})$后得到的公式；
-%  \item $\overline{min}$和$\overline{max}$分别表示$n$元组$(min,...,min)$和$(max,...,max)$，$\overline{succ}$描述$succ$所定义序被推广到$n$元组后得到的后继关系；
-%  \item $S$和$T$是不在$\varphi$中出现的两个$n$ 元新谓词常元。
-%\end{enumerate}
-%
-%对任意一个一阶稳定理论$(\varphi;\sigma)$，若$\varphi$是一个形如$\forall\bar{x}\exists\bar{y}\theta$的一阶语句，定义$Tr_{QE}(\mathbf{SM}[\varphi;\sigma])~=~\exists S\exists T\mathbf{SM}[Tr_{QE}(\varphi);\sigma,S,T]$，
-%其中$S,T$是由$Tr_{QE}$引入的辅助谓词。
-%\end{definition}
-%
-%$Tr_{QE}$被证明在后继结构上保持等价关系。在这个存在量词消去的定义\ref{def_smfo2smufo}中，引入了三个具有后继结构的常元符号，分别为$min$、$max$和$succ$，$min$和$max$是个体常元，$succ$是谓词常元。参考文献\cite{zhang2011translating}给出后继结构的定义：
-%\begin{definition}\label{def_succ}
-%称一个结构$\mu$是一个后继结构当且仅当满足下面两个条件同时成立：
-%\begin{enumerate}
-%  \item $\mu$的符号集是一个后继符号集；
-%  \item 在关系$\mu(succ)$，论域中每一个元素至多有一个直接前继和一个直接后继，且无前继当且仅当该元素为$\mu(min)$，无后继当且仅当该元素为$\mu(max)$。
-%\end{enumerate}
-%\end{definition}
-%
-%后继结构可以类比一个正整数结构$\mathbb{Z}_n$，其中$n~=~|\mathbb{Z}_n|$，例如集合$\{0,...,n-1\}$，$\mu(succ)$对应该集合上的后继关系，$\mu(min)$和$\mu(max)$分别对应$0$和$n-1$。
-%在后续的章节中，会使用到这一类后继结构，假定一般的公式符号集中不存在这三个常元符号。
-%
-%章衡\cite{zhang2011translating}同样给出了一阶限定理论到一阶稳定理论的翻译，此翻译没有处理可变谓词的情形，但是给本文的研究提供了重要的翻译思路。
-%\begin{definition}
-%\textbf{(文献\cite{zhang2011Decidability}定义6.1)} 设$v$为谓词常元的一个有穷集，分情况进行如下定义：若$\varphi$为无蕴含否定范式，令$F_{\varphi}$为不在$\varphi$中出现的一个0元辅助谓词，令$\hat{tr}_{c2sm}^v(\varphi)$为如下公式：
-%\begin{eqnarray}
-%% \nonumber to remove numbering (before each equation)
-%  \varphi^{\neg\neg}~\wedge~\varphi^{-}~\wedge~F_{\varphi}~\rightarrow~\bigwedge_{Q\in v}\forall\bar{x}(Q(\bar{x})~\vee~\neg Q(\bar{x}))
-%\end{eqnarray}
-%其中：
-%\begin{enumerate}
-%  \item $\varphi^{\neg\neg}$为将$\varphi$中所有形如$P(\bar{t})$($P~\in~v$)的公式替换为$\neg\neg P(\bar{t})$后所得的公式；
-%  \item $\varphi^{-}$为将$\varphi$中所有形如$\neg P(\bar{t})$($P~\in~v$)的公式替换为$(P(\bar{t})\rightarrow F_{\varphi})$后所得的公式。
-%\end{enumerate}
-%\end{definition}
-%
-%\begin{theorem}
-%$\hat{Tr}_{c2sm}$是从$\mathrm{CIRC}[FO]$到$\mathrm{SM}[FO]$保持一般结构上投影等价的翻译。
-%\end{theorem}
-
-\section{回答集程序}
-
-在这一节中，我们介绍一种较为成熟的知识表示语言——{\kai 逻辑程序}。
-一个逻辑程序是由有限个如下形式的{\kai 规则}组成的集合：
-\begin{equation}
-\label{ruleDLP}
-A_1\vee A_2 \vee ... \vee~A_m~\leftarrow~B_1\wedge B_2\wedge...\wedge B_n.
-\end{equation}
-其中~$m,n \in \mathbb{N}$~，每一个~$A_i,B_j(1 \leq i \leq m,1 \leq j \leq n)$都被称为文字，
-它们或为原子公式，称为{\kai 正文字}；
-它们或为原子公式的否定式，称为{\kai 负文字}。
-在蕴含符“$\leftarrow$”左边部分称为规则的{\kai 头部}，右边部分称为规则的{\kai 体部}。
-
-若限制规则的头部不允许有负文字的出现，我们称这类逻辑程序为{\kai 析取逻辑程序}(Disjunctive Logic Program)，简记为DLP。
-若对规则没有任何限制，我们称这类逻辑程序为{\kai 扩充的析取逻辑程序}(Extended Disjunctive Logic Program)，简记为EDLP。
-
-
-接下来我们介绍逻辑程序的语义。
-在1988年Michael Gelfond和Vladimir Lifschitz在\cite{Gelfond1988}首次提出了不允许析取的逻辑程序的稳定模型语义，
-后来又扩展到扩充的析取逻辑程序\cite{gelfond1991}，并称之为回答集语义(Answer Set Semantics)。
-对于DLP，Michael Gelfond和Vladimir Lifschitz提出了一个逻辑程序在一个原子公式集下的归约，定义如下：
-\begin{definition} \label{defReduct}
-令$\Pi$为一个DLP逻辑程序，$L$表示逻辑程序$\Pi$中出现过的原子公式的集合，$X$是$L$的一个子集。如果对于~$\Pi$~中的每一条规则~$r$~：
-\begin{enumerate}
-  \item 如果$X$中的原子公式出现在规则~$r$~中体部的负文字中，则删除规则~$r$~；
-  \item 否则，删除规则$r$中体部的所有负文字。
-最终得到的规则组成的集合称为~$\Pi$~关于文字集~$X$~的归约程序，记为~$\Pi^X$~。
-\end{enumerate}
+\begin{definition}[正规逻辑程序的回答集]
+	给定一个正规逻辑程序$P$，记其去掉约束后的程序为$P'$，原子集合$S$是$P$的一个回答集，当且仅当，$S$是$P'$的回答集且$S$满足$P$中的所有约束。
 \end{definition}
 
-若原子公式集$X$满足逻辑程序$\Pi$的所有规则，则称$X$是$\Pi$的模型。
-给定一个DLP逻辑程序$\Pi$，$X$是原子公式集合，
-若不存在一个$\Pi$在$X$下的归约程序$\Pi^X$的模型$Y$且$Y \subset X$，则称$X$是$\Pi$的{\kai 回答集}(Answer Set)。
+与正规逻辑程序不同，由于析取逻辑程序的头部的原子数可以大于1个，所以经过$GL$规约后的程序的最小模型可能有多个。
 
-接下介绍逻辑程序的稳定模型语义。
-对于任意形如式\ref{ruleDLP}的规则，我们称如下公式为该规则的一阶表示：
-\begin{equation}
-\tilde{\forall}(A_1\vee A_2 \vee ... \vee~A_m~\leftarrow~B_1\wedge B_2\wedge...\wedge B_n.)
-\end{equation}
-一个逻辑程序$\Pi$的一阶表示，记为$\hat{\Pi}$，是该程序中所有规则的一阶表示的集
-合。实际上，逻辑程序的一阶表示就是一个一阶理论。为了叙述方便，在无歧义的情
-况下，我们往往不对逻辑程序与它的一阶表示进行严格区分。
-此外，在稳定模型语义下的逻辑程序中，所有在规则的体部出现过的谓词均视作内涵谓词。
+\begin{definition}[析取逻辑程序的回答集]
+	给定一个析取逻辑程序P和原子集合$S$，记$P$去掉约束后的程序为$P'$，$P'$的最小模型的集合为$\Gamma(P^S)$。$S$是$P$的回答集，当且仅当$S \in \Gamma(P^S)$，并且不违反$P$中的约束。
+\end{definition}
 
-实际上，对于一个DLP逻辑程序，一阶稳定模型语义与回答集语义是一致的。
-根据文献\cite{ferraris2005mathematical}，我们可得到：
+\subsection{逻辑程序的补全(completion)}
+
+Clark\cite{clark1978negation}在1978年通过将逻辑程序翻译为经典逻辑的公式来给出其语义。
+
+\begin{definition}[补全]
+	给定一个逻辑程序$P$，其补全$Comp(P)$是$P$的约束和$P$的克拉克补全(Clark completion)的并集。它包括以下子句：
+	\begin{enumerate}
+		\item 对于$p \in Atoms(P)$，令$p \leftarrow G_1, ..., p \leftarrow G_n$为$P$中与$p$相关的规则，则$p \equiv G_1 \vee ... \vee G_n$属于 $Comp(P)$。特别地，如果$n=0$，则$p \equiv false$，等价于$\neg\ p$。
+		\item 对于约束$\leftarrow G$，则$\neg G$属于$Comp(P)$。
+	\end{enumerate}
+\end{definition}
+\begin{example}\label{program:p3}
+	给定程序$P_3$：
+	$$a \leftarrow b, c, not\ d.$$
+	$$a \leftarrow b, not\ c, not\ d.$$
+	$$\leftarrow b, c, not\ d.$$
+	
+	该程序的补全为：$Comp(P_3)=\lbrace a \equiv (b \wedge c \wedge \neg d) \vee (b \wedge \neg c \wedge \neg d), \neg b, \neg c,\neg d, \neg (b \wedge c \wedge \neg d)\rbrace$。
+\end{example}
+
+\subsection{析取逻辑程序到正规逻辑程序的转换}
+
+析取逻辑程序和正规逻辑程序的区别在于头部原子的个数，一个自然的问题是，是否存在一种转换使得析取逻辑程序可以转化为正规逻辑程序。
+Gelfond等人\cite{gelfond1991classical}提出了一个转换，通过把析取逻辑程序$P$头部的原子移动(shifting)到体部，把析取逻辑程序转化为正规逻辑程序，记为$sh(P)$。
+其具体操作每条析取规则替换成如下的形式：
+$$a_i \leftarrow not\ a_1, ..., not\ a_{i-1}, not\ a_{i+1}, ..., not\ a_k, a_{k+1}, ..., a_m, not\ a_{m+1}, ..., not\ a_n.(1 \le i \le k)$$
+
+直观上，我们可以看出，$sh(P)$的每个回答集同时也是$P$的回答集。但是，反过来就不一定成立了。后来，Ben-Eliyahu和Dechter提出了一种名为Head-Cycle-Free($HCF$)\cite{ben1994propositional}的析取逻辑程序类型，并且证明了$HCF$程序$P$的回答集和其$sh(P)$的回答集一一对应。
+
+\begin{definition}[$HCF$程序]
+    给定一个析取逻辑程序$P$，对于$P$的每一个环$L$和每条规则$r$，如果$|head(r) \cap L| \le 1$，那么该程序称为Head-Cycle-Free($HCF$)程序。
+\end{definition}
+
+环的概念将在下一节中给出。
+
+\section{环与环公式}
+
+回答集逻辑程序和命题逻辑的关系是很密切的。我们甚至可以把逻辑程序中的每一条规则看成是命题逻辑中的一个子句。Lin和Zhao\cite{lin2004assat}证明，只要加入环公式(loop formulas)，原逻辑程序的回答集就可以和其对应的命题的模型一一对应。下面我们给出环和环公式的定义。
+
+环和环公式的概念是基于正依赖图的，首先我们给出正依赖图的定义，本节的所有定义都是针对析取逻辑程序的，正规逻辑程序可以看成是析取逻辑程序的特例。
+
+\begin{definition}[正依赖图]
+	给定一个析取逻辑程序$P$，其正依赖图(positive dependency graph)，记为$G_P$，是以$P$中原子为顶点的有向图。其中，两原子之间存在从$p$到$q$的有向边，当且仅当，存在$P$中的规则$r$，使得$p \in head(r)$且$q \in body^+(r)$。
+\end{definition}
+\begin{example}
+	程序$P_1$和$P_2$的正依赖图是一样的，如图2.1所示。
+	\begin{figure}[htb]
+		\center
+		\includegraphics[width=300pt]{img/dg.png}\\
+		\caption{$P_1$和$P_2$的正依赖图}\label{fig:dg}
+	\end{figure}
+\end{example}
+\begin{definition}[环]
+	给定原子集合$L$，如果$L$中的任意原子$p$和$q$在程序$P$的正依赖图$G_P$中存在一条路径，并且路径上的所有顶点$r \in L$，那么我们称$L$为程序$P$的环(loop)。特别地，任意单原子集合都为环。
+\end{definition}
+\begin{example}
+	程序$P_2$有6个环：$\lbrace p\rbrace, \lbrace r\rbrace, \lbrace q\rbrace, \lbrace p,r\rbrace, \lbrace q,r\rbrace, \lbrace p,q,r\rbrace$。
+\end{example}
+\begin{definition}[子环]
+	给定环$L$，环$L'$是$L$的子环当且仅当$L' \subset L$且$L'$对应的子图是一个强连通分量。
+\end{definition}
+\begin{example}
+	程序$P_2$中，环$\lbrace p,r\rbrace$的子环有$\lbrace p\rbrace$和$\lbrace r\rbrace$。
+\end{example}
+
+给定逻辑程序P和环L，我们定义如下两种规则的集合：
+\begin{align}
+R^+(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) \cap L \ne \emptyset\rbrace\\
+R^-(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) \cap L = \emptyset\rbrace
+\end{align}
+
+一般地，我们会把$R^+(L,P)$简写成$R^+(L)$，把$R^-(L,P)$简写成$R^-(L)$。
+显然，这两个集合是没有交集的。直观上看，$R^+(L)$表示环里面的公式，$R^-(L)$表示可以推出环中原子的公式。
+所以，我们把$R^+(L)$称为内部支持(internal support)的集合，把$R^-(L)$称为外部支持(external support)的集合。
+需要注意的是，外部支持的概念并不针对环，我们可以把环替换成任意原子集合。
+
+\begin{example}\label{program:p4}
+	考虑如下正规逻辑程序$P_4$：
+	$$a \leftarrow b.$$
+	$$b \leftarrow a.$$
+	$$a \leftarrow not\ c.$$
+	$$c \leftarrow d.$$
+	$$d \leftarrow c.$$
+	$$c \leftarrow not\ d.$$
+	
+	则，该程序有两个环：$L_1=\lbrace a,b\rbrace$和$L_2=\lbrace c,d\rbrace$。对于这两个环，我们有：
+	$$R^+(L_1)=\lbrace a \leftarrow b.\ b \leftarrow a. \rbrace,$$
+	$$R^-(L_1)=\lbrace a \leftarrow not\ c.\rbrace,$$
+	$$R^+(L_2)=\lbrace c \leftarrow d.\ d \leftarrow c. \rbrace,$$
+	$$R^-(L_2)=\lbrace c \leftarrow not\ a.\rbrace,$$
+\end{example}
+
+可以观察到，$R^+(L_1)$和$R^+(L_2)$的回答集都为$\emptyset$。事实上，对于任意逻辑程序$P$和环$L$，$\emptyset$是$R^+(L)$的唯一回答集。因此，环里面的原子不可能属于任何回答集，除非有额外的公式能推出它，比如$R^-(L)$。基于这些观察，Lin等人\cite{lin2004assat}提出了正规逻辑程序的环公式的概念。对于正规逻辑程序$P$和环$L$，其环公式为如下形式：
+\begin{align}
+\neg (\bigvee_{r \in R^-(L)} body(r)) \supset \bigwedge_{p \in L} \neg p\label{formula:lf_old}
+\end{align}
+
+
+该环公式的直观意思是，如果环L的所有外部支持的体部都为假，那么就不能推出环的任何原子，即环中原子都为假。
+
+\begin{theorem}\label{theorem:lf}
+	给定逻辑程序$P$，其补全为$Comp(P)$，记$LF$为$P$的所有环公式的集合。原子集合$S$是$P$的回答集，当且仅当它是$Comp(P) \cup LF$的模型。
+\end{theorem}
+
+定理\ref{theorem:lf}的证明比较复杂，详细过程可以查阅文献\cite{lin2004assat, lee2003loop}。
+
+随着理论的发展，环公式概念已经被拓展到析取逻辑程序，下面我们将介绍析取逻辑程序的环公式。
+
+\begin{definition}[环公式]
+	对于逻辑程序$P$及其环$L$，对应的析取环公式(disjunctive loop formulas)，记为$DLF(L,P)$，定义为如下形式：
+	\begin{align}
+	\bigvee_{p \in L} \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{definition:dlf}
+	\end{align}
+	
+	通常，$DLF(L,P)$可以简写为$DLF(L)$。
+	
+	环公式的另一种定义是由Lifschitz等人\cite{lee2003loop}提出，由于他把$DLF(L,P)$左边的$\bigvee_{p \in L} p$换成$\bigwedge_{p \in L} p$，所以我们一般也将其称为合取环公式(conjunctive loop formulas)，记为$CLF(L,P)$，定义为如下形式：
+	\begin{align}
+	\bigwedge_{p \in L} \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{definition:clf}
+	\end{align}
+	
+	此外，我们还可以使用蕴含$\bigvee_{p \in L} p$且被$\bigwedge_{p \in L} p$蕴含的命题公式来替换它们。
+	比如，对于任意环$L$，记$F_L$为由环中原子使用合取或者析取组成的公式，那么环公式又可以定义为$LF(L,P)$，它是如下的形式：
+	\begin{align}
+	F_L \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{definition:lf}
+	\end{align}
+\end{definition}
+
+\begin{theorem}\label{theorem:eq1}
+	给定程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论是等价的：
+	\begin{enumerate}
+		\item $S$是$P$的回答集；
+		\item 对于$P$中的所有环$L$，$S$满足$DLF(L,P)$；
+		\item 对于$P$中的所有环$L$，$S$满足$CLF(L,P)$；
+		\item 对于$P$中的所有环$L$，$S$满足$LF(L,P)$；	
+	\end{enumerate}
+\end{theorem}
+
+\section{传统的基本环}
+
+Gebser和Schaub在2005年首次提出了正规逻辑程序的基本环(elementary loops)的概念\cite{gebser2005loops}。2011年，他们又把基本环拓展到析取逻辑程序\cite{gebser2011elementary}。
+
+\begin{definition}[向外的]
+	给定一个原子集合$X$及其子集$Y$，若存在$r \in P$,满足以下的条件：
+	\begin{enumerate}
+		\item $head(r) \cap Y \ne \emptyset$
+		\item $head^+(r) \cap (X \backslash Y) \ne \emptyset$
+		\item $head(r) \cap (X \backslash Y) = \emptyset$
+		\item $body^+(r) \cap Y = \emptyset$
+	\end{enumerate}
+	
+	则称Y在X里是向外(outbound)的。
+\end{definition}
+\begin{definition}[基本环]
+	给定环$L$和程序$P$，若$L$的所有非空真子集在$L$里都是向外的，那么我们称$L$是基本环(elementary loop)。
+\end{definition}
+\begin{example}
+	程序$P_2$有5个基本环：$\lbrace p\rbrace ,\lbrace r\rbrace ,\lbrace q\rbrace ,\lbrace p,r\rbrace ,\lbrace q,r\rbrace$。
+\end{example}
+\begin{theorem}
+	给定程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论与定理\ref{theorem:eq1}的都是等价的：
+	\begin{enumerate}
+		\item 对于$P$中的所有基本环$L$，$S$满足$CLF(L,P)$；
+		\item 对于$P$中的所有基本环$L$，$S$满足$DLF(L,P)$；
+		\item 对于$P$中的所有基本环$L$，$S$满足$LF(L,P)$；
+	\end{enumerate}
+\end{theorem}
+
+\begin{definition}[基本子图]
+	记有向图为$(V,E)$，其中，$V$表示节点的集合，$E$表示有向边的集合。对于正规逻辑程序$P$和原子集合$X$，我们定义如下计算：
+	\begin{center}
+		$EC^0_P(X)=\emptyset$\\
+		$EC^{i+1}_P(X)=\lbrace (a, b)|$若存在$r \in P$，\\
+		$a=head(r), a \in X,$\\
+		$b \in body^+(r) \cap X,$\\
+		且$body^+(r) \cap X$的所有原子都属于有向图$(X,EC^i_P)$中的同一个强连通分量$\rbrace$
+		$EC_P(X)=\bigcup_{i \ge 0} EC^i_P(X)$
+	\end{center}
+	
+	有向图$(X,EC_P(X))$称为原子集合$X$关于程序$P$的基本子图(elementary subgraph)。
+\end{definition}
+\begin{theorem}\label{theorem:es}
+	给定正规逻辑程序$P$和非空原子集合$X$，$X$是$P$的基本环，当且仅当$X$关于$P$的基本子图是强连通(strongly connected)。
+\end{theorem}
+
+使用定理\ref{theorem:es}的方法识别正规逻辑程序的基本环的时间复杂度为$O(n^2)$。
+然而，识别析取逻辑程序的基本环可要复杂很多，时间复杂度达到coNP-complete\cite{gebser2011elementary}，这是当今计算机无法承受的。
+
+\begin{definition}[$HEF$程序]
+	给定一个析取逻辑程序$P$，对于$P$的每个基本环$L$和每条规则$r$，如果$|head(r) \cap  L| \le 1$，那么该程序称为$HEF$(Head-Elementary-loop-Freea)程序。
+\end{definition}
+
 \begin{proposition}
-对于任意一个DLP逻辑程序$\Pi$，一个结构$\mu$是$\hat{\Pi}$的稳定模型当且仅当在$\mu$的解释下为真的原子公式组成的集合$X$是$\Pi$的回答集。
+	给定一个$HEF$程序$P$，$P$的回答集和$sh(P)$的回答集相同。
 \end{proposition}
 
-进一步地，一阶稳定理论与逻辑程序之间的等价关系在\cite{Heng2011,Heng2011thesis,cabalar2007propositional}中得到阐述。
-Heng Zhang等人在\cite{Heng2011}提出了一个在稳定模型语义下消除存在量词的翻译，将任意一个一阶稳定理论转换为一个稳定模型语义下的$\Pi_0$-语句。
-\begin{definition}\label{def_smqe}
- 任意给定形如$\forall\bar{x}\exists\bar{y}\vartheta(\bar{x},\bar{y})$ 的一个一阶语句$\varphi$，定义$Tr_{QE}(\varphi)$
-为下述一阶公式的合取式的全称闭包：
-\begin{eqnarray}
-    \neg\neg S(\bar{x},\overline{\mathrm{m{\i}n}}) \label{smqe1}\\
-    (succ(\bar{y},\bar{z})~\wedge~S(\bar{x},\bar{z}))~\vee~\vartheta^{\neg\neg}(\bar{x},\bar{y})~\rightarrow~S(\bar{x},\bar{y}) \label{smqe2}\\
-    T(\bar{x},\overline{\mathrm{m{\i}n}})~\vee~\vartheta(\bar{x},\overline{\mathrm{m{\i}n}}) \label{smqe3}\\
-    \begin{split}\label{smqe4}
-    [(\overline{\mathrm{max}} = \bar{y}) \vee(succ(\bar{y},\bar{z})\wedge\neg S(\bar{x},\bar{z}))]\wedge S(\bar{x},\bar{y})\hspace{0.7cm}\\ \rightarrow(T(\bar{x},\overline{\mathrm{max}})\leftrightarrow\vartheta(\bar{x},\bar{y}))
-    \end{split}\\
-    succ(\bar{y},\bar{z})~\rightarrow~(T(\bar{x},\bar{y})~\leftrightarrow~\vartheta(\bar{x},\bar{z})~\vee~T(\bar{x},\bar{z})) \label{smqe5}
-\end{eqnarray}
-令$n$为序列$\bar{x}$与$\bar{y}$的长度之和，其中：
-\begin{enumerate}
-  \item $\vartheta^{\neg\neg}$是将$\vartheta$中所有形如$P(\bar{x})$的正文字替换为$\neg\neg P(\bar{x})$后所得到的公式；
-  \item 谓词$succ$是未在$\varphi$中出现过的谓词常元，它是建立在有穷论域$A$上的$2\times|\bar{y}|$元关系，它刻画了$A^{|\bar{y}|}$中元素的一个线序，
-      其中$\overline{\mathrm{m{\i}n}}$和$\overline{\mathrm{max}}$是未在$\varphi$中出现过的个体常元，
-      分别表示在这个线序下的最小元和最大元；
-  \item $S$和$T$是不在$\varphi$中出现的两个$|\bar{x}|+|\bar{y}|$元新的谓词常元。
-\end{enumerate}
-\end{definition}
-
-\begin{theorem}\label{theorem_smqe}
-任意给定一个一阶稳定理论$\mathbf{SM}[\varphi;\sigma_i]$，若
-$\varphi$是形如$\forall\bar{x}\exists\bar{y}\vartheta(\bar{x},\bar{y})$ 的一阶语句，
-则在不管$S,T,succ,\overline{\mathrm{m{\i}n}}$和$\overline{\mathrm{max}}$的解释的情况下，$\mathbf{SM}[Tr_{QE}(\varphi);\sigma_i,S,T]$
-与$\mathbf{SM}[\varphi;\sigma_i]$
-在有穷结构上是逻辑等价的。
-\end{theorem}
-
-观察到$Tr_{QE}$\footnote{原文中的公式(\ref{smqe4})是$\neg(succ(\bar{y},\bar{z})~\wedge~S(\bar{x},\bar{z}))~\wedge~S(\bar{x},\bar{y})\rightarrow~(T(\bar{x},\overline{\mathrm{max}})~\leftrightarrow~\vartheta(\bar{x},\bar{y}))$，但笔者发现此处存在笔误，因为原公式的定义与它要表达的意义不同，没有表达出$\bar{z}$为$\bar{y}$的后继的意思，在征得原作者的同意下，这里将之改正。}
-实际上是在给定的一个有穷结构上消去了一个存在量词块，使得整个一阶稳定理论只出现全称量词。
-根据命题\ref{pnf}，每个一阶语句都存在一个前缀范式与之强等价。
-因此，只要将任意一个一阶稳定理论转换为一个稳定模型语义下的一阶前缀范式，就可以使用$Tr_{QE}$来消去存在量词。
-实际上，定义\ref{def_smqe}中的$\vartheta$中可能存在全称量词和存在量词，
-只要将翻译后的一阶语句$Tr_{QE}(\varphi)$再转换成前缀范式，再多次使用$Tr_{QE}$，
-就可以将所有存在量词都消去，最终得到一个稳定模型语义下的$\Pi^0_1$-语句。
-
-将所有的存在量词消去后，我们可以将一个稳定模型语义下的仅含全称量词的一阶公式转换为一个与之等价的逻辑程序。
-Pedro Cabalar等人在\cite{cabalar2007propositional}中提出了将稳定模型语义下的命题公式转换为一个EDLP逻辑程序的归约翻译。
-给定一个有穷论域，我们可以轻易地将一个全称一阶语句常例化，解释成一个命题公式。
-\begin{theorem}\label{theorem_sm2lp}
-\textbf{(文献\cite{cabalar2007propositional} 定理1)}
-每一个命题理论都强等价于一个EDLP逻辑程序，
-并且存在一个翻译算法，将任意一个命题理论在有穷结构上在有穷时间内，转换成与之强等价的EDLP逻辑程序。
-\end{theorem}
-
-根据定理\ref{theorem_smqe}和\ref{theorem_sm2lp}，我们可以将任意一个一阶稳定理论转换成一个逻辑程序，通过一个逻辑程序的求解器，来计算一阶稳定理论。
-
-实际上，我们可以将一个EDLP转化为与之等价的DLP，具体地，我们可以将每一条形如式\ref{ruleDLP}的规则转化为如下形式：
-\begin{equation}
-A_1\vee A_2 \vee ... \vee~A_m~\leftarrow~B_1\wedge B_2\wedge...\wedge B_n\wedge \neg C_1\wedge ... \wedge \neg C_l \wedge \neg\neg D_1 \wedge ... \wedge \neg\neg D_k
-\end{equation}
-其中，$A_i,B_j,C_s,D_t$均为原子公式。变换的方式是将头部中的每一负文字移至
-体中，并在该负文字前再添上一个否定词。根据文献文献\cite{Lee2012}中的规则(L3)，该变换将保持强等价。
-为了方便起见，我们有时也将扩充逻辑程序看作上述形式
-规则的一个集合。
-
-在章衡的博士论文\cite{Heng2011thesis}中，他提出了将一个扩充的析取逻辑程序转换为一个与之具有相同回答集的析取逻辑程序的翻译，具体定义如下：
-\begin{definition}
-给定一个扩充的析取逻辑程序$\Pi$，设其内涵谓词的集合为$\sigma$，定义$Tr_{\neg \neg}(\Pi)$为按如下方式得到的析取逻辑程序：
-\begin{enumerate}
-  \item 为$\sigma$中的每个谓词常元$P$引入一个辅助谓词$P'$，将$\Pi$中的每一个形如$\neg\neg P(\bar{x})$~($P\in \sigma$)的双否定文字替换为$\neg P'(\bar{x})$；
-  \item 为$\sigma$中的每个谓词常元$P$引入规则$P'(\bar{x}) \leftarrow \neg P(\bar{x})$。
-\end{enumerate}
-\end{definition}
-
-上述翻译$Tr_{\neg\neg}$中所使用的方法，在实际的逻辑程序设计中是一种相当常用的编码技巧，
-章衡将它以命题的形式说明了翻译前后的逻辑程序的等价性，并在其博士论文中证明了翻译的正确性。
-
-\begin{proposition}\label{prop_edlp2dlp}
-\textbf{(文献\cite{Heng2011thesis} 命题5.5)}
-给定一个扩充的析取逻辑程序$\Pi$，设其内涵谓词的集合为$\sigma$，
-在不管辅助谓词集$\sigma'$的解释的情况下，$Tr_{\neg\neg}(\Pi)$与$\Pi$逻辑等价。
-\end{proposition}
-
-我们将在回答集语义下的析取逻辑程序称为{\kai 回答集程序}(Answer Set Programming, 简称ASP)。
-最近几年，随着布尔可满足性求解器(SAT求解器)的高速发展，基于SAT技术的回答集求解器也在不断发展，为找出回答集程序的回答集提供了一个高效的实现。
-目前较为流行的回答集求解器有ClaspD\cite{gebser2007conflict}、DLV\cite{leone2006dlv}、GnT\cite{janhunen2006unfolding}
-和Smodels\cite{niemela1997smodels}。
-
-实际上，最近十几年来ASP一直是国内外学者的研究热点，这使得回答集程序的语法和语义都得到不同程度的扩展，包括$\#sum$约束、优化等等概念的引入，
-使得ASP能够应用于很多$\Sigma^p_2$的组合优化问题上。
-但这些扩展不在本文的讨论范围内，请参阅文献\cite{eiter2009answer,lifschitz2008answer,gelfond2008answer}。
+相比于普通程序，识别HEF程序的一个基本环要快很多，这是它的一个很好的性质，
+然而，判断一个程序是否为$HEF$程序的时间复杂度为coNP-complete\cite{fassetti2010complexity}。

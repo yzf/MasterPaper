@@ -35,7 +35,8 @@
 
 近十几年来，随着ASP的快速发展，先后出现了很多求解器(ASP solver)。
 由于计算ASP程序的回答集的复杂性为NP-complete，大部分求解器都是通过搜索的方式查找回答集。
-针对普通逻辑程序的ASP求解器主要分为两大类，一类是基于DPLL算法(Davis-Putnam-Logemann-Loveland procedure)的，包括DLV，smodels和clasp等。另一类则是基于SAT求解器的，包括ASSAT和cmodels等。
+针对普通逻辑程序的ASP求解器主要分为两大类，一类是基于DPLL算法(Davis-Putnam-Logemann-Loveland procedure)的，包括DLV，smodels和clasp等。另一类则是基于SAT求解器的，包括ASSAT和cmo-\\
+dels等。
 
 求解器的发展离不开理论的支持。
 2002年，Lin与Zhao首次提出了正规逻辑程序的环(loops)和环公式(loop formulas)的概念\cite{lin2004assat}，将回答集的求解归约为求解命题逻辑公式的模型，即SAT问题，并使用SAT求解器进行回答集的求解。
@@ -44,7 +45,7 @@ Lin-Zhao规约理论的核心在于，通过引入逻辑程序的环公式，对于逻辑程序的正依赖图(pos
 这些理论的提出，保证了基于SAT求解器的回答集求解器的正确性(correctness)和完备性(completeness)，极大地推进了求解器的发展。
 
 然而，通常情况下，ASP程序的环的数目可能出现指数爆炸\cite{lifschitz2006there}。
-2005年，Gebser与Schaub发现，并非所有环对于从正规逻辑程序的模型中挑选回答集都是必须的。
+2005年，G-ebser等人发现，并非所有环对于从正规逻辑程序的模型中挑选回答集都是必须的。
 他们提出了基本环(elementary loops)\cite{gebser2005loops}的概念，并且在仅考虑基本环的情况下，重新定义了Lin-Zhao的环公式理论。
 2011年，Gebser等人\cite{gebser2011elementary}把基本环的概念拓展到析取逻辑程序，并指出，只利用这些基本环，已经足以完成从析取逻辑程序的模型中选取回答集这一操作。
 他们还提出了一种名为HEF(Head-Elementary-loop-Free)的逻辑程序类别，并指出了，这类析取逻辑程序与HCF(Head-Cycle-Free)逻辑程序\cite{ben1994propositional}一样，可以通过把规则头部的原子移动到规则体部，在多项式时间内转换为与其等价的正规逻辑程序。

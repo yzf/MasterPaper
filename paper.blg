@@ -7,31 +7,6 @@ The style file: paper2.bst
 bibinfo is an unknown function---line 207 of file paper2.bst
 bibinfo.check is an unknown function---line 207 of file paper2.bst
 Database file #1: reference.bib
-Warning--I didn't find a database entry for "enderton2001mathematical"
-Warning--I didn't find a database entry for "McCarthy1980"
-Warning--I didn't find a database entry for "McCarthy1986"
-Warning--I didn't find a database entry for "Lifschitz1994"
-Warning--I didn't find a database entry for "de1989"
-Warning--I didn't find a database entry for "ferraris2005mathematical"
-Warning--I didn't find a database entry for "Ferraris2007"
-Warning--I didn't find a database entry for "bartholomew2013functional"
-Warning--I didn't find a database entry for "bartholomew2013stable"
-Warning--I didn't find a database entry for "Ferraris2011"
-Warning--I didn't find a database entry for "pearce2005first"
-Warning--I didn't find a database entry for "Ferrais2009"
-Warning--I didn't find a database entry for "Heng2011"
-Warning--I didn't find a database entry for "Gelfond1988"
-Warning--I didn't find a database entry for "gelfond1991"
-Warning--I didn't find a database entry for "Heng2011thesis"
-Warning--I didn't find a database entry for "cabalar2007propositional"
-Warning--I didn't find a database entry for "Lee2012"
-Warning--I didn't find a database entry for "gebser2007conflict"
-Warning--I didn't find a database entry for "leone2006dlv"
-Warning--I didn't find a database entry for "janhunen2006unfolding"
-Warning--I didn't find a database entry for "niemela1997smodels"
-Warning--I didn't find a database entry for "eiter2009answer"
-Warning--I didn't find a database entry for "lifschitz2008answer"
-Warning--I didn't find a database entry for "gelfond2008answer"
 Warning--empty booktitle in colmeraner1973systeme
 You can't pop an empty literal stack for entry ji2010asp
 while executing---line 866 of file paper2.bst

@@ -435,7 +435,7 @@
 \usepackage{moreverb}
 \usepackage[lined,boxed,commentsnumbered]{algorithm2e}
 %-----------------------我的定义-----------------------
-\newcommand{\papername}{回答集逻辑程序的程序分割问题及在程序化简的应用研究}
+\newcommand{\papername}{回答集逻辑程序特征环的研究}
 \newcommand{\sll}{$\mathcal{SL}$}
 \newcommand{\prolog}{\texttt{Prolog}}
 \newcommand{\golog}{$Golog$}
@@ -521,8 +521,8 @@
 
 \pagestyle{fancy}
 %\renewcommand{\chaptermark}[1]{\markboth{\chaptername \ #1}{}}
-% \renewcommand{\chaptermark}[1]{\markboth{第\thechapter 章\ #1}{}}
-\renewcommand{\chaptermark}[1]{\markboth{}{}}
+\renewcommand{\chaptermark}[1]{\markboth{第\thechapter 章\ #1}{}}
+%\renewcommand{\chaptermark}[1]{\markboth{}{}}
 %以上指令中\chaptermark用于重新定义页眉内之章标题；
 %其内容取自LaTeX的\markboth指令。事实上\markboth 指令用于存放两项信息，分别
 %存放于指令之后的两个大括号内。在book文件类别中，第一项为章名的相关信息；
@@ -532,8 +532,8 @@
 % \fancyhead[LE,RO]{\thepage}
 %注：在book文件类别下,\leftmark自动存录各章之章名,\rightmark记录节标题
 % \fancyhead[LO]{\CJKfamily{fs}\nouppercase\rightmark}
- \fancyhead[L]{\CJKfamily{fs}中山大学硕士学位论文}
- \fancyhead[R]{\CJKfamily{fs}\papername}
+ \fancyhead[L]{\CJKfamily{fs}\papername}
+ \fancyhead[R]{\CJKfamily{fs}\leftmark}
 
 
 

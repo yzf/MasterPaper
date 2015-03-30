@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.19)  30 MAR 2015 21:13
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.19)  31 MAR 2015 01:26
 entering extended mode
 **paper.tex
 (C:\Users\yzf\Desktop\MasterPaper\paper.tex
@@ -901,19 +901,8 @@ l.33
 
 
 ]
-Overfull \hbox (36.38281pt too wide) in paragraph at lines 36--39
-\C19/song/m/n/12/48 )\OT1/ppl/m/n/12 DLV\C19/song/bx/n/12/26 ß\OT1/ppl/m/n/12 s
-models\C19/song/bx/n/12/43 ⁄\OT1/ppl/m/n/12 clasp\C19/song/bx/n/12/40  \C19/so
-ng/m/n/12/25 " \C19/song/bx/n/12/49 , \C19/song/bx/n/12/61 ò \C19/song/m/n/12/4
-8 a \C19/song/bx/n/12/63 K \C19/song/bx/n/12/55 ¥ \C19/song/bx/n/12/44 ƒ \C19/s
-ong/bx/n/12/62 u\OT1/ppl/m/n/12 SAT\C19/song/m/n/12/53 ¶ \C19/song/m/n/12/46 ) 
-\C19/song/m/n/12/52 Ï \C19/song/bx/n/12/40  \C19/song/bx/n/12/26 ß \C19/song/m
-/n/12/36 ù \C19/song/m/n/12/48 )\OT1/ppl/m/n/12 ASSAT\C19/song/bx/n/12/43 ⁄\OT1
-/ppl/m/n/12 cmodels\C19/song/bx/n/12/40  \C19/song/m/n/12/25 " 
- []
-
-LaTeX Font Info:    Try loading font information for C19+fs on input line 39.
-(C:\CTEX\CTeX\tex\latex\CJK\GB\c19fs.fd
+LaTeX Font Info:    Try loading font information for C19+fs on input line 40.
+ (C:\CTEX\CTeX\tex\latex\CJK\GB\c19fs.fd
 File: c19fs.fd 2009/09/23 4.8.2
 )
 
@@ -923,7 +912,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2]
-Overfull \hbox (87.68338pt too wide) in paragraph at lines 46--52
+Overfull \hbox (1.23615pt too wide) in paragraph at lines 47--53
 []\C19/song/bx/n/12/54 , \C19/song/bx/n/12/41  \C19/song/bx/n/12/26 ß \C19/son
 g/m/n/12/57 œ \C19/song/bx/n/12/38 ~ \C19/song/m/n/12/53 ú \C19/song/bx/n/12/47
  π \C19/song/bx/n/12/59 e \C19/song/bx/n/12/26 ß\OT1/ppl/m/n/12 ASP\C19/song/bx
@@ -932,8 +921,7 @@ g/m/n/12/57 œ \C19/song/bx/n/12/38 ~ \C19/song/m/n/12/53 ú \C19/song/bx/n/12/47
 /bx/n/12/47 å \C19/song/bx/n/12/51 U \C19/song/bx/n/12/38 — \C19/song/bx/n/12/5
 9 y \C19/song/bx/n/12/64 ç \C19/song/bx/n/12/55 Í \C19/song/bx/n/12/37  \C19/s
 ong/bx/n/12/63 ø\OT1/ppl/m/n/12 [[]]\C19/song/m/n/12/25 "\OT1/ppl/m/n/12 2005\C
-19/song/bx/n/12/51 c \C19/song/bx/n/12/26 ß\OT1/ppl/m/n/12 Gebser\C19/song/bx/n
-/12/62 Ü\OT1/ppl/m/n/12 Schaub\C19/song/bx/n/12/41 u
+19/song/bx/n/12/51 c \C19/song/bx/n/12/26 ß\OT1/ppl/m/n/12 G-
  []
 
 [3] [4]) [5] (C:\Users\yzf\Desktop\MasterPaper\chap2.tex
@@ -982,255 +970,66 @@ mm/m/it/12 a$\C19/kai/m/n/12/26 ∂ \C19/kai/m/n/12/54 e$\OML/cmm/m/it/12 l$\C19/
 kai/m/n/12/58 è$\OMS/cmsy/m/n/12 : \OML/cmm/m/it/12 a$\C19/kai/m/n/12/26 ß
  []
 
-[8] [9]
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 138.
+[8]
+Overfull \hbox (13.3149pt too wide) in paragraph at lines 106--107
+\C19/kai/m/n/12/63 K \C19/kai/m/n/12/25 " \C19/kai/m/n/12/48 a \C19/kai/m/n/12/
+56 q \C19/kai/m/n/12/40 / \C19/kai/m/n/12/26 ß \C19/kai/m/n/12/58 ∑ \C19/kai/m/
+n/12/50 Ç \C19/kai/m/n/12/40 Ω \C19/kai/m/n/12/61 ¬$\OML/cmm/m/it/12 head\OT1/c
+mr/m/n/12 (\OML/cmm/m/it/12 r\OT1/cmr/m/n/12 ) = \OMS/cmsy/m/n/12 f\OML/cmm/m/i
+t/12 a[]; :::; a[]\OMS/cmsy/m/n/12 g$\C19/kai/m/n/12/26 ß$\OML/cmm/m/it/12 body
+[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r\OT1/cmr/m/n/12 ) = \OMS/cmsy/m/n/12 f\OML
+/cmm/m/it/12 a[]; :::; a[]\OMS/cmsy/m/n/12 g$\C19/kai/m/n/12/26 ß$\OML/cmm/m/it
+/12 body[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r\OT1/cmr/m/n/12 ) =$
+ []
 
- (C:\CTEX\MiKTeX\tex\latex\psnfss\omsppl.fd
-File: omsppl.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 138.
+[9]
+Overfull \hbox (1.24832pt too wide) in paragraph at lines 143--144
+[]\C19/kai/m/n/12/42 â \C19/kai/m/n/12/40 Ω \C19/kai/m/n/12/61 ò \C19/kai/m/n/1
+2/42 á \C19/kai/m/n/12/58 € \C19/kai/m/n/12/54  \C19/kai/m/n/12/49 ‹ \C19/kai/
+m/n/12/45 6 \C19/kai/m/n/12/38 ß \C19/kai/m/n/12/60 S\OT1/ppl/m/n/12 P\C19/kai/
+m/n/12/43 ⁄ \C19/kai/m/n/12/63  \C19/kai/m/n/12/65 f \C19/kai/m/n/12/45 8 \C19
+/kai/m/n/12/43 ‹$\OML/cmm/m/it/12 S$\C19/kai/m/n/12/26 ß
+ []
+
+[10]
+Overfull \hbox (10.71696pt too wide) detected at line 171
+\OML/cmm/m/it/12 a[] \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 not a[]; :::; not a[];
+ not a[]; :::; not a[]; a[]; :::; a[]; not a[]; :::; not a[]:\OT1/cmr/m/n/12 (1
+ \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 i \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 k\OT
+1/cmr/m/n/12 )
+ []
 
 
-Package natbib Warning: Citation `enderton2001mathematical' on page 10 undefine
-d on input line 151.
+LaTeX Warning: File ot144.cmap not found on input line 185.
 
+[11] <img/dg.png, id=396, 541.27219pt x 161.85469pt>
+File: img/dg.png Graphic file (type png)
+ <use img/dg.png>
+Package pdftex.def Info: img/dg.png used on input line 194.
+(pdftex.def)             Requested size: 300.0pt x 89.70938pt.
+ [12 <C:/Users/yzf/Desktop/MasterPaper/img/dg.png>] [13]
+Overfull \hbox (5.4704pt too wide) in paragraph at lines 255--256
+[]\C19/kai/m/n/12/40 È \C19/kai/m/n/12/62 u \C19/kai/m/n/12/49 ‹ \C19/kai/m/n/1
+2/45 6 \C19/kai/m/n/12/38 ß \C19/kai/m/n/12/60 S$\OML/cmm/m/it/12 P$\C19/kai/m/
+n/12/45 9 \C19/kai/m/n/12/52 Ÿ \C19/kai/m/n/12/44 Ç$\OML/cmm/m/it/12 L$\C19/kai
+/m/n/12/26 ß \C19/kai/m/n/12/40 È \C19/kai/m/n/12/62 A \C19/kai/m/n/12/40  \C1
+9/kai/m/n/12/58 € \C19/kai/m/n/12/54  \C19/kai/m/n/12/44 Ç \C19/kai/m/n/12/42 
+˙ \C19/kai/m/n/12/55 ™\OT1/ppl/m/n/12 (disjunctive
+ []
 
-Package natbib Warning: Citation `McCarthy1980' on page 10 undefined on input l
-ine 155.
-
-
-Package natbib Warning: Citation `McCarthy1986' on page 10 undefined on input l
-ine 155.
-
-
-Package natbib Warning: Citation `Lifschitz1994' on page 10 undefined on input 
-line 162.
-
-[10] [11]
-
-LaTeX Warning: Reference `defcirc' on page 12 undefined on input line 206.
-
+[14] [15]
 Package hyperref Info: bookmark level for unknown proposition defaults to 0 on 
-input line 223.
-
-Package natbib Warning: Citation `Lifschitz1994' on page 12 undefined on input 
-line 223.
-
-[12]
-Overfull \hbox (8.63893pt too wide) in paragraph at lines 240--241
-[]\C19/song/bx/n/12/58 ∑ \C19/song/m/n/12/50 Ç \C19/song/bx/n/12/45 Ú$\OMS/cmsy
-/m/n/12 8[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 P\OT1/cmr/m/n/12 ([]) \OMS/cmsy/m/
-n/12 _ :\OML/cmm/m/it/12 P\OT1/cmr/m/n/12 ([]))$\C19/song/bx/n/12/38 ° \C19/son
-g/bx/n/12/58 è ¢ \C19/song/bx/n/12/39 c$\OML/cmm/m/it/12 P$\C19/song/bx/n/12/40
-  \C19/kai/m/n/12/60 ¿ \C19/kai/m/n/12/63 J \C19/kai/m/n/12/43 5 \C19/kai/m/n/
-12/63 K\OT1/ppl/m/n/12 (Choice Rule)\C19/song/bx/n/12/26 ß \C19/song/bx/n/12/45
- P \C19/song/bx/n/12/58 è$\OML/cmm/m/it/12 choice\OT1/cmr/m/n/12 (\OML/cmm/m/it
-/12 P\OT1/cmr/m/n/12 )$\C19/song/m/n/12/25 " 
- []
+input line 339.
+ [16]) [17] (C:\Users\yzf\Desktop\MasterPaper\paper.bbl [18
 
 
-Package natbib Warning: Citation `de1989' on page 13 undefined on input line 24
-3.
 
-
-Package natbib Warning: Citation `Lifschitz1994' on page 13 undefined on input 
-line 251.
-
-[13] [14]
-
-Package natbib Warning: Citation `Lifschitz1994' on page 15 undefined on input 
-line 292.
-
-
-Package natbib Warning: Citation `McCarthy1986' on page 15 undefined on input l
-ine 300.
-
-
-Overfull \hbox (5.1298pt too wide) in paragraph at lines 305--311
-\C19/kai/m/n/12/52 Ÿ \C19/kai/m/n/12/64 •$\OML/cmm/m/it/12 Quaker\OT1/cmr/m/n/1
-2 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )$\C19/kai/m/n/12/37 L \C19/kai/m/n/12/55 
-´$\OML/cmm/m/it/12 x$\C19/kai/m/n/12/55 ¥ \C19/kai/bx/n/12/46  \C19/kai/m/n/12
-/62 l \C19/kai/m/n/12/52   \C19/kai/m/n/12/60 & \C19/kai/bx/n/12/57 ‰ \C19/kai/
-m/n/12/26 ß$\OML/cmm/m/it/12 Republican\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/
-cmr/m/n/12 )$\C19/kai/m/n/12/37 L \C19/kai/m/n/12/55 ´$\OML/cmm/m/it/12 x$\C19/
-kai/m/n/12/55 ¥ \C19/kai/m/n/12/43  ⁄ \C19/kai/bx/n/12/40 
- \C19/kai/m/n/12/54 < \C19/kai/m/n/12/26 ß$\OML/cmm/m/it/12 Pacifist\OT1/cmr/m/
-n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )$
- []
-
-
-Package natbib Warning: Citation `ferraris2005mathematical' on page 15 undefine
-d on input line 316.
-
-
-Package natbib Warning: Citation `Ferraris2007' on page 15 undefined on input l
-ine 317.
-
-[15]
-
-Package natbib Warning: Citation `Ferraris2007' on page 16 undefined on input l
-ine 345.
-
-
-Package natbib Warning: Citation `bartholomew2013functional' on page 16 undefin
-ed on input line 351.
-
-
-Package natbib Warning: Citation `bartholomew2013stable' on page 16 undefined o
-n input line 351.
-
-[16]
-
-Package natbib Warning: Citation `Ferraris2011' on page 17 undefined on input l
-ine 363.
-
-
-Package natbib Warning: Citation `pearce2005first' on page 17 undefined on inpu
-t line 371.
-
-[17]
-
-Package natbib Warning: Citation `Ferraris2011' on page 18 undefined on input l
-ine 391.
-
-
-Package natbib Warning: Citation `Ferrais2009' on page 18 undefined on input li
-ne 396.
-
-
-Package natbib Warning: Citation `Ferrais2009' on page 18 undefined on input li
-ne 414.
-
-
-Package natbib Warning: Citation `Ferrais2009' on page 18 undefined on input li
-ne 420.
-
-[18]
-
-Package natbib Warning: Citation `Heng2011' on page 19 undefined on input line 
-430.
-
-[19]
-
-Package natbib Warning: Citation `Gelfond1988' on page 20 undefined on input li
-ne 524.
-
-
-Package natbib Warning: Citation `gelfond1991' on page 20 undefined on input li
-ne 525.
-
+] [19])
 [20]
-
-Package natbib Warning: Citation `ferraris2005mathematical' on page 21 undefine
-d on input line 551.
-
-
-Package natbib Warning: Citation `Heng2011' on page 21 undefined on input line 
-556.
-
-
-Package natbib Warning: Citation `Heng2011thesis' on page 21 undefined on input
- line 556.
-
-
-Package natbib Warning: Citation `cabalar2007propositional' on page 21 undefine
-d on input line 556.
-
-
-Package natbib Warning: Citation `Heng2011' on page 21 undefined on input line 
-557.
-
-
-LaTeX Warning: Command \i invalid in math mode on input line 562.
-
-
-LaTeX Warning: Command \i invalid in math mode on input line 564.
-
-
-LaTeX Warning: Command \i invalid in math mode on input line 564.
-
-
-Package amsmath Warning: Cannot use `split' here;
-(amsmath)                trying to recover with `aligned' on input line 567.
-
-
-LaTeX Warning: Command \i invalid in math mode on input line 574.
-
-
-LaTeX Warning: Command \i invalid in math mode on input line 583.
-
-[21]
-
-LaTeX Font Warning: Font shape `U/wasy/b/n' in size <7> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 588.
-
-
-LaTeX Font Warning: Font shape `U/wasy/b/n' in size <5> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 588.
-
-
-Package natbib Warning: Citation `cabalar2007propositional' on page 22 undefine
-d on input line 597.
-
-
-Package natbib Warning: Citation `cabalar2007propositional' on page 22 undefine
-d on input line 600.
-
-
-Package natbib Warning: Citation `Lee2012' on page 22 undefined on input line 6
-12.
-
-[22]
-
-Package natbib Warning: Citation `Heng2011thesis' on page 23 undefined on input
- line 616.
-
-
-Package natbib Warning: Citation `Heng2011thesis' on page 23 undefined on input
- line 629.
-
-
-Package natbib Warning: Citation `gebser2007conflict' on page 23 undefined on i
-nput line 636.
-
-
-Package natbib Warning: Citation `leone2006dlv' on page 23 undefined on input l
-ine 636.
-
-
-Package natbib Warning: Citation `janhunen2006unfolding' on page 23 undefined o
-n input line 636.
-
-
-Package natbib Warning: Citation `niemela1997smodels' on page 23 undefined on i
-nput line 637.
-
-
-Package natbib Warning: Citation `eiter2009answer' on page 23 undefined on inpu
-t line 641.
-
-
-Package natbib Warning: Citation `lifschitz2008answer' on page 23 undefined on 
-input line 641.
-
-
-Package natbib Warning: Citation `gelfond2008answer' on page 23 undefined on in
-put line 641.
-
-) [23] (C:\Users\yzf\Desktop\MasterPaper\paper.bbl [24
-
-
-
-] [25]) [26]
 \tf@thm=\write5
-
-
-Package natbib Warning: There were undefined citations.
-
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 626.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 626.
-(C:\Users\yzf\Desktop\MasterPaper\paper.aux
+ (C:\Users\yzf\Desktop\MasterPaper\paper.aux
 (C:\Users\yzf\Desktop\MasterPaper\abstract1.aux)
 (C:\Users\yzf\Desktop\MasterPaper\abstract2.aux)
 (C:\Users\yzf\Desktop\MasterPaper\chap1.aux)
@@ -1238,51 +1037,47 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 626.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 626.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 626.
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 2D74E7AA14286E2CA87E2FE2BA81D60C;791.
-
-
-LaTeX Warning: There were undefined references.
-
+(rerunfilecheck)             Checksum: 87B7E7924D78E3992A344DCCA4E66F87;731.
  ) 
 Here is how much of TeX's memory you used:
- 15399 strings out of 495354
- 221622 string characters out of 3183859
- 345747 words of memory out of 3000000
- 17693 multiletter control sequences out of 15000+200000
- 92818 words of font info for 305 fonts, out of 3000000 for 9000
+ 15087 strings out of 495354
+ 216169 string characters out of 3183859
+ 345228 words of memory out of 3000000
+ 17441 multiletter control sequences out of 15000+200000
+ 78563 words of font info for 257 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,13n,58p,431b,1264s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/s
-imhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows
-/Fonts/simkai.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C:
-/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simhei
-.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Font
-s/simkai.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Wind
-ows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf>
-<C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/sim
-kai.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/F
-onts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simfang.ttf><C:/
-Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfa
-ng.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/
-Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><
-C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/si
-mfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windo
-ws/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.tt
-f><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/
-simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/CTEX/C
-TeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/sims
-un.ttf>{C:/CTEX/MiKTeX/fonts/enc/dvips/fontname/8r.enc}<C:/CTEX/CTeX/fonts/true
-type/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTE
-X/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/s
-imsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/t
-ruetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/
-CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/Windows/Fonts/simhei.ttf><C:/Wi
-ndows/Fonts/simhei.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX
-/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/si
-msun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/tr
-uetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/C
-TEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese
-/simsun.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windo
+ 41i,12n,58p,431b,1260s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts
+/simfang.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Wind
+ows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf>
+<C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/sim
+kai.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/F
+onts/simhei.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:
+/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simhe
+i.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fon
+ts/simkai.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Win
+dows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf
+><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/si
+mkai.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/
+Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simfang.ttf><C:
+/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simf
+ang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows
+/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf>
+<C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/s
+imfang.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Window
+s/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/CTEX/CTeX/fonts/truetype/ch
+inese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf>{C:/CTEX/MiKTe
+X/fonts/enc/dvips/fontname/8r.enc}<C:/CTEX/CTeX/fonts/truetype/chinese/simsun.t
+tf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype
+/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CT
+eX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsu
+n.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truet
+ype/chinese/simsun.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.tt
+f><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/
+chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTe
+X/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun
+.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truety
+pe/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/Windo
 ws/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><
 C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simk
 ai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fo
@@ -1291,28 +1086,26 @@ ndows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.tt
 f><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/s
 imkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows
 /Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:
-/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chine
-se/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fon
-ts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf>
-<C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/ch
-inese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/
-fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.t
-tf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype
-/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CT
-eX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmbx12.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/C
-TEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/CTEX/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmmi12.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmmi6.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/CTEX/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/CTEX/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmr12.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-<C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/CTEX/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmsy8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts
-/symbols/msbm10.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/CTE
-X/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on paper.pdf (32 pages, 915775 bytes).
+/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/CTEX/CTeX/fonts/true
+type/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTE
+X/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/s
+imsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/t
+ruetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/
+CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chines
+e/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/font
+s/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><
+C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chi
+nese/simsun.ttf><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/C
+TEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/CTEX/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmmi8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/c
+mr12.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/CTEX/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmsy6.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+<C:/CTEX/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/CTEX/MiKTeX/fonts/type1
+/urw/palatino/uplr8a.pfb>
+Output written on paper.pdf (26 pages, 811784 bytes).
 PDF statistics:
- 909 PDF objects out of 1000 (max. 8388607)
- 143 named destinations out of 1000 (max. 500000)
- 265 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 881 PDF objects out of 1000 (max. 8388607)
+ 139 named destinations out of 1000 (max. 500000)
+ 262 words of extra memory for PDF output out of 10000 (max. 10000000)
 
