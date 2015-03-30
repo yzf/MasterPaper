@@ -1,0 +1,26 @@
+\begin{algorithm}\label{algo_LockFreeQueue_Pop}
+\SetKwInOut{Output}{输出}
+\SetKwRepeat{DoWhile}{do}{while}
+\SetKwFunction{Index}{Index}\SetKwFunction{CAS}{CAS}
+\SetKwData{WriteCount}{write\_count\_}
+\SetKwData{ReadCount}{read\_count\_}
+\SetKwData{LastCommitCount}{last\_commit\_count\_}
+\SetKwData{CurrentLastCommitCount}{current\_last\_commit\_count}
+\SetKwData{CurrentReadCount}{current\_read\_count}
+\SetKwData{CurrentWriteCount}{current\_write\_count}
+\SetKw{True}{true}\SetKw{False}{false}\SetKw{Return}{return}
+\caption{无锁队列的pop操作}
+\Output{被pop的元素$element$}
+\While{\True}{
+    $\CurrentReadCount \leftarrow \ReadCount$ \\
+    $\CurrentLastCommitCount \leftarrow \LastCommitCount$ \\
+    // 如果队列为空，则操作失败，返回\False \\
+    \If{\Index(\CurrentReadCount) = \Index(\CurrentLastCommitCount)}{
+        \Return \False
+    }
+    \If{$\CAS(\&\ReadCount, \CurrentReadCount, \CurrentReadCount + 1)$}{
+        $element \leftarrow buffer\_[\CurrentReadCount]$ \\
+        \Return \True
+    }
+}
+\end{algorithm}

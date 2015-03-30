@@ -1,0 +1,12 @@
+\begin{algorithm}\label{algo_MIHPreprocess}
+\SetKwInOut{Set}{Binary code dataset}
+\caption{构建$m$个子串哈希表}
+\Set{$\mathcal{H} = \{\mathbf{h}_i\}_{i = 1}^n$}
+\For{$j \leftarrow 0$ \KwTo $m$}{
+    initialize $j^{th}$ hash table \\
+    \For{$i \leftarrow 1$ \KwTo $n$} {
+        insert $\mathbf{h}_i^{(j)}$ to $j^{th}$ hash table
+    }
+}
+\end{algorithm}
+

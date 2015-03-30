@@ -1,0 +1,135 @@
+\begin{thebibliography}{10}
+
+\bibitem{davis1993knowledge}
+Davis R, Shrobe H, Szolovits P.
+\newblock What is a knowledge representation? [J].
+\newblock AI magazine, 1993, 14(1):17.
+
+\bibitem{mccarthy1963programs}
+McCarthy J.
+\newblock Programs with common sense [M].
+\newblock Defense Technical Information Center, 1963.
+
+\bibitem{mccarthy1968some}
+McCarthy J, Hayes P.
+\newblock Some philosophical problems from the standpoint of artificial
+  intelligence [M].
+\newblock Stanford University USA, 1968.
+
+\bibitem{mccarthy1987circumscription}
+McCarthy J.
+\newblock Circumscription—a form of nonmonotonic reasoning [J].
+\newblock \& \&, 1987.
+
+\bibitem{reiter1980logic}
+Reiter R.
+\newblock A logic for default reasoning [J].
+\newblock Artificial intelligence, 1980, 13(1):81--132.
+
+\bibitem{mcdermott1980non}
+McDermott D, Doyle J.
+\newblock Non-monotonic logic I [J].
+\newblock Artificial intelligence, 1980, 13(1):41--72.
+
+\bibitem{robinson1965machine}
+Robinson J~A.
+\newblock A machine-oriented logic based on the resolution principle [J].
+\newblock Journal of the ACM (JACM), 1965, 12(1):23--41.
+
+\bibitem{green1969application}
+Green C.
+\newblock Application of theorem proving to problem solving [R].
+\newblock DTIC Document, 1969.
+
+\bibitem{colmeraner1973systeme}
+Colmeraner A, Kanoui H, Pasero R, et~al.
+\newblock Un systeme de communication homme-machine en francais [C].//.
+\newblock Luminy.
+\newblock 1973.
+
+\bibitem{kowalski1979algorithm}
+Kowalski R.
+\newblock Algorithm= logic+ control [J].
+\newblock Communications of the ACM, 1979, 22(7):424--436.
+
+\bibitem{clark1978negation}
+Clark K~L.
+\newblock Negation as failure [G].// Logic and data bases.
+\newblock Springer, 1978:  293--322.
+
+\bibitem{reiter1978closed}
+Reiter R.
+\newblock On closed world data bases [M].
+\newblock Springer, 1978.
+
+\bibitem{van1991well}
+Van~Gelder A, Ross K~A, Schlipf J~S.
+\newblock The well-founded semantics for general logic programs [J].
+\newblock Journal of the ACM (JACM), 1991, 38(3):619--649.
+
+\bibitem{gelfond1988stable}
+Gelfond M, Lifschitz V.
+\newblock The stable model semantics for logic programming. [C].// ICLP/SLP.
+\newblock vol~88.
+\newblock 1988:  1070--1080.
+
+\bibitem{gelfond1991classical}
+Gelfond M, Lifschitz V.
+\newblock Classical negation in logic programs and disjunctive databases [J].
+\newblock New generation computing, 1991, 9(3-4):365--385.
+
+\bibitem{ji2010asp}
+吉建民.
+\newblock
+\newblock 提高 ASP 效率的若干途径及服务机器人上应用 [D].
+\newblock 合肥: 中国科学技术大学, 2010.
+
+\bibitem{lin2004assat}
+Lin F, Zhao Y.
+\newblock ASSAT: Computing answer sets of a logic program by SAT solvers [J].
+\newblock Artificial Intelligence, 2004, 157(1):115--137.
+
+\bibitem{lee2003loop}
+Lee J, Lifschitz V.
+\newblock Loop formulas for disjunctive logic programs [G].// Logic
+  Programming.
+\newblock Springer, 2003:  451--465.
+
+\bibitem{lifschitz2006there}
+Lifschitz V, Razborov A.
+\newblock Why are there so many loop formulas? [J].
+\newblock ACM Transactions on Computational Logic (TOCL), 2006, 7(2):261--268.
+
+\bibitem{gebser2005loops}
+Gebser M, Schaub T.
+\newblock Loops: relevant or redundant? [G].// Logic Programming and
+  Nonmonotonic Reasoning.
+\newblock Springer, 2005:  53--65.
+
+\bibitem{gebser2011elementary}
+Gebser M, Lee J, Lierler Y.
+\newblock On elementary loops of logic programs [J].
+\newblock Theory and Practice of Logic Programming, 2011, 11(06):953--988.
+
+\bibitem{ben1994propositional}
+Ben-Eliyahu R, Dechter R.
+\newblock Propositional semantics for disjunctive logic programs [J].
+\newblock Annals of Mathematics and Artificial intelligence, 1994,
+  12(1-2):53--87.
+
+\bibitem{chen2013computing}
+Chen X, Ji J, Lin F.
+\newblock Computing loops with at most one external support rule [J].
+\newblock ACM Transactions on Computational Logic (TOCL), 2013, 14(1):3.
+
+\bibitem{zlw1989sllj}
+陆钟万.
+\newblock 面向计算机科学的数理逻辑 [M].
+\newblock 北京大学出版社, 1989.
+
+\bibitem{rosen2011discrete}
+Rosen K.
+\newblock Discrete Mathematics and Its Applications 7th edition [M].
+\newblock McGraw-Hill, 2011.
+
+\end{thebibliography}

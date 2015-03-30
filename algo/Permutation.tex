@@ -1,0 +1,18 @@
+\begin{algorithm}\label{algo_Permutation}
+\SetKwInOut{Init}{初始化}
+\SetKwData{Mask}{mask}
+\SetKwData{LowerBits}{lower\_bits}\SetKwData{HigherBits}{higher\_bits}
+\SetKwData{NewLowerBits}{new\_lower\_bits}
+\SetKw{Break}{break}
+\caption{枚举$r$个1在$b$位长度的二进制码中的排列}
+\Init{设置$x$的低$r$位为$1$，其余$b - r$位均为$0$，设置掩码
+\Mask的低$b$位为0，其余的高位均为1}
+\While{$x \;\&\; \Mask = 0$}{
+    print $x$ \\
+    \If{r = 0}{\Break}
+    $\LowerBits \leftarrow x \;\&\; -x$ \\
+    $\HigherBits \leftarrow x + \LowerBits$ \\
+    $\NewLowerBits \leftarrow ((x \wedge \HigherBits)) / \LowerBits >> 2$ \\
+    $x \leftarrow \HigherBits | \NewLowerBits$
+}
+\end{algorithm}

@@ -1,0 +1,105 @@
+\documentclass[a4paper, 11pt]{article}
+%===================Package Area==================%
+\usepackage[top=1.5cm, bottom=2cm, left=1cm, right=1cm]{geometry}
+\usepackage{CJK}
+\usepackage{indentfirst}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage[dvips]{graphicx}
+\usepackage{flafter}
+\usepackage{caption2}
+\usepackage{textcomp}
+\usepackage{longtable, booktabs}
+%===============End Package Area==================%
+\begin{document}
+\begin{CJK*}{GBK}{song}
+\CJKindent
+
+\title{title}
+\author{author}
+\date{}
+\maketitle
+content
+% If you want to insert page separated table, use the below
+% Require longtable package and booktabs packages
+\begin{longtable}{|c|c|}
+\caption{caption goes here}\\
+\hline
+\toprule
+\hline
+top1 & top2 \\
+\hline
+\endfirsthead % endfirsthead
+\hline
+top3 & top4 \\
+\hline
+\endhead % endhead
+\hline
+\endfoot % endfoot
+\endlastfoot
+% The content of the table
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+example & test \\
+\hline
+%\bottomrule
+\end{longtable}
+\end{CJK*}
+
+\end{document}
