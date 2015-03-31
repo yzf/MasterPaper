@@ -1,548 +1,153 @@
-\def\qed{\hfill \vrule height6pt width 6pt depth 0pt}
-\chapter{消去存在量词的优化}
+\chapter{特征环(Proper Loops)}
 
-在上一章中，我们介绍了如何将一阶并行限定理论，若干个一阶并行限定理论以及一阶带优先级的限定理论转换成等价的一阶稳定理论，
-但是，却没有讨论如何计算一阶稳定理论。
-如果我们能够实现一阶稳定理论的计算方法，那么我们也就能够实现一阶限定理论的计算方法。
-而在第二章提到，要将一阶稳定理论转化为逻辑程序来求解稳定模型，必须要消去其中的存在量词。
-本章将关注于消去这些存在量词的方法。
+上一章，我们介绍了基本环的概念，并且指出，基本环已经足以完成回答集的求解。
+本章，我们将进一步指出，并非所有的基本环对于回答集的求解都是必须的，同时，提出了特征环的概念。
+本章分别从正规逻辑程序和析取逻辑程序的角度介绍特征环，基于特征环的概念，我们还提出了$HPF$(Head-Proper-loop-Free)程序。
+针对识别特征环的时间代价高的问题，我们提出了弱特征环和$HWPF$(Head-Weak-Proper-loop-Free)程序的概念。
 
-本章首先提出一个翻译，在从一阶并行限定理论转换到一阶稳定理论的过程中，结合稳定模型语义下的量词消去方法，
-在消去存在量词的过程中进行优化，减少引入的辅助谓词和缩小翻译后的理论规模。
-然后将这个优化消去存在量词的翻译推广到一阶带优先级的限定理论。
-最后分析这个优化算法减少的辅助谓词数目和缩小的理论规模。
+\section{正规逻辑程序的特征环}
 
-\section{稳定模型语义下的存在量词消去}
+本节，我们将针对正规逻辑程序，提出特征环的概念，并给出对应的识别算法。
 
-在一阶理论中，存在量词的出现是无法避免的。
-在经典一阶逻辑中，我们往往对公式作Skolem化，即通过引入Skolem函词的方法来模拟存在量词，以达到消去存在量词的目的。
-但在二阶逻辑中，对二阶公式Skolem化必须引入一个三阶Skolem函词，这就使得公式更加复杂。
-由一阶限定理论和一阶稳定模型语义的定义可知，一个一阶限定理论或者一个一阶稳定理论实际上就是一个全称二阶公式，
-因此，Skolem化的思想似乎不能用来消去存在量词。实际上，这一结论在\cite{Heng2011thesis}中被证明。
+\subsection{特征环的定义}
 
-Heng Zhang等人在\cite{Heng2011}中，提出了一个从一阶稳定理论到一阶稳定理论
-保持在有穷结构上投影等价关系的翻译$Tr_{QE}$(见第二章定义\ref{def_smqe})，
-通过引入辅助谓词在稳定模型语义下消去一个存在量词块，
-随后在其博士论文\cite{Heng2011thesis}中证明了引入辅助谓词是必须的，以及否证了在所有结构上消去量词的可能性。
+给定正规逻辑程序$P$，$L$为$P$中的环。用$RLF(L,P)$表示以下的蕴含式：
+\begin{equation}
+\bigwedge_{r \in head(R^-(L))} p \supset \bigvee_{r \in R^-(L)} body(r) 
+\end{equation}
 
-对于任意一个一阶语句，我们总是可以找到一个与之强等价的具有前缀范式形式的一阶语句。
-因此，给定任意一个一阶稳定理论，我们可以首先将之转化成前缀范式形式，在使用翻译$Tr_{QE}$来消去存在量词。
-若该语句$\varphi$为$\Pi^0_{2}$-语句，则$Tr_{QE}(\varphi)$是一个$\Pi^0_{1}$-语句，不包含存在量词。
-但若$\varphi$为更复杂的语句，则不能直接使用翻译$Tr_{QE}$。
-根据命题\ref{strongequv}中的强等价关系，对于任何一个$\Pi^0_{k+1}$-语句$\varphi$(其中$k$为自然数)，
-我们可以通过合理地选择提取量词的顺序，将$Tr_{QE}(\varphi)$转化为一个与之强等价的$\Pi^0_{k}$-语句。
-根据保持有穷结构上的投影等价关系的可译性的传递性，我们可以递归地调用翻译$Tr_{QE}$和合理转化前缀范式，
-最终得到一个在稳定模型语义下的$\Pi^0_{1}$-语句。
-由定理\ref{theorem_sm2lp}可知，每个在稳定模型语义下的全称一阶公式都可以被翻译为一个与之强等价的扩充的析取逻辑程序。
-通过一个回答集程序求解器，我们可以计算出该逻辑程序的回答集，从而求得原语句的稳定模型。
+特别地，如果$R^-(L)=\emptyset$，则：
+\begin{equation}
+\bigwedge_{p \in L} p \supset \bot
+\end{equation}
 
-若设原$\Pi^0_{k}$-语句$\varphi$的规模为$n$，则通过递归调用翻译$Tr_{QE}$，
-得到的$\Pi^0_{1}$-语句的规模为$O(3^{k-2}\times 4n)$。
-接下来，再使用Pedro Cabalar等人在\cite{cabalar2007propositional}中给出的翻译，将这个全称一阶语句翻译为与之强等价的扩充的析取逻辑程序。
-在这个过程中，需要频繁地使用类似“分配律”的规则，所以最终得到的逻辑程序的规模会是这个$\Pi^0_{1}$-语句的超多项式倍。
-因此，在消去存在量词的过程中，一阶稳定理论规模的$3^k$倍增长，使得最终的逻辑程序规模增长过快，严重影响求解效率。
-因此，对消去存在量词的翻译的优化就很有必要了。
-
-通过对翻译$Tr_{QE}$的分析，实际上翻译$Tr_{QE}$具有以下性质：
-\begin{proposition}\label{pro_sm_qe_split}
-\textbf{(文献\cite{Heng2011thesis} 命题6.1)}
-任意给定两个$L^v$-公式$\varphi$和$\psi$，设$\sigma_i$是$v$中的一集谓词常元，则有$\mathbf{SM}[Tr_{QE}(\varphi)\wedge \psi;\sigma_i,S,T]$
-在有穷结构上投影等价于$\mathbf{SM}[\varphi\wedge \psi;\sigma_i]$。
-\end{proposition}
-
-根据此命题，我们可以将原一阶稳定理论转化为多个公式的合取，即形如$\vartheta_1 \wedge \vartheta_2 \wedge \ldots \wedge \vartheta_n$，
-然后只对那些包含存在量词的子公式$\vartheta_i(1 \leq i\leq n)$递归调用翻译$Tr_{QE}$，
-这样就使得$3^k$倍的理论增长只发生在那些包含存在量词的子公式上，
-有效降低最终生成的不含存在量词的一阶稳定理论的规模。
-
-\section{一阶并行限定理论中的存在量词消去的优化}
-
-根据从一阶并行限定理论到一阶稳定理论的翻译$Tr_v$的定义，
-如果在原一阶语句$\varphi$中包含存在谓词，那么在翻译后的语句中，
-$\varphi^{\neg\neg}$和$\tilde{\varphi}_j$也会包含存在量词，
-而定义\ref{def_circ2sm}中的公式(\ref{pe2})实际上也是包含存在量词的，因为全称量词出现在蕴含式的前件。
-因为一般一阶语句的规模比起极小化谓词的个数要多得多，
-所以我们一般认为由翻译$Tr_v$造成的理论规模的膨胀为原理论的两倍。
-即使命题\ref{pro_sm_qe_split}拆分开包含存在量词的公式和全称一阶公式，
-单独递归调用翻译$Tr_v$最终得到的全称一阶公式为原理论的$O(3^{k-2}\times 8n)$倍。
-
-实际上，翻译$Tr_v$和翻译$Tr_{QE}$都涉及到稳定模型语义下的一些性质，
-那么，我们能否总结两个翻译共同应用的性质，结合两个翻译，对整个存在量词消去的过程进行优化呢？
-
-观察翻译$Tr_v$和翻译$Tr_{QE}$中都涉及到类似$\varphi^{\neg\neg}$的公式，都是用于刻画一阶公式的，
-因此，利用这个共同点，我们找到了一个，在从一阶并行限定理论到一阶稳定理论过程中，
-对存在量词消去进行优化的翻译，具体定义如下：
-
-\begin{definition}\label{def_circqe}
-给定任意一个形如$\forall\bar{x} \exists \bar{y}\vartheta(\bar{x},\bar{y})$的具有前缀范式形式的一阶语句$\varphi$，且$\vartheta$是否定范式，
-$\sigma_m$和$\sigma_{v}$是两个互不相交的谓词常元集，
-我们定义$\Gamma_{\exists}(\varphi;\sigma_m;\sigma_{v})$为以下公式的合取的全称闭包：
-\begin{eqnarray}
-\textstyle
- \neg \neg S(\bar{x},\overline{\mathrm{m{\i}n}}) \label{qe1}\\
-  (succ(\bar{y},\bar{y}')\wedge S(\bar{x},\bar{y}')) \vee \vartheta^{\neg\neg}(\bar{x},\bar{y})
-  \rightarrow S(\bar{x},\bar{y}) \label{qe2}\\
-  (succ(\bar{y},\bar{y}')\wedge W(\bar{x},\bar{y}')) \vee \vartheta^{\top}(\bar{x},\bar{y})   \rightarrow W(\bar{x},\bar{y}) \label{qe3}\\
-  T(\bar{x},\overline{\mathrm{m{\i}n}}) \vee \tilde{\vartheta}(\bar{x},\overline{\mathrm{m{\i}n}}) \label{qe4}\\
-  succ(\bar{y},\bar{y}') \rightarrow (T(\bar{x},\bar{y}) \leftrightarrow \tilde{\vartheta}(\bar{x},\bar{y}') \vee T(\bar{x},\bar{y}')) \label{qe5}\\
-%  \begin{split}
-%  \!\{[succ(\bar{y},\bar{y}')\!\wedge\!\neg W(\bar{x},\bar{y}')]\vee \!\bar{y}\! = \!\overline{\mathrm{max}})\}\!\wedge\! W(\bar{x},\bar{y})\!   \hspace{1.2cm} \\ \rightarrow\!
-%   (T(\bar{x},\overline{\mathrm{max}})\! \leftrightarrow \tilde{\vartheta}(\bar{x},\bar{y}))\label{qe6}
-%\end{split}\\
-\![(\overline{\mathrm{max}} = \bar{y}) \vee(succ(\bar{y},\bar{y}')\wedge\neg W(\bar{x},\bar{y}'))]\wedge W(\bar{x},\bar{y})\rightarrow
-   (T(\bar{x},\overline{\mathrm{max}})\! \leftrightarrow \tilde{\vartheta}(\bar{x},\bar{y}))\label{qe6}\\
-  \gamma \leftrightarrow \bigwedge\limits_{P \in \sigma_{i}} \forall \bar{x} (P(\bar{x})\vee \neg P(\bar{x})) \label{qe7}\\
-  \bigwedge\limits_{Q' \in \sigma'_{v}} \forall \bar{x}(\gamma \rightarrow Q'(\bar{x})) \label{qe8}
-\end{eqnarray}
-其中，
-\begin{enumerate}
-  \item $\vartheta^{\neg\neg}$是将$\vartheta$中所有形如$P(\bar{x})$的正文字替换为$\neg\neg P(\bar{x})$后所得到的公式；
-  \item $\vartheta^{\top}$是对$\vartheta$按如下方法替换后得到的公式：
-      \begin{itemize}
-        \item 对于$P \in \sigma_m$，将所有形如$P(\bar{x})$的正文字替换为$\neg \neg P(\bar{x})$，将所有形如$\neg P(\bar{x})$的负文字替换为$\top$，
-        \item 对于$Q \in \sigma_v$，将所有形如$Q(\bar{x})$的正文字和形如$\neg Q(\bar{x})$的负文字替换为$\top$；
-      \end{itemize}
-  \item $\tilde{\vartheta}$是对$\vartheta$按如下方法替换后得到的公式：
-      \begin{itemize}
-        \item 对于$P \in \sigma_m$，将所有形如$\neg P(\bar{t})$的负文字替换为$(P(\bar{x})\rightarrow \gamma)$，
-        \item 对于$Q \in \sigma_v$，将所有形如$Q(\bar{x})$的正文字替换为$Q'(\bar{x})$，
-                将所有形如$\neg Q(\bar{x})$的负文字替换为$(Q'(\bar{x})\rightarrow \gamma)$；
-      \end{itemize}
-  \item 谓词$succ$是未在$\varphi$中出现过的谓词常元，它是建立在有穷论域$A$上的$2\times|\bar{y}|$元关系，它刻画了$A^{|\bar{y}|}$中元素的一个线序，
-      其中个体常元组$\overline{\mathrm{m{\i}n}}$和$\overline{\mathrm{max}}$是未在$\varphi$中出现过的个体常元，
-      分别表示在这个线序下的最小元和最大元；
-  \item 谓词$Q'$是相应于可变谓词$Q(Q \in\sigma_v)$引入的从未出现过的辅助谓词，且每对$Q$和$Q'$都具有相同的元数，谓词集$\sigma'_v$表示由这些辅助谓词$Q'$组成的集合；
-  \item $S,W,T$和$\gamma$都是从未出现过的辅助谓词。
-\end{enumerate}
-\end{definition}
-
-总的来说，优化翻译$\Gamma_{\exists}$结合了翻译$Tr_v$和翻译$Tr_{QE}$，在有穷论域上构造一个线序，通过逐个检测论域上的元素，来刻画存在量词。
-根据文献\cite{Heng2011thesis}中的定理5.2，在有穷论域下，必定存在这样一个线序。
-
-直观地，优化翻译$\Gamma_{\exists}$用谓词$S$描述了在整个论域中，长度为$|\bar{y}|$的元素关于原一阶公式$\vartheta(\bar{x},\bar{y})$的满足情况。
-在该线序下，满足$S(\bar{x},\bar{y})$的所有$\bar{y}$中的最大元与满足$\vartheta(\bar{x},\bar{y})$的所有$\bar{y}$中的最大元是一致的，
-而小于这个最大元的元素$\bar{z}$，都满足$S(\bar{x},\bar{z})$。
-因此，只要判断在这个线序下最小的元素$\overline{\mathrm{m{\i}n}}$满足$S(\bar{x},\overline{\mathrm{m{\i}n}})$，
-就可以得到结论，在整个论域中，必存在一个元素$\bar{y}$满足$\vartheta(\bar{x},\bar{y})$，这样就刻画了存在量词的作用。
-谓词$W$是类似于谓词$S$，但$W$
-描述的是关于$\vartheta^{\top}(\bar{x},\bar{y})$的满足情况。
-
-谓词$T$的引入是为了用其相应的谓词变元$T^*$来描述二阶公式$\vartheta(\sigma^*_m,\sigma^*_v)$
-\footnote{这里的$\vartheta(\sigma^*_m,\sigma^*_v)$中的$\sigma^*_m$和$\sigma^*_v$与$\vartheta(\bar{x},\bar{y})$中的$\bar{x}$和$\bar{y}$不同，
-前者表示将公式$\vartheta$中的极小化和可变谓词常元的出现替换成相应的谓词变元，后者表示公式$\vartheta$中有个体变元组$\bar{x}$和$\bar{y}$。
-}
-的满足情况。
-因为谓词变元$T^*$的变化是任意的，
-则$T^*$的外延可能充满整个论域，导致其不能正确刻画该二阶公式的满足情况，
-我们通过引入$\vartheta^{\top}$来限制它的赋值。
-具体地说，当$\sigma_m \leq \sigma_m^*$时，则有$\vartheta(\sigma^*_m,\sigma^*_v) \models \vartheta^{\top}$，
-也就是说，在该线序下，满足$\vartheta(\sigma^*_m,\sigma^*_v)(\bar{x},\bar{y})$的所有$\bar{y}$中的最大元，不会大于
-满足$\vartheta^{\top}(\bar{x},\bar{y})$的所有$\bar{y}$中的最大元。
-
-类似于一阶并行限定理论到一阶稳定理论的翻译$Tr_v$，优化翻译
-$\Gamma_{\exists}$也是用$\mathrm{St}(\tilde{\theta};\sigma_{m}, \sigma'_{v}, S,T, W, \gamma)$来刻画限定理论中的二阶公式$\vartheta(\sigma^*_m,\sigma^*_v)$。
-当$\sigma^*_m < \sigma_m$时，两者是逻辑等价的。
-
-下面的定理说明了消去存在量词的翻译$\Gamma_{\exists}$是可靠且完备的。
-
-\begin{theorem}\label{theorem_circqe}
-给定任意一个形如$\forall\bar{x} \exists \bar{y}\vartheta(\bar{x},\bar{y})$的具有前缀范式形式的一阶语句$\varphi$，且$\vartheta$是无量词的否定范式，
-$\sigma_m$和$\sigma_{v}$是两个互不相交的谓词常元集，
-则有
-$\exists \sigma_{v}' \exists S \exists T \exists W \exists \gamma \textrm{SM}[\Gamma_{\exists}(\varphi;\sigma_m;\sigma_{v}); \sigma_{i}, \sigma'_{v}, S,$ $T, W, \gamma]$
-与$\textrm{CIRC}[\varphi;\sigma_{i};\sigma_v]$在有穷结构上逻辑等价，
-其中$S,T,W,\sigma'_v,\gamma$是由翻译$\Gamma_{\exists}$引入的辅助谓词。
-\end{theorem}
-
+显然，$RLF(L,P)$是$LF(L,P)$的一个特殊情况。
+\begin{corollary}\label{chap4_corollary_nlp_clf}
+给定正规逻辑程序$P$，$L_1$和$L_2$为$P$的环。如果$R^-(L_1) \ne \emptyset$，$R^-(L_1) \\\subseteq R^-(L_2)$，那么$RLF(L_1,P) \supset RLF(L_2,P)$。
+\end{corollary}
 \begin{proof}
-在开始证明该定理前，我们先定义证明过程中用到的某些简写和约定。
-为简便起见，在此证明过程中，我们将翻译后的语句$\Gamma_{\exists}(\varphi;$ $\sigma_m;$ $\sigma_{v})$简写成$\Gamma$，
-将用相应的变元替换掉极小化和可变谓词常元后得到的公式$\vartheta(\sigma^*_{m},\sigma^*_v)$简写成$\vartheta^*$。
-因为整个证明过程中，内涵谓词集都是$\sigma_i\cup \sigma'_v \cup\{\gamma,S,T,W\}$，
-因此我们一般忽略表达式中的内涵谓词，即将$\mathrm{St}(\Gamma;\sigma_i,\sigma'_v,\gamma)$简写成$\mathrm{St}(\Gamma)$。
-在证明过程中，在无歧义的情况下，我们一般省略全称量词。
-令$\sigma$表示一阶语句$\varphi$的符号集，
-令$\tau$表示翻译后的语句$\Gamma$的符号集，即$\tau = \sigma \cup \sigma'_{v} \cup \{\gamma,S,T,W\}$，
-令$\tau_i$表示内涵谓词集，即$\tau_{i} = \sigma_m \cup \sigma'_{v} \cup \{\gamma,S,T,W\}$。
-令$m$和$n$分别表示$\bar{x}$和$\bar{y}$的长度，即$m=|\bar{x}|$以及$n=|\bar{y}|$。
+记$A=\bigwedge_{p \in head(R^-(L_1))} p$，$B=\bigvee_{p \in R^-(r)} body(r)$，$C=\bigwedge_{p \in head(R^-(L_2))} p$，\\
+$D=\bigvee_{p \in R^-(L_2)} body(r)$，则：
+\begin{eqnarray*}
+&& RLF(L_1,P) \supset RLF(L_2,P)\\
+&& \Leftrightarrow (A \rightarrow B) \rightarrow (C \rightarrow D)\\
+&& \Leftrightarrow (\neg A \vee B) \rightarrow (\neg C \vee D)\\
+&& \Leftrightarrow (A \wedge \neg B) \vee (\neg C \vee D)\\
+&& \Leftrightarrow (A \vee \neg C \vee D) \wedge (\neg B \vee \neg C \vee D)
+\end{eqnarray*}	
 
-设$\mu$为一个$\sigma$-结构，$\tau$-结构$\nu$是$\mu$关于符号集$\tau$的一个膨胀，即这两个结构具有相同的论域(称为$A$)，并且在$\sigma$的谓词上的解释是一致的。
-给定一个有穷论域$A$，我们定义一个$2\times n$元线序关系，即对于集合$A^n$中的元素
-至多有一个直接前继和一个直接后继，
-且无前继当且仅当该元素为最小元，无后继当且仅当该元素为最大元。
-我们用谓词$succ$表示这个线序关系，即$succ(\bar{y},\bar{y}')$表示$\bar{y}'$是$\bar{y}$的直接后继，
-用个体常元组$\overline{\mathrm{m{\i}n}}$和$\overline{\mathrm{max}}$分别表示这个线序关系下的最小元和最大元。
-我们约定，在证明过程中，都采用由$succ$定义的线序关系。
+另一方面，由$R^-(L_1) \subseteq R^-(L_2)$，得：$\bigwedge_{p \in head(R^-(L_1))} p \leftarrow  \bigwedge_{p \in head(R^-(L_2))} p$，即$C \rightarrow A$为真。
+由$R^-(L_1) \subseteq R^-(L_2)$，得：$\bigvee_{p \in R^-(r)} body(r) \rightarrow \bigvee_{p \in R^-(L_2)} body(r)$，即$B \rightarrow D$为真。所以有：
+\begin{eqnarray*}
+&& true \wedge true\\
+&& \Leftrightarrow (C \rightarrow A) \wedge (B \rightarrow D)\\
+&& \Leftrightarrow (\neg C \vee A) \wedge (\neg B \vee D)\\
+&& \Leftrightarrow (\neg C \vee A \vee D) \wedge (\neg C \vee \neg B \vee D)
+\end{eqnarray*}
 
-对于有穷的$\sigma$-结构$\mu$，我们定义一个在其论域$A$上的$m+n$元关系$R_{\mu}$(对应地，$R^{\top}_{\mu}$)：
-对$A$上任意$m$元组$\bar{a}$和$n$元组$\bar{b}$，
-$(\bar{a},\bar{b}) \in R_{\mu}$(对应地，$\bar{a},\bar{b}) \in R^{\top}_{\mu}$)
-当且仅当
-存在一个$n$元组$\bar{c}$且在该线序下$\bar{c} \geq \bar{b}$使得$\mu$满足$\vartheta(\bar{a},\bar{c})$
-(对应地，$\theta^{\top \neg \neg}(\bar{a},\bar{c})$)。
-给定一个$m$元组$\bar{a}$，我们定义$\lambda^{\top}_{\mu}(\bar{a})$表示在$A$上满足$(\bar{a},\bar{b})\in R^{\top}_{\mu}$的$n$元组$\bar{b}$中的在该线序下最大的一个。
-
-接下来，我们证明在这个线序下，$\textrm{SM}[\Gamma;\tau_{i}]$投影等价于$\textrm{CIRC}[\varphi;\sigma_m;\sigma_v]$。
-
-“$\Rightarrow$”：
-假设$\nu$是$\textrm{SM}[\Gamma;\tau_{i}]$的一个模型，
-现在我们要证明的是，$\mu$是$\textrm{CIRC}[\varphi;$~$\sigma_m;\sigma_{v}]$的一个模型。
-
-
-因为$\nu$是$\Gamma$关于$\tau_i$的稳定模型，所以$\nu$必定满足一阶语句$\Gamma$。
-因此，$\gamma$在$\nu$中被解释为$\top$，所有在$\sigma'_v$中的辅助谓词常元$Q'$都被解释为整个论域。
-那么公式中所有形如$P(\bar{x}\rightarrow \gamma)$都为真。
-$\vartheta^{\top}(\bar{x},\bar{y})$ 与$\tilde{\vartheta}(\bar{x},\bar{y})$逻辑等价。
-
-因为$\nu$满足公式(\ref{qe2})和(\ref{qe3})，
-又因为$\nu$和$\mu$在$\sigma$的谓词上的解释是一致的，
-由$R_{\mu}$和$R^{\top}_{\mu}$的定义可知，
-我们有$R_{\mu}\subseteq\nu(S)$以及$R^{\top}_{\mu}\subseteq\nu(W)$。
-在此，我们断言，必有$R_{\mu}= \nu(S)$以及$R^{\top}_{\mu}=\nu(W)$。
-否则，我们总是可以构造$\nu$上的一个赋值$\beta$，使得$\beta(S^*)=R_{\mu}$，
-$\beta(W^*)=R^{\top}_{\mu}$，$\beta(T^*)=\nu(T)$，$\beta(\gamma^*)=\top=\nu(\gamma)$，
-且对所有$P\in \sigma_m$都有$\beta(P^*)=\nu(P)$，
-且对所有$Q\in \sigma'_v$都有$\beta(Q'^*)=\nu(Q')$。
-显然$\beta$在$\nu$上满足$\tau^*_i < \tau^*_i$。
-
-由稳定模型语义的定义可知，$\mathrm{St}(\Gamma)$等价于如下公式的全称闭包：
-\begin{eqnarray}
-\mathrm{St}(\ref{qe1})\wedge \mathrm{St}(\ref{qe2}) \wedge \cdots \wedge \mathrm{St}(\ref{qe8})
-\end{eqnarray}
-在这个合取式中，除了$\mathrm{St}(\ref{qe6}$，
-其余七个合取项中任一项被$\beta$在结构$\nu$上满足当且仅当$\nu$满足相应项未应用$\mathrm{St}$之前的原公式。
-对公式$\mathrm{St}(\ref{qe6})$略作化简，化为如下公式的全称闭包：
-\begin{eqnarray}\label{qe6'}
- \begin{split}
-[(\overline{\mathrm{max}} = \bar{y}) \vee(succ(\bar{y},\bar{y}')\wedge\neg W(\bar{x},\bar{y}'))]\wedge W^*(\bar{x},\bar{y}) \hspace{2.5cm} \\
-\rightarrow (T(\bar{x},\overline{\mathrm{max}})\! \leftrightarrow \mathrm{St}(\tilde{\vartheta}(\bar{x},\bar{y})))
- \end{split}
-\end{eqnarray}
-因为此时对所有$P\in \sigma_m$都有$\beta(P^*)=\nu(P)$，又$\beta(\gamma^*)=\top$，
-那么$\beta$在$\nu$上满足$\mathrm{St}(\tilde{\vartheta}(\bar{x},\bar{y}))$当且仅当$\nu$满足$\vartheta^{\top}$。
-由$R^{\top}_{\mu}$和$\lambda^{\top}_{\mu}(\bar{x})$的定义可知，公式(\ref{qe6'})描述的意思为
-$T^*(\bar{x},\overline{\mathrm{max}})\leftrightarrow \mathrm{St}(\tilde{\vartheta}(\bar{x},\lambda^{\top}_{\mu}(\bar{x})))$。
-因此，$\beta$在$\nu$上满足公式(\ref{qe6'})当且仅当$\nu$满足公式(\ref{qe6})。
-由前所述，$\nu$满足$\Gamma$，则$\beta$在$\nu$上满足$\mathrm{St}(\Gamma)$。
-但是这个结论与$\nu$是$\Gamma$关于$\tau_i$的稳定模型的假设矛盾，
-因此，我们之前的断言是正确的，即$R_{\mu}= \nu(S)$以及$R^{\top}_{\mu}=\nu(W)$成立。
-
-因为$\vartheta^{\top}(\bar{x},\bar{y})\equiv \tilde{\vartheta}(\bar{x},\bar{y})$和$R^{\top}_{\mu}=\nu(W)$，
-又$\nu$满足公式(\ref{qe6})，所以对$A$上任意$\bar{x}$，$T(\bar{x},\overline{\mathrm{max}})$必被$\nu$满足。
-又因为公式(\ref{qe4})和(\ref{qe5})被$\nu$满足，因此，谓词$T$在$\nu$的解释下会充满整个论域，即对$A$上任意$\bar{x}$和$\bar{y}$，都有$T(\bar{x},\bar{y})$成立。
-
-设$\bar{a}$为论域$A$上任意一$m$元组，由于$\nu$满足$\forall \bar{x}\neg\neg S(\bar{x},\overline{\mathrm{m{\i}n}})$，
-则必有$(\bar{a},\nu(\overline{\mathrm{m{\i}n}}))\in R_{\mu}$。
-由$R_{\mu}$的定义可知，至少存在一个$A$上的$n$元组$\bar{b}$，使得$\vartheta(\bar{a},\bar{b})$被$\mu$满足。
-因为$\bar{a}$是任意的，因此$\mu$是$\forall\bar{x} \exists \bar{y}\vartheta(\bar{x},\bar{y})$的模型。
-
-而$\nu$和$\mu$在$\sigma$的谓词上的解释是一致的，因此$\mu$满足一阶语句$\varphi$。
-因为$\nu$满足公式(\ref{pe2})，又因为对于所有$\sigma_m$中的谓词$P$，$\forall \bar{x}(P(\bar{x}) \vee \neg P(\bar{x}))$总是为真，
-所以$\gamma$在$\nu$的解释下为真。
-另外，因为公式(\ref{pe3})被$\nu$满足，所以$\sigma'_{v}$中的所有谓词$Q'$都被解释为整个论域$A$。
-
-
-接下来，我们要证明$\mu$满足一阶限定理论中的二阶公式部分。
-为导出矛盾，我们反设$\mu$不是$\varphi$在关系$\prec_{\sigma_m,\sigma_v}$下的一个极小模型，即存在
-$\mu$上的一个赋值$\alpha$，在$\mu$上同时满足$\sigma^*_m < \sigma_m$和$\forall \bar{x} \exists \bar{y} \theta^{*}(\bar{x},\bar{y})$。
-
-在这一反设下，我们可以构造$\nu$上一赋值$\beta'$，且$\beta'$满足：
-\begin{enumerate}
-  \item 对所有$P\in\sigma_m$，都有$\beta'(P^*)=\alpha(P^*)$；
-  \item 对所有$Q\in\sigma'_v$，都有$\beta'(Q'^*)=\alpha(Q^*)$；
-  \item $\beta'(S^{*}) = R_{\mu}$，$\beta'(W^{*}) = R^{\top}_{\mu}$，$\beta'(\gamma^{*})= \bot$；
-  \item 对$A$上任意$m$元组$\bar{a}$和$n$元组$\bar{b}$，$(\bar{a},\bar{b}) \in \beta'(T^*)$当且仅当：
-  \begin{itemize}
-    \item $\alpha$在$\mu$上满足$\theta^{*}(\bar{a},\lambda^{\top}_{\mu}(\bar{a}))$，或者
-    \item 存在$A$上的某一$n$元组$\bar{c}$且在该线序下大于$\bar{b}$，使得$\alpha$在$\mu$上满足$\theta^{*}(\bar{a},\bar{c})$。
-  \end{itemize}
-\end{enumerate}
-我们不难验证，$\vartheta^*(\bar{x},\bar{y})$与$\mathrm{St}(\tilde{\vartheta}(\bar{x},\bar{y}))$逻辑等价，
-以及$\vartheta^*(\bar{x},\bar{y})\models \mathrm{St}(\theta^{\top}(\bar{x},\bar{y}))$，
-则$\beta'$在$\nu$上满足$\mathrm{St}((\ref{qe4})\wedge(\ref{qe5})\wedge(\ref{qe6}))$.
-那么，赋值$\beta'$在$\nu$上同时满足$\tau^*_i < \tau^*_i$和$\mathrm{St}(\Gamma)$，
-但这与$\nu$满足$\textrm{SM}[\Gamma;\tau_{i}]$的假设矛盾，则反设不成立。
-因此，结构$\mu$是$\textrm{CIRC}[\varphi;\sigma_m;\sigma_{v}]$~的一个模型。
-
-
-
-“$\Leftarrow$”：
-假设$\mu$满足$\textrm{CIRC}[\varphi;\sigma_m;\sigma_{v}]$，
-现在我们要证明的是，$\nu$是$\Gamma$关于$\tau_i$的一个稳定模型。
-
-令$\nu$将$\gamma$解释为$\top$，将所有$Q'\in\sigma'_{v}$和谓词$T$解释为包含整个论域$A$中的元素的关系，
-将谓词$S$和$W$解释为关系$R_{\mu}$和$R^{\top}_{\mu}$。
-因为$\nu$是$\mu$关于$\tau$的膨胀，则$\nu$与$\mu$在$\sigma$的谓词上的解释是一致的。
-我们不难验证，$\nu$满足$\Gamma$。
-
-
-接下来，我们同样用反证法证明$\nu$满足一阶稳定理论中的二阶语句部分。
-为导出矛盾，我们反设$\nu$不是$\Gamma$关于$\tau_i$的稳定模型，即存在
-$\nu$上的一个赋值$\beta$，在$\nu$上同时满足$\tau^{*}_{i} < \tau_{i}$和$\mathrm{St}(\Gamma)$。
-
-因为$\beta$在$\nu$上满足$\mathrm{St}((\ref{qe2}))$和$\mathrm{St}((\ref{qe3}))$，
-那么必有$R_{\mu}\subseteq \beta(S^*)$和$R^{\top}_{\mu}\subseteq \beta(W^*)$。
-又因为$\tau^{*}_{i} < \tau_{i}$成立，
-则$S^* \leq S$和$W^* \leq W$也成立，
-因此，我们有$R_{\mu}=\beta(S^*)$和$R^{\top}_{\mu}$~$= \beta(W^*)$。
-
-然后，我们断言，$\beta$在$\nu$上满足$\sigma^*_i < \sigma_i$。
-否则，则$\sigma^*_i =\sigma_i$在$\nu$上被$\beta$所满足，也就是说，对所有$P\in \sigma_m$都有$\beta(P^*)=\nu(P)$。
-那么，$\gamma^*$被$\beta$赋值为$\top$，所有$Q'^*\in\sigma'^*_{v}$都有$\beta(Q'^*)=\nu(Q')$。
-因此，$(\nu,\beta)\models \mathrm{St}(\tilde{\vartheta}(\bar{x},\bar{y}))$
-当且仅当$(\nu,\beta)\models \mathrm{St}(\vartheta^{\top}(\bar{x},\bar{y}))$
-当且仅当$(\nu,\beta)\models  \vartheta^{\top}(\bar{x},\bar{y})$。
-那么，对$A$上的任意$m$元组$\bar{a}$，
-$\mathrm{St}(\tilde{\vartheta}(\bar{a},\lambda^{\top}_{\mu}(\bar{a})))$被$\beta$满足当且仅当$\vartheta^{\top}(\bar{a},\lambda^{\top}_{\mu}(\bar{a}))$被$\nu$满足。
-因为$\beta$在$\nu$上满足$\mathrm{St}((\ref{qe6}))$，则公式(\ref{qe6'})被$\beta$满足，那么必有$(\bar{a},\lambda^{\top}_{\mu}(\bar{a}) \in \beta(T^*)$。
-又由于$\beta$在$\nu$上满足$\mathrm{St}((\ref{qe4})\wedge(\ref{qe5}))$，那么$\beta(T^*)$将会充满整个论域，即$\beta(T^*)=A^{m+n}=\nu{T}$。
-因此，$\tau^{*}_{i} = \tau_{i}$在$\nu$上被赋值$\beta$所满足。
-但这与之前的反设，$\beta$在$\nu$上满足$\tau^{*}_{i} < \tau_{i}$矛盾。
-这就证明了之前的断言，即$\sigma^*_i < \sigma_i$在$\nu$上被赋值$\beta$所满足。
-
-既然$\sigma^*_i < \sigma_i$成立，那么$\gamma^*$被$\beta$赋值为$\bot$。
-
-由于$\beta$在$\nu$上满足$\mathrm{St}((\ref{qe4})\wedge(\ref{qe5})\wedge(\ref{qe6}))$，
-那么对$A$上的任意$m$元组$\bar{a}$，$T^*(\bar{a},\overline{\mathrm{max}})$~和~
-$\mathrm{St}(\tilde{\vartheta}(\bar{a},\overline{\mathrm{max}}))$中至少有一个被
-$\beta$满足。
-若前者被$\beta$满足，这就意味着，$\beta$在$\nu$上满足$\mathrm{St}(\tilde{\vartheta}(\bar{a},\lambda^{\top}_{\mu}(\bar{a})))$，或者，
-存在存在$A$上的某一$n$元组$\bar{b}$使得$\mathrm{St}(\tilde{\vartheta}(\bar{a},\bar{b}))$在$\nu$上被$\beta$所满足。
-显然，无论以上三种情况哪种成立，均有赋值$\beta$在结构$\nu$上满足$\mathrm{St}(\exists \bar{y}\tilde{\vartheta}(\bar{a},\bar{y}))$。
-由$\bar{a}$的任意性可知，赋值$\beta$在结构$\nu$上满足$\mathrm{St}(\forall \bar{x}\exists \bar{y}\tilde{\vartheta}(\bar{x},\bar{y}))$。
-
-设$\alpha$是$\mu$上一赋值，且$\alpha$满足，且对所有$P\in \sigma_m$都有$\alpha(P^*)=\beta(P^*)$，
-那么必有$\alpha$在$\mu$上满足$\sigma^*_i < \sigma_i$。
-正因为$\vartheta$具有否定范式的形式以及根据$\tilde(\vartheta)$的获得方式，
-所以$\alpha$在$\mu$上满足
-$\vartheta^*(\bar{x},\bar{y})$当且仅当赋值$\beta$在结构$\nu$上满足$\mathrm{St}(\tilde{\vartheta}(\bar{x},\bar{y}))$。
-因此，$\alpha$在$\mu$上同时满足$\sigma^*_m < \sigma_m$和$\forall \bar{x} \exists \bar{y} \theta^{*}(\bar{x},\bar{y})$，
-但这与$\mu$满足$\textrm{CIRC}[\varphi;\sigma_m;\sigma_{v}]$的假设矛盾，则反设不成立。
-因此，结构$\nu$是$\Gamma$关于$\tau_i$的稳定模型。
-\qed
+由于对于$p \rightarrow q$为真，若$p$为真，则$q$为真，所以得出$RLF(L_1,P) \supset RLF(L_2,P)$\\
+为真。\quad
 \end{proof}
 
-诚然，优化翻译$\Gamma_{\exists}$消去了一阶语句$\varphi$的一个存在量词块，
-将其从一阶限定理论语义转化到一阶稳定模型语义。
-但是，当$\varphi$的结构更为复杂，其前缀涉及多个量词的交替出现，那么我们就要递归调用
-稳定模型语义下的存在量词消去翻译$Tr_{QE}$，直到得到一个在稳定模型语义下的全称一阶理论。
+基于推论\ref{chap4_corollary_nlp_clf}，我们可以给出一种新的环(特征环)的定义。
+\begin{definition}[正规逻辑程序的特征环]\label{chap4_definition_nlp_properloop}
+给定正规逻辑程序$P$，$L$为$P$的环。我们称$L$为$P$的特征环，如果不存在$P$其他环$L'$，使得$L' \subset L$，$R^-(L') \subseteq R^-(L)$或者$R^-(L') \ne \emptyset$，$R^-(L') \subset R^-(L)$。
+\end{definition}
+\begin{theorem}\label{chap4_theorem_eq4}
+给定正规逻辑程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论和定理\ref{chap2_theorem_eq1}、定理\ref{chap2_theorem_eq2}以及定理\ref{chap3_theorem_eq3}都是等价的：
+\begin{enumerate}
+	\item 对于$P$中任意特征环$L$，$S$满足$RLF(L,P)$；
+	\item 对于$P$中任意特征环$L$，$S$满足$DLF(L,P)$；
+\end{enumerate}
+\end{theorem}
+\begin{example}
+考虑例\ref{chap2_program_p1}的程序$P_1$，由于$R^-(\{p,r\})=\{p \leftarrow .,\ r \leftarrow q.\}$，$R^-(\{p\})=\{p \leftarrow .,\ p \leftarrow r.\}$，$R^-(\{p,q,r\})=\{p \leftarrow .\}$，所以$\{p,r\}$和$\{p\}$都不是特征环。
+由于$R^-(\{r\})=\{r \leftarrow p.\ r \leftarrow q.\}$，$R^-(\{q,r\})=\{r \leftarrow p.\}$，所以$\{r\}$也不是特征环。因此，$P_1$的特征环只有$\{q\},\{r,q\},\{p,r,q\}$。
+\end{example}
 
-那么，对于一个包含存在量词的一阶并行限定理论，现在我们有两个方法将它转化为一个扩充的析取逻辑程序。
-两个方法的不同在于消去第一个存在量词块时应用不同的翻译，
-第一个方法是，应用翻译$Tr_v$将它翻译为一个一阶稳定理论，
-而第二个方法是，应用优化翻译$\Gamma_{\exists}$消去它第一个量词块，同时将它翻译为一个一阶稳定理论。
-这两个方法在第一步之后，都是
-递归调用存在量词消去翻译$Tr_{QE}$，直到得到一个在稳定模型语义下的全称一阶理论，
-再将之翻译为一个扩充的析取逻辑程序。
+给定正规逻辑程序$P$，$L$为$P$的环。如果$L$的特征环，那么$L$同时也是基本环，反过来则不成立。
+对于基本环$L$，如果不存在其他基本环$L'$，使得$R^-(L') \ne \emptyset$且$R^-(L') \subset R^-(L)$，基本环$L$才会是特征环。
+需要注意的是，这里并没有规定$L'$是$L$的子集，所以需要检查的$L'$的可能非常多。
+不过，我们可以加入额外的条件，限制$L'$的范围。
 
-下面我们来比较这两个方法的优劣。
+\begin{definition}[正规逻辑程序在原子集合下的特征环]\label{chap4_definition_nlp_properloop_set}
+给定正规逻辑程序$P$和原子集合$S$，$L$是$P$的环。
+我们称$L$是$P$在$S$下的特征环，如果$L \subseteq S$，且不存在其他环$L' \subseteq S$，使得$L' \subset L$，$R^-(L') \subseteq R^-(L)$或者$R^-(L') \ne \emptyset$，$R^-(L') \subset R^-(L)$。
+\end{definition}
 
-给定一个包含存在量词的具有前缀范式形式的一阶并行限定理论$\textrm{CIRC}[\varphi;\sigma_m;$~$\sigma_{v}]$，
-设$\varphi$为一个$\Pi^0_k$-语句($k$为自然数)，它的规模为$n$。
-对于第一个方法，我们第一步应用翻译$Tr_v$，根据它的定义(定义\ref{def_circ2sm})，它引入了$|\sigma_v|+1$个辅助谓词，
-而翻译后的理论规模的增长主要在于公式(\ref{pe1})，它将原理论的规模翻了一倍，即$2n$。
-然后，我们在应用翻译$Tr_{QE}$消去第一个存在量词块，
-根据它的定义(定义\ref{def_smqe})
-那将引入4个形如$S$和$T$的辅助谓词；
-翻译后的理论规模的增长主要在于公式(\ref{smqe2})-(\ref{smqe5})，造成了4倍的增长，即$4\times 2n$。
-其中，在公式(\ref{smqe2})、(\ref{smqe4})和(\ref{smqe5})中，$\vartheta$都出现在蕴含式的前件，
-如果$\vartheta$中包含全称量词，
-根据强等价关系，当再将它们化为前缀范式时，这些全称量词就会变成存在量词
-我们还要对它们继续进行消去存在量词操作，
-也就是说，
-有四分之三的理论要继续
-应用翻译$Tr_{QE}$，
-然后再次造成4倍的增长，即$3 \times 4 \times 2n$。
-之后再次合理调整量词的顺序，在化为前缀范式，递归调用翻译$Tr_{QE}$，直至得到一个全称一阶公式为止，此时理论的规模为$O(3^{k-2}\times 4 \times 2n)$。
+\subsection{特征环的识别}
 
-对于第二个方法，我们第一步应用优化翻译$\Gamma_{\exists}$，根据它的定义(定义\ref{def_circqe})，它引入了$|\sigma_v|+4$个辅助谓词，
-而翻译后的理论规模的增长主要在于公式(\ref{qe2})-(\ref{qe6})，它们造成了5倍的理论的规模增长，即$5n$。
-其中，除了公式(\ref{qe4})，$\vartheta$都出现在蕴含式的前件，当再将它们化为前缀范式时，
-我们还要对它们继续进行消去存在量词操作，
-也就是说，
-有五分之四的理论要继续应用翻译$Tr_{QE}$，
-再次造成4倍的增长，即$4 \times 4n$
-消去了原理论的第一个存在量词块后，第二个方法比起第一个方法少引入了一个辅助谓词，缩小了八分之三的理论的规模。
-若应用优化翻译$\Gamma_{\exists}$后仍然未得到全称一阶公式，则递归调用译$Tr_{QE}$，直至得到为止，
-那么最终的理论的规模为$O(3^{k-3}\times 4 \times 4n)$。
+下面，我们将介绍特征环的识别算法。
 
-下面用一例子介绍两种方法的理论规模的增长过程，更直观地比较两种方法。
+给定正规逻辑程序$P$，原子集合$S$，$L$为$P$中的环。记$P$的正依赖图$G_P$中，只含$S$的子图为$G_P^S$。
+首先，算法\ref{algo_ProperLoop}找出$G_P^S$的所有强连通分量的集合$SCC$。对于每个强连通分量$C \in SCC$：
 
-给定一个$\Pi^0_5$-语句，设它的规模为$n$。
-在图\ref{fig_qe1}和图\ref{fig_qe2}中，我们用$\textrm{CIRC}$表示并行限定理论语义，用$\textrm{SM}$表示稳定模型语义；
-直观地，我们用前缀范式的量词前缀来表示公式，例如$\textrm{SM}[\forall \exists \forall \exists]$表示在稳定模型语义下的$\Pi^0_4$-语句；
-在图中的每个方块的第二行，我们以原理论的规模$n$作基准，记录每次翻译后的理论的规模。
+\begin{enumerate}
+	\item $C \subset L$且$R^-(C) \subseteq R^-(L)$，此时符合定义\ref{chap4_definition_nlp_properloop}的第一种情况，返回$C$，表示$C$使得$L$不是特征环；
+	\item $R^-(C) \ne \emptyset$且$R^-(C) \subset R^-(L)$，此时符合定义\ref{chap4_definition_nlp_properloop}的第二种情况，返回$C$，表示$C$使得$L$不是特征环；
+	\item $R^-(C)=\emptyset$，此时$C$对$L$没有影响，但是，$C$的子环则有可能使得$L$不是特征环。所以这种情况，我们将删除$C$的一个原子，获得其残留图，并通过求残留图的强连通分量获得$C$的所有子环，并对其重复次整个判断过程；
+	\item $R^-(C)=R^-(L)$，此时意味着$C$和$L$都是某个环$L'$的子环，且它们有重叠。这种情况的处理实际和情况3是一样的：获取$C$的所有子环，并对其重复整个判断过程；
+	\item 其他情况，即$C$和$L$或者$R^-(C)$和$R^-(L)$都没有直接的包含关系。此时的处理和情况3、4是一样的，不过，我们可以做一些优化：考虑到在$R^-(C)$中，实际上我们只需要关注的是其和$R^-(L)$的交集，所以，可以直接删掉$C$中的原子集$head(R^-(C)\backslash R^-(L))$得到残留图$G_C$，并获得$G_C$的强连通分量，最后对其重复整个判断过程。
+\end{enumerate}
 
-\begin{figure}
-  \center
-  \includegraphics[width=400pt]{img/qe1.jpg}\\
-  %\includegraphics[width=10cm]{img/solver.jpg}\\
-  \caption{方法一：无优化的消去存在量词的翻译} \label{fig_qe1}
-\end{figure}
+若没有找到任何$C$，使得$L$不是特征环，那么算法\ref{algo_ProperLoop}将返回$L$，表示$L$是特征环。
 
-\begin{figure}
-  \center
-  \includegraphics[width=400pt]{img/qe2.jpg}\\
-  %\includegraphics[width=10cm]{img/solver.jpg}\\
-  \caption{方法二：优化的消去存在量词的翻译} \label{fig_qe2}
-\end{figure}
+\RestyleAlgo{ruled}\LinesNumbered\input{algo/ProperLoop.tex}
 
+算法\ref{algo_ProperLoop}采取自顶向下的策略，先大环开始，逐步深入到小环。
+需要注意的是，该算法每次都至少删除子图中的一个原子。
+所以，在最坏的情况下，算法将迭代$n^2$次，其中，$n$为环$L$中的原子数目，即算法\ref{algo_ProperLoop}的时间复杂度为$O(n^2)$。
 
-综合上述，在消去存在量词时，优化翻译$\Gamma_{\exists}$最终能够减少一个引入的辅助谓词，缩小三分之一的理论的规模。
-尤其是将翻译后的全称一阶公式转化为扩充的析取逻辑程序，将是超多项式倍的规模增长，这使得我们的优化能够缩小更多的规模，
-能够更好地提高计算效率。
+\begin{corollary}\label{chap4_corollary_pl}
+给定正规逻辑程序$P$，$L$是$P$的特征环，且满足$R^-(L) \ne \emptyset$。如果$L'$是$P$的一个环，且满足$L' \subset L$，$head(R^-(L)) \subseteq L'$，那么$L'$不是特征环。
+\end{corollary}
+\begin{proof}
+因为$L$是特征环，且满足$L' \subset L$，由定义\ref{chap4_definition_nlp_properloop}，有$R^-(L') \nsubseteq R^-(L)$。另一方面，由$head(R^-(L)) \subseteq L'$，得$R^-(L) \subseteq R^-(L')$，所以，$R^-(L) \subset R^-(L')$。根据定义\ref{chap4_definition_nlp_properloop}，$L$使得$L'$不是特征环。\quad
+\end{proof}
 
+想要求得程序的所有特征环，一个直接的方法是，使用算法\ref{algo_ProperLoop}去对程序的每个环进行过滤。
+显然，这样做的效率并不高，毕竟程序的环的数目是可能指数爆炸的。
+利用推论\ref{chap4_corollary_pl}，我们可以直接忽略掉部分不可能是特征环的环，从而在一定的程度上提高算法的效率。
 
-\section{一阶带优先级的限定理论中存在量词消去的优化}
+\RestyleAlgo{ruled}\LinesNumbered\input{algo/ProperLoops.tex}
 
-上一节中提出的在从一阶并行限定理论到一阶稳定理论的翻译过程中对存在量词消去的优化翻译$\Gamma_{\exists}$，
-实际上是将翻译$Tr_v$和翻译$Tr_{QE}$两者相结合
-发展而来的翻译。
+给定正规逻辑程序$P$，算法\ref{algo_ProperLoops}将计算程序$P$在原子集合$S$下的所有特征环。
+与之前的算法一样，算法\ref{algo_ProperLoops}也是采用自顶向下的方式考虑所有环。
+记$P$的正依赖图$G_P$只含$S$中原子的子图为$G_P^S$。
+首先，算法\ref{algo_ProperLoops}求得$G_P^S$的强连通分量$SCC$，然后，对$SCC$里面的每个强连通分量$C$使用算法\ref{algo_ProperLoop}判断其是否为特征环。
+如果$C$是特征环，那么根据推论\ref{chap4_corollary_pl}，我们并不需要遍历所有子环，所以此时，每次删除$C$中的一个原子$a$，其中$a \in head(R^-(C))$，然后把残留图的强连通分量加入$SCC$中，并重复整个判断过程；如果$C$不是特征环，那么我们需要遍历其所有的子环，此时每次删除$C$中的一个原子，破坏其连通性，然后把残留图的强连通分量加入$SCC$中，并重复整个判断过程。
 
-因此，我们可以将不同的到一阶稳定理论的翻译与存在量词消去翻译$Tr_{QE}$相结合，从而实现在不同理论中的存在量词消去的优化翻译。
-下面我们将一阶带优先级的限定理论的翻译$Tr_p$与翻译$Tr_{QE}$相结合，提出在一阶带优先级的限定理论中存在量词消去的优化翻译：
+\section{析取逻辑程序的特征环}
 
+本节，我们将把特征环的概念拓展到析取逻辑程序。
+\subsection{特征环的定义}
 \begin{definition}
-给定任意一个形如$\forall\bar{x} \exists \bar{y}\vartheta(\bar{x},\bar{y})$的具有前缀范式形式的一阶语句$\varphi$，且$\vartheta$是否定范式，
-$\sigma_{1},\sigma_{2},\ldots,\sigma_{k}$和$\sigma_v$表示$k+1$个互不相交的谓词常元集合，
-我们定义$\Gamma^p_{\exists}(\varphi;\sigma_1 > \ldots > \sigma_k;\sigma_{v})$为以下公式的合取的全称闭包：
-\begin{eqnarray}
-\textstyle
- \neg \neg S(\bar{x},\overline{\mathrm{m{\i}n}}) \\
-  (succ(\bar{y},\bar{y}')\wedge S(\bar{x},\bar{y}')) \vee \vartheta^{\neg\neg}(\bar{x},\bar{y})
-  \rightarrow S(\bar{x},\bar{y}) \\
-  (succ(\bar{y},\bar{y}')\wedge W(\bar{x},\bar{y}')) \vee \vartheta^{\top}(\bar{x},\bar{y})   \rightarrow W(\bar{x},\bar{y})\\
- T_j(\bar{x},\overline{\mathrm{m{\i}n}}) \vee \hat{\vartheta}(\bar{x},\overline{\mathrm{m{\i}n}}) \\
- succ(\bar{y},\bar{y}') \rightarrow (T_j(\bar{x},\bar{y}) \leftrightarrow \hat{\vartheta}(\bar{x},\bar{y}') \vee T_j(\bar{x},\bar{y}'))\\
-\![(\overline{\mathrm{max}} = \bar{y}) \vee(succ(\bar{y},\bar{y}')\wedge\neg W(\bar{x},\bar{y}'))]\wedge W(\bar{x},\bar{y})\rightarrow
-   (T(\bar{x},\overline{\mathrm{max}})\! \leftrightarrow \hat{\vartheta}(\bar{x},\bar{y}))\\
-\bigwedge\limits_{1 \leq j \leq k}(\gamma_{j} \leftrightarrow \bigwedge\limits_{P \in \sigma^{j}} \forall \bar{x}(P(\bar{x}) \vee \neg P(\bar{x}))) \\
-\lambda_1 \rightarrow \bigwedge\limits_{2 \leq j \leq k}\bigwedge\limits_{P' \in \sigma'_{j}} \forall \bar{x} P'(\bar{x})
-    \wedge  \bigwedge\limits_{Q' \in \sigma'_v}\forall \bar{x} Q'(\bar{x})\\
-\bigwedge\limits_{1 \leq j \leq k-1}\bigwedge\limits_{j < i \leq k}(\gamma_j \vee \gamma_i)\\
-\bigwedge\limits_{1 \leq j \leq k-1} \bigl( \lambda_{j+1} \leftrightarrow \lambda_j \vee (\gamma_j \rightarrow \lambda_1) \bigr ) \\
-\bigwedge\limits_{2 \leq j \leq k} (\lambda_j \rightarrow \gamma_j)\\ 
-\lambda_1 \leftrightarrow  \bigwedge\limits_{1 \leq j \leq k} \gamma_j
-\end{eqnarray}
-其中，
-\begin{enumerate}
-  \item $\vartheta^{\neg\neg}$是将$\vartheta$中所有形如$P(\bar{x})$的正文字替换为$\neg\neg P(\bar{x})$后所得到的公式；
-  \item $\vartheta^{\top}$是对$\vartheta$按如下方法替换后得到的公式：
-      \begin{itemize}
-        \item 对于$P \in \sigma_m$，将所有形如$P(\bar{x})$的正文字替换为$\neg \neg P(\bar{x})$，将所有形如$\neg P(\bar{x})$的负文字替换为$\top$，
-        \item 对于$Q \in \bigcup_{2\leq j \leq k}\sigma_j \cup \sigma_v$，将所有形如$Q(\bar{x})$的正文字和形如$\neg Q(\bar{x})$的负文字替换为$\top$；
-      \end{itemize}
-  \item $\hat{\vartheta}$是对$\vartheta$按如下方法替换后得到的公式：
-  \begin{itemize}
-    \item 对于$P\in\sigma_1$，将$\varphi$中所有形如$\neg P(\bar{x})$的负文字替换为$(P(\bar{x})\rightarrow \gamma_1)$，
-    \item 对于$P \in \bigcup_{2\leq j \leq k}\sigma_{j}$，将$\varphi$中所有形如$P(\bar{x})$的正文字替换为$\bigl[\bigl(P(\bar{x}) \wedge (\lambda_j \rightarrow \lambda_1)\bigr) \vee \bigl(P' \wedge \lambda_j \bigr)\bigr]$，将$\varphi$中所有形如$\neg P(\bar{x})$的负文字替换为$\bigl[\bigl((P(\bar{x})$~$\rightarrow \gamma_j) \wedge (\lambda_j \rightarrow \lambda_1)\bigr) \vee \bigl((P' \rightarrow \gamma_j) \wedge \lambda_j \bigr)\bigr]$，
-    \item 对于$Q \in \sigma_{v}$，将$\varphi$中所有形如$Q(\bar{x})$的正文字替换为$Q'(\bar{x})$，
-        将$\varphi$中所有形如$\neg Q(\bar{x})$的负文字替换为$(Q'(\bar{x})\rightarrow \lambda_1)$；
-  \end{itemize}
-  \item 谓词$succ$是未在$\varphi$中出现过的谓词常元，它是建立在有穷论域$A$上的$2\times|\bar{y}|$元关系，它刻画了$A^{|\bar{y}|}$中元素的一个线序，
-      其中个体常元组$\overline{\mathrm{m{\i}n}}$和$\overline{\mathrm{max}}$是未在$\varphi$中出现过的个体常元，
-      分别表示在这个线序下的最小元和最大元；
-  \item 谓词$P'$和$Q'$是相应于极小化谓词$P$和可变谓词$Q$引入的从未出现过的辅助谓词，
-      并且每对$P$和$P'$以及$Q$和$Q'$具有相同的元数，
-      谓词集$\sigma'_j$表示对应于$\sigma_j$的由辅助谓词$P'$组成的集合，谓词集$\sigma'_v$表示对应于$\sigma_v$的由辅助谓词$Q'$组成的集合；
-  \item $S,W,T,\gamma_j$和$\lambda_j$($1\leq j \leq k$)都是从未出现过的辅助谓词。
-\end{enumerate}
+给定析取逻辑程序$P$，$L$为$P$中的环。用$RLF(L,P)$表示以下的蕴含式：
+\begin{equation}
+\bigwedge_{p \in head(R^-(L)) \cap L} p \supset \bigvee_{p \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r)\backslash L} \neg q)
+\end{equation}
+
+特别地，如果$R^-(L)=\emptyset$，则：
+\begin{equation}
+\bigwedge_{p \in L} p \supset \bot
+\end{equation}
+
+显然，$RLF(L,P)$是$LF(L,P)$的一个特殊形式。当使用这种形式的环公式时，我们可以在基本环的基础上，删除更多的环。
 \end{definition}
 
-\begin{theorem}
-给定任意一个形如$\forall\bar{x} \exists \bar{y}\vartheta(\bar{x},\bar{y})$的具有前缀范式形式的一阶语句$\varphi$，且$\vartheta$是无量词的否定范式，
-$\sigma_m$和$\sigma_{v}$是两个互不相交的谓词常元集，
-则有
-$\exists \sigma_{v}' \exists S \exists T \exists W \exists \gamma \textrm{SM}[\Gamma_{\exists}(\varphi;\sigma_m;\sigma_{v}); \sigma_{i}, \sigma'_{v}, S,$ $T, W, \gamma]$
-与$\textrm{CIRC}[\varphi;\sigma_{i};\sigma_v]$在有穷结构上逻辑等价，
-其中$S,T,W,\sigma'_v,\gamma$是由翻译$\Gamma_{\exists}$引入的辅助谓词。
-\end{theorem}
-
+\begin{corollary}\label{chap4_corollary_dlp_rlf}
+给定析取逻辑程序$P$，$L_1$和$L_2$为$P$的环。
+如果$R^-(L_1) \ne \emptyset$，$R^-(L_2)\\ \ne \emptyset$，$head(R^-(L_1)) \cap (L_1 \cup L_2) \subseteq head(R^-(L_2)) \cap L_2$，$R_{L_2}^-(L_1) \subseteq R^-(L_2)$，那么$RLF(L_1,P) \supset RLF(L_1,P)$。
+\end{corollary}
 \begin{proof}
-对定理\ref{theorem_circqe}的证明略作修改可得证。
-\qed
+待证明\quad
 \end{proof}
 
-实际上，
-翻译$\Gamma^p_{\exists}$沿用了
-并行限定理论中的存在量词优化翻译$\Gamma_{\exists}$的思想，
-在一阶带优先级的限定理论翻译到一阶稳定理论的过程中，优化了第一个存在量词块的消去翻译，
-减少引入的辅助谓词个数，缩小造成的理论的规模的增长。
-具体地，类似于优化翻译$\Gamma_{\exists}$，应用优化翻译$\Gamma^p_{\exists}$能够减小一个引入的辅助谓词；
-对于一个$\Pi^0_k$语句，设其规模为$n$，
-将它翻译到一个在稳定模型语义下的全称一阶语句，
-最后得到的一阶理论的规模为$O(3^{k-3}\times 4 \times 4n)$，比起无优化的翻译，能够节约大约三分之一的理论的规模。
-当全称一阶语句转化为最终的逻辑程序时，
-规模上的超多项式倍膨胀使得优化翻译具有更好的优化效果，能够缩减更多的程序的规模，提高计算效率。
-
-%要点：要保证$\vartheta^{\top}=St(\vartheta^{\top})$继而$W=W^*$，
-%还要保证$\vartheta(\sigma_m^*,\sigma_v^*)$即$St(\tilde{\vartheta})$能够推出$\vartheta^{\top}$从而通过第3,4,5条公式来限制$T^*$
-
-
-
-\section{本章小结}
-本章提出了两个在有穷结构上保持投影等价的优化翻译：一个适用于一阶并行限定理论，$\Gamma_{\exists}$；另一个适用于一阶带优先级的限定理论，$\Gamma^p_{\exists}$。
-%这两个优化翻译都是结合上一章提出的翻译与稳定模型语义下的存在量词消去翻译$Tr_{QE}$的思想，从而发展而来的。
-这两个优化翻译主要在消去前缀范式的
-第一个存在量词块上发挥了优化的效果，不仅减少了引入的辅助谓词，而且大大减少了翻译造成的理论的规模的增长。
-在递归调用稳定模型语义下的存在量词消去翻译$Tr_{QE}$直到得到全称一阶语句后，比起无优化的翻译，优化翻译可以缩减大约三分之一的理论的规模。
-当它被翻译成逻辑程序后，因为规模上的超多项式倍膨胀，优化翻译最终缩减超过三分之一的规模，大大提高了计算效率。
-
-%\begin{definition}
-%%Let $\varphi$ be a first-order sentence of the form $\forall\bar{x} \exists \bar{y}\vartheta(\bar{x},\bar{y})$ where $\vartheta$ is quantifier-free and in negation normal form,
-%%and we define $\Gamma_{\exists}(\varphi;\sigma_1 > \ldots > \sigma_k;\sigma_{v})$ be the conjunction of below formulas with universal quantifiers omitted:
-%%\vspace*{-1.5mm}
-%给定任意一个前缀范式形如$\forall\bar{x} \exists \bar{y}\vartheta(\bar{x},\bar{y})$的一阶语句$\varphi$，且$\vartheta$是无量词的否定范式，对于k+1个互不相交的谓词集合$\sigma_1 , \ldots, \sigma_k,\sigma_{v}$，我们用下面的公式的合取来定义$\Gamma_{\exists}(\varphi;\sigma_1 > \ldots > \sigma_k;\sigma_{v})$：
-%\begin{eqnarray}
-%\textstyle
-% \neg \neg S(\bar{x},\overline{\mathrm{m{\i}n}}) \label{qe1}\\
-%  (succ(\bar{y},\bar{y}')\wedge S(\bar{x},\bar{y}')) \vee \vartheta^{\neg\neg}(\bar{x},\bar{y})
-%  \rightarrow S(\bar{x},\bar{y}) \label{qe2}\\
-%  (succ(\bar{y},\bar{y}')\wedge W(\bar{x},\bar{y}')) \vee \vartheta^{\top}(\bar{x},\bar{y})   \rightarrow W(\bar{x},\bar{y}) \label{qe3}\\
-%  \bigwedge\limits_{1 \leq j \leq k} T_j(\bar{x},\overline{\mathrm{m{\i}n}}) \vee \tilde{\vartheta}_j(\bar{x},\overline{\mathrm{m{\i}n}}) \label{qe4}\\
-%  \bigwedge\limits_{1 \leq j \leq k} succ(\bar{y},\bar{y}') \rightarrow (T_j(\bar{x},\bar{y}) \leftrightarrow \tilde{\vartheta}_j(\bar{x},\bar{y}') \vee T_j(\bar{x},\bar{y}')) \label{qe5}\\
-%%\end{eqnarray}
-%%\begin{eqnarray}
-%%\textstyle
-%  \!\bigwedge\limits_{1 \leq j \leq k} \{[succ(\bar{y},\bar{y}')\!\wedge\!\neg W(\bar{x},\bar{y}')]\vee \!\bar{y}\! = \!\overline{\mathrm{max}})\}\!\wedge\! W(\bar{x},\bar{y})\!  \rightarrow\!
-%   (T_j(\bar{x},\overline{\mathrm{max}})\! \leftrightarrow \tilde{\vartheta}_j(\bar{x},\bar{y}))\label{qe6}\\
-%%  W(\bar{x},\overline{\mathrm{max}})\rightarrow (T(\bar{x},\overline{\mathrm{max}}) \leftrightarrow \tilde{\vartheta}(\bar{x},\overline{\mathrm{max}}))\\
-%  \bigwedge\limits_{1 \leq j \leq k} \gamma_j \leftrightarrow \bigwedge\limits_{P \in \sigma_j} \forall \bar{x} (P(\bar{x})\vee \neg P(\bar{x})) \label{qe7}\\
-%  \bigwedge\limits_{1 \leq j \leq k}\forall \bar{x}(\gamma_{j} \rightarrow \bigwedge\limits_{Q^j \in \delta_{j}}Q^j(\bar{x})) \label{qe8}
-%\end{eqnarray}
-%
-%%$succ$ is a successor relation on the domain based on a total order;
-%%%with no occurrence in $\varphi$;
-%%$\overline{\mathrm{max}}$ and $\overline{\mathrm{m{\i}n}}$ denote the maximum and minimum tuple respectively on the successor relation; and $S$, $T$, $W$, $\gamma$, and $\sigma_v'$ are auxiliary predicates.
-%其中，
-%\begin{enumerate}
-%  \item $\vartheta^{\neg \neg}$是由$\vartheta$通过将每一个满足$P \in \in \bigcup_{1\leq i \leq k}\sigma_i$的正文字$P(\bar{x})$替换为$\neg \neg P(\bar{t})$后得到的公式；
-%  \item $\vartheta^{\top}$是由$\vartheta$通过以下操作得到的公式：
-%      \begin{enumerate}
-%        \item 对于$P \in \sigma_1$，将每一个正文字$P(\bar{t})$替换为$\neg \neg P(\bar{t})$，将每一个负文字$\neg P(\bar{t})$替换为$\top$，
-%        \item 对于$Q \in \bigcup_{2\leq i \leq k}\sigma_i \cup \sigma_v$，将每一个正文字$Q(\bar{t})$和每一个负文字$\neg Q(\bar{t})$替换为$\top$；
-%      \end{enumerate}
-%  \item 对于第j个优先级，$\tilde{\vartheta}_j$是由$\vartheta$通过以下操作得到的公式：
-%      \begin{enumerate}
-%        \item 对于$P \in \sigma_j$，将每一个负文字$\neg P(\bar{t})$替换为$(P(\bar{t}) \rightarrow \gamma_j)$，
-%        \item 对于$P \in \bigcup_{1\leq i<j}\sigma_i$，将每一个正文字$P(\bar{t})$替换为$\neg \neg P(\bar{t})$，
-%        \item 对于$Q \in \bigcup_{j < i \leq k}\sigma_i \cup \sigma_v$，将每一个正文字$Q(\bar{t})$替换为$Q^j(\bar{t})$，将每一个负文字$\neg Q(\bar{t})$替换为$(Q^j(\bar{t}) \rightarrow \gamma)$；
-%      \end{enumerate}
-%  \item $succ$表示基于论域上的全序的一个后继关系，是一个从未在$\vartheta$中出现的$2\times |\bar{y}|$元辅助谓词，而$\overline{\mathrm{max}}$和$\overline{\mathrm{m{\i}n}}$则分别表示在这个全序下的长度为$|\bar{y}|$的最大元组和最小元组
-%  \item $S,W,T_j,Q^j$和$\gamma_j$是从未出现过的辅助谓词，而$\delta_{j}$表示由上面引进的辅助谓词$Q^j$组成的集合
-%\end{enumerate}
-%%(1)$\vartheta^{\neg \neg}$是由$\vartheta$通过将每一个满足$P \in \sigma_m$的正文字$P(\bar{x})$替换为$\neg \neg P(\bar{t})$后得到的公式；
-%%(2)$\vartheta^{\top}$是由$\vartheta$通过以下操作得到的公式：
-%%(i)对于$P \in \sigma_1$，将每一个正文字$P(\bar{t})$替换为$\neg \neg P(\bar{t})$，将每一个负文字$\neg P(\bar{t})$替换为$\top$，
-%%(ii)对于$Q \in \bigcup_{2\leq i \leq k}\sigma_i \cup \sigma_v$，将每一个正文字$Q(\bar{t})$和每一个负文字$\neg Q(\bar{t})$替换为$\top$；
-%%(3)$\tilde{\vartheta}_j$是由$\vartheta$通过以下操作得到的公式：
-%%(i)对于$P \in \sigma_j$，将每一个负文字$\neg P(\bar{t})$替换为$(P(\bar{t}) \rightarrow \gamma_j)$，
-%%(ii)对于$P \in \bigcup_{1\leq i<j}\sigma_i$，将每一个正文字$P(\bar{t})$替换为$\neg \neg P(\bar{t})$，
-%%(iii)对于$Q \in \bigcup_{j < i \leq k}\sigma_i \cup \sigma_v$，将每一个正文字$Q(\bar{t})$替换为$Q^j(\bar{t})$，将每一个负文字$\neg Q(\bar{t})$替换为$(Q^j(\bar{t}) \rightarrow \gamma)$；
-%\end{definition}
-
-
-
-
-
-
+基于推论\ref{chap4_corollary_dlp_rlf}，我们给出析取逻辑程序的特征环的定义。
+\begin{definition}[析取逻辑程序的特征环]
+给定析取逻辑程序$P$，$L$为$P$的环。我们称$L$为$P$的特征环，如果$L$满足：
+\begin{enumerate}
+	\item $L$是$P$的基本环；
+	\item 不存在$P$中的其他基本环$L'$，使得$R^-(L') \ne \emptyset$，$head(R^-(L')) \cap (L' \cup L) \subseteq head(R^-(L)) \cap L$，$R_{L_2}^-(L') \subset R^-(L)$。
+\end{enumerate}
+\end{definition}

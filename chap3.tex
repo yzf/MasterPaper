@@ -1,219 +1,276 @@
-\def\qed{\hfill \vrule height6pt width 6pt depth 0pt}
-\newcommand{\g}{\mathbf{g}}
-\newcommand{\hh}{\mathbf{h}}
-\chapter{海明空间的$k$近邻搜索}
+\chapter{全新的基本环(Elementary Loops)}
+本文在对Gebser等人\cite{gebser2005loops}提出的基本环进行深入研究后，提出了基本环的另一种更为直观的定义。
+基于这种全新的定义，我们提出一个新的识别算法。
+该算法的时间复杂性和Gebser等人\cite{gebser2005loops}提出的一样，然而，本文的算法使用的是自顶向下的策略，而Gebser等人\cite{gebser2005loops}的则是自底向上。
+算法的核心思想来源于环的外部支持和环公式。
+本章先针对正规逻辑程序讨论基本环的概念，然后，我们把基本环拓展到析取逻辑程序。
 
-为了满足大规模图像检索的需求，一张图片经过特征提取之后，通常会对其进行哈希，
-处理成固定长度的二进制码（如：64位、128位等）。由于采用固定长度（通常都会
-比较短）的二进制码来表示一张图片，一张图片所占用的内存大小会比较小，使得后
-续大规模数据的$k$近邻搜索可以在内存中完成。此外，对于两个二进制码的距离度量
-通常会采用海明距离进行衡量，如今的x86计算机体系架构的CPU 可以利用POPCNT硬件指
-令来计算两个数间的海明距离,使得$k$近邻搜索时计算两张图片间的海明距离可以很快
-速地完成。
+\section{正规逻辑程序的基本环}
+本节，我们将针对正规逻辑程序，提出基本环的另一种定义，并基于这种定义，给出对应的识别算法。
 
-本章将会讲述图像检索中海明空间的$k$近邻搜索，首先会分析线性搜索算法，然后会详
-细描述MIH算法的原理以及实现技巧，最后本章会提出MIH 算法在相似衣服的图像检索应
-用中的优化，我们提出了一种基于贪心思想的算法对用来表示衣服图片的二进制码中的
-0-1值进行重排列，通过这个优化可以提高MIH算法的搜索效率。
-
-\section{线性搜索算法}
-
-\begin{definition}
-给定一个二进制码数据集，$\mathcal{H} = \{\mathbf{h}_i\}_{i = 1}^n$，在数
-据集$\mathcal{H}$中找到与给定查询的二进制码的海明距离最近的$k$个二进制码，
-这个过程是海明空间的$k$近邻搜索。
-\end{definition}
-
-给定长度为$m$的二进制码$\mathbf{u}$，任意一个长度为$m$的二进制码$\mathbf{v}$
-与其的海明距离不会超过$m$，即
-\begin{equation}
-\|\mathbf{u} - \mathbf{v}\|_H \le m
-\end{equation}
-其中$\mathbf{u}, \mathbf{v} \in \{0, 1\}^q$，$\|\cdot\|_H$表示海明范数。由于数据
-集中的向量与查询向量的海明距离存在上界，因此，对海明距离进行排序可以采用时间
-复杂度为$O(n)$的计算排序进行。
-
-计数排序的算法过程需要对数据遍历2趟，如算法\ref{algo_CountingSort}所示。然而，对
-于海明距离存在上界的$k$近邻搜索，我们只需要对数据遍历一趟，即分别记录$0 \sim m$
-每个海明距离所对应的数据，然后从小到大枚举海明距离，获取相关的数据，如算法
-\ref{algo_LinearSearch}所示。
-
-\RestyleAlgo{ruled}\LinesNumbered\input{algo/CountingSort.tex}
-
-\section{多重索引哈希算法（Multi-Index Hashing）}
-
-\begin{definition}
-给定一个二进制码数据集，$\mathcal{H} = \{\mathbf{h}_i\}_{i = 1}^n$，在数
-据集$\mathcal{H}$中找到与给定查询的二进制码的海明距离不超过$r$的二进制码，即它们
-之间只有不超过$r$位的值不同，这个过程是海明空间的$r$近邻搜索。
-\end{definition}
-
-M.Norouzi, A.Punjani等人提出了一种构建多重索引的哈希算法可以在海明空间下进行
-$r$近邻的精确搜索，该算法简称“MIH算法”\cite{norouzi2014fast}。
-
-对于数据集$\mathcal{H}$中的每一个向量$\hh \in \{0, 1\}^q$，我们可以对其划分为$m$
-个不相交的子串，$\hh^{(1)},..,\hh^{(m)}$，每一个子串长度为$q/m$位，不失一般性
-地，我们假设$q$可以整除$m$\footnote{如果$q$不能整除$m$，则每一个子串长度为
-$\lfloor \frac{q}{m} \rfloor$或者$\lceil \frac{q}{m} \rceil$。}，每个子串由连
-续的若干位组成。如果查询向量$\g$与向量$\hh$的海明距离不超过$r$位，那么
-$m$对对应的子串中至少有一对子串间的海明距离不超过$\lfloor r / m \rfloor$，即
-命题\ref{pro_1}。
-
-\begin{proposition}
-\label{pro_1}
-如果$\|\hh - \g\|_H \le r$，那么
-\begin{equation}
-\exists 1 \le z \le m \quad\quad \mbox{s.t.}\quad \|\hh^{(z)} - \g^{(z)}\|_H \le r'
-\end{equation}
-其中$r' = \lfloor r / m \rfloor$。
-\end{proposition}
-
+\subsection{基本环的定义}
+在定义基本环之前，我们先给出与合取环公式相关的推论。
+\begin{corollary}\label{chap3_corollary_nlp_el_clf}
+给定正规逻辑程序$P$，$L_1$和$L_2$为$P$的环。如果$L_1 \subseteq L_2$且$R^-(L_1) \subseteq R^-(L_2)$，那么有$CLF(L_1,P) \supset CLF(L_2,P)$。
+\end{corollary}
 \begin{proof}
-通过鸽巢原理直接得出命题，此外，也可以通过反证法证得。假设每个相对应的子串间的
-海明距离都大于$\lfloor r / m \rfloor$，即每个子串间的海明距离至少为$\lfloor r / m \rfloor + 1 $。
-令$r' = \lfloor r / m \rfloor$，那么$r = mr' + a$，$0 \le a < m$。而此时向量
-$\hh$和$\g$之间的海明距离至少为$mr' + m$，即向量$\hh$和$\g$之间的海明距离大于$r$，
-这与前提矛盾，由此得证。
+记$A=\bigwedge_{p \in L_1}p$，$B=\bigwedge_{p \in L_2}p$，$C=\bigvee_{r \in R^-(L_1)}body(r)$，\\
+$D=\bigvee_{r \in R^-(L_2)}body(r)$，则
+\begin{eqnarray*}
+&& CLF(L_1,P) \supset CLF(L_2,P)\\
+&& \Leftrightarrow (A \rightarrow C) \rightarrow (B \rightarrow D)\\
+&& \Leftrightarrow (\neg A \vee C) \rightarrow (\neg B \vee D)\\
+&& \Leftrightarrow (A \wedge \neg C) \vee (\neg B \vee D)\\
+&& \Leftrightarrow (A \vee \neg B \vee D) \wedge (\neg C \vee \neg B \vee D)
+\end{eqnarray*}
+
+另一方面，对于$L_1 \subseteq L_2$，有：$\bigwedge_{p \in L_1}p \leftarrow \bigwedge_{p \in L_2}p$，即$B \rightarrow A$为真。
+对于$R^-(L_1) \subseteq R^-(L_2)$，有：$\bigvee_{r \in R^-(L_1)}body(r) \rightarrow \bigvee_{r \in R^-(L_2)}body(r)$，即$C \rightarrow D$为真。所以有：
+\begin{eqnarray*}
+&& true \wedge true\\
+&& \Leftrightarrow (B \rightarrow A) \wedge (C \rightarrow D)\\
+&& \Leftrightarrow (\neg B \vee A) \wedge (\neg C \vee D)\\
+&& \Rightarrow (\neg B \vee A \vee D) \wedge (\neg C \vee \neg B \vee D)
+\end{eqnarray*}
+
+由于对于$p \rightarrow q$为真，若$p$为真，则$q$为真，所以得出$CLF(L_1,P) \supset CLF(L_2,P)$\\
+为真。\quad
 \end{proof}
 
-\RestyleAlgo{ruled}\LinesNumbered\input{algo/LinearSearch.tex}
+由推论\ref{chap3_corollary_nlp_el_clf}，我们可以知道，对于符合$L_1 \subseteq L_2$且$R^-(L_1) \subseteq R^-(L_2)$的两个环$L_1$和$L_2$，
+因为$L_1$的环公式已经可以蕴含$L_2$的环公式了，所以$L_2$的环公式就没有存在的必要。
 
-MIH算法构建多重索引的过程是，首先初始化$m$个哈希表$B_1, ..., B_m$，假设
-$B_i$所对应的子串区域长度为$b_i$位，那么$B_i$表中有$2^{b_i}$个哈希桶，即$b_i$位所能表
-示的所有二进制数，然后我们对数据集$\mathcal{H}$中的每一个向量$\hh_i \in \{0, 1\}^q$
-划分为$m$个子串，每个子串由连续的$\lfloor q / m \rfloor$ 位或者$\lceil q / m \rceil$位组成，
-最后分别以这些子串所表示的二进制数作为哈希桶的键，向量的id作为值，依序将这$m$对键值对插
-入到对应的哈希表中的桶中。算法伪代码如算法\ref{algo_MIHPreprocess}所示。
+\begin{definition}[未被抑制的]\label{chap3_definition_unsubdued}
+	给定程序$P$和环$L$，如果不存在$P$中的其他环$L'$，满足$L' \subset L$和$R^-(L') \subseteq R^-(L)$，那么我们称$L$是未被抑制的(unsubdued)。
+\end{definition}
+\begin{theorem}\label{chap3_theorem_eq3}
+	给定程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论与定理\ref{chap2_theorem_eq1}和定理\ref{chap2_theorem_eq2}的结论都是等价的：
+	\begin{enumerate}
+		\item 对于$P$中的所有未被抑制的环$L$，$S$满足$CLF(L,P)$。
+	\end{enumerate}
+\end{theorem}
 
-\RestyleAlgo{ruled}\LinesNumbered\input{algo/MIHPreprocess.tex}
+直观地，定义\ref{chap2_definition_outbound}的外向概念想要表达的意思为：
+原子集合$Y$在$X$中是外向的，当且仅当存在$r \in P$，使得$r \in R^-(Y)$且$r \in R^-(X)$。所以，我们有以下推论。
 
-给定一个查询向量$\g \in \{0, 1\}^q$，在数据集$\mathcal{H}$中查找向量$\g$的$r$近邻向量
-的过程是，首先我们对向量$\g$划分$m$个子串，划分策略和构建多重索引时一致。根据命题\ref{pro_1}
-的描述，我们可以分别对这$m$个子串枚举与子串的海明距离不超过$\lfloor r / m \rfloor$
-的键，然后到对应的哈希表中遍历该键所对应的桶中的向量，对每一个桶中的向量计算其与查询
-向量$\g$的海明距离，最后将所有距离超过$r$的向量去除，便得到了向量$\g$的所有$r$近邻向量。
-作者们通过进一步的研究，可以发现对于查询向量$\g$，枚举哈希桶键时不需要枚举到海明距离为
-$\lfloor r / m \rfloor$的键，只需要枚举到$\lfloor r / m \rfloor - 1$即可，在这里，本文不再赘述
-这部分的证明，算法的伪代码如算法\ref{algo_MIHQuery}所示。
+\begin{corollary}\label{chap3_corollary_outbound}
+	给定逻辑程序$P$和环$L$， $L$的任意非空真子集$L'$是外向的，当且仅当$R^-(L') \nsubseteq R^-(L)$。
+\end{corollary}
 
-\RestyleAlgo{ruled}\LinesNumbered\input{algo/MIHQuery.tex}
+根据定义\ref{chap3_definition_unsubdued}和推论\ref{chap3_corollary_outbound}，我们可以得出基本环的另一种定义：
 
-\section{MIH算法的实现技巧}
+\begin{definition}[正规逻辑程序的基本环]\label{chap3_definition_elementaryloops}
+	给定正规逻辑程序$P$和环$L$，若$L$是未被抑制的，则$L$是$P$的基本环。
+\end{definition}
 
-本节会讲述MIH算法在实现时的一些小技巧，通过使用这些小技巧可以提高MIH算法的效率。
+\subsection{基本环的识别}
 
-\subsection{相同海明距离的哈希键的枚举}
+根据定义\ref{chap3_definition_elementaryloops}，我们基于正依赖图，给出了识别基本环的算法\ref{algo_ElementaryLoop}。
+该算法从环$L$出发，考虑其子环的性质。
+为了得到$L$的子环，我们的方法是先通过剔除$L$中的一个原子破坏$L$的连通性，得到其子图，
+然后通过求子图的强连通分量得到子环的集合，对于每个子环$C$：
 
-MIH算法根据二进制码的子串值构建索引，一般来说二进制码所划分的子串长度不会太长（在64位
-以内），我们可以使用一个整型储存哈希键的值。假设子串长度为$b$，计算一个与该子串的海明距离
-为$r$的哈希键可以通过将子串与一个长度同样为$b$，其中只有$r$位的值为1的二进制码进行异或操
-作得出，因此只需要枚举这$r$个1在$b$位长度的二进制码中的排列，进而通过与子串进行异或操作
-便可以枚举出所有具有相同海明距离的哈希键。
+\RestyleAlgo{ruled}\LinesNumbered\input{algo/ElementaryLoop.tex}
 
-枚举$r$个1在$b$位长度的二进制码中的排列可以通过简单的几步操作完成，见算法
-\ref{algo_Permutation}\footnote{该算法参考http://www.geeksforgeeks.org/archives/10375/}。
+\begin{enumerate}
+	\item 如果$R^-(C) \subseteq R^-(L)$，那么子环$C$是被抑制的，这就使得环$L$不符合基本环的定义；
+	\item 如果$R^-(C) \nsubseteq R^-(L)$，那么对于任意的$r \in R^-(C) \backslash R^-(L)$，有$r \in R^-(L)$，若$head(r)$属于$L$的其他非向外的子环$L'$，则有$r \in R^-(L')$。因为$L'$是非向外的，所以有$R^-(L') \subseteq R^-(L)$，这样就会得出$r \in R^-(L)$，导致矛盾。所以在这种情况下，我们可以把$head(R^-(C) \backslash R^-(L))$从当前子图中删除，从而得到更小的子图和子环，然后继续进行检测。
+\end{enumerate}
 
-\RestyleAlgo{ruled}\LinesNumbered\input{algo/Permutation.tex}
+对于给定的正规逻辑程序$P$及其环$L$，若$L$是$P$的基本环，那么算法\ref{algo_ElementaryLoop}将会返回$L$；
+否则，算法\ref{algo_ElementaryLoop}将返回环$C$，其中，$C$满足$C \subset L$和$R^-(C) \subseteq R^-(L)$。
 
-\subsection{算法提前退出的条件}
+与Gebser等人\cite{gebser2005loops}提出的基本环识别算法不同的是，算法\ref{algo_ElementaryLoop}采取自顶向下的策略，先大环开始，逐步深入到小环。
+需要注意的是，该算法每次都至少删除子图中的一个原子。所以，在最坏的情况下，算法\ref{algo_ElementaryLoop}将迭代$n^2$次，其中，$n$为环$L$中的原子数目。
+另一方面，由于图的强连通分量可以在现行时间里面计算出，所以整个算法的时间复杂性为$O(n^2)$。
 
-MIH算法是$r$近邻的精确搜索算法，其应用到$k$近邻搜索时，需要有一个前提假设，即与查询向量
-$\g$海明距离最接近的$k$个向量的最大距离不超过$r$。通过设置参数$r$，MIH算法可以完成$k$近邻搜索。
-在枚举$r$个1在$b$位长度的二进制码中的排列的时间复杂度为$O(C_b^r)$，其中$C$为组合数。一般来
-说，在枚举下一个海明距离（不超过$b / 2$）的哈希键所耗费的时间要比枚举当前海明距离的要多得多，
-因此，如果能够在较短的海明距离里获取到$k$个近邻结果的话，那么算法的效率便会比较高。在实现
-MIH算法的时候，我们每一趟都对$m$个子串枚举相同长度的海明距离的哈希键，枚举完后再进行下一
-个海明距离的哈希键的枚举。由于海明距离存在上界，在枚举的同时可以记录每一个海明距离所对应的
-向量个数，枚举完一个子串的哈希键后可以进行停止条件的判断从而有机会在比较短的海明距离里结束
-算法，这个停止条件基于命题\ref{pro_stop}。
+\section{析取逻辑程序的基本环}
 
-\begin{proposition}\label{pro_stop}
-假设此时对查询向量$\g$的第$k + 1$个子串进行海明距离为$s$的搜索，那么当枚举完所有与该子串
-海明距离为$s$的哈希键后，数据集中所有与查询向量$\g$的海明距离为$s \times m + k$的向量都已
-经被查询过了。
-\end{proposition}
+上一节，我们从外部支持的角度，给出了正规逻辑程序的基本环的另一种定义。
+本节，我们将把这种基于外部支持的定义拓展到析取逻辑程序。
 
+\subsection{基本环的定义}
+
+令$X$，$Y$为析取逻辑程序$P$中的原子集合，我们记$R_X^-(Y)=\lbrace r|r \in R^-(Y)\ and\ \\
+head(r) \cap (X\backslash Y) \rbrace$，特别地，对于正规逻辑程序，$R_X^-(Y)=R^-(Y)$。
+
+\begin{corollary}\label{chap3_corollary_dlp_el_clf}
+	给定析取逻辑程序$P$，$L_1$和$L_2$为$P$中的环。如果$L_1 \subseteq L_2$且$R_(L_2)^-(L_1) \subseteq R^-(L_2)$，那么有$CLF(L_1,P) \supset CLF(L_2,P)$。
+\end{corollary}
+
+推论\ref{chap3_corollary_dlp_el_clf}是推论\ref{chap3_corollary_nlp_el_clf}的析取逻辑程序版本，其证明也是类似的，在这里就不给出了。
+同样，由于$L_1$的环公式已经可以蕴含$L_2$的环公式了，$L_2$在回答集的计算中是可以被忽略的。
+
+下面，我们从外部支持的角度给出原子集合是向外的的定义。
+
+\begin{definition}[向外的]\label{chap3_definition_outbound}
+	给定原子集合$C$和环$L$，如果$R_L^-(C) \nsubseteq R^-(L)$，那么我们称$C$在$L$中是向外的。
+\end{definition}
+
+根据定义\ref{chap2_definition_elementaryloop}和定义\ref{chap3_definition_outbound}，我们可以从外部支持的角度，重新定义基本环的概念。
+
+\begin{definition}[析取逻辑程序的基本环]\label{chap3_definition_dlp_elementaryloop}
+	给定析取逻辑程序$P$，环$L$是$P$的基本环，当且仅当不存在$L$的非空真子集$C$，使得$R_L^-(C) \subseteq R^-(L)$。
+\end{definition}
+
+\subsection{基本环的识别}
+
+Gebser等人\cite{gebser2011elementary}在2011年证明了识别析取逻辑程序是coNP-complete的，这是计算机无法承受的。
+基于定义\ref{chap3_definition_dlp_elementaryloop}，我们给出一个近似算法。该算法能在多项式时间内判断一个环$L$是否属于析取逻辑程序$P$的基本环的一个超集，记为$EL^*(P)$。
+
+\RestyleAlgo{ruled}\LinesNumbered\input{algo/ElementaryLoopDLP.tex}
+
+算法\ref{algo_ElementaryLoopDLP}的过程和算法\ref{algo_ElementaryLoop}相似，通过自顶向下的策略，考虑了环$L$的所有子环。对于每一个子环$C$，有两种情况：
+
+\begin{enumerate}
+	\item 如果$R_L^-(C) \subseteq R^-(L)$，那么根据定义\ref{chap3_definition_dlp_elementaryloop}，环$L$不是基本环；
+	\item 如果$R_L^-(C) \nsubseteq R^-(L)$，那么对于任意规则$r \in R_L^-(C) \backslash R^-(L)$：
+	\begin{enumerate}
+		\item 若$|head(r) \cap C|=1$，则$head(r) \cap C$不可能在非向外的环$L'$里，其中，$L' \subset C$。否则，就会有$r \in R_L^-(L')$，而由$L'$是非向外的，有$R_L^-(L') \subseteq R^-(L)$，从而得出$r \in R_L^-(L)$，矛盾。此时，可以删除$r$；
+		\item 若$|head(r) \cap C|>1$，则可能会有$L' \subseteq C$，使得$r \in R^-(L')$，$head(r) \cap (L \backslash L') \neq \emptyset$。此时，$L' \cap (head(r) \cap C) \neq \emptyset$，根据基本环的定义，不能删除$r$。然而，为了优化识别时间，该算法采取了近似的操作，在这里同样对$r$进行删除。
+	\end{enumerate}
+\end{enumerate}
+
+给定任意析取逻辑程序$P$及其环$L$，算法\ref{algo_ElementaryLoopDLP}要么返回环$L$，要么返回环$C$，其中，$C \subset L$，$R_L^-(C) \subseteq R^-(L)$。
+若返回环$C$，则$L$肯定不是基本环；若返回$L$，则有可能是基本环，也有可能不是。
+
+算法\ref{algo_ElementaryLoopDLP}是算法\ref{algo_ElementaryLoop}的一样，每次迭代至少删除一个原子。
+在最坏的情况下，整个算法迭代$n^2$次，$n$为环的原子的数目。
+由于强连通分量可以在线性时间内求得，所以算法\ref{algo_ElementaryLoopDLP}的时间复杂度为$O(n^2)$。
+
+\begin{example}\label{chap3_program_p5}
+	考虑环$L=\lbrace p, q, r\rbrace$和析取逻辑程序$P_5$：
+	\begin{eqnarray*}
+	&& p \vee q \leftarrow r.\\
+	&& p \vee r \leftarrow q.\\
+	&& q \vee r \leftarrow p.\\
+	&& r \leftarrow.
+	\end{eqnarray*}	
+	
+	$EL^*(L,P_5)$返回$L$，事实上，$L$并不是$P$的基本环。因为对于$L'=\lbrace p, q\rbrace$：
+	\begin{eqnarray*}
+	&& R^-_L(L')=\emptyset \\
+	&& R^-(L)=\lbrace r \leftarrow .\rbrace
+	\end{eqnarray*}
+	
+	所以$R_L^-(L') \subseteq R^-(L)$。
+\end{example}
+
+记$EL(P)$为程序$P$的基本环的集合，$EL^*(P)$为使用算法\ref{algo_ElementaryLoopDLP}求得的环的集合，即$EL^*(P)=\lbrace L|L$是程序$P$的环且$EL^*(L,P)$返回$L\rbrace$。
+那么，对于任意析取逻辑程序$P$，有$EL(P) \subseteq EL^*(P)$。特别地，如果$P$为正规逻辑程序，那么$EL(P)=EL^*(P)$。
+另外，$HEF$程序虽然属于析取逻辑程序，但是由于它有性质$|head(r) \cap L| \le 1$，所以$EL(P)=EL^*(P)$。
+
+
+\section{弱基本环}
+
+尽管基本环和$HEF$程序的特性在回答集计算中很有用，但是识别它们的时间复杂度太高了。
+本节，我们将提出基本环的一个超集，同时，给出多项式时间复杂度的识别算法。
+
+\begin{corollary}\label{chap3_corollary_nlp_wel_clf}
+	给定析取逻辑程序$P$，$L_1$和$L_2$为$P$中的环。如果$L_1 \subseteq L_2$且$R^-(L_1) \subseteq R^-(L_2)$，那么有$CLF(L_1,P) \supset CLF(L_2,P)$。
+\end{corollary}
 \begin{proof}
-对于到目前为止数据集中还没有被查询过的向量，这些向量与查询向量$\g$所对应的$m$个子串中，前
-$k + 1$个子串间的海明距离至少是$s + 1$，后面$m - (k + 1)$的子串间的海明距离至少是$s$，因此
-这些向量与查询向量$\g$的海明距离至少是$(s + 1) \times (k + 1) + (m - (k + 1)) \times s = ms + k + 1$，
-因此，所有不超过$s \times m + k$的向量都已经被查询过了，如果这个海明距离的向量没有被找到，
-之后也不会再被找到。
+	对于环$L_1$，显然我们有$R_{L_2}^-(L_1) \subseteq R^-(L_1)$。
+	又因为$R^-(L_1) \subseteq R^-(L_2)$，所以有$R_{L_2}^-(L_1) \subseteq R^-(L_1) \subseteq R^-(L_2)$，因此可得$R_{L_2}^-(L_1) \subseteq R^-(L_2)$。
+	根据推论\ref{chap3_corollary_dlp_el_clf}，则有$CLF(L_1,P) \supset CLF(L_2,P)$。\quad
 \end{proof}
 
-综上，我们可以得到一个停止条件，在对查询向量$\g$的第$k$个子串进行海明距离为$s$的搜索后，可以
-累加海明距离在$s \times m + k - 1$的向量数，因为这个海明距离是从0开始递增的，所以目前累加得到
-的总向量数如果超过$k$，则可以提前退出算法（类似算法\ref{algo_LinearSearch}的第$9 \sim 11$ 行的
-条件判断)。
+现在，我们可以基于推论\ref{chap3_corollary_nlp_wel_clf}定义一个弱化版本的基本环，如下：
+\begin{definition}[弱基本环]\label{chap3_definition_weak_elementary_loop}
+	给定析取逻辑程序$P$，$L$为$P$的环。
+	如果不存在$L$的非空真子集$C$，使得$R^-(C) \subseteq R^-(L)$，那么，我们称$L$是$P$的弱基本环(weak elementary loop)。
+\end{definition}
+\begin{corollary}
+	给定析取逻辑程序$P$，$L$是$P$的环。如果$L$是$P$的基本环，那么$L$也是$P$的弱基本环。
+\end{corollary}
+\begin{proof}
+	因为$L$是$P$的基本环，根据定义\ref{chap3_definition_dlp_elementaryloop}，对于$L$的任意非空真子集$C$，$R_L^-(C)$\\
+	$\nsubseteq R^-(L)$，即存在规则$r \in R_L^-(C)$且$r \in R^-(L)$。
+	由于$R_L^-(C) \subseteq R^-(C)$，所以$r \in R^-(C)$，由此可得$R^-(C) \nsubseteq R^-(L)$。根据定义\ref{chap3_definition_weak_elementary_loop}，$L$是$P$的弱基本环。\quad
+\end{proof}
+\begin{example}
+	对于例\ref{chap2_program_p2}的程序$P_2$，环$L=\lbrace p, q, r\rbrace$是弱基本环，但不是基本环。
+\end{example}
 
-\section{MIH算法在应用中的优化}
+判断一个环是否程序的弱基本环是很容易的。
+我们可以通过把算法\ref{algo_ElementaryLoopDLP}中的所有$R_L^-(C)$替换成$R^-(C)$，得到算法\ref{algo_WeakElementaryLoopDLP}，记为$WEL(L,P)$。
+对于给定的程序$P$及其环$L$，若$L$是$P$的弱基本环，那么算法3将会返回$L$；否则，算法\ref{algo_WeakElementaryLoopDLP}将返回环$C$，
+其中，$C$满足$C \subset L$且$R^-(C) \subseteq R^-(L)$。
+显然，算法\ref{algo_WeakElementaryLoopDLP}跟算法\ref{algo_ElementaryLoopDLP}一样，时间复杂度为$O(n^2)$。
 
-我们将MIH算法应用在相似衣服的图像检索中，在实际应用中我们发现MIH算法默认的哈希策略（二进制连续
-的若干位作为一个哈希键）存在数据集中的向量不能相对均匀地分配在哈希表中的每个哈希桶中，这会影响
-MIH算法的效率。MIH算法能够在次线性的时间复杂度内进行$r$近邻的精确搜索的原因在于MIH算法不需要遍
-历一遍整个数据集，通过构建多重索引可以在整个数据集的子集中遍历向量从而到达目的，因此，子集的大
-小决定了MIH算法的运行效率，而对于数据集中的向量不能够相对均匀地分配在哈希表中的每个哈希桶中，这
-会有让查询子集增大的风险，极端情况下，一个哈希桶中存在数据集中的大部分向量，那么当对查询向量$\g$
-的子串进行哈希键的枚举时，如果枚举到了这个哈希桶，那么算法将会遍历数据集中的大部分向量，因此会耗
-费比较多的时间。
+\RestyleAlgo{ruled}\LinesNumbered\input{algo/WeakElementaryLoop.tex}
 
-为了解决这个实际问题，我们提出了一种基于贪心思想的算法，对图像的二进制表示进行重排，即对二进制码
-中的0-1值的顺序进行重新排列，这会在一定程度上让数据集的向量相对均匀地分布在哈希表中的每个哈希桶中。
+记算程序$P$的所有弱基本环为$WEL(P)$。对于任意的析取逻辑程序$P$，我们有$EL(P) \subseteq EL^*(P) \subseteq WEL(P)$，
+特别地，如果$P$是正规逻辑程序或$HEF$程序，那么$EL(P)=EL^*(P)=WEL(P)$。
 
-我们将数据集$\mathcal{H} = \{\hh_i\}_{i = 1}^n$，$\hh_i \in \{0, 1\}^q$看成是一个维度为$n \times q$的
-0-1矩阵。对这个矩阵的每一列的0-1值，我们可以计算其方差。对于方差比较大的列，以这一列上的值作为两
-类向量的划分标准（$0$为一类，$1$为另一类）可以比较均匀地区分出这两类的向量，而反差比较小的列，以该列
-上的值作为划分标准则比较难地均匀区分两类。于是，当我们结合若干列作为一个划分标准时，希望其中方差
-大和方差小的列的比例比较恰当，以这样的标准划分数据可以做到相对的均匀。因此，问题则转变为对这$q$
-位划分为$m$份，每一份是$\lfloor q / m \rfloor$或者$\lceil q / m \rceil$位，并且每一份的方差和比较
-接近，用公式化表达如公式\ref{knapsack_problem}所示。
 
-\begin{equation}\label{knapsack_problem}
-\begin{aligned}
-\min \frac{1}{m(m - 1)} \sum_{i = 1}^m\sum_{j = i + 1}^m \left|
-\operatorname{SV}(\mathbf{S}_i) - \operatorname{SV}(\mathbf{S}_j) \right| \\
-s.t. \quad |\mathbf{S}_i| = \lfloor \frac{b}{m} \rfloor or \lceil \frac{b}{m} \rceil ,
-\quad \sum|\mathbf{S}_i| = b
-\end{aligned}
-\end{equation}
-其中函数$\operatorname{SV}$是对集合$\mathbf{S}_i$中的元素的方差进行求和操作。
 
-这个问题是一个背包问题，属于NP难的问题，因此，我们提出了一个基于贪心思想的算法，在一定程度上尝试
-解决这个问题。假设矩阵某一列上有$x$个$0$，则该列上有$n - x$个$1$，那么该列的方差为
+\section{$HWEF$程序}
 
-\begin{equation}\label{eq_var}
-\begin{aligned}
-var & =  \frac{1}{n} \left( x(0 - \frac{n - x}{n})^2 + (n - x)(1 - \frac{n - x}{n})^2 \right)  \\
-    & =  \frac{1}{n} \left( \frac{x(n - x)^2}{n^2} + \frac{(n - x)x^2}{n^2} \right) \\
-    & =  \frac{1}{n} \left( \frac{x(n - x)(n -x + x)}{n^2} \right) \\
-    & =  \frac{x(n - x)}{n^2}
-\end{aligned}
-\end{equation}
+基于上节给出的弱基本环的概念，我们可以定义$HWEF$(Head-Weak-Elementary-loop-Free)程序。
 
-由公式\ref{eq_var}可得某一列上的方差是一条以$n / 2$为对称轴开口向下的抛物线，当$0$和$1$的个数相等时，
-方差最大。为了去除浮点数运算，我们定义了公式\ref{eq_ratio}，其中$\mbox{\#$0$s}$和$\mbox{\#$1$s}$分别
-表示该列上$0$的个数和$1$的个数。公式\ref{eq_ratio}是一条以$n / 2$为对称轴开口向下的折线，同样地，当
-$0$和$1$的个数相等时，$ratio$值将会最大。我们以公式\ref{eq_ratio}代替方差作为我们评价该列作为划分标准
-时均匀区分两类向量的能力。
+\begin{definition}[$HWEF$程序]\label{chap3_definition_hwef}
+	给定析取逻辑程序$P$，如果对于任意规则$r \in P$和任意弱基本环$L$，有$|head(r) \cap L| \le 1$，那么我们称$P$为$HWEF$程序。
+\end{definition}
 
-\begin{equation}\label{eq_ratio}
-ratio = \min(\mbox{\#$0$s}, \mbox{\#$1$s})
-\end{equation}
+根据定义\ref{chap3_definition_hwef}和定义\ref{chap2_definition_hef}，我们可以知道$HWEF$程序同时也是$HEF$程序，所以$HWEF$程序$P$的回答集将会和$sh(P)$的一一对应。
+然而，判断一个程序是否为$HWEF$程序的时间复杂性依然是coNP-complete。
 
-于是，我们对用来表示数据集$\mathcal{H}$的矩阵的每一列按公式\ref{eq_ratio}计算其$ratio$值，然后对这些
-$ratio$值按从大到小的顺序排序，接着每一次依序处理$m$列（最后一轮可能不够$m$列），以贪心的策略将这些列
-加入到已有的集合中，尽量使得当前集合间的总值相差不大（不需要到达最优），优化算法的伪代码见算法\ref{algo_Rearrange}。
-值得注意的是，算法\ref{algo_Rearrange}一开始对$f_1, ..., f_q$按从大到小排序而不是从小到大排序的原因是
-考虑到总位数$q$不一定能够整除$m$，因此，在最后一轮中有些集合会增加元素，有些集合则保持不变，此时所处理
-的是较小的$ratio$值可以保证集合所增加的量相对比较小。
+虽然$HWEF$程序的识别很困难，但是弱基本环的一些性质可以帮助我们构造一个多项式的算法，用于判断程序是否属于$HWEF$程序的一个子类。
+\begin{corollary}\label{chap3_corollary_weak_el}
+	给定析取逻辑程序$P$，$L$都是$P$的环，$E$是$L$的非空真子集，即$E \subset L$。
+	如果不存在规则$r \in P$，使得$body^+(r) \cap E \ne \emptyset$，$body^+(r) \cap (L\backslash E)=\emptyset$，$head(r) \cap (L \backslash E) \ne \emptyset$，那么$L$不是弱基本环。
+\end{corollary}
+\begin{proof}
+	由于不存在这样的规则$r$，所以有：
+	\begin{eqnarray*}
+	&& L \backslash E \subset L\\
+	&& R^-(L \backslash E) \subseteq R^-(L)
+	\end{eqnarray*}
+	
+	即$L \backslash E$使得$L$不符合弱基本环的定义。\quad
+\end{proof}
 
-\RestyleAlgo{ruled}\LinesNumbered\input{algo/Rearrange.tex}
+基于推论\ref{chap3_corollary_weak_el}，我们给出了算法\ref{algo_WeakElementaryLoopDLP2}，用来判断对于非空原子集$E$，是否不存在弱基本环$L$，$E \subset L$。
+算法法\ref{algo_WeakElementaryLoopDLP2}从包含$E$的强连通分量($E \subseteq C$)出发，对每条体部正文字与$E$有交集的公式，删除$C$中与$body^+(r)\backslash E$相交的部分并求得残留图的强连通分量$C_r$；
+判断$C_r$是否满足推论\ref{chap3_corollary_weak_el}的性质，若满足，则返回真。遍历所有公式后，若找不到符合要求的，则返回假。
+
+\RestyleAlgo{ruled}\LinesNumbered\input{algo/WeakElementaryLoop2.tex}
+
+对于给定的析取逻辑程序$P$和任意非空原子集$E$，算法法\ref{algo_WeakElementaryLoopDLP2}将在$O(m)$的时间内返回真或假，其中，$m$为$P$的规则数目。若返回假，那么表示不存在$P$的弱基本环$L$，使得$E \subset L$。
+
+基于算法法\ref{algo_WeakElementaryLoopDLP}和算法法\ref{algo_WeakElementaryLoopDLP2}，我们给出算法5。算法5可以在多项式时间内判断给定程序是否属于$HWEF$程序的子类，记该子类为$HWEF^*$。
+对于给定的析取逻辑程序$P$，首先利用程序中的规则，生成基为2的原子集合$E=\lbrace \lbrace a, b\rbrace |$there is a rule $r \in P$ s.t.$\lbrace a, b\rbrace \subseteq head(r)\rbrace$。
+然后对于每个这样的原子集合$E$，使用算法法\ref{algo_WeakElementaryLoopDLP}判断其是否为弱基本环，如果$E$是弱基本环，那么就会有存在$r \in P$，使得$|head(r) \cap E|=2$，根据$HWEF$程序的定义，该程序不符合要求，此时，返回假；
+如果$E$不是弱基本环，那么我们就使用算法法\ref{algo_WeakElementaryLoopDLP2}判断是否存在弱基本环$L$，使得$E \subset L$。
+若算法法\ref{algo_WeakElementaryLoopDLP2}返回真，即可能存在弱基本环$L$，使得对某条规则$r$，有$|head(r) \cap E|\ge 2$，不符合$HWEF$程序的定义。
+这种情况下，尽管只是有可能不符合，但是我们的处理是也返回假。
+
+\RestyleAlgo{ruled}\LinesNumbered\input{algo/WeakElementaryLoop3.tex}
+
+所以对于非$HWEF$程序，算法\ref{algo_WeakElementaryLoopDLP3}肯定返回假。然而，对于$HWEF$程序，则可能返回真，也可能返回假。由此可见，$HWEF^*$是$HWEF$的一个子类。
+另一方面，算法\ref{algo_WeakElementaryLoopDLP3}只有一层循环，里面所调用的算法\ref{algo_WeakElementaryLoopDLP}和算法\ref{algo_WeakElementaryLoopDLP2}的时间复杂度分别为$O(n^2 )$和$O(m)$，所以算法\ref{algo_WeakElementaryLoopDLP3}的时间复杂度为$O(mn^2)$，其中，$m$为规则的个数，$n$为原子的个数。
+
+\begin{example}\label{chap3_program_p5}
+	考虑程序$P_5$：
+	\begin{eqnarray*}
+	&& p \vee q \leftarrow r.\\
+	&& r \leftarrow p, q.\\
+	&& p \leftarrow.
+	\end{eqnarray*}
+	
+程序$P_5$有6个环：$\lbrace p\rbrace,\lbrace q\rbrace,\lbrace r\rbrace,\lbrace p,r\rbrace,\lbrace r,q\rbrace,\lbrace p,q,r\rbrace$。
+由于$R^-(\lbrace p,q,r\rbrace)=\lbrace p \leftarrow.\rbrace$，$R^-(\lbrace ,q\rbrace)=\emptyset$。
+$\lbrace p, q, r\rbrace$不是弱基本环，即弱基本环有：$\lbrace p\rbrace,\lbrace q\rbrace,\lbrace r\rbrace,\lbrace p,r\rbrace,\lbrace r,q\rbrace$。同时，$P_5$是$HWEF$程序。
+但是，对于$E=\lbrace p,q\rbrace$，$EWEL(P_5,E)$返回真，所以$HWEF^*(P_5)$返回假。所以，$P_5$是$HWEF$程序，但不是$HWEF^*$程序。
+\end{example}
+
+
 
 \section{本章小结}
+本章从外部支持的角度出发，介绍了基本环的另一种更直观的定义。
+基于这种定义，本章给出了正规逻辑程序的基本环的识别算法和析取逻辑程序的近似识别算法。
+针对析取逻辑程序的基本环的识别效率低这一难题，本章还提出了弱基本环的概念，同时，还给出了弱基本环的识别算法。
+在本章的最后部分，我们还提出了$HWEF$程序的概念，随后，我们还讨论了一个可以识别$HWEF$程序的一个子集$HWEF^*$程序的算法。
 
-本章讲述了海明空间中的$k$近邻搜索，首先讲述了线性搜索算法，然后讲述了多重索引哈希算法（MIH算法）的原理
-以及在实现中的一些技巧，接着讲述当我们将MIH算法应用到我们的相似衣服图像检索的应用中所遇到的问题，最后
-讲述了针对所碰到的问题我们所提出来的优化算法，提高了MIH算法在实际应用中的效率。
 
-在下一章中，我们会讲述我们实现的相似衣服图像检索系统，并且将MIH算法应用到后台系统中的相似图片搜索模块
-中。

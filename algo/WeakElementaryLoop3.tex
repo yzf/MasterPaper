@@ -1,0 +1,20 @@
+\begin{algorithm}\label{algo_WeakElementaryLoopDLP3}
+\SetAlgoVlined
+\SetKw{return}{return}\SetKw{Break}{break}
+\SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
+\caption{判断程序是否属于$HWEF^*$程序的算法$HWEF^*(P)$}
+\Input{析取逻辑程序$P$}
+\Output{若返回真，则是$HWEF$程序；若返回假，则可能是}
+
+$\varepsilon :=\lbrace \lbrace a, b \rbrace |$存在规则$r \in P$，使得$\lbrace a, b \rbrace \subseteq head(r)\rbrace$；\\
+\For{原子集$E \in \varepsilon$} {
+	\If{$E$是$P$的基本环} {
+		\return false
+	}
+	\If{$EWEL(P,E)$返回true} {
+		\return false
+	}
+}
+
+\return true
+\end{algorithm}

@@ -87,7 +87,7 @@
 	
 	¸ø¶¨ÎÄ×Ö$l$£¬ËüµÄ²¹(complement)¼ÇÎª$\overline{l}$¡£Èô$l$ÎªÔ­×Ó$a$£¬Ôò$l$µÄ²¹Îª$\neg\ a$£»Èô$l$Îª$\neg\ a$£¬Ôò$l$µÄ²¹Îª$a$¡£¶ÔÓÚÈÎÒâÎÄ×Ö¼¯ºÏ$L$£¬$\overline{L}=\left\lbrace \overline{l}|l \in L \right\rbrace$¡£
 \end{definition}
-\begin{example}\label{program:p1}
+\begin{example}\label{chap2_program_p1}
 	¿¼ÂÇÒÔÏÂµÄ³ÌĞò$P_1$£º
 	$$p \rightarrow .$$
 	$$p \rightarrow r.$$
@@ -105,7 +105,7 @@
 	
 	ÆäÖĞ£¬$1 \le k \le m \le n$£¬$a_1, ..., a_n$ÎªÔ­×Ó£¬¼´ÕıÎÄ×Ö¡£Èô$k=1$£¬ÔòÎªÆÕÍ¨¹æÔò¡£ÀàËÆµØ£¬ÎÒÃÇ¶¨Òå$head(r)=\lbrace a_1, ..., a_k\rbrace$£¬$body^+(r)=\lbrace a_{k+1}, ..., a_m\rbrace$£¬$body^-(r)=\lbrace a_{m+1}, ..., a_n\rbrace$¡£
 \end{definition}
-\begin{example}\label{program:p2}
+\begin{example}\label{chap2_program_p2}
 	¿¼ÂÇÒÔÏÂµÄ³ÌĞò$P_2$:
 	$$p \vee q \leftarrow r.$$
 	$$r \leftarrow p.$$
@@ -154,7 +154,7 @@ Clark\cite{clark1978negation}ÔÚ1978ÄêÍ¨¹ı½«Âß¼­³ÌĞò·­ÒëÎª¾­µäÂß¼­µÄ¹«Ê½À´¸ø³öÆäÓ
 		\item ¶ÔÓÚÔ¼Êø$\leftarrow G$£¬Ôò$\neg G$ÊôÓÚ$Comp(P)$¡£
 	\end{enumerate}
 \end{definition}
-\begin{example}\label{program:p3}
+\begin{example}\label{chap2_program_p3}
 	¸ø¶¨³ÌĞò$P_3$£º
 	$$a \leftarrow b, c, not\ d.$$
 	$$a \leftarrow b, not\ c, not\ d.$$
@@ -192,7 +192,7 @@ $$a_i \leftarrow not\ a_1, ..., not\ a_{i-1}, not\ a_{i+1}, ..., not\ a_k, a_{k+
 	\begin{figure}[htb]
 		\center
 		\includegraphics[width=300pt]{img/dg.png}\\
-		\caption{$P_1$ºÍ$P_2$µÄÕıÒÀÀµÍ¼}\label{fig:dg}
+		\caption{$P_1$ºÍ$P_2$µÄÕıÒÀÀµÍ¼}\label{chap2_fig_dg}
 	\end{figure}
 \end{example}
 \begin{definition}[»·]
@@ -219,7 +219,7 @@ R^-(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) 
 ËùÒÔ£¬ÎÒÃÇ°Ñ$R^+(L)$³ÆÎªÄÚ²¿Ö§³Ö(internal support)µÄ¼¯ºÏ£¬°Ñ$R^-(L)$³ÆÎªÍâ²¿Ö§³Ö(external support)µÄ¼¯ºÏ¡£
 ĞèÒª×¢ÒâµÄÊÇ£¬Íâ²¿Ö§³ÖµÄ¸ÅÄî²¢²»Õë¶Ô»·£¬ÎÒÃÇ¿ÉÒÔ°Ñ»·Ìæ»»³ÉÈÎÒâÔ­×Ó¼¯ºÏ¡£
 
-\begin{example}\label{program:p4}
+\begin{example}\label{chap2_program_p4}
 	¿¼ÂÇÈçÏÂÕı¹æÂß¼­³ÌĞò$P_4$£º
 	$$a \leftarrow b.$$
 	$$b \leftarrow a.$$
@@ -237,41 +237,41 @@ R^-(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) 
 
 ¿ÉÒÔ¹Û²ìµ½£¬$R^+(L_1)$ºÍ$R^+(L_2)$µÄ»Ø´ğ¼¯¶¼Îª$\emptyset$¡£ÊÂÊµÉÏ£¬¶ÔÓÚÈÎÒâÂß¼­³ÌĞò$P$ºÍ»·$L$£¬$\emptyset$ÊÇ$R^+(L)$µÄÎ¨Ò»»Ø´ğ¼¯¡£Òò´Ë£¬»·ÀïÃæµÄÔ­×Ó²»¿ÉÄÜÊôÓÚÈÎºÎ»Ø´ğ¼¯£¬³ı·ÇÓĞ¶îÍâµÄ¹«Ê½ÄÜÍÆ³öËü£¬±ÈÈç$R^-(L)$¡£»ùÓÚÕâĞ©¹Û²ì£¬LinµÈÈË\cite{lin2004assat}Ìá³öÁËÕı¹æÂß¼­³ÌĞòµÄ»·¹«Ê½µÄ¸ÅÄî¡£¶ÔÓÚÕı¹æÂß¼­³ÌĞò$P$ºÍ»·$L$£¬Æä»·¹«Ê½ÎªÈçÏÂĞÎÊ½£º
 \begin{align}
-\neg (\bigvee_{r \in R^-(L)} body(r)) \supset \bigwedge_{p \in L} \neg p\label{formula:lf_old}
+\neg (\bigvee_{r \in R^-(L)} body(r)) \supset \bigwedge_{p \in L} \neg p\label{chap2_formula_lf_old}
 \end{align}
 
 
 ¸Ã»·¹«Ê½µÄÖ±¹ÛÒâË¼ÊÇ£¬Èç¹û»·LµÄËùÓĞÍâ²¿Ö§³ÖµÄÌå²¿¶¼Îª¼Ù£¬ÄÇÃ´¾Í²»ÄÜÍÆ³ö»·µÄÈÎºÎÔ­×Ó£¬¼´»·ÖĞÔ­×Ó¶¼Îª¼Ù¡£
 
-\begin{theorem}\label{theorem:lf}
+\begin{theorem}\label{chap2_theorem_lf}
 	¸ø¶¨Âß¼­³ÌĞò$P$£¬Æä²¹È«Îª$Comp(P)$£¬¼Ç$LF$Îª$P$µÄËùÓĞ»·¹«Ê½µÄ¼¯ºÏ¡£Ô­×Ó¼¯ºÏ$S$ÊÇ$P$µÄ»Ø´ğ¼¯£¬µ±ÇÒ½öµ±ËüÊÇ$Comp(P) \cup LF$µÄÄ£ĞÍ¡£
 \end{theorem}
 
-¶¨Àí\ref{theorem:lf}µÄÖ¤Ã÷±È½Ï¸´ÔÓ£¬ÏêÏ¸¹ı³Ì¿ÉÒÔ²éÔÄÎÄÏ×\cite{lin2004assat, lee2003loop}¡£
+¶¨Àí\ref{chap2_theorem_lf}µÄÖ¤Ã÷±È½Ï¸´ÔÓ£¬ÏêÏ¸¹ı³Ì¿ÉÒÔ²éÔÄÎÄÏ×\cite{lin2004assat, lee2003loop}¡£
 
 Ëæ×ÅÀíÂÛµÄ·¢Õ¹£¬»·¹«Ê½¸ÅÄîÒÑ¾­±»ÍØÕ¹µ½ÎöÈ¡Âß¼­³ÌĞò£¬ÏÂÃæÎÒÃÇ½«½éÉÜÎöÈ¡Âß¼­³ÌĞòµÄ»·¹«Ê½¡£
 
 \begin{definition}[»·¹«Ê½]
 	¶ÔÓÚÂß¼­³ÌĞò$P$¼°Æä»·$L$£¬¶ÔÓ¦µÄÎöÈ¡»·¹«Ê½(disjunctive loop formulas)£¬¼ÇÎª$DLF(L,P)$£¬¶¨ÒåÎªÈçÏÂĞÎÊ½£º
 	\begin{align}
-	\bigvee_{p \in L} \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{definition:dlf}
+	\bigvee_{p \in L} \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{chap2_definition_dlf}
 	\end{align}
 	
 	Í¨³££¬$DLF(L,P)$¿ÉÒÔ¼òĞ´Îª$DLF(L)$¡£
 	
 	»·¹«Ê½µÄÁíÒ»ÖÖ¶¨ÒåÊÇÓÉLifschitzµÈÈË\cite{lee2003loop}Ìá³ö£¬ÓÉÓÚËû°Ñ$DLF(L,P)$×ó±ßµÄ$\bigvee_{p \in L} p$»»³É$\bigwedge_{p \in L} p$£¬ËùÒÔÎÒÃÇÒ»°ãÒ²½«Æä³ÆÎªºÏÈ¡»·¹«Ê½(conjunctive loop formulas)£¬¼ÇÎª$CLF(L,P)$£¬¶¨ÒåÎªÈçÏÂĞÎÊ½£º
 	\begin{align}
-	\bigwedge_{p \in L} \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{definition:clf}
+	\bigwedge_{p \in L} \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{chap2_definition_clf}
 	\end{align}
 	
 	´ËÍâ£¬ÎÒÃÇ»¹¿ÉÒÔÊ¹ÓÃÔÌº¬$\bigvee_{p \in L} p$ÇÒ±»$\bigwedge_{p \in L} p$ÔÌº¬µÄÃüÌâ¹«Ê½À´Ìæ»»ËüÃÇ¡£
 	±ÈÈç£¬¶ÔÓÚÈÎÒâ»·$L$£¬¼Ç$F_L$ÎªÓÉ»·ÖĞÔ­×ÓÊ¹ÓÃºÏÈ¡»òÕßÎöÈ¡×é³ÉµÄ¹«Ê½£¬ÄÇÃ´»·¹«Ê½ÓÖ¿ÉÒÔ¶¨ÒåÎª$LF(L,P)$£¬ËüÊÇÈçÏÂµÄĞÎÊ½£º
 	\begin{align}
-	F_L \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{definition:lf}
+	F_L \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{chap2_definition_lf}
 	\end{align}
 \end{definition}
 
-\begin{theorem}\label{theorem:eq1}
+\begin{theorem}\label{chap2_theorem_eq1}
 	¸ø¶¨³ÌĞò$P$ºÍÔ­×Ó¼¯ºÏ$S$£¬Èç¹û$S$Âú×ã$P$£¬ÄÇÃ´ÒÔÏÂ½áÂÛÊÇµÈ¼ÛµÄ£º
 	\begin{enumerate}
 		\item $S$ÊÇ$P$µÄ»Ø´ğ¼¯£»
@@ -285,7 +285,7 @@ R^-(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) 
 
 GebserºÍSchaubÔÚ2005ÄêÊ×´ÎÌá³öÁËÕı¹æÂß¼­³ÌĞòµÄ»ù±¾»·(elementary loops)µÄ¸ÅÄî\cite{gebser2005loops}¡£2011Äê£¬ËûÃÇÓÖ°Ñ»ù±¾»·ÍØÕ¹µ½ÎöÈ¡Âß¼­³ÌĞò\cite{gebser2011elementary}¡£
 
-\begin{definition}[ÏòÍâµÄ]
+\begin{definition}[ÏòÍâµÄ]\label{chap2_definition_outbound}
 	¸ø¶¨Ò»¸öÔ­×Ó¼¯ºÏ$X$¼°Æä×Ó¼¯$Y$£¬Èô´æÔÚ$r \in P$,Âú×ãÒÔÏÂµÄÌõ¼ş£º
 	\begin{enumerate}
 		\item $head(r) \cap Y \ne \emptyset$
@@ -296,14 +296,14 @@ GebserºÍSchaubÔÚ2005ÄêÊ×´ÎÌá³öÁËÕı¹æÂß¼­³ÌĞòµÄ»ù±¾»·(elementary loops)µÄ¸ÅÄî\cit
 	
 	Ôò³ÆYÔÚXÀïÊÇÏòÍâ(outbound)µÄ¡£
 \end{definition}
-\begin{definition}[»ù±¾»·]
+\begin{definition}[»ù±¾»·]\label{chap2_definition_elementaryloop}
 	¸ø¶¨»·$L$ºÍ³ÌĞò$P$£¬Èô$L$µÄËùÓĞ·Ç¿ÕÕæ×Ó¼¯ÔÚ$L$Àï¶¼ÊÇÏòÍâµÄ£¬ÄÇÃ´ÎÒÃÇ³Æ$L$ÊÇ»ù±¾»·(elementary loop)¡£
 \end{definition}
 \begin{example}
 	³ÌĞò$P_2$ÓĞ5¸ö»ù±¾»·£º$\lbrace p\rbrace ,\lbrace r\rbrace ,\lbrace q\rbrace ,\lbrace p,r\rbrace ,\lbrace q,r\rbrace$¡£
 \end{example}
-\begin{theorem}
-	¸ø¶¨³ÌĞò$P$ºÍÔ­×Ó¼¯ºÏ$S$£¬Èç¹û$S$Âú×ã$P$£¬ÄÇÃ´ÒÔÏÂ½áÂÛÓë¶¨Àí\ref{theorem:eq1}µÄ¶¼ÊÇµÈ¼ÛµÄ£º
+\begin{theorem}\label{chap2_theorem_eq2}
+	¸ø¶¨³ÌĞò$P$ºÍÔ­×Ó¼¯ºÏ$S$£¬Èç¹û$S$Âú×ã$P$£¬ÄÇÃ´ÒÔÏÂ½áÂÛÓë¶¨Àí\ref{chap2_theorem_eq1}µÄ¶¼ÊÇµÈ¼ÛµÄ£º
 	\begin{enumerate}
 		\item ¶ÔÓÚ$P$ÖĞµÄËùÓĞ»ù±¾»·$L$£¬$S$Âú×ã$CLF(L,P)$£»
 		\item ¶ÔÓÚ$P$ÖĞµÄËùÓĞ»ù±¾»·$L$£¬$S$Âú×ã$DLF(L,P)$£»
@@ -324,14 +324,14 @@ GebserºÍSchaubÔÚ2005ÄêÊ×´ÎÌá³öÁËÕı¹æÂß¼­³ÌĞòµÄ»ù±¾»·(elementary loops)µÄ¸ÅÄî\cit
 	
 	ÓĞÏòÍ¼$(X,EC_P(X))$³ÆÎªÔ­×Ó¼¯ºÏ$X$¹ØÓÚ³ÌĞò$P$µÄ»ù±¾×ÓÍ¼(elementary subgraph)¡£
 \end{definition}
-\begin{theorem}\label{theorem:es}
+\begin{theorem}\label{chap2_theorem_es}
 	¸ø¶¨Õı¹æÂß¼­³ÌĞò$P$ºÍ·Ç¿ÕÔ­×Ó¼¯ºÏ$X$£¬$X$ÊÇ$P$µÄ»ù±¾»·£¬µ±ÇÒ½öµ±$X$¹ØÓÚ$P$µÄ»ù±¾×ÓÍ¼ÊÇÇ¿Á¬Í¨(strongly connected)¡£
 \end{theorem}
 
-Ê¹ÓÃ¶¨Àí\ref{theorem:es}µÄ·½·¨Ê¶±ğÕı¹æÂß¼­³ÌĞòµÄ»ù±¾»·µÄÊ±¼ä¸´ÔÓ¶ÈÎª$O(n^2)$¡£
+Ê¹ÓÃ¶¨Àí\ref{chap2_theorem_es}µÄ·½·¨Ê¶±ğÕı¹æÂß¼­³ÌĞòµÄ»ù±¾»·µÄÊ±¼ä¸´ÔÓ¶ÈÎª$O(n^2)$¡£
 È»¶ø£¬Ê¶±ğÎöÈ¡Âß¼­³ÌĞòµÄ»ù±¾»·¿ÉÒª¸´ÔÓºÜ¶à£¬Ê±¼ä¸´ÔÓ¶È´ïµ½coNP-complete\cite{gebser2011elementary}£¬ÕâÊÇµ±½ñ¼ÆËã»úÎŞ·¨³ĞÊÜµÄ¡£
 
-\begin{definition}[$HEF$³ÌĞò]
+\begin{definition}[$HEF$³ÌĞò]\label{chap2_definition_hef}
 	¸ø¶¨Ò»¸öÎöÈ¡Âß¼­³ÌĞò$P$£¬¶ÔÓÚ$P$µÄÃ¿¸ö»ù±¾»·$L$ºÍÃ¿Ìõ¹æÔò$r$£¬Èç¹û$|head(r) \cap  L| \le 1$£¬ÄÇÃ´¸Ã³ÌĞò³ÆÎª$HEF$(Head-Elementary-loop-Freea)³ÌĞò¡£
 \end{definition}
 
