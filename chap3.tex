@@ -69,7 +69,6 @@ $(\Leftarrow)$
 令$L$为正规逻辑程序$P$的环，$L$的任意非空真子集$L'$是外向的，当且仅当$R^-(L') \nsubseteq R^-(L)$。
 
 
-
 \subsection{基本环的识别}
 
 根据命题\ref{chap3_proposition_elementaryloop}，下面给出正规逻辑程序基本环的识别算法\ref{algo_ElementaryLoop}。
@@ -243,7 +242,7 @@ $ElementaryLoop^*(L,P_5)$返回$L$，事实上，$L$并不是$P$的基本环。因为对于$L'=\lbr
 	给定析取逻辑程序$P$，如果对于任意规则$r \in P$和任意弱基本环$L$，有$|head(r) \cap L| \le 1$，那么我们称$P$为$HWEF$程序。
 \end{definition}
 
-根据定义\ref{chap3_definition_hwef}和定义\ref{chap2_definition_hef}，我们可以知道$HWEF$程序同时也是$HEF$程序，所以$HWEF$程序$P$的回答集将会和$sh(P)$的一一对应。
+根据定义\ref{chap3_definition_hwef}和定义\ref{chap2_definition_hef}，我们可以知道$HWEF$程序同时也是$HEF$程序，由于$HEF$程序的回答集和$sh(P)$一一对应\cite{gebser2011elementary}，所以$HWEF$程序也是一样。
 然而，判断一个程序是否为$HWEF$程序的时间复杂性依然是coNP-complete。
 
 虽然$HWEF$程序的识别很困难，但是弱基本环的一些性质可以帮助我们构造一个多项式的算法，用于判断程序是否属于$HWEF$程序的一个子类，记为$HWEF^*$程序。
@@ -260,17 +259,17 @@ $ElementaryLoop^*(L,P_5)$返回$L$，事实上，$L$并不是$P$的基本环。因为对于$L'=\lbr
 	如果不存在规则$r \in P$，使得$body^+(r) \cap E \ne \emptyset$，$body^+(r) \cap (L\backslash E)=\emptyset$，$head(r) \cap (L \backslash E) \ne \emptyset$，那么$L$不是弱基本环。
 \end{proposition}
 \begin{proof}
-	由于不存在这样的规则$r$，所以有：
-	\begin{eqnarray*}
-	&& L \backslash E \subset L\\
-	&& R^-(L \backslash E) \subseteq R^-(L)
-	\end{eqnarray*}
-	
-	由命题\ref{chap3_proposition_dag}可知，存在环$L'\subseteq L\backslash E$使得$L$不符合弱基本环的定义。\quad
+由于不存在这样的规则$r$，所以有：
+$$R^-(L \backslash E) \subseteq R^-(L)$$
+
+由命题\ref{chap3_proposition_dag}可知，存在环$L'\subseteq L$，满足：
+$$R^-(L') \subseteq R^-(L)$$
+
+所以$L$不符合弱基本环的定义。\quad
 \end{proof}
 
 基于命题\ref{chap3_proposition_weak_el}，我们给出了算法\ref{algo_WeakElementaryLoopDLP2}，用来判断对于非空原子集$E$，是否不存在弱基本环$L$，$E \subset L$。
-算法法\ref{algo_WeakElementaryLoopDLP2}从包含$E$的强连通分量($E \subseteq C$)出发，对每条体部正文字与$E$有交集的公式，删除$C$中与$body^+(r)\backslash E$相交的部分并求得残留图的强连通分量$C_r$；
+算法\ref{algo_WeakElementaryLoopDLP2}从包含$E$的强连通分量($E \subseteq C$)出发，对每条体部正文字与$E$有交集的公式，删除$C$中与$body^+(r)\backslash E$相交的部分并求得残留图的强连通分量$C_r$；
 判断$C_r$是否满足命题\ref{chap3_proposition_weak_el}的性质，若满足，则返回真。遍历所有公式后，若找不到符合要求的，则返回假。
 
 \RestyleAlgo{ruled}\LinesNumbered\input{algo/WeakElementaryLoop2.tex}

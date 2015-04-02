@@ -127,8 +127,8 @@ $$Lit(P)=Atoms(P) \cup \lbrace \neg\ a|a \in Atoms(P)\rbrace $$
 \subsection{逻辑程序的回答集}
 现在，我们介绍逻辑程序的回答集\cite{gelfond1988stable}。
 
-\begin{definition}[$GL$规约]
-	给定一个不含约束的正规逻辑程序$P$和原子集合$S$， $P$基于$S$的$GL$规约(Gelfond-Lifschitz reduction)[14]，记为$P^S$，是对$P$做以下操作所得到的程序：
+\begin{definition}[$GL$规约\cite{gelfond1988stable}]
+	给定一个不含约束的正规逻辑程序$P$和原子集合$S$， $P$基于$S$的$GL$规约(Gelfond-Lifschitz reduction)，记为$P^S$，是对$P$做以下操作所得到的程序：
 	\begin{enumerate}
 		\item 删除所有体部存在$not\ q$的规则，其中，$q \in S$；
 		\item 删除剩下的规则中的所有负文字；
@@ -195,11 +195,11 @@ $$a_i \leftarrow not\ a_1, ..., not\ a_{i-1}, not\ a_{i+1}, ..., not\ a_k, a_{k+
 
 环和环公式的概念是基于正依赖图的，首先我们给出正依赖图的定义，本节的所有定义都是针对析取逻辑程序的，正规逻辑程序可以看成是析取逻辑程序的特例。
 
-\begin{definition}[正依赖图]
+\begin{definition}[正依赖图\cite{lin2004assat}]
 	给定一个析取逻辑程序$P$，其正依赖图(positive dependency graph)，记为$G_P$，是以$P$中原子为顶点的有向图。其中，两原子之间存在从$p$到$q$的有向边，当且仅当，存在$P$中的规则$r$，使得$p \in head(r)$且$q \in body^+(r)$。
 \end{definition}
 \begin{example}
-	程序$P_1$和$P_2$的正依赖图是一样的，如图2.1所示。
+	程序$P_1$和$P_2$的正依赖图是一样的，如图\ref{chap2_fig_dg}所示。
 	\begin{figure}[htb]
 		\center
 		\includegraphics[width=300pt]{img/dg.png}\\
@@ -207,17 +207,23 @@ $$a_i \leftarrow not\ a_1, ..., not\ a_{i-1}, not\ a_{i+1}, ..., not\ a_k, a_{k+
 	\end{figure}
 \end{example}
 \begin{definition}[子图]
-	记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。令$G'=(V',E')$，$V' \subseteq V$，$E' \subseteq E$，则我们称$G'$为$G$的子图。
+记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。令$G'=(V',E')$，$V' \subseteq V$，$E' \subseteq E$，则我们称$G'$为$G$的子图。
 \end{definition}
 \begin{definition}[诱导子图]
-	记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。令$G'=(V',E')$，$V' \subseteq V$，$E'=\{(u,v)|u,v \in V',(u,v) \in E\}$，则我们称$G'$为$G$的诱导子图。
+记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。令$G'=(V',E')$，$V' \subseteq V$，$E'=\{(u,v)|u,v \in V',(u,v) \in E\}$，则我们称$G'$为$G$的诱导子图。
 \end{definition}
 
 注意：对于$V'$，只要在$G$中有边，那么在$G'$中同样应该有边。
 
-\begin{definition}[环]
+\begin{definition}[强连通分量\cite{cormen2001introduction}]\label{chap2_definition_strong}
+记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。$G$的一个强连通分量就是一个最大的顶点集合$C\subseteq V$，对于$C$中的每一对顶点$u$和$v$，存在从$u$到$v$的路径以及从$v$到$u$的路径，即顶点$u$和$v$相互可达。
+\end{definition}
+
+\begin{definition}[环]\label{chap2_definition_loop}
 	给定原子集合$L$，如果$L$中的任意原子$p$和$q$在程序$P$的正依赖图$G_P$中存在一条路径，并且路径上的所有顶点$r \in L$，那么我们称$L$为程序$P$的环(loop)。特别地，任意单原子集合都为环。
 \end{definition}
+
+由定义\ref{chap2_definition_strong}和定义\ref{chap2_definition_loop}，我们可以知道，强连通分量和环是等价的。
 \begin{example}
 	程序$P_2$有6个环：$\lbrace p\rbrace, \lbrace r\rbrace, \lbrace q\rbrace, \lbrace p,r\rbrace, \lbrace q,r\rbrace, \lbrace p,q,r\rbrace$。
 \end{example}
@@ -250,10 +256,12 @@ R^-(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) 
 && c \leftarrow not\ d.
 \end{eqnarray*}
 	则，该程序有两个环：$L_1=\lbrace a,b\rbrace$和$L_2=\lbrace c,d\rbrace$。对于这两个环，我们有：
-	$$R^+(L_1)=\lbrace a \leftarrow b.\ b \leftarrow a. \rbrace,$$
-	$$R^-(L_1)=\lbrace a \leftarrow not\ c.\rbrace,$$
-	$$R^+(L_2)=\lbrace c \leftarrow d.\ d \leftarrow c. \rbrace,$$
-	$$R^-(L_2)=\lbrace c \leftarrow not\ a.\rbrace,$$
+\begin{eqnarray*}
+&& R^+(L_1)=\lbrace a \leftarrow b.\ b \leftarrow a. \rbrace\\
+&& R^-(L_1)=\lbrace a \leftarrow not\ c.\rbrace\\
+&& R^+(L_2)=\lbrace c \leftarrow d.\ d \leftarrow c. \rbrace\\
+&& R^-(L_2)=\lbrace c \leftarrow not\ a.\rbrace
+\end{eqnarray*}
 \end{example}
 
 可以观察到，$R^+(L_1)$和$R^+(L_2)$的回答集都为$\emptyset$。事实上，对于任意逻辑程序$P$和环$L$，$\emptyset$是$R^+(L)$的唯一回答集。因此，环里面的原子不可能属于任何回答集，除非有额外的公式能推出它，比如$R^-(L)$。基于这些观察，Lin等人\cite{lin2004assat}提出了正规逻辑程序的环公式的概念。对于正规逻辑程序$P$和环$L$，其环公式为如下形式：
@@ -270,29 +278,46 @@ R^-(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) 
 
 定理\ref{chap2_theorem_lf}的证明比较复杂，详细过程可以查阅文献\cite{lin2004assat, lee2003loop}。
 
-随着理论的发展，环公式概念已经被拓展到析取逻辑程序，下面我们将介绍析取逻辑程序的环公式。
+随着理论的发展，环公式概念已经被拓展到析取逻辑程序，下面我们将介绍析取逻辑程序的环公式。正规逻辑程序的环公式可以看成是其特殊情况。
 
 \begin{definition}[析取环公式]
-	对于逻辑程序$P$及其环$L$，对应的析取环公式(disju-nctive loop formulas)，记为$DLF(L,P)$，定义为如下形式：
-	\begin{align}
-	\bigvee_{p \in L} \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{chap2_definition_dlf}
-	\end{align}
-	
-	通常，$DLF(L,P)$可以简写为$DLF(L)$。
+对于逻辑程序$P$及其环$L$，对应的析取环公式(disju-nctive loop formulas)，记为$DLF(L,P)$，定义为如下形式：
+\begin{align}
+\bigvee_{p \in L} \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{chap2_definition_dlf}
+\end{align}
+
+通常，$DLF(L,P)$可以简写为$DLF(L)$。特别地，对于正规逻辑程序，$DLF(L)$\\为如下形式：
+\begin{align}
+\bigvee_{p \in L} \supset \bigvee_{r \in R^-(L)}body(r)\label{chap2_definition_dlf_nlp}
+\end{align}
 \end{definition}	
+
+直观上，析取环公式的思想是如果环$L$中存在某些原子为真，那么必然存在某些外部支持的体部为真。
 
 环公式的另一种定义是由Lifschitz等人\cite{lee2003loop}提出，由于他把$DLF(L,P)$左边的$\bigvee_{p \in L} p$换成$\bigwedge_{p \in L} p$，所以我们一般也将其称为合取环公式。
 \begin{definition}[合取环公式]
 对于逻辑程序$P$及其环$L$，对应的合取环公式(conju-nctive loop formulas)，记为$CLF(L,P)$，定义为如下形式：
-	\begin{align}
-	\bigwedge_{p \in L} \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{chap2_definition_clf}
-	\end{align}
+\begin{align}
+\bigwedge_{p \in L} \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{chap2_definition_clf}
+\end{align}
+
+通常，$CLF(L,P)$可以简写为$CLF(L)$。特别地，对于正规逻辑程序，$CLF(L)$\\为如下形式：
+\begin{align}
+\bigwedge_{p \in L} \supset \bigvee_{r \in R^-(L)}body(r)\label{chap2_definition_clf_nlp}
+\end{align}
 \end{definition}
 
-此外，我们还可以使用蕴含$\bigvee_{p \in L} p$且被$\bigwedge_{p \in L} p$蕴含的命题公式来替换它们。
+直观上，合取环公式的思想是如果环$L$中的所有原子都为真，那么必然存在某些外部支持的体部为真。
+
+此外，我们还可以使用蕴含$\bigvee_{p \in L} p$且被$\bigwedge_{p \in L} p$蕴含的命题公式来替换它们，此时环公式所表达的思想和析取环公式以及合取环公式都是类似的。
 比如，对于任意环$L$，记$F_L$为由环中原子使用合取或者析取组成的公式，那么环公式又可以定义为$LF(L,P)$，它是如下的形式：
 \begin{align}
 F_L \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{chap2_definition_lf}
+\end{align}
+
+特别地，对于正规逻辑程序，$LF(L)$为如下形式：
+\begin{align}
+F_L \supset \bigvee_{r \in R^-(L)}body(r)\label{chap2_definition_lf_nlp}
 \end{align}
 
 
@@ -305,6 +330,7 @@ F_L \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \back
 		\item 对于$P$中的所有环$L$，$S$满足$LF(L,P)$；	
 	\end{enumerate}
 \end{theorem}
+
 
 \section{传统的基本环}
 

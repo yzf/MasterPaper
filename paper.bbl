@@ -170,6 +170,11 @@ Rosen K.
 \newblock Discrete Mathematics and Its Applications 7th edition [M].
 \newblock McGraw-Hill, 2011.
 
+\bibitem{cormen2001introduction}
+Cormen T~H, Leiserson C~E, Rivest R~L, et~al.
+\newblock Introduction to algorithms [M].
+\newblock MIT press Cambridge, 2001.
+
 \bibitem{fassetti2010complexity}
 Fassetti F, Palopoli L.
 \newblock On the complexity of identifying head-elementary-set-free programs
