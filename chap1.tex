@@ -1,19 +1,19 @@
  \chapter{引言}
 
-本章分为四个小节：首先介绍非单调逻辑、逻辑程序和ASP背景，然后介绍了目前的各种ASP求解器的原理与国内外的研究现状，引出了本文的研究重点和意义，最后对本文的组织结构安排进行了概述。
+本章分为四个小节：首先介绍非单调逻辑、逻辑程序和ASP背景，然后介绍了目前的各种ASP求解器的原理与国内外的研究现状，从而引出了本文的研究重点和意义，最后对本文的组织结构安排进行了概述。
 
  \section{研究背景}
 
-在人工智能领域，知识表示与推理(knowledge representation and reasoning，KR) \cite{davis1993knowledge}是一个重要的研究方向。知识表示与推理的主要目标为存储知识，让计算机能够处理，以达到人类的智慧。常见的知识表示方法有语义网(semantic nets)、规则(rules)和本体(ontologies)等。这里的知识包括常识(common sense)，所谓的常识，指的是人生活在社会中所应该具备的基本知识，特别指总所周知的知识。
+在人工智能领域，知识表示与推理(knowledge representation and reasoning，KR) \cite{davis1993knowledge}是一个重要的研究方向。知识表示与推理的主要目标为存储知识，让计算机能够处理，以达到人类的智慧。常见的知识表示方法有语义网(semantic nets)\cite{rada1989development}、规则(rules)和本体(ontologies)\cite{uschold1996ontologies}等。这里的知识包括常识(common sense)，所谓的常识，指的是人生活在社会中所应该具备的基本知识，特别指总所周知的知识。
 
 早在1958年，图灵奖获得者、“人工智能之父”之一的John McCarthy就在考虑可以处理常识的人工智能系统，
 他在“具有常识的程序”一文中提到，该系统应该可以接受用户的建议并且能根据这些建议来改进自身的性能和行为\cite{mccarthy1963programs}。
 这一系统的构建理论指出了常识推理是人工智能的关键，标志着他向“常识推理”的难题开始宣战，同时也拉开了常识知识表示和推理的研究序幕。
 1959年，McCarthy与Hayes提出，知识表示与常识推理应该要分离开来，即分为认识论与启发式两部分\cite{mccarthy1968some}。
 然而，在常识推理中，知识库加入了新的知识后，原有的推论往往会被推翻。
-换句话说，知识库的推论不会随着知识的增长而增长，是非单调(non-monotonic)的。
+换句话说，知识库的推论不会随着知识的增长而增长，是非单调(non-monotonic)\cite{mcdermott1980non}的。
 而经典逻辑则是单调的，无法处理非单调的推理问题。
-因此，研究者便开始了新的逻辑形式的研究，伴随着而诞生的比较著名的非单调逻辑有McCarthy的限定理论(circumscription)\cite{mccarthy1987circumscription},Reiter的缺省逻辑(default logic)\cite{reiter1980logic}和McDermott的非单调模态逻辑(non-monotonic modal logic)\cite{mcdermott1980non}。
+因此，研究者便开始了新的逻辑形式的研究，伴随着而诞生的比较著名的非单调逻辑有McCarthy的限定理论(circumscription)\cite{mccarthy1987circumscription}、Reiter的缺省逻辑(default logic)\cite{reiter1980logic}和McDermott的非单调模态逻辑(non-monotonic modal logic)\cite{mcdermott1980non}。
 
 另一方面，随着人工智能各领域知识理论的发展，六十年代末到七十年代初，逻辑程序的概念慢慢地形成。
 1965年，Robinson提出了非常重要的消除原理(resolution principle)\cite{robinson1965machine}。
@@ -35,8 +35,7 @@
 
 近十几年来，随着ASP的快速发展，先后出现了很多求解器(ASP solver)。
 由于计算ASP程序的回答集的复杂性为NP-complete，大部分求解器都是通过搜索的方式查找回答集。
-针对普通逻辑程序的ASP求解器主要分为两大类，一类是基于DPLL算法(Davis-Putnam-Logemann-Loveland procedure)的，包括DLV，smodels和clasp等。另一类则是基于SAT求解器的，包括ASSAT和cmo-\\
-dels等。
+针对普通逻辑程序的ASP求解器主要分为两大类，一类是基于DPLL算法(Davis-Putnam-Logemann-Loveland procedure)\cite{davis1962machine}的，包括DLV\cite{leone2006dlv}、smodels\cite{niemela2000smodels}和clasp\cite{gebser2007clasp}等。另一类则是基于SAT求解器的，包括ASSAT\cite{lin2004assat}和cmodels\cite{lierler2005cmodels}等。
 
 求解器的发展离不开理论的支持。
 2002年，Lin与Zhao首次提出了正规逻辑程序的环(loops)和环公式(loop formulas)的概念\cite{lin2004assat}，将回答集的求解归约为求解命题逻辑公式的模型，即SAT问题，并使用SAT求解器进行回答集的求解。
@@ -48,14 +47,14 @@ Lin-Zhao规约理论的核心在于，通过引入逻辑程序的环公式，对于逻辑程序的正依赖图(pos
 2005年，G-ebser等人发现，并非所有环对于从正规逻辑程序的模型中挑选回答集都是必须的。
 他们提出了基本环(elementary loops)\cite{gebser2005loops}的概念，并且在仅考虑基本环的情况下，重新定义了Lin-Zhao的环公式理论。
 2011年，Gebser等人\cite{gebser2011elementary}把基本环的概念拓展到析取逻辑程序，并指出，只利用这些基本环，已经足以完成从析取逻辑程序的模型中选取回答集这一操作。
-他们还提出了一种名为HEF(Head-Elementary-loop-Free)的逻辑程序类别，并指出了，这类析取逻辑程序与HCF(Head-Cycle-Free)逻辑程序\cite{ben1994propositional}一样，可以通过把规则头部的原子移动到规则体部，在多项式时间内转换为与其等价的正规逻辑程序。
-Ji等人\cite{chen2013computing}在2013年通过实验观察到，对于特定的逻辑程序，如果其环都是最多只有一个外部支持(external support),那么使用环公式理论进行转化后，可以显著地提升回答集的计算效率。
+他们还提出了一种名为$HEF$(Head-Elementary-loop-Free)的逻辑程序类别，并指出了，这类析取逻辑程序与$HCF$(Head-Cycle-Free)逻辑程序\cite{ben1994propositional}一样，可以通过把规则头部的原子移动到规则体部，在多项式时间内转换为与其等价的正规逻辑程序。
+Ji等人\cite{chen2013computing}在2013年通过实验观察到，对于特定的逻辑程序，如果其环都是最多只有一个外部支持(external support)，那么使用环公式理论进行转化后，可以显著地提升回答集的计算效率。
 
  \section{本文的工作}
 
 影响ASP的推广的最大问题是其求解器的效率。本文的主要关注点的是提升求解器的效率。总的来说，本文的主要工作包括：
 
-第一，深入研究了基本环及其自低向上的计算算法\cite{gebser2005loops}，本文提出了基本环的另一种定义，并给出一种自顶向下的计算算法，该算法的计算复杂性和Gebser-Schaub的算法一样。
+第一，深入研究了基本环及其自低向上的识别算法\cite{gebser2005loops}，本文提出了基本环的另一种定义，并给出一种自顶向下的识别算法，该算法的时间复杂性和Gebser-Schaub算法是一样的。
 
 第二，对于正规逻辑程序，本文提出了特征环(proper loops)的概念，并证明了特征环已经足以完成回答集的求解，同时还给出一个多项式时间复杂度的算法，用于识别逻辑程序的特征环。此外，本文还证明了，对于依赖图符合特定结构特点的逻辑程序，我们只需要提取小部分的特征环，即可完成回答集的求解。这一结论，不仅仅解释了Ji等人的观察结果\cite{chen2013computing}，还引导我们想出了求解所有特征环的算法。
 
@@ -71,9 +70,9 @@ Ji等人\cite{chen2013computing}在2013年通过实验观察到，对于特定的逻辑程序，如果其
 
 第2章，详细介绍了与本文相关的预备知识，包括命题逻辑、回答集编程、环公式和基本环。
 
-第3章，提出了基本环的另一种定义，并给出了自顶向下的识别算法。
+第3章，提出了基本环的另一种定义，并给出了自顶向下的识别算法。针对析取逻辑程序的基本环的识别效率低的问题，本文提出了弱基本环的概念，并基于这些概念提出了$HWEF$程序。
 
-第4章，首先针对正规逻辑程序，详细地介绍了特征环及其性质，并给出了识别特征环以及计算程序的所有特征环的算法，然后把特征环拓展到析取逻辑程序，针对计算复杂度太高的难题，提出了适用于大部分逻辑程序但时间复杂度较低的弱化版本特征环。
+第4章，首先针对正规逻辑程序，详细地介绍了特征环及其性质，并给出了识别特征环以及计算程序的所有特征环的算法，然后把特征环拓展到析取逻辑程序，针对计算复杂度太高的难题，提出了适用于大部分逻辑程序但时间复杂度较低的弱特征环。
 
 第5章，主要介绍了两个对比实验。第一个实验比较正规逻辑程序下，基本环与特征环的数量和计算效率；第二个实验室比较析取逻辑程序下，各种环的数量，包括基本环、特征环及其弱化版本。
 

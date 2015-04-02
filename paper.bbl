@@ -5,6 +5,17 @@ Davis R, Shrobe H, Szolovits P.
 \newblock What is a knowledge representation? [J].
 \newblock AI magazine, 1993, 14(1):17.
 
+\bibitem{rada1989development}
+Rada R, Mili H, Bicknell E, et~al.
+\newblock Development and application of a metric on semantic nets [J].
+\newblock Systems, Man and Cybernetics, IEEE Transactions on, 1989,
+  19(1):17--30.
+
+\bibitem{uschold1996ontologies}
+Uschold M, Gruninger M.
+\newblock Ontologies: Principles, Methods and Applications [J].
+\newblock To appear in Knowledge Engineering Review, 1996, 11(2).
+
 \bibitem{mccarthy1963programs}
 McCarthy J.
 \newblock Programs with common sense [M].
@@ -16,6 +27,11 @@ McCarthy J, Hayes P.
   intelligence [M].
 \newblock Stanford University USA, 1968.
 
+\bibitem{mcdermott1980non}
+McDermott D, Doyle J.
+\newblock Non-monotonic logic I [J].
+\newblock Artificial intelligence, 1980, 13(1):41--72.
+
 \bibitem{mccarthy1987circumscription}
 McCarthy J.
 \newblock Circumscription—a form of nonmonotonic reasoning [J].
@@ -25,11 +41,6 @@ McCarthy J.
 Reiter R.
 \newblock A logic for default reasoning [J].
 \newblock Artificial intelligence, 1980, 13(1):81--132.
-
-\bibitem{mcdermott1980non}
-McDermott D, Doyle J.
-\newblock Non-monotonic logic I [J].
-\newblock Artificial intelligence, 1980, 13(1):41--72.
 
 \bibitem{robinson1965machine}
 Robinson J~A.
@@ -84,10 +95,37 @@ Gelfond M, Lifschitz V.
 \newblock 提高 ASP 效率的若干途径及服务机器人上应用 [D].
 \newblock 合肥: 中国科学技术大学, 2010.
 
+\bibitem{davis1962machine}
+Davis M, Logemann G, Loveland D.
+\newblock A machine program for theorem-proving [J].
+\newblock Communications of the ACM, 1962, 5(7):394--397.
+
+\bibitem{leone2006dlv}
+Leone N, Pfeifer G, Faber W, et~al.
+\newblock The DLV system for knowledge representation and reasoning [J].
+\newblock ACM Transactions on Computational Logic (TOCL), 2006, 7(3):499--562.
+
+\bibitem{niemela2000smodels}
+Niemela I, Simons P, Syrjanen T.
+\newblock Smodels: a system for answer set programming [J].
+\newblock arXiv preprint cs/0003033, 2000.
+
+\bibitem{gebser2007clasp}
+Gebser M, Kaufmann B, Neumann A, et~al.
+\newblock clasp: A conflict-driven answer set solver [G].// Logic Programming
+  and Nonmonotonic Reasoning.
+\newblock Springer, 2007:  260--265.
+
 \bibitem{lin2004assat}
 Lin F, Zhao Y.
 \newblock ASSAT: Computing answer sets of a logic program by SAT solvers [J].
 \newblock Artificial Intelligence, 2004, 157(1):115--137.
+
+\bibitem{lierler2005cmodels}
+Lierler Y.
+\newblock cmodels--SAT-based disjunctive answer set solver [G].// Logic
+  Programming and Nonmonotonic Reasoning.
+\newblock Springer, 2005:  447--451.
 
 \bibitem{lee2003loop}
 Lee J, Lifschitz V.

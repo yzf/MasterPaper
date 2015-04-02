@@ -26,15 +26,20 @@
 \contentsline {subsection}{\numberline {3.1.2}基本环的识别}{20}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}析取逻辑程序的基本环}{21}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}基本环的定义}{21}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}基本环的识别}{22}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}弱基本环}{24}{section.3.3}
-\contentsline {section}{\numberline {3.4}$HWEF$程序}{25}{section.3.4}
-\contentsline {section}{\numberline {3.5}本章小结}{28}{section.3.5}
-\contentsline {chapter}{\numberline {}第四章\hspace {0.8em}特征环(Proper Loops)}{29}{chapter.4}
-\contentsline {section}{\numberline {4.1}正规逻辑程序的特征环}{29}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}特征环的定义}{29}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}特征环的识别}{31}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}析取逻辑程序的特征环}{34}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}特征环的定义}{34}{subsection.4.2.1}
-\contentsline {chapter}{参考文献}{36}{section*.5}
+\contentsline {subsection}{\numberline {3.2.2}基本环的识别}{23}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}弱基本环}{25}{section.3.3}
+\contentsline {section}{\numberline {3.4}$HWEF$程序}{27}{section.3.4}
+\contentsline {section}{\numberline {3.5}本章小结}{30}{section.3.5}
+\contentsline {chapter}{\numberline {}第四章\hspace {0.8em}特征环(Proper Loops)}{31}{chapter.4}
+\contentsline {section}{\numberline {4.1}正规逻辑程序的特征环}{31}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}特征环的定义}{31}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}特征环的识别}{33}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}析取逻辑程序的特征环}{36}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}特征环的定义}{36}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}特征环的识别}{38}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}$HPF$程序}{40}{section.4.3}
+\contentsline {section}{\numberline {4.4}弱特征环}{41}{section.4.4}
+\contentsline {section}{\numberline {4.5}$HWPF$程序}{42}{section.4.5}
+\contentsline {section}{\numberline {4.6}本章小结}{43}{section.4.6}
+\contentsline {chapter}{参考文献}{44}{section*.5}
 \contentsfinish 
