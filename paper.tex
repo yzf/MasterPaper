@@ -417,7 +417,9 @@
 \usepackage[pdftex]{thumbpdf}
 \usepackage[pdftex,
            % pdfstartview=FitH,
-            CJKbookmarks=true, colorlinks=true]{hyperref}
+            CJKbookmarks=true, 
+            colorlinks=true,
+            citecolor=blue]{hyperref}
 \AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
 \pdfadjustspacing=1
 \fi
@@ -586,7 +588,9 @@
 \include{chap1}
 \include{chap2}
 \include{chap3}
-\include{chap4}
+\include{chap3_old}
+\include{chap4_old}
+%\include{chap4}
 \include{chap5}
 \include{chap6}
 % \include{chap7}

@@ -2,269 +2,318 @@
 
 本章主要介绍本文工作的理论基础，并给出后续章节将使用的一些性质和已有的结果。
 第1节介绍了经典命题逻辑的相关知识，这是后续章节的基础；
-第2节介绍了逻辑程序的语法和语义，从而引出回答集的概念；
-第3节从逻辑程序的依赖图出发，介绍了环和环公式的概念及其在回答集求解中的意义；
-第4节介绍了基本环(elementary loops)的概念及其性质。
+第2节介绍了回答集逻辑程序的语法和语义，从而引出回答集的概念；
+第3节从回答集逻辑程序的正依赖图出发，介绍了环和环公式的概念及其在回答集求解中的意义；
+第4节介绍了基本环的概念及其性质。
 
 \section{命题逻辑}
 
-命题逻辑是数理逻辑的一部分，命题逻辑只包含一部分的逻辑形式和规律\cite{zlw1989sllj}。
-命题(proposition)是非真即假的陈述句，比如2是质数。简单命题(或原子命题)为简单陈述句，它不能分解成更简单的句子，一般我们用英文字母p,q,r等表示。
+命题逻辑是数理逻辑的一部分，命题逻辑包含一部分的逻辑形式和规律\upcite{zlw1989sllj}。
+命题(proposition)是非真即假的陈述句，比如2是质数。简单命题(或原子命题)为简单陈述句，它不能分解成更简单的句子，一般我们用英文字母$p$，$q$，$r$等表示。
 使用联结词，简单命题可以联结成复合命题。命题逻辑主要就是研究复合命题。
 
-命题逻辑的形式语言的符号表通常包括三类逻辑符号：
+命题逻辑的形式语言的符号表包括三类逻辑符号：
 \begin{enumerate}
-	\item 命题符号，通常使用小写英文字母表示；
-	\item 联结符号，包括?(否定)、∧(合取)、∨(析取)、→(蕴含)和?(等价于)；
-	\item 标点符号，包括“(”、“)”。
+	\item 命题符号，通常使用小写英文字母表示，比如$p$和$q$；
+	\item 联结符号，包括$\neg$(否定)、∧(合取)、∨(析取)、$\rightarrow$(蕴含)和$\leftrightarrow$(等价于)；
+	\item 标点符号，包括“(”和“)”。
 \end{enumerate}
 
-下面，我们将给出命题逻辑公式各类范式的定义和以及相关的定理。这些知识点主要来源于文献\cite{zlw1989sllj, rosen2011discrete}。
+下面，我们将给出命题逻辑公式各类范式的定义及其相关的定理。这些知识点主要来源于文献\upcite{zlw1989sllj, rosen2011discrete}。
 
 \begin{definition}[否定式]
-	命题变量的否定称为命题的否定式。
+命题变量的否定称为命题的否定式。
 \end{definition}
 \begin{example}
-	$\neg p$为$p$的否定式。
+$\neg p$为$p$的否定式。
 \end{example}
 \begin{definition}[文字]
-	命题变量及其否定称为文字(literal)。
+命题变量及其否定称为文字(literal)。
 \end{definition}
 \begin{example}
-	$p, \neg p, q, \neg q$都是文字，而$p \vee q, p \wedge q, p \rightarrow q$都不是文字。
+$p$，$\neg p$，$q$，$\neg q$都是文字，而$p \vee q$，$p \wedge q$，$p \rightarrow q$都不是文字。
 \end{example}
 \begin{definition}[简单析取式]
-	仅由有限个文字构成的析取式称为简单析取式。
+仅由有限个文字构成的析取式称为简单析取式。
 \end{definition}
 \begin{example}
-	$p, p \vee q, \neg p \vee q \vee r$都是简单析取式，而$p \vee q, \neg (p \vee q), p \wedge q \vee r$都不是简单析取式。
+$p$，$p \vee q$，$\neg p \vee q \vee r$都是简单析取式，而$p \vee q$，$\neg (p \vee q)$，$p \wedge q \vee r$都不是简单析取式。
 \end{example}
 \begin{definition}[简单合取式]
-	仅由有限个文字构成的合取式称为简单合取式。
+仅由有限个文字构成的合取式称为简单合取式。
 \end{definition}
 \begin{example}
-	$p, p \wedge q, \neg p \wedge q \wedge \neg r$都是简单合取式，而$p \vee q, \neg (p \vee q), p \wedge q \vee r$都不是简单合取式。
+$p$，$p \wedge q$，$\neg p \wedge q \wedge \neg r$都是简单合取式，而$p \vee q$，$\neg (p \vee q)$，$p \wedge q \vee r$都不是简单合取式。
 \end{example}
 \begin{theorem}
-    简单析取式是重言式，当且仅当它同时含有一个命题变量及其否定；简单合取式是矛盾式，当且仅当它同时含有一个命题变量及其否定。
+简单析取式是重言式，当且仅当它同时含有一个命题变量及其否定；简单合取式是矛盾式，当且仅当它同时含有一个命题变量及其否定。
 \end{theorem}
 \begin{definition}[析取范式]
-	仅由有限个简单合取式构成的析取式称为析取范式(disjunctive normal form，DNF)。
+仅由有限个简单合取式构成的析取式称为析取范式(DNF：Disjunctive Normal Form)。
 \end{definition}
 \begin{example}
-	$p, p \vee q, (p \wedge q) \vee r$都是析取范式，而$(p \vee q) \wedge r, p \wedge q, p \rightarrow q$都不是析取范式。
+$p$，$p \vee q$，$(p \wedge q) \vee r$都是析取范式，而$(p \vee q) \wedge r$，$p \wedge q$，$p \rightarrow q$都不是析取范式。
 \end{example}
 \begin{definition}[合取范式]
-	仅由有限个简单析取式构成的合取式称为合取范式(conjunctive normal form，CNF)。
+仅由有限个简单析取式构成的合取式称为合取范式(CNF：Conjunctive Normal Form)。
 \end{definition}
 \begin{example}
-	$p, p \wedge q, (p \vee q) \wedge (r \vee q)$都是合取范式，而$(p \wedge q) \vee r, p \vee q, p \rightarrow q$都不是合取范式。
+$p$，$p \wedge q$，$(p \vee q) \wedge (r \vee q)$都是合取范式，而$(p \wedge q) \vee r$，$p \vee q$，$p \rightarrow q$都不是合取范式。
 \end{example}
 \begin{theorem}
-	析取范式为矛盾式，当且仅当构成它的每一个简单合取式都是矛盾式；合取范式为重言式，当且仅当构成它的每一个简单析取式都是重言式。
+析取范式为矛盾式，当且仅当构成它的每一个简单合取式都是矛盾式；合取范式为重言式，当且仅当构成它的每一个简单析取式都是重言式。
 \end{theorem}
 \begin{theorem}
-	任何命题都存在着与之等值的析取范式和合取范式。
+任何命题都存在着与之等值的析取范式和合取范式。
 \end{theorem}
+
+
 
 
 \section{回答集逻辑程序}
 
-本节我们将介绍逻辑程序。本文的关注点是完全被例化(fully grounded)的回答集逻辑程序。
+本节我们将介绍回答集逻辑程序。本文的关注点是被例化(grounding)的正规逻辑程序和析取逻辑程序。
 
 \subsection{正规逻辑程序}
 \begin{definition}[正规逻辑程序]
-	普通规则(normal rule)的有限集合称为正规逻辑程序(normal logic program，NLP)。一个普通规则具有如下形式：
-	$$H \leftarrow a_1, ..., a_m, not\ a_{m+1}, ..., not\ a_n.$$
-	
-	其中，$0 \le m \le n$，$a_1, ..., a_n$是原子(atom)，$not$表示失败即否定，$H$为一个原子或者空。若$H$为一个原子，则此规则为一般规则(proper rule)；若$H$为空，则此规则为约束(contraint)。如果$m=n=0$，则此规则为事实(fact)。
+普通规则(normal rule)的有限集合称为正规逻辑程序(NLP：Normal Logic Program)。一个普通规则具有如下形式：
+\begin{equation}
+H \leftarrow a_1, ..., a_m, not\ a_{m+1}, ..., not\ a_n.
+\end{equation}
+
+其中，$0 \le m \le n$，$a_1, ..., a_n$是原子(atom)，$not$表示失败即否定，$H$为一个原子或者空。若$H$为一个原子，则此规则为一般规则(proper rule)；若$H$为空，则此规则为约束(contraint)。如果$m=n=0$，则此规则为事实(fact)。
 \end{definition}
 
 普通规则常常也会被写成如下形式：
-$$head(r) \leftarrow body(r).$$
+\begin{equation}
+head(r) \leftarrow body(r).
+\end{equation}
 
-其中，$head(r)=H$称为规则的头部，$body(r)=body^+(r) \wedge body^-(r)$称为规则的体部，$body^+(r)=a_1, ..., a_m$，$body^-(r)=not\ a_{m+1} \wedge not\ a_n$，同时我们会将$head(r)$、$body^+(r)$和$body^-(r)$看作是它们各自对应的原子的集合。
+其中，$head(r)=H$称为规则的头部，$body(r)=body^+(r) \wedge body^-(r)$称为规则的体部，$body^+(r)=a_1\wedge ...\wedge a_m$，$body^-(r)=\neg a_{m+1}\wedge ...\wedge \neg a_n$，同时我们会将$head(r)$、$body^+(r)$和$body^-(r)$看作是它们各自对应的原子的集合。
 
-给定一个规则的集合$R$，$head(R)=\bigcup_{r\in R}head(r)$表示$R$中所有规则的头部出现的原子的集合。
+给定一个规则的集合$R$，$head(R)=\bigcup_{r\in R}head(r)$表示所有在$R$的规则的头部出现过的原子的集合。
 
 给定一个正规逻辑程序$P$，$Atoms(P)$表示$P$中出现的所有原子的集合。$Lit(P)$表示有$Atoms(P)$构成的文字的集合，即：
-$$Lit(P)=Atoms(P) \cup \lbrace \neg\ a|a \in Atoms(P)\rbrace $$
+\begin{equation}
+Lit(P)=Atoms(P) \cup \lbrace \neg\ a|a \in Atoms(P)\rbrace.
+\end{equation}
 
 给定文字$l$，它的补(complement)记为$\overline{l}$。若$l$为原子$a$，则$l$的补为$\neg\ a$；若$l$为$\neg\ a$，则$l$的补为$a$。对于任意文字集合$L$，$\overline{L}=\left\lbrace \overline{l}|l \in L \right\rbrace$。
 
-\begin{example}\label{chap2_program_p1}
-	考虑以下的程序$P_1$：
-\begin{eqnarray*}
-&& p \rightarrow .\\
-&& p \rightarrow r.\\
-&& q \rightarrow r.\\
-&& r \rightarrow p.\\
-&& r \rightarrow q.
-\end{eqnarray*}
-	
-	则$P_1$为正规逻辑程序。
+\begin{example}
+考虑以下的程序：
+\begin{equation}\label{chap2_program_p1}
+	\begin{array}{rcl}
+	&& a\leftarrow b,not\ c.\\
+	&&　b\leftarrow not\ a.\\
+	&& b\leftarrow c.\\
+	&& c\leftarrow.\\
+	&&　\leftarrow c,not\ b.
+	\end{array}
+\end{equation}
+
+则程序\ref{chap2_program_p1}为正规逻辑程序。
 \end{example}
 
 \subsection{析取逻辑程序}
 \begin{definition}[析取逻辑程序]
-	析取规则(disjunctive rule)的有限集合称为析取逻辑程序(disjunctive logic program，DLP)。一个析取规则具有如下形式：
-	$$a_1 \vee ... \vee a_k \leftarrow a_{k+1}, ..., a_m, not\ a_{m+1}, ..., not\ a_n.$$
-	
-	其中，$1 \le k \le m \le n$，$a_1, ..., a_n$为原子，即正文字。若$k=1$，则为普通规则。类似地，我们定义$head(r)=\lbrace a_1, ..., a_k\rbrace$，$body^+(r)=\lbrace a_{k+1}, ..., a_m\rbrace$，$body^-(r)=\lbrace a_{m+1}, ..., a_n\rbrace$。
+析取规则(disjunctive rule)的有限集合称为析取逻辑程序(DLP：Disjunctive Logic Program)。一个析取规则具有如下形式：
+\begin{equation}
+a_1 \vee ... \vee a_k \leftarrow a_{k+1}, ..., a_m, not\ a_{m+1}, ..., not\ a_n.
+\end{equation}
+其中，$1 \le k \le m \le n$，$a_1, ..., a_n$为原子，即正文字。若$k=1$，则为普通规则。类似地，我们定义$head(r)=\lbrace a_1, ..., a_k\rbrace$，$body^+(r)=\lbrace a_{k+1}, ..., a_m\rbrace$，$body^-(r)=\lbrace a_{m+1}, ..., a_n\rbrace$。
 \end{definition}
-\begin{example}\label{chap2_program_p2}
-	考虑以下的程序$P_2$:
-\begin{eqnarray*}
-&&　p \vee q \leftarrow r.\\
-&& r \leftarrow p.\\
-&& r \leftarrow q.\\
-&& p \leftarrow .
-\end{eqnarray*}
+\begin{example}
+考虑以下的程序:
+\begin{equation}\label{chap2_program_p2}
+	\begin{array}{rcl}
+	&&　a \vee b \leftarrow c.\\
+	&& a \leftarrow b,not\ d.\\
+	&& c\leftarrow .
+	\end{array}
+\end{equation}
 
-	则$P_2$为析取逻辑程序。
+	则程序\ref{chap2_program_p2}为析取逻辑程序。
 \end{example}
 
-\subsection{逻辑程序的回答集}
-现在，我们介绍逻辑程序的回答集\cite{gelfond1988stable}。
+\subsection{回答集逻辑程序的回答集}
+下面，我们将介绍回答集逻辑程序的回答集\upcite{gelfond1988stable}。
 
-\begin{definition}[$GL$规约\cite{gelfond1988stable}]
-	给定一个不含约束的正规逻辑程序$P$和原子集合$S$， $P$基于$S$的$GL$规约(Gelfond-Lifschitz reduction)，记为$P^S$，是对$P$做以下操作所得到的程序：
+\begin{definition}[GL规约]
+给定一个不含约束的回答集逻辑程序$P$和原子集合$S$， $P$基于$S$的GL规约(Gelfond-Lifschitz reduction)\upcite{gelfond1988stable}，记为$P^S$，是对$P$做以下操作所得到的程序：
 	\begin{enumerate}
 		\item 删除所有体部存在$not\ q$的规则，其中，$q \in S$；
 		\item 删除剩下的规则中的所有负文字；
 	\end{enumerate}
 	
-	对于任意的原子集合$S$，其对应的$P^S$不含任何形式的负文字。所以，$P^S$只有唯一的最小模型(model)，记为$\Gamma(P^S)$。
+对于任意的原子集合$S$，其对应的$P^S$不含任何形式的负文字。所以，对于正规逻辑程序，$P^S$只有唯一的最小模型(model)；而对于析取逻辑逻辑程序，$P^S$可能不止一个最小模型，记最小模型的集合为$\Gamma(P^S)$。
 \end{definition}
-\begin{definition}[不含约束的程序的回答集]
-	给定一个不含约束的正规逻辑程序$P$，原子集合$S$是$P$的一个回答集当且仅当$S=\Gamma(P^S)$。
+\begin{example}
+程序\ref{chap2_program_p2}不含约束，对于$S=\{a,d\}$，其基于$S$的GL规约结果$P^S=\{a\vee b\leftarrow c.\  c\leftarrow.\}$。注意到，$P^S$的最小模型$\Gamma(P^S)=\{\{a,c\},\{b,c\}\}$。
+\end{example}
+
+
+\begin{definition}[不含约束的回答集逻辑程序的回答集]
+给定一个不含约束的回答集逻辑程序$P$，原子集合$S$是$P$的一个回答集当且仅当$S\in \Gamma(P^S)$。
 \end{definition}
+\begin{example}
+程序\ref{chap2_program_p2}不含约束，对于$S=\{a,c\}$，其基于$S$的GL规约结果$P^S=\{a\vee b\leftarrow c.\ a\leftarrow b.\ c\leftarrow .\}$。注意到，$P^S$的最小模型$\Gamma(P^S)=\{\{a,c\}\}$，所以$S$是原程序的回答集。
+\end{example}
+
+
 
 更一般的情况是，逻辑程序$P$中是含有约束的。
 
-\begin{definition}[正规逻辑程序的回答集]
-	给定一个正规逻辑程序$P$，记其去掉约束后的程序为$P'$，原子集合$S$是$P$的一个回答集，当且仅当，$S$是$P'$的回答集且$S$满足$P$中的所有约束。
+\begin{definition}[回答集逻辑程序的回答集]
+给定一个回答集逻辑程序$P$和原子集合$S$，记$P$去掉约束后的程序为$P'$。$S$是$P$的回答集，当且仅当$S$是$P'$的回答集且$S$满足$P$中的所有约束。
 \end{definition}
+\begin{example}
+记程序\ref{chap2_program_p1}不含约束部分为$P'$，对于$S=\{b,c\}$，$P'^S=\{b\leftarrow .\ b\leftarrow c.\ c\leftarrow . \}$。注意到，$P'^S$的最小模型$\Gamma(P^S)=\{\{b,c\}\}$，所以$S$是$P'$的回答集。另一方面，$S$满足原程序的约束，所以$S$是原程序的回答集。
+\end{example}
 
-与正规逻辑程序不同，由于析取逻辑程序的头部的原子数可以大于1个，所以经过$GL$规约后的程序的最小模型可能有多个。
+\subsection{回答集逻辑程序的补全}
 
-\begin{definition}[析取逻辑程序的回答集]
-	给定一个析取逻辑程序P和原子集合$S$，记$P$去掉约束后的程序为$P'$，$P'$的最小模型的集合为$\Gamma(P^S)$。$S$是$P$的回答集，当且仅当$S \in \Gamma(P^S)$且$S$满足$P$中的所有约束。
-\end{definition}
 
-\subsection{逻辑程序的补全(completion)}
-
-Clark\cite{clark1978negation}在1978年通过将逻辑程序翻译为经典逻辑的公式来给出其语义。
-
-\begin{definition}[补全]
-	给定一个逻辑程序$P$，其补全$Comp(P)$是$P$的约束和$P$的克拉克补全(Clark completion)的并集\cite{lin2004assat}。它包括以下子句：
+\begin{definition}[回答集逻辑程序的补全]
+	给定一个逻辑程序$P$，其补全$Comp(P)$是$P$的约束和$P$的克拉克补全(Clark completion)的并集\upcite{lin2004assat}。它包括以下子句：
 	\begin{enumerate}
 		\item 对于$p \in Atoms(P)$，令$p \leftarrow G_1, ..., p \leftarrow G_n$为$P$中与$p$相关的规则，则$p \equiv G_1 \vee ... \vee G_n$属于 $Comp(P)$。特别地，如果$n=0$，则$p \equiv false$，等价于$\neg\ p$。
 		\item 对于约束$\leftarrow G$，则$\neg G$属于$Comp(P)$。
 	\end{enumerate}
 \end{definition}
 \begin{example}\label{chap2_program_p3}
-	给定程序$P_3$：
-\begin{eqnarray*}
-&& a \leftarrow b, c, not\ d.\\
-&& a \leftarrow b, not\ c, not\ d.\\
-&& \leftarrow b, c, not\ d.
-\end{eqnarray*}
+	给定程序$P$：
+\begin{equation}
+\begin{array}{rcl}
+	&& a \leftarrow b, c, not\ d.\\
+	&& a \leftarrow b, not\ c, not\ d.\\
+	&& \leftarrow b, c, not\ d.
+\end{array}
+\end{equation}
 
-	该程序的补全为：$Comp(P_3)=\lbrace a \equiv (b \wedge c \wedge \neg d) \vee (b \wedge \neg c \wedge \neg d), \neg b, \neg c,\neg d, \neg (b \wedge c \wedge \neg d)\rbrace$。
+该程序的补全为：$Comp(P)=\lbrace a \equiv (b \wedge c \wedge \neg d) \vee (b \wedge \neg c \wedge \neg d), \neg b, \neg c,\neg d, \neg (b \wedge c \wedge \neg d)\rbrace$。
 \end{example}
 
 \subsection{析取逻辑程序到正规逻辑程序的转换}
 
 析取逻辑程序和正规逻辑程序的区别在于头部原子的个数，一个自然的问题是，是否存在一种转换使得析取逻辑程序可以转化为正规逻辑程序。
-Gelfond等人\cite{gelfond1991classical}提出了一个转换，通过把析取逻辑程序$P$头部的原子移动(shifting)到体部，把析取逻辑程序转化为正规逻辑程序，记为$sh(P)$。
+Gelfond等人提出了一个转换，通过把析取逻辑程序$P$头部的原子移动(shifting)到体部，把析取逻辑程序转化为正规逻辑程序，记为$sh(P)$\upcite{gelfond1991classical}。
 其具体操作每条析取规则替换成如下的形式：
-$$a_i \leftarrow not\ a_1, ..., not\ a_{i-1}, not\ a_{i+1}, ..., not\ a_k, a_{k+1}, ..., a_m, not\ a_{m+1}, ..., not\ a_n.(1 \le i \le k)$$
+\begin{equation}
+\begin{array}{rcl}
+	a_i \leftarrow not\ a_1, ..., not\ a_{i-1}, not\ a_{i+1}, ..., not\ a_k,\\ a_{k+1}, ..., a_m, not\ a_{m+1}, ..., not\ a_n.(1 \le i \le k).
+\end{array}
+\end{equation}
 
-直观上，我们可以看出，$sh(P)$的每个回答集同时也是$P$的回答集。但是，反过来就不一定成立了。后来，Ben-Eliyahu和Dechter提出了一种名为Head-Cycle-Free($HCF$)\cite{ben1994propositional}的析取逻辑程序类型，并且证明了$HCF$程序$P$的回答集和其$sh(P)$的回答集一一对应。
+直观上，我们可以看出，$sh(P)$的每个回答集同时也是$P$的回答集。但是，反过来就不一定成立了。后来，Dechter等人(1994)提出了一种头部无环的程序类别，并且证明了这种程序$P$的回答集和$sh(P)$的回答集一一对应，同时还可以在多项式时间内，转化为非析取逻辑程序\upcite{ben1994propositional}。
 
-\begin{definition}[$HCF$程序]
-    给定一个析取逻辑程序$P$，对于$P$的每一个环$L$和每条规则$r$，如果$|head(r) \cap L| \le 1$，那么该程序称为Head-Cycle-Free($HCF$)程序。
+\begin{example}
+对于程序\ref{chap2_program_p2}，$sh(P)$为：
+\begin{equation}
+	\begin{array}{rcl}
+		&& a\leftarrow not\ b,c.\\ 
+		&&　b\leftarrow not\ a,c.\\
+		&& a\leftarrow b,not\ d.\\
+		&& c\leftarrow .
+	\end{array}
+\end{equation}
+\end{example}
+
+\begin{definition}[HCF程序]
+    给定一个析取逻辑程序$P$，对于$P$的每一个环$L$和每条规则$r$，如果$|head(r) \cap L| \le 1$，那么该程序称为头部无环程序(HCF程序：Head-Cycle-Free Program)\upcite{ben1994propositional}。
 \end{definition}
+
 
 环的概念将在下一节中给出。
 
 \section{环与环公式}
 
-回答集逻辑程序和命题逻辑的关系是很密切的。我们甚至可以把逻辑程序中的每一条规则看成是命题逻辑中的一个子句。Lin和Zhao\cite{lin2004assat}证明，只要加入环公式(loop formulas)，原逻辑程序的回答集就可以和其对应的命题的模型一一对应。下面我们给出环和环公式的定义。
+回答集逻辑程序和命题逻辑的关系是很密切的。我们甚至可以把回答集逻辑程序中的每一条规则看成是命题逻辑中的一个子句。Lin等人(2004)证明，只要加入环公式(loop formulas)，原回答集逻辑程序的回答集就可以和其对应的命题的模型一一对应\upcite{lin2004assat}。下面我们给出环和环公式的定义。
 
 环和环公式的概念是基于正依赖图的，首先我们给出正依赖图的定义，本节的所有定义都是针对析取逻辑程序的，正规逻辑程序可以看成是析取逻辑程序的特例。
 
-\begin{definition}[正依赖图\cite{lin2004assat}]
-	给定一个析取逻辑程序$P$，其正依赖图(positive dependency graph)，记为$G_P$，是以$P$中原子为顶点的有向图。其中，两原子之间存在从$p$到$q$的有向边，当且仅当，存在$P$中的规则$r$，使得$p \in head(r)$且$q \in body^+(r)$。
+\begin{definition}[正依赖图]
+给定一个析取逻辑程序$P$，其正依赖图(positive dependency graph)，记为$G_P$，是以$P$中原子为顶点的有向图。其中，两原子之间存在从$p$到$q$的有向边，当且仅当，存在$P$中的规则$r$，使得$p \in head(r)$且$q \in body^+(r)$\upcite{lin2004assat}。
 \end{definition}
 \begin{example}
-	程序$P_1$和$P_2$的正依赖图是一样的，如图\ref{chap2_fig_dg}所示。
+考虑以下的回答集逻辑程序：\\
+\begin{equation}\label{chap2_program_p4}
+	\begin{array}{rcl}
+	&& p\leftarrow .\\
+	&& p\leftarrow r.\\
+	&& q\leftarrow r.\\
+	&& r\leftarrow p.\\
+	&&　r\leftarrow q.
+	\end{array}
+\end{equation}
+
+其正依赖图如图\ref{chap2_fig_dg}所示。
 	\begin{figure}[htb]
 		\center
-		\includegraphics[width=300pt]{img/dg.png}\\
-		\caption{$P_1$和$P_2$的正依赖图}\label{chap2_fig_dg}
+		\includegraphics[width=200pt]{img/dg.png}\\
+		\caption{程序\ref{chap2_program_p4}的正依赖图}\label{chap2_fig_dg}
 	\end{figure}
 \end{example}
 \begin{definition}[子图]
-记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。令$G'=(V',E')$，$V' \subseteq V$，$E' \subseteq E$，则我们称$G'$为$G$的子图。
+记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。令$G'=(V',E')$，$V' \subseteq V$，$E' \subseteq E$，则我们称$G'$为$G$的子图(subgraph)。
 \end{definition}
 \begin{definition}[诱导子图]
-记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。令$G'=(V',E')$，$V' \subseteq V$，$E'=\{(u,v)|u,v \in V',(u,v) \in E\}$，则我们称$G'$为$G$的诱导子图。
+记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。令$G'=(V',E')$，$V' \subseteq V$，$E'=\{(u,v)|u,v \in V',(u,v) \in E\}$，则我们称$G'$为$G$的诱导子图(induced subgraph)。
 \end{definition}
 
 注意：对于$V'$，只要在$G$中有边，那么在$G'$中同样应该有边。
 
-\begin{definition}[强连通分量\cite{cormen2001introduction}]\label{chap2_definition_strong}
-记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。$G$的一个强连通分量就是一个最大的顶点集合$C\subseteq V$，对于$C$中的每一对顶点$u$和$v$，存在从$u$到$v$的路径以及从$v$到$u$的路径，即顶点$u$和$v$相互可达。
+\begin{example}
+图\ref{chap2_fig_sg}是图\ref{chap2_fig_dg}的子图，但不是其诱导子图，因为缺少边$(r,p)$。
+\begin{figure}[htb]
+	\center
+	\includegraphics[width=150pt]{img/sg.png}\\
+	\caption{图\ref{chap2_fig_dg}的子图}\label{chap2_fig_sg}
+\end{figure}
+\end{example}
+
+\begin{definition}[强连通分量]\label{chap2_definition_strong}
+记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。$G$的一个强连通分量就是一个最大的顶点集合$C\subseteq V$，对于$C$中的每一对顶点$u$和$v$，存在从$u$到$v$的路径以及从$v$到$u$的路径，即顶点$u$和$v$相互可达\upcite{cormen2001introduction}。
 \end{definition}
 
 \begin{definition}[环]\label{chap2_definition_loop}
-	给定原子集合$L$，如果$L$中的任意原子$p$和$q$在程序$P$的正依赖图$G_P$中存在一条路径，并且路径上的所有顶点$r \in L$，那么我们称$L$为程序$P$的环(loop)。特别地，任意单原子集合都为环。
+给定原子集合$L$，如果$L$中的任意原子$p$和$q$在回答集逻辑程序$P$的正依赖图$G_P$中存在一条路径，并且路径上的所有顶点$r \in L$，那么我们称$L$为程序$P$的环(loop)。特别地，任意单原子集合都为环。
 \end{definition}
 
-由定义\ref{chap2_definition_strong}和定义\ref{chap2_definition_loop}，我们可以知道，强连通分量和环是等价的。
+由定义\ref{chap2_definition_strong}和定义\ref{chap2_definition_loop}，我们可以知道，强连通分量是环，但环不一定是强连通分量。
 \begin{example}
-	程序$P_2$有6个环：$\lbrace p\rbrace, \lbrace r\rbrace, \lbrace q\rbrace, \lbrace p,r\rbrace, \lbrace q,r\rbrace, \lbrace p,q,r\rbrace$。
+正依赖图\ref{chap2_fig_dg}有6个环：$\{p\}$，$\{r\}$，$\{q\}$，$\{p,r\}$，$\{q,r\}$，$\{p,r,q\}$，但只有一个强连通分量：$\{p,r,q\}$。
 \end{example}
 \begin{definition}[子环]
-	给定环$L$，环$L'$是$L$的子环当且仅当$L' \subset L$且$L'$对应的子图是一个强连通分量。
+给定环$L$，环$L'$是$L$的子环当且仅当$L' \subset L$且$L'$对应的诱导子图是一个环。
 \end{definition}
 \begin{example}
-	程序$P_2$中，环$\lbrace p,r\rbrace$的子环有$\lbrace p\rbrace$和$\lbrace r\rbrace$。
+正依赖图\ref{chap2_fig_dg}中，环$\lbrace p,r\rbrace$的子环有$\lbrace p\rbrace$和$\lbrace r\rbrace$。
 \end{example}
 
-给定逻辑程序P和环L，我们定义如下两种规则的集合：
+给定回答集逻辑程序P和环L，我们定义如下两种规则的集合：
 \begin{align}
 R^+(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) \cap L \ne \emptyset\rbrace\\
 R^-(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) \cap L = \emptyset\rbrace
 \end{align}
 
 一般地，我们会把$R^+(L,P)$简写成$R^+(L)$，把$R^-(L,P)$简写成$R^-(L)$。
-显然，这两个集合是没有交集的。直观上看，$R^+(L)$表示环里面的公式，$R^-(L)$表示可以推出环中原子的公式。
-所以，我们把$R^+(L)$称为内部支持(internal support)的集合，把$R^-(L)$称为外部支持(external support)的集合。
+显然，这两个集合是没有交集的。直观上看，$R^+(L)$表示环里面的公式，$R^-(L)$表示可以推出环中原子的公式。下面，我们给出外部支持的概念。
+\begin{definition}[外部支持]
+给定回答集逻辑程序$P$，$L$是$P$的环。我们称规则$r\in P$是$L$的外部支持(external support)，如果$r\in R^-(L,P)$。
+\end{definition}
+
 需要注意的是，外部支持的概念并不针对环，我们可以把环替换成任意原子集合。
 
-\begin{example}\label{chap2_program_p4}
-	考虑如下正规逻辑程序$P_4$：
+\begin{example}\label{chap2_program_p5}
+考虑回答集逻辑程序\ref{chap2_program_p4}的环$L=\{p, r\}$，有：
 \begin{eqnarray*}
-&& a \leftarrow b.\\
-&& b \leftarrow a.\\
-&& a \leftarrow not\ c.\\
-&& c \leftarrow d.\\
-&& d \leftarrow c.\\
-&& c \leftarrow not\ d.
-\end{eqnarray*}
-	则，该程序有两个环：$L_1=\lbrace a,b\rbrace$和$L_2=\lbrace c,d\rbrace$。对于这两个环，我们有：
-\begin{eqnarray*}
-&& R^+(L_1)=\lbrace a \leftarrow b.\ b \leftarrow a. \rbrace\\
-&& R^-(L_1)=\lbrace a \leftarrow not\ c.\rbrace\\
-&& R^+(L_2)=\lbrace c \leftarrow d.\ d \leftarrow c. \rbrace\\
-&& R^-(L_2)=\lbrace c \leftarrow not\ a.\rbrace
+&& R^+(L)=\{p\leftarrow r.\ \ r\leftarrow p.\}\\
+&& R^-(L)=\{p\leftarrow .\ \ r\leftarrow q.\}
 \end{eqnarray*}
 \end{example}
 
-可以观察到，$R^+(L_1)$和$R^+(L_2)$的回答集都为$\emptyset$。事实上，对于任意逻辑程序$P$和环$L$，$\emptyset$是$R^+(L)$的唯一回答集。因此，环里面的原子不可能属于任何回答集，除非有额外的公式能推出它，比如$R^-(L)$。基于这些观察，Lin等人\cite{lin2004assat}提出了正规逻辑程序的环公式的概念。对于正规逻辑程序$P$和环$L$，其环公式为如下形式：
+可以观察到，$R^+(L)$的回答集为$\emptyset$。事实上，对于任意逻辑程序$P$和环$L$，$\emptyset$是\\$R^+(L)$的唯一回答集。因此，环里面的原子不可能属于任何回答集，除非有额外的规则$r$能推出它，比如$r\in R^-(L)$。基于这些观察，Lin等人(2004)提出了正规逻辑程序的环公式的概念\upcite{lin2004assat}。对于正规逻辑程序$P$和环$L$，其环公式为如下形式：
 \begin{align}
 \neg (\bigvee_{r \in R^-(L)} body(r)) \supset \bigwedge_{p \in L} \neg p\label{chap2_formula_lf_old}
 \end{align}
@@ -276,12 +325,12 @@ R^-(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) 
 	给定逻辑程序$P$，其补全为$Comp(P)$，记$LF$为$P$的所有环公式的集合。原子集合$S$是$P$的回答集，当且仅当它是$Comp(P) \cup LF$的模型。
 \end{theorem}
 
-定理\ref{chap2_theorem_lf}的证明比较复杂，详细过程可以查阅文献\cite{lin2004assat, lee2003loop}。
+定理\ref{chap2_theorem_lf}的证明比较复杂，详细过程可以查阅文献\upcite{lin2004assat, lee2003loop}。
 
 随着理论的发展，环公式概念已经被拓展到析取逻辑程序，下面我们将介绍析取逻辑程序的环公式。正规逻辑程序的环公式可以看成是其特殊情况。
 
 \begin{definition}[析取环公式]
-对于逻辑程序$P$及其环$L$，对应的析取环公式(disju-nctive loop formulas)，记为$DLF(L,P)$，定义为如下形式：
+对于回答集逻辑程序$P$，$L$是$P$的环。$L$对应的析取环公式(DLF：Disjunctive Loop Formulas)，记为$DLF(L,P)$，定义为如下形式：
 \begin{align}
 \bigvee_{p \in L} \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{chap2_definition_dlf}
 \end{align}
@@ -294,9 +343,9 @@ R^-(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) 
 
 直观上，析取环公式的思想是如果环$L$中存在某些原子为真，那么必然存在某些外部支持的体部为真。
 
-环公式的另一种定义是由Lifschitz等人\cite{lee2003loop}提出，由于他把$DLF(L,P)$左边的$\bigvee_{p \in L} p$换成$\bigwedge_{p \in L} p$，所以我们一般也将其称为合取环公式。
+环公式的另一种定义是由Lifschitz等人提出\upcite{lee2003loop}，由于他把$DLF(L,P)$左边的$\bigvee_{p \in L} p$换成$\bigwedge_{p \in L} p$，所以我们一般也将其称为合取环公式。
 \begin{definition}[合取环公式]
-对于逻辑程序$P$及其环$L$，对应的合取环公式(conju-nctive loop formulas)，记为$CLF(L,P)$，定义为如下形式：
+对于回答集逻辑程序$P$，$L$是$P$的环。$L$对应的合取环公式(CLF：Conjunctive Loop Formulas)，记为$CLF(L,P)$，定义为如下形式：
 \begin{align}
 \bigwedge_{p \in L} \supset \bigvee_{r \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r) \backslash L} \neg q)\label{chap2_definition_clf}
 \end{align}
@@ -322,7 +371,7 @@ F_L \supset \bigvee_{r \in R^-(L)}body(r)\label{chap2_definition_lf_nlp}
 
 
 \begin{theorem}\label{chap2_theorem_eq1}
-	给定程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论是等价的：
+	给定回答集逻辑程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论是等价的：
 	\begin{enumerate}
 		\item $S$是$P$的回答集；
 		\item 对于$P$中的所有环$L$，$S$满足$DLF(L,P)$；
@@ -334,7 +383,7 @@ F_L \supset \bigvee_{r \in R^-(L)}body(r)\label{chap2_definition_lf_nlp}
 
 \section{传统的基本环}
 
-Gebser和Schaub在2005年首次提出了正规逻辑程序的基本环(elementary loops)的概念\cite{gebser2005loops}。2011年，他们又把基本环拓展到析取逻辑程序\cite{gebser2011elementary}。
+Gebser和Schaub在2005年首次提出了正规逻辑程序的基本环(elementary loops)的概念\upcite{gebser2005loops}。2011年，他们又把基本环拓展到析取逻辑程序\upcite{gebser2011elementary}。
 
 \begin{definition}[向外的]\label{chap2_definition_outbound}
 	给定一个原子集合$X$及其子集$Y$，若存在$r \in P$,满足以下的条件：
@@ -345,16 +394,16 @@ Gebser和Schaub在2005年首次提出了正规逻辑程序的基本环(elementary loops)的概念\cit
 		\item $body^+(r) \cap Y = \emptyset$
 	\end{enumerate}
 	
-	则称Y在X里是向外(outbound)的。
+	则称Y在X里是向外的(outbound)。
 \end{definition}
 \begin{definition}[基本环]\label{chap2_definition_elementaryloop}
-	给定环$L$和程序$P$，若$L$的所有非空真子集在$L$里都是向外的，那么我们称$L$是基本环(elementary loop)。
+给定回答集逻辑程序$P$及其环$L$，若$L$的所有非空真子集在$L$里都是向外的，那么我们称$L$是基本环(elementary loop)。
 \end{definition}
 \begin{example}
-例\ref{chap2_program_p2}的程序$P_2$有5个基本环：$\lbrace p\rbrace ,\lbrace r\rbrace ,\lbrace q\rbrace ,\lbrace p,r\rbrace ,\lbrace q,r\rbrace$。
+程序\ref{chap2_program_p4}有6个基本环：$\{p\}$，$\{r\}$，$\{q\}$，$\{p,r\}$，$\{q,r\}$，$\{p,q,r\}$。
 \end{example}
 \begin{theorem}\label{chap2_theorem_eq2}
-	给定程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论与定理\ref{chap2_theorem_eq1}的都是等价的：
+给定回答集逻辑程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论与定理\ref{chap2_theorem_eq1}的都是等价的：
 	\begin{enumerate}
 		\item 对于$P$中的所有基本环$L$，$S$满足$CLF(L,P)$；
 		\item 对于$P$中的所有基本环$L$，$S$满足$DLF(L,P)$；
@@ -362,7 +411,7 @@ Gebser和Schaub在2005年首次提出了正规逻辑程序的基本环(elementary loops)的概念\cit
 	\end{enumerate}
 \end{theorem}
 
-Gebser等人\cite{gebser2005loops}在2005年给出了基本环的识别方法，该方法基于基本子图的概念。
+Gebser等人(2005)给出了基本环的识别方法\upcite{gebser2005loops}，该方法基于基本子图的概念。
 \begin{definition}[基本子图]
 	记有向图为$(V,E)$，其中，$V$表示节点的集合，$E$表示有向边的集合。对于正规逻辑程序$P$和原子集合$X$，我们定义如下计算：
 	\begin{center}
@@ -377,19 +426,16 @@ Gebser等人\cite{gebser2005loops}在2005年给出了基本环的识别方法，该方法基于基本子
 	有向图$(X,EC_P(X))$称为原子集合$X$关于程序$P$的基本子图(elementary subgraph)。
 \end{definition}
 \begin{theorem}\label{chap2_theorem_es}
-	给定正规逻辑程序$P$和非空原子集合$X$，$X$是$P$的基本环，当且仅当$X$关于$P$的基本子图是强连通(strongly connected)。
+给定正规逻辑程序$P$和非空原子集合$X$，$X$是$P$的基本环，当且仅当$X$关于$P$的基本子图是强连通(strongly connected)\upcite{gebser2005loops}。
 \end{theorem}
 
 使用定理\ref{chap2_theorem_es}的方法识别正规逻辑程序的基本环的时间复杂度为$O(n^2)$。
-然而，识别析取逻辑程序的基本环可要复杂很多，时间复杂度达到coNP-complete\cite{gebser2011elementary}，这是当今计算机无法承受的。
+然而，识别析取逻辑程序的基本环则是coNP-complete问题\upcite{gebser2011elementary}，这是当今计算机无法承受的。
 
-\begin{definition}[$HEF$程序]\label{chap2_definition_hef}
-	给定一个析取逻辑程序$P$，对于$P$的每个基本环$L$和每条规则$r$，如果$|head(r) \cap  L| \le 1$，那么该程序称为$HEF$(Head-Elementary-loop-Freea)程序。
+\begin{definition}[HEF程序]\label{chap2_definition_hef}
+给定一个回答集逻辑程序$P$，对于$P$的每个基本环$L$和每条规则$r$，如果$|head(r) \cap  L| \le 1$，那么该程序称为头部无基本环程序(HEF程序：Head-Elementary-loop-Free Program)。
 \end{definition}
 
-\begin{proposition}
-	给定一个$HEF$程序$P$，$P$的回答集和$sh(P)$的回答集相同。
-\end{proposition}
 
-相比于普通程序，识别HEF程序的一个基本环要快很多，这是它的一个很好的性质，
-然而，判断一个程序是否为$HEF$程序的时间复杂度为coNP-complete\cite{fassetti2010complexity}。
+给定HEF程序$P$的回答集和$sh(P)$的回答集一一对应\upcite{gebser2011elementary}。和HCF程序相似，HEF程序可以在多项式时间内，转化为非析取逻辑程序\upcite{gebser2011elementary}。与普通的析取逻辑程序不同，HEF程序的基本环的识别只需要多项式的时间复杂度，这是它的一个很好的性质，
+然而，判断一个程序是否为HEF程序则是coNP-complete难题\upcite{fassetti2010complexity}。
