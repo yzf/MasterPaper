@@ -67,7 +67,12 @@ $p$，$p \wedge q$，$(p \vee q) \wedge (r \vee q)$都是合取范式，而$(p \wedge q) \
 任何命题都存在着与之等值的析取范式和合取范式。
 \end{theorem}
 
-
+\begin{proposition}\label{chap2_proposition_imply}
+给定命题$p$和$q$，如果$p\rightarrow q$为真，$p$为真，那么$q$为真。
+\end{proposition}
+\begin{proof}
+由$p\rightarrow q$为真，我们知道$\neg p\vee q$为真。又因为$p$为真，所以$q$为真。
+\end{proof}
 
 
 \section{回答集逻辑程序}
@@ -101,7 +106,7 @@ Lit(P)=Atoms(P) \cup \lbrace \neg\ a|a \in Atoms(P)\rbrace.
 给定文字$l$，它的补(complement)记为$\overline{l}$。若$l$为原子$a$，则$l$的补为$\neg\ a$；若$l$为$\neg\ a$，则$l$的补为$a$。对于任意文字集合$L$，$\overline{L}=\left\lbrace \overline{l}|l \in L \right\rbrace$。
 
 \begin{example}
-考虑以下的程序：
+考虑如下的回答集逻辑程序：
 \begin{equation}\label{chap2_program_p1}
 	\begin{array}{rcl}
 	&& a\leftarrow b,not\ c.\\
@@ -124,7 +129,7 @@ a_1 \vee ... \vee a_k \leftarrow a_{k+1}, ..., a_m, not\ a_{m+1}, ..., not\ a_n.
 其中，$1 \le k \le m \le n$，$a_1, ..., a_n$为原子，即正文字。若$k=1$，则为普通规则。类似地，我们定义$head(r)=\lbrace a_1, ..., a_k\rbrace$，$body^+(r)=\lbrace a_{k+1}, ..., a_m\rbrace$，$body^-(r)=\lbrace a_{m+1}, ..., a_n\rbrace$。
 \end{definition}
 \begin{example}
-考虑以下的程序:
+考虑如下的回答集逻辑程序:
 \begin{equation}\label{chap2_program_p2}
 	\begin{array}{rcl}
 	&&　a \vee b \leftarrow c.\\
@@ -175,7 +180,7 @@ a_1 \vee ... \vee a_k \leftarrow a_{k+1}, ..., a_m, not\ a_{m+1}, ..., not\ a_n.
 
 
 \begin{definition}[回答集逻辑程序的补全]
-	给定一个逻辑程序$P$，其补全$Comp(P)$是$P$的约束和$P$的克拉克补全(Clark completion)的并集\upcite{lin2004assat}。它包括以下子句：
+	给定一个回答集逻辑程序$P$，其补全$Comp(P)$是$P$的约束和$P$的克拉克补全(Clark completion)的并集\upcite{lin2004assat}。它包括以下子句：
 	\begin{enumerate}
 		\item 对于$p \in Atoms(P)$，令$p \leftarrow G_1, ..., p \leftarrow G_n$为$P$中与$p$相关的规则，则$p \equiv G_1 \vee ... \vee G_n$属于 $Comp(P)$。特别地，如果$n=0$，则$p \equiv false$，等价于$\neg\ p$。
 		\item 对于约束$\leftarrow G$，则$\neg G$属于$Comp(P)$。
@@ -236,7 +241,7 @@ Gelfond等人提出了一个转换，通过把析取逻辑程序$P$头部的原子移动(shifting)到体部，
 给定一个析取逻辑程序$P$，其正依赖图(positive dependency graph)，记为$G_P$，是以$P$中原子为顶点的有向图。其中，两原子之间存在从$p$到$q$的有向边，当且仅当，存在$P$中的规则$r$，使得$p \in head(r)$且$q \in body^+(r)$\upcite{lin2004assat}。
 \end{definition}
 \begin{example}
-考虑以下的回答集逻辑程序：\\
+考虑如下的回答集逻辑程序：\\
 \begin{equation}\label{chap2_program_p4}
 	\begin{array}{rcl}
 	&& p\leftarrow .\\
@@ -304,6 +309,13 @@ R^-(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) 
 \end{definition}
 
 需要注意的是，外部支持的概念并不针对环，我们可以把环替换成任意原子集合。
+
+\begin{proposition}\label{chap2_proposition_dag}
+	给定回答集逻辑程序$P$，$L$都是$P$的环，$E$是$L$的非空真子集。如果$R^-(E) \subseteq R^-(L)$，那么存在环$L'$，满足$R^-(L')\subseteq R^-(L)$，$L'\subset L$。
+\end{proposition}
+\begin{proof}
+	如果$E$是环，那么$L'=E$满足要求。如果$E$不是环，那么对于$E$在正依赖图$G_P$中的诱导子图$G^E_P$，我们可以把$G^E_P$的强连通分量看成一个整体，则会形成有向无环图，而有向无环图是肯定存在出度为0的节点的。因此，总会存在强连通分量$L'\subset E$，使得不存在规则$r$，满足$head(r)\cap L'\ne \emptyset$，$body^+(r)\cap L'=\emptyset$，$body^+(r)\cap (E\backslash L')\ne \emptyset$。换句话说，对于所有$r\in R^-(L')$，有$body^+(r)\cap E=\emptyset$，由此可得$R^-(L')\subseteq R^-(E)$，所以存在环$L'$，满足$R^-(L')\subseteq R^-(L)$，$L'\subset L$。\quad
+\end{proof}
 
 \begin{example}\label{chap2_program_p5}
 考虑回答集逻辑程序\ref{chap2_program_p4}的环$L=\{p, r\}$，有：
@@ -383,10 +395,10 @@ F_L \supset \bigvee_{r \in R^-(L)}body(r)\label{chap2_definition_lf_nlp}
 
 \section{传统的基本环}
 
-Gebser和Schaub在2005年首次提出了正规逻辑程序的基本环(elementary loops)的概念\upcite{gebser2005loops}。2011年，他们又把基本环拓展到析取逻辑程序\upcite{gebser2011elementary}。
+Gebser和Schaub在2005年首次提出了正规逻辑程序的基本环(elementary loops)的概念\upcite{gebser2005loops}。2011年，他们又把基本环拓展到析取逻辑程序。
 
 \begin{definition}[向外的]\label{chap2_definition_outbound}
-	给定一个原子集合$X$及其子集$Y$，若存在$r \in P$,满足以下的条件：
+	给定回答集逻辑程序$P$，原子集合$X$及其子集$Y$，若存在$r \in P$，满足以下的条件：
 	\begin{enumerate}
 		\item $head(r) \cap Y \ne \emptyset$
 		\item $head^+(r) \cap (X \backslash Y) \ne \emptyset$
@@ -394,10 +406,13 @@ Gebser和Schaub在2005年首次提出了正规逻辑程序的基本环(elementary loops)的概念\upc
 		\item $body^+(r) \cap Y = \emptyset$
 	\end{enumerate}
 	
-	则称Y在X里是向外的(outbound)。
+	则称Y在X里是向外的(outbound)。特别地，当$P$是正规逻辑程序时，条件1则化简为$head(r)\in Y$。
 \end{definition}
+
+
+
 \begin{definition}[基本环]\label{chap2_definition_elementaryloop}
-给定回答集逻辑程序$P$及其环$L$，若$L$的所有非空真子集在$L$里都是向外的，那么我们称$L$是基本环(elementary loop)。
+给定回答集逻辑程序$P$及其环$L$，若$L$的所有非空真子集在$L$里都是向外的，那么我们称$L$是基本环(elementary loop)。特别地，对于正规逻辑程序，非空真子集可以被替换为$L$的子环\upcite{gebser2011elementary}。
 \end{definition}
 \begin{example}
 程序\ref{chap2_program_p4}有6个基本环：$\{p\}$，$\{r\}$，$\{q\}$，$\{p,r\}$，$\{q,r\}$，$\{p,q,r\}$。
@@ -411,7 +426,7 @@ Gebser和Schaub在2005年首次提出了正规逻辑程序的基本环(elementary loops)的概念\upc
 	\end{enumerate}
 \end{theorem}
 
-Gebser等人(2005)给出了基本环的识别方法\upcite{gebser2005loops}，该方法基于基本子图的概念。
+Gebser等人(2005)给出了正规逻辑程序的基本环的识别方法\upcite{gebser2005loops}，该方法基于基本子图的概念。
 \begin{definition}[基本子图]
 	记有向图为$(V,E)$，其中，$V$表示节点的集合，$E$表示有向边的集合。对于正规逻辑程序$P$和原子集合$X$，我们定义如下计算：
 	\begin{center}

@@ -1,7 +1,222 @@
 \chapter{改进的基本环}
-本文在对Gebser等人\cite{gebser2005loops}提出的基本环进行深入研究后，提出了基本环的另一种更为直观的定义。
-基于这种全新的定义，我们提出一个新的识别算法。
-该算法的时间复杂性和Gebser等人\cite{gebser2005loops}提出的一样，然而，本文的算法使用的是自顶向下的策略，而Gebser等人\cite{gebser2005loops}的则是自底向上。
-算法的核心思想来源于环的外部支持和环公式。
-本章先针对正规逻辑程序讨论基本环的概念，然后，我们把基本环拓展到析取逻辑程序。
+本章从外部支持和环公式的角度出发，提出了基本环的另一种更为直观的定义。
+基于这种定义，我们给出正规逻辑程序的基本环的多项式时间复杂度的识别算法。与Gebser等人提出的自底向上的算法\upcite{gebser2005loops}不同，该算法使用的是自顶向下的策略。对于析取逻辑程序，本章同样给出了多项式时间复杂度的近似算法，用于判定其环是否属于基本环的一个超类。
 
+
+
+
+\section{正规逻辑程序的基本环}
+本节，我们将针对正规逻辑程序，提出基本环的另一种定义，并基于这种定义，给出对应的识别算法。
+
+
+
+
+
+\subsection{基本环的定义}
+在定义基本环之前，我们先给出与合取环公式相关的一个推论。
+\begin{corollary}\label{chap3_corollary_nlp_el_clf}
+	给定正规逻辑程序$P$，$L_1$和$L_2$为$P$的环。如果$L_1 \subseteq L_2$且$R^-(L_1) \subseteq R^-(L_2)$，那么有$CLF(L_1,P) \supset CLF(L_2,P)$。
+\end{corollary}
+\begin{proof}
+	记$A=\bigwedge_{p \in L_1}p$，$B=\bigwedge_{p \in L_2}p$，$C=\bigvee_{r \in R^-(L_1)}body(r)$，$D=\bigvee_{r \in R^-(L_2)}\\body(r)$，则
+	\begin{eqnarray*}
+		&& CLF(L_1,P) \supset CLF(L_2,P)\\
+		&& \Leftrightarrow (A \rightarrow C) \rightarrow (B \rightarrow D)\\
+		&& \Leftrightarrow (\neg A \vee C) \rightarrow (\neg B \vee D)\\
+		&& \Leftrightarrow (A \wedge \neg C) \vee (\neg B \vee D)\\
+		&& \Leftrightarrow (A \vee \neg B \vee D) \wedge (\neg C \vee \neg B \vee D)
+	\end{eqnarray*}
+
+另一方面，对于$L_1 \subseteq L_2$，有：$\bigwedge_{p \in L_1}p \leftarrow \bigwedge_{p \in L_2}p$，即$B \rightarrow A$为真。
+对于$R^-(L_1) \subseteq R^-(L_2)$，有：$\bigvee_{r \in R^-(L_1)}body(r) \rightarrow \bigvee_{r \in R^-(L_2)}body(r)$，即$C \rightarrow D$为真。所以有：
+\begin{eqnarray*}
+	&& true \wedge true\\
+	&& \Leftrightarrow (B \rightarrow A) \wedge (C \rightarrow D)\\
+	&& \Leftrightarrow (\neg B \vee A) \wedge (\neg C \vee D)\\
+	&& \Rightarrow (\neg B \vee A \vee D) \wedge (\neg C \vee \neg B \vee D)
+\end{eqnarray*}
+
+由命题\ref{chap2_proposition_imply}，我们知道$(\neg B \vee A \vee D) \wedge (\neg C \vee \neg B \vee D)$为真，即$CLF(L_1,P) \supset CLF(L_2,P)$为真。\quad
+\end{proof}
+
+由推论\ref{chap3_corollary_nlp_el_clf}，我们可以知道，对于满足$L_1 \subseteq L_2$且$R^-(L_1) \subseteq R^-(L_2)$的两个环$L_1$和$L_2$，
+因为$L_1$的环公式已经可以蕴含$L_2$的环公式了，所以$L_2$的环公式就没有存在的必要。
+
+
+\begin{definition}[未被抑制的]\label{chap3_definition_unsubdued}
+给定正规逻辑程序$P$，$L$是$P$的环。如果不存在$P$的其他环$L'\subset L$，满足$R^-(L') \subseteq R^-(L)$，那么我们称$L$是未被抑制的(unsubdued)。
+\end{definition}
+
+直观上看，定义\ref{chap2_definition_outbound}的外向概念想要表达的意思为：
+原子集合$Y$在其超集$X$中是外向的，当且仅当存在$r \in P$，满足$r \in R^-(Y)$且$r \notin R^-(X)$。
+令$L$为正规逻辑程序$P$的环，$L$的所有子环$L'$在$L$里都是向外的，当且仅当$R^-(L') \nsubseteq R^-(L)$，即$L'$是未被抑制的。下面，我们将给出详细的证明。
+
+\begin{proposition}\label{chap3_proposition_elementaryloop}
+给定正规逻辑程序$P$，$L$是$P$的环。$L$是$P$的基本环，当且仅当$L$在$P$中是未被抑制的。
+\end{proposition}
+\begin{proof}
+证明过程分为两步，如下所示。
+
+$(\Rightarrow)$
+
+由于$L$是$P$的基本环，所以$L$的所有子环$L'$在$L$里都是向外的。因此，对于任意子环$L'$，存在规则$r \in P$，满足$head(r) \in L'$，$body^+(r) \cap (L \backslash L') \ne \emptyset$，$body^+(r) \cap L'= \emptyset$。显然，规则$r$满足$r \in R^-(L')$且$r \notin R^-(L)$，因此，$R^-(L')\nsubseteq R^-(L)$。由此可知，不存其他环$L'\subset L$，满足$R^-(L') \subseteq R^-(L)$。因此$L$是未被抑制的。
+
+$(\Leftarrow)$
+
+由于$L$在$P$中是未被抑制的，所以任意环$L'\subset L$，有$R^-(L') \nsubseteq R^-(L)$。因此，存在规则$r$，使得$r \in R^-(L')$且$r \notin R^-(L)$。显然，规则$r$满足$head(r) \in L'$，$body^+(r) \cap (L \backslash L') \ne \emptyset$，$body^+(r) \cap L'=\emptyset$，即$L'$在$L$中是向外的。因此，$L$是基本环。
+\end{proof}
+
+基于前面的推论和证明，我们可以从外部支持的角度，重新定义正规逻辑程序的基本环的概念。
+\begin{definition}[正规逻辑程序的基本环]\label{chap3_definition_el}
+给定正规逻辑程序$P$，$L$是$P$的环。如果不存在$P$的其他环$L'\subset L$，满足$R^-(L')\subseteq R^-(L)$，那么我们称$L$是$P$的基本环。
+\end{definition}
+
+
+
+
+
+
+
+\subsection{基本环的识别}
+
+根据定义\ref{chap3_definition_el}，下面给出正规逻辑程序基本环的识别算法。
+算法\ref{algo_ElementaryLoop}从环$L$出发，考虑其子环的性质。
+为了得到$L$的子环，我们的方法是先通过剔除$L$中的一个原子破坏$L$的连通性，得到诱导子图，
+然后通过求诱导子图的强连通分量得到部分子环的集合，对于每个子环$C$：
+
+\begin{enumerate}
+	\item 如果$R^-(C) \subseteq R^-(L)$，根据定义\ref{chap3_definition_el}，$L$不符合条件，此时，返回$C$，表示$C$使得$L$不是基本环；
+	\item 如果$R^-(C) \nsubseteq R^-(L)$，那么我们需要考虑$C$的子环。注意到，对于任意的$r \in R^-(C) \backslash R^-(L)$，有$r \notin R^-(L)$，同时$head(r)$肯定不属于任意非向外的子环$L'$中，因为如果$head(r)\in L'$，则有$r \in R^-(L')$。因为$L'$是非向外的，所以有$R^-(L') \subseteq R^-(L)$，这样就会得出$r \in R^-(L)$，导致矛盾。所以在这种情况下，我们可以直接把$head(R^-(C) \backslash R^-(L))$从当前子图中删除，从而得到更小的子图和子环，然后继续进行检测。
+\end{enumerate}
+
+\RestyleAlgo{ruled}\LinesNumbered\input{algo/ElementaryLoop.tex}
+
+与Gebser等人\cite{gebser2005loops}提出的基本环识别算法不同的是，算法\ref{algo_ElementaryLoop}采取自顶向下的策略，先大环开始，逐步深入到小环。
+注意到，该算法每次都至少删除子图中的一个原子。所以，在最坏的情况下，算法\ref{algo_ElementaryLoop}将迭代$n^2$次，其中，$n$为环$L$中的原子数目。
+另一方面，由于图的强连通分量可以在线性时间里面计算出，所以整个算法的时间复杂性为$O(n^2)$。
+
+
+\begin{proposition}
+给定正规逻辑程序$P$，$L$为$P$的环。算法\ref{algo_ElementaryLoop}将在$O(n^2)$时间内返回$L$，或者环$C$，其中$C$满足：
+\begin{enumerate}
+	\item $C\subset L$；
+	\item $R^-(C)\subseteq R$。
+\end{enumerate}
+
+算法\ref{algo_ElementaryLoop}会返回$L$，当且仅当$L$是$P$的基本环。
+\end{proposition}
+\begin{proof}
+	首先，如果算法\ref{algo_ElementaryLoop}返回原子集合$C$，$C\ne L$，那么$C$是原程序的正依赖图$G_P$的诱导子图的强连通分量，且满足$R^-(C)\subseteq R^-(L)$。显然，$C$是$P$的环。
+	
+	下面，我们将证明，如果存在$P$的环$L'$，满足$L'\subset L$，$R^-(L')\subseteq R^-(L)$，那么算法\ref{algo_ElementaryLoop}将返回一个原子集合$C'$，$C'\subset L$。令原子$a\in L\backslash L'$，则$L'$在$G_P$关于原子集合$L\backslash \{a\}$的诱导子图的强连通分量中。令$L'$所在的强连通分量为$C$，那么会有如下的两种情况：
+	\begin{enumerate}
+		\item 如果$R^-(C)\subseteq R^-(L)$，那么算法\ref{algo_ElementaryLoop}将会返回$C$，此时$C$就是我们在找的环；
+		\item 如果$R^-(C)\nsubseteq R^-(L)$，那么必定有$head(R^-(C)\backslash R^-(L))\cap L'=\emptyset$，否则，就会存在$r\in P$，满足$head(r)\in L'$，$head(r)\in R^-(C)$。注意到，$L'\subseteq C$，所以$r\in R^-(L')$，$r\notin R^-(L)$，即$R^-(L')\nsubseteq R^-(L)$，这与我们的假定矛盾。所以，$L'$仍然在$G_P$关于原子集合$C\backslash head(R^-(C)\backslash R^-(L))$的诱导子图的强连通分量中，并且该强连通分量会被加入到$SCC^*$。在之后的迭代，算法\ref{algo_ElementaryLoop}会继续分析该连通分量。所以，原子集合$C$，$C\subset L$最终会被算法\ref{algo_ElementaryLoop}返回。
+	\end{enumerate}
+	
+	综合上述，如果返回$L$，那就说明不存在$P$的其他环$L'$，满足$L'\subset L$，$R^-(L')\subseteq R^-(L)$。根据定义\ref{chap3_definition_el}，$L$是基本环。
+\end{proof}
+
+
+
+
+\section{析取逻辑程序的基本环}
+
+上节，我们从外部支持的角度，重新定义了正规逻辑程序的基本环。
+本节，我们将把这种基于外部支持的定义拓展到析取逻辑程序。
+
+\subsection{基本环的定义}
+在讨论基本环之前，我们先给出受限制的外部支持的概念。
+\begin{definition}[受限的外部支持]	
+	给定析取逻辑程序$P$，$X$和$Y$为$P$中的原子集合。我们称规则$r\in P$是$Y$受$X$限制的外部支持，如果$r\in R_X^-(Y)$。其中，$R_X^-(Y)=\lbrace r|r \in R^-(Y)\ and\ head(r) \cap (X\backslash Y)=\emptyset \rbrace$。
+\end{definition}
+
+
+\begin{corollary}\label{chap3_corollary_dlp_el_clf}
+	给定析取逻辑程序$P$，$L_1$和$L_2$为$P$中的环。如果$L_1 \subseteq L_2$且$R_{L_2}^-(L_1) \subseteq R^-(L_2)$，那么有$CLF(L_1,P) \supset CLF(L_2,P)$。
+\end{corollary}
+\begin{proof}
+	由$L_1 \subseteq L_2$，得$\bigwedge_{p \in L_2} p \supset \bigwedge_{p \in L_1} p$。
+	对于任意规则$r \in R^-(L_1)$，
+	如果$r \in R^-_{L_2}(L_1)$，此时$head(r) \cap (L_2\backslash L_1)=\emptyset$，那么有$head(r) \backslash L_1=head(r) \backslash L_2$，所以此时可得：
+	$$body(r) \wedge \bigwedge_{q \in head(r)\backslash L_1}\neg q \supset body(r) \wedge \bigwedge_{q \in head(r)\backslash L_2}\neg q$$
+	如果$r \notin R^-_{L_2}(L_1)$，此时$head(r) \cap (L_2\backslash L_1)\ne \emptyset$，那么存在$q$，满足$q\in head(r)\backslash L_1$，$q\in L_2$。注意到，在$\bigwedge_{p\in L_2}$为真的条件下，$body(r)\wedge \bigwedge_{q\in head(r)\backslash L_1}\neg q$为假。所以此时也有：
+	$$body(r) \wedge \bigwedge_{q \in head(r)\backslash L_1}\neg q \supset body(r) \wedge \bigwedge_{q \in head(r)\backslash L_2}\neg q$$
+	另一方面，注意到$R_{L_2}^-(L_1) \subseteq R^-(L_2)$，所以在$\bigwedge_{p\in L_2} p$为真的情况下，有：
+	$$\bigvee_{r\in R^-(L_1)}(body(r) \wedge \bigwedge_{q \in head(r)\backslash L_1}\neg q) \supset \bigvee_{r\in R^-(L_2)}(body(r) \wedge \bigwedge_{q \in head(r)\backslash L_2}\neg q)$$
+	综合上述，$CLF(L_1,P) \supset CLF(L_2,P)$成立。\quad
+\end{proof}
+
+由推论\ref{chap3_corollary_dlp_el_clf}，我们知道$L_1$的合取环公式已经可以蕴含$L_2$的合取环公式，因此$L_2$的合取环公式在回答集的计算中是多余的。
+
+根据基本环的定义，如果环$L$的所有非空真子集在$L$中都是向外的，$L$才是程序的基本环。而原子集合$C$在$L$中是向外的，当且仅当存在规则$r\in P$，使得$r\in R_L^-(C)$，$r\notin R^-(L)$，当且仅当$R^-_L(C) \nsubseteq R^-(L)$。利用这些已有结论，我们从外部支持的角度，重新给出析取逻辑程序的基本环的概念。
+
+\begin{proposition}\label{chap3_proposition_dlp_elementaryloop}
+	给定析取逻辑程序$P$，$L$是$P$的环。$L$是$P$的基本环，当且仅当不存在$L$的非空真子集$L'$，使得$R_L^-(L') \subseteq R^-(L)$。
+\end{proposition}
+\begin{proof}
+	证明过程分为两步，如下所示。
+	
+	$(\Rightarrow)$
+	
+	使用反证法，假设存在这样的$L'$，那么对于任意满足$head(r)\cap L'\ne \emptyset$，$head(r)\cap (L\backslash L')=\emptyset$，$body^+(r)\cap L'=\emptyset$的规则$r$，即$r\in R^-_L(L')$，由于$R^-_L(L')\subseteq R^-(L)$，所以有$r\in R^-(L)$。此时可得：$body^+(r)\cap L=\emptyset$，因此，$body^+(r)\cap (L\backslash L')=\emptyset$，即不存在规则$r$，使得$L'$是向外的，所以$L$不是基本环，矛盾。
+	
+	$(\Leftarrow)$
+	
+	使用反证法，假设$L$不是基本环，那么存在非空真子集$L'$不是向外的，所以存在规则$r$，使得$head(r)\cap L'\ne \emptyset$，$head(r)\cap (L\backslash L')=\emptyset$，$body^+(r)\cap L'=\emptyset$，$body^+(r)\cap (L\backslash L')\ne \emptyset$，即$r\in R^-_L(L')$，$head(r)\cap (L\backslash L')=\emptyset$，$body^+(r)\cap (L\backslash L')\ne \emptyset$。由于$body^+(r)\cap (L\backslash L')\ne \emptyset$，所以有$body^+(r)\cap L\ne \emptyset$，即$r\notin R^-(L)$，这和$R^-_L(L')\subseteq R^-(L)$矛盾。\quad
+\end{proof}
+
+基于命题\ref{chap3_proposition_dlp_elementaryloop}，我们可以重新定义析取逻辑程序的基本环。
+\begin{definition}[析取逻辑程序的基本环]\label{chap3_definition_el_dlp}
+	给定析取逻辑程序$P$，$L$是$P$的环。如果不存在$L$的非空真子集$L'$，满足$R_L^-(L') \subseteq R^-(L)$，那么我们称$L$是$P$的基本环。
+\end{definition}
+
+
+\subsection{基本环的识别}
+
+Gebser等人(2011)证明了识别析取逻辑程序的基本环属于是coNP-complete的难题\upcite{gebser2011elementary}，这是计算机无法承受的。
+虽然准确地识别析取逻辑程序的基本环的时间代价太大，但是，如果可以容忍一定的出错率，我们可以在识别过程中，使用近似处理，那么就能在多项式时间内判断一个环$L$是否属于基本环的一个超集，记为$EL^*(P)$。
+
+下面，我们给出算法\ref{algo_ElementaryLoopXing}。算法\ref{algo_ElementaryLoopXing}的过程和算法\ref{algo_ElementaryLoop}相似，通过自顶向下的策略，考虑了环$L$的所有子环。对于每一个子环$C$，有两种情况：
+
+\begin{enumerate}
+	\item 如果$R_L^-(C) \subseteq R^-(L)$，那么根据定义\ref{chap3_definition_el_dlp}，环$L$不是基本环；
+	\item 如果$R_L^-(C) \nsubseteq R^-(L)$，那么对于任意规则$r \in R_L^-(C) \backslash R^-(L)$：
+	\begin{enumerate}
+		\item 若$|head(r) \cap C|=1$，则$head(r) \cap C$不可能在非向外的环$L'$里，其中，$L' \subset C$。否则，就会有$r \in R_L^-(L')$，而由$L'$是非向外的，有$R_L^-(L') \subseteq R^-(L)$，从而得出$r \in R_L^-(L)$，矛盾。此时，可以删除$r$；
+		\item 若$|head(r) \cap C|>1$，则可能会有$L' \subseteq C$，使得$r \in R^-(L')$，$head(r) \cap (L \backslash L') \neq \emptyset$。此时，$L' \cap (head(r) \cap C) \neq \emptyset$，根据基本环的定义，不能删除$r$。然而，为了优化识别时间，该算法采取了近似操作，在这里同样对$r$进行删除。
+	\end{enumerate}
+\end{enumerate}
+
+\RestyleAlgo{ruled}\LinesNumbered\input{algo/ElementaryLoopXing.tex}
+
+给定任意析取逻辑程序$P$及其环$L$，算法\ref{algo_ElementaryLoopXing}要么返回环$L$，要么返回环$C$，其中，$C \subset L$，$R_L^-(C) \subseteq R^-(L)$。
+若返回环$C$，则$L$肯定不是基本环；若返回$L$，则有可能是基本环，也有可能不是。
+
+算法\ref{algo_ElementaryLoopXing}是算法\ref{algo_ElementaryLoop}的一样，每次迭代至少删除一个原子。
+在最坏的情况下，整个算法迭代$n^2$次，$n$为环的原子的数目。
+由于强连通分量可以在线性时间内求得，所以算法\ref{algo_ElementaryLoopXing}的时间复杂度为$O(n^2)$。
+
+\begin{example}\label{chap3_program_p5}
+	考虑环$L=\lbrace p, q, r\rbrace$和以下析取逻辑程序P：
+	\begin{equation}
+	\begin{array}{rcl}
+		&& p \vee q \leftarrow r.\\
+		&& p \vee r \leftarrow q.\\
+		&& q \vee r \leftarrow p.\\
+		&& r \leftarrow.
+	\end{array}
+	\end{equation}
+	
+	$ElementaryLoop^*(L,P)$返回$L$，事实上，$L$并不是$P$的基本环。因为对于$L'=\lbrace p, q\rbrace$：
+	\begin{eqnarray*}
+		&& R^-_L(L')=\emptyset \\
+		&& R^-(L)=\lbrace r \leftarrow .\rbrace
+	\end{eqnarray*}
+	
+	所以$R_L^-(L') \subseteq R^-(L)$。
+\end{example}
+
+记$EL(P)$为程序$P$的基本环的集合，$EL^*(P)$为使用算法\ref{algo_ElementaryLoopXing}求得的环的集合，即$EL^*(P)=\lbrace L|L$是程序$P$的环且$ElementaryLoop^*(L,P)$返回$L\rbrace$。
+那么，对于任意析取逻辑程序$P$，有$EL(P) \subseteq EL^*(P)$。特别地，如果$P$为正规逻辑程序，那么$EL(P)=EL^*(P)$。
+另外，$HEF$程序虽然属于析取逻辑程序，但是由于它有性质$|head(r) \cap L| \le 1$，所以$EL(P)=EL^*(P)$。
