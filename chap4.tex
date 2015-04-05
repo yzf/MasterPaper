@@ -1,17 +1,11 @@
-\chapter{特征环(Proper Loops)}
+\chapter{正规逻辑程序的特征环}
 
-上一章，我们介绍了基本环的概念，并且指出，基本环已经足以完成回答集的求解。
-本章，我们将进一步指出，并非所有的基本环对于回答集的求解都是必须的，同时，提出了特征环的概念。
-本章分别从正规逻辑程序和析取逻辑程序的角度介绍特征环及其识别算法，基于特征环的概念，我们还提出了$HPF$(Head-Proper-loop-Free)程序。
-针对识别特征环的时间代价高的问题，我们提出了弱特征环和$HWPF$(Head-Weak-Proper-loop-Free)程序的概念和识别算法。
+上一章，我们从外部支持的角度，重新定义了回答集逻辑程序的基本环的概念，并且讨论了相关的识别算法。事实上，并非所有的基本环对于回答集的求解都是必须的。本章，我们将针对正规逻辑程序，提出特征环的概念，同时，我们将给出一个多项式时间复杂度的算法，用于识别程序的特征环。
 
-\section{正规逻辑程序的特征环}
 
-本节，我们将针对正规逻辑程序，提出特征环的概念，并给出对应的识别算法。
+\section{特征环的定义}
 
-\subsection{特征环的定义}
-
-对于合取环公式\ref{chap2_definition_clf_nlp}的体部$\bigwedge_{p\in L} p$，实际上，我们并不要关注环$L$中的所有原子。对于$p\in L$，如果不存在规则$r\in R^-(L)$，使得$head(r)=p$，那么原子$p$的真假性是由环中的其他原子决定的。所以，我们可以考虑使用$\bigwedge_{p\in head(R^-(L))} p$替换$\bigwedge_{p\in L} p$，得到另一种形式的环公式。
+对于合取环公式(公式\ref{chap2_definition_clf_nlp})的体部$\bigwedge_{p\in L} p$，实际上，我们并不需要关注环$L$中的所有原子。对于$p\in L$，如果不存在规则$r\in R^-(L)$，使得$head(r)=p$，那么原子$p$的真假性是由环中的其他原子决定的。所以，我们可以考虑使用$\bigwedge_{p\in head(R^-(L))} p$替换$\bigwedge_{p\in L} p$，得到另一种形式的环公式。
 
 给定正规逻辑程序$P$，$L$为$P$中的环。用$RLF(L,P)$表示以下的蕴含式：
 \begin{equation}
@@ -23,69 +17,76 @@
 \bigwedge_{p \in L} p \supset \bot
 \end{equation}
 
-显然，$RLF(L,P)$是$LF(L,P)$的一个特殊情况。利用$RLF(L,P)$，我们可以在基本环的基础上，加入更多的限制，从而进一步减少回答集的求解所需要的环的数量。
-\begin{corollary}\label{chap4_corollary_nlp_clf}
-给定正规逻辑程序$P$，$L_1$和$L_2$为$P$的环。如果$R^-(L_1) \ne \emptyset$，$R^-(L_1) \\\subseteq R^-(L_2)$，那么$RLF(L_1,P) \supset RLF(L_2,P)$。
+显然，$RLF(L,P)$是$LF(L,P)$的一个特殊情况。直观上看，$RLF(L,P)$的意思是，如果$L$内有外部支持支撑的原子都为真，那么至少会有一个的外部支持的体部为真。利用$RLF(L,P)$，我们可以在基本环的基础上，加入更多的限制，从而进一步减少回答集的求解所需要的环的数量。
+
+首先，我们给出与$RLF(L,P)$相关的推论。
+\begin{corollary}\label{chap5_corollary_nlp_clf}
+	给定正规逻辑程序$P$，$L_1$和$L_2$为$P$的环。如果$R^-(L_1) \ne \emptyset$，$R^-(L_1) \\\subseteq R^-(L_2)$，那么$RLF(L_1,P) \supset RLF(L_2,P)$。
 \end{corollary}
 \begin{proof}
-记$A=\bigwedge_{p \in head(R^-(L_1))} p$，$B=\bigvee_{p \in R^-(r)} body(r)$，$C=\bigwedge_{p \in head(R^-(L_2))} p$，\\
-$D=\bigvee_{p \in R^-(L_2)} body(r)$，则：
-\begin{eqnarray*}
-&& RLF(L_1,P) \supset RLF(L_2,P)\\
-&& \Leftrightarrow (A \rightarrow B) \rightarrow (C \rightarrow D)\\
-&& \Leftrightarrow (\neg A \vee B) \rightarrow (\neg C \vee D)\\
-&& \Leftrightarrow (A \wedge \neg B) \vee (\neg C \vee D)\\
-&& \Leftrightarrow (A \vee \neg C \vee D) \wedge (\neg B \vee \neg C \vee D)
-\end{eqnarray*}	
-
-另一方面，由$R^-(L_1) \subseteq R^-(L_2)$，得：$\bigwedge_{p \in head(R^-(L_1))} p \leftarrow  \bigwedge_{p \in head(R^-(L_2))} p$，即$C \rightarrow A$为真。
-由$R^-(L_1) \subseteq R^-(L_2)$，得：$\bigvee_{p \in R^-(r)} body(r) \rightarrow \bigvee_{p \in R^-(L_2)} body(r)$，即$B \rightarrow D$为真。所以有：
-\begin{eqnarray*}
-&& true \wedge true\\
-&& \Leftrightarrow (C \rightarrow A) \wedge (B \rightarrow D)\\
-&& \Leftrightarrow (\neg C \vee A) \wedge (\neg B \vee D)\\
-&& \Rightarrow (\neg C \vee A \vee D) \wedge (\neg C \vee \neg B \vee D)
-\end{eqnarray*}
-
-由于对于$p \rightarrow q$为真，若$p$为真，则$q$为真，所以得出$RLF(L_1,P) \supset RLF(L_2,P)$\\
-为真。\quad
+	记$A=\bigwedge_{p \in head(R^-(L_1))} p$，$B=\bigvee_{p \in R^-(r)} body(r)$，$C=\bigwedge_{p \in head(R^-(L_2))} p$，\\
+	$D=\bigvee_{p \in R^-(L_2)} body(r)$，则：
+	\begin{eqnarray*}
+		&& RLF(L_1,P) \supset RLF(L_2,P)\\
+		&& \Leftrightarrow (A \rightarrow B) \rightarrow (C \rightarrow D)\\
+		&& \Leftrightarrow (\neg A \vee B) \rightarrow (\neg C \vee D)\\
+		&& \Leftrightarrow (A \wedge \neg B) \vee (\neg C \vee D)\\
+		&& \Leftrightarrow (A \vee \neg C \vee D) \wedge (\neg B \vee \neg C \vee D)
+	\end{eqnarray*}	
+	
+	另一方面，由$R^-(L_1) \subseteq R^-(L_2)$，得：$\bigwedge_{p \in head(R^-(L_1))} p \leftarrow  \bigwedge_{p \in head(R^-(L_2))} p$，即$C \rightarrow A$为真。
+	由$R^-(L_1) \subseteq R^-(L_2)$，得：$\bigvee_{p \in R^-(r)} body(r) \rightarrow \bigvee_{p \in R^-(L_2)} body(r)$，即$B \rightarrow D$为真。所以有：
+	\begin{eqnarray*}
+		&& true \wedge true\\
+		&& \Leftrightarrow (C \rightarrow A) \wedge (B \rightarrow D)\\
+		&& \Leftrightarrow (\neg C \vee A) \wedge (\neg B \vee D)\\
+		&& \Rightarrow (\neg C \vee A \vee D) \wedge (\neg C \vee \neg B \vee D)
+	\end{eqnarray*}
+	
+	根据命题\ref{chap2_proposition_imply}，有$(\neg C \vee A \vee D) \wedge (\neg C \vee \neg B \vee D)$为真，即$RLF(L_1,P) \supset RLF(L_2,P)$为真。
+	\qed
 \end{proof}
 
-基于推论\ref{chap4_corollary_nlp_clf}，我们可以给出一种新的环(特征环)的定义。
-\begin{definition}[正规逻辑程序的特征环]\label{chap4_definition_nlp_properloop}
-给定正规逻辑程序$P$，$L$为$P$的环。我们称$L$为$P$的特征环，如果不存在$P$其他环$L'$，使得$L' \subset L$，$R^-(L') \subseteq R^-(L)$或者$R^-(L') \ne \emptyset$，$R^-(L') \subset R^-(L)$。
+基于推论\ref{chap5_corollary_nlp_clf}，我们可以给出一种特征环的定义。
+\begin{definition}[正规逻辑程序的特征环]\label{chap5_definition_nlp_properloop}
+	给定正规逻辑程序$P$，$L$为$P$的环。我们称$L$为$P$的特征环，如果$L$是基本环，同时，不存在$P$的基本环$L'$，使得$R^-(L') \ne \emptyset$，$R^-(L') \subset R^-(L)$。
 \end{definition}
 
-注意到，特征环的第一个条件实际上就是要求环$L$是未被抑制的，根据命题\ref{chap3_proposition_elementaryloop}，我们可以知道，其实就是要求$L$是基本环。因此，特征环是在基本环的基础上，再加入了额外的限制，所以特征环是基本环的子集。
+注意到，特征环是在基本环的基础上，再加入了额外的限制，所以特征环是基本环的子集。
 
-\begin{theorem}\label{chap4_theorem_eq4}
-给定正规逻辑程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论和定理\ref{chap2_theorem_eq1}、定理\ref{chap2_theorem_eq2}以及定理\ref{chap3_theorem_eq3}都是等价的：
-\begin{enumerate}
-	\item 对于$P$中任意特征环$L$，$S$满足$RLF(L,P)$；
-	\item 对于$P$中任意特征环$L$，$S$满足$DLF(L,P)$；
-\end{enumerate}
+\begin{theorem}\label{chap5_theorem_eq4}
+	给定正规逻辑程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论和定理\ref{chap2_theorem_eq1}与定理\ref{chap2_theorem_eq2}都是等价的：
+	\begin{enumerate}
+		\item 对于$P$中任意特征环$L$，$S$满足$RLF(L,P)$；
+		\item 对于$P$中任意特征环$L$，$S$满足$DLF(L,P)$；
+	\end{enumerate}
 \end{theorem}
 \begin{example}
-考虑例\ref{chap2_program_p1}的程序$P_1$，由于$R^-(\{p,r\})=\{p \leftarrow .,\ r \leftarrow q.\}$，$R^-(\{p\})=\{p \leftarrow .,\ p \leftarrow r.\}$，$R^-(\{p,q,r\})=\{p \leftarrow .\}$，所以$\{p,r\}$和$\{p\}$都不是特征环。
-
-由于$R^-(\{r\})=\{r \leftarrow p.\ r \leftarrow q.\}$，$R^-(\{q,r\})=\{r \leftarrow p.\}$，所以$\{r\}$也不是特征环。
-
-因此，$P_1$的特征环只有$\{q\},\{r,q\},\{p,r,q\}$。
+	考虑程序\ref{chap2_program_p4}，由于$R^-(\{p,r\})=\{p \leftarrow .,\ r \leftarrow q.\}$，$R^-(\{p\})=\{p \leftarrow .,\ p \leftarrow r.\}$，$R^-(\{p,q,r\})=\{p \leftarrow .\}$，所以$\{p,r\}$和$\{p\}$都不是特征环。
+	
+	由于$R^-(\{r\})=\{r \leftarrow p.\ r \leftarrow q.\}$，$R^-(\{q,r\})=\{r \leftarrow p.\}$，所以$\{r\}$也不是特征环。
+	
+	因此，$P_1$的特征环只有$\{q\},\{r,q\},\{p,r,q\}$。
 \end{example}
 
-由命题\ref{chap3_proposition_elementaryloop}和定义\ref{chap4_definition_nlp_properloop}，我们可以知道，给定正规逻辑程序$P$，$L$为$P$的环。如果$L$是特征环，那么$L$同时也是基本环，反过来则不成立。
+由定义\ref{chap4_definition_nlp_properloop}，我们可以知道，给定正规逻辑程序$P$，$L$为$P$的环。如果$L$是特征环，那么$L$同时也是基本环，反过来则不成立。
 对于基本环$L$，如果不存在其他基本环$L'$，满足$R^-(L') \ne \emptyset$，$R^-(L') \subset R^-(L)$，那么基本环$L$才会是特征环。
 注意到，这里并没有规定$L'$是$L$的子集，所以需要检查的$L'$的可能非常多。
 不过，我们可以加入额外的条件，限制$L'$的范围。
 
 \begin{definition}[正规逻辑程序在原子集合下的特征环]\label{chap4_definition_nlp_properloop_set}
-给定正规逻辑程序$P$和原子集合$S$，$L$是$P$的环。
-我们称$L$是$P$在$S$下的特征环，如果$L \subseteq S$，且不存在其他环$L' \subseteq S$，使得$L' \subset L$，$R^-(L') \subseteq R^-(L)$或者$R^-(L') \ne \emptyset$，$R^-(L') \subset R^-(L)$。
+	给定正规逻辑程序$P$和原子集合$S$，$L$是$P$的环。
+	我们称$L$是$P$在$S$下的特征环，如果$L \subseteq S$，且不存在其他环$L' \subseteq S$，使得$L' \subset L$，$R^-(L') \subseteq R^-(L)$或者$R^-(L') \ne \emptyset$，$R^-(L') \subset R^-(L)$。
 \end{definition}
 
-\subsection{特征环的识别}
 
-下面，基于定义\ref{chap4_definition_nlp_properloop_set}，我们将介绍特征环的识别算法。
+
+
+
+
+\section{特征环的识别}
+
+下面，基于定义\ref{chap4_definition_nlp_properloop_set}，我们将介绍正规逻辑程序的特征环的识别算法。
 
 \RestyleAlgo{ruled}\LinesNumbered\input{algo/ProperLoop.tex}
 
@@ -95,9 +96,9 @@ $D=\bigvee_{p \in R^-(L_2)} body(r)$，则：
 \begin{enumerate}
 	\item 若$C \subset L$且$R^-(C) \subseteq R^-(L)$，那么此时符合定义\ref{chap4_definition_nlp_properloop_set}的第一种情况，返回$C$，表示$C$使得$L$不是特征环；
 	\item 若$R^-(C) \ne \emptyset$且$R^-(C) \subset R^-(L)$，那么此时符合定义\ref{chap4_definition_nlp_properloop_set}的第二种情况，返回$C$，表示$C$使得$L$不是特征环；
-	\item 若$R^-(C)=\emptyset$，那么$C$对$L$没有影响，但是，$C$的子环则有可能使得$L$不是特征环。所以这种情况，我们将删除$C$的一个原子，获得其残留图，并把残留图的新的强连通分量加入到$SCC$中，然后重复次整个判断过程；
-	\item 若$R^-(C)=R^-(L)$，那么意味着$C$和$L$的环公式是一样的，从环公式的角度来看，只需要保留一个即可。由于现在我们是在判断$L$是否为特征环，而$C$并不能否决$L$，所以这种情况的处理实际和情况3是一样的：获取$C$的所有子环，并对其重复整个判断过程；
-	\item 其他情况，即$C$和$L$或者$R^-(C)$和$R^-(L)$都没有直接的包含关系。此时的处理和情况3、4是一样的，不过，我们可以做一些优化：考虑到在$R^-(C)$中，实际上我们只需要关注的是在$R^-(C)$和$R^-(L)$的交集，所以，可以直接删掉$C$中的原子集$head(R^-(C)\backslash R^-(L))$得到残留图$G_C$，并获得$G_C$的强连通分量，最后对其重复整个判断过程。
+	\item 若$R^-(C)=\emptyset$，那么$C$对$L$没有影响，但是，$C$的子环则有可能使得$L$不是特征环。所以这种情况，我们将删除$C$的一个原子，获得诱导子图，并把诱导子图的新的强连通分量加入到$SCC$中，然后重复次整个判断过程；
+	\item 若$R^-(C)=R^-(L)$，那么意味着$RLF(C,P)$和$RLF(L,P)$是一样的，从环公式的角度来看，只需要保留一个即可。由于现在我们是在判断$L$是否为特征环，而$C$并不能否决$L$，所以这种情况的处理实际和情况3是一样的：获取$C$的诱导子图的强连通分量，并对其重复整个判断过程；
+	\item 其他情况，即$C$和$L$或者$R^-(C)$和$R^-(L)$都没有直接的包含关系。此时的处理和情况3、4是一样的，不过，我们可以做一些优化：考虑到在$R^-(C)$中，实际上我们只需要关注的是在$R^-(C)$和$R^-(L)$的交集，所以，可以直接删掉$C$中的原子集$head(R^-(C)\backslash R^-(L))$得到诱导子图$G_C$，并获得$G_C$的强连通分量，最后对其重复整个判断过程。
 \end{enumerate}
 
 若没有找到任何$C$，使得$L$不是特征环，那么算法\ref{algo_ProperLoop}将返回$L$，表示$L$是特征环。
@@ -108,11 +109,41 @@ $D=\bigvee_{p \in R^-(L_2)} body(r)$，则：
 需要注意的是，该算法每次都至少删除子图中的一个原子。
 所以，在最坏的情况下，算法将迭代$n^2$次，其中，$n$为环$L$中的原子数目，即算法\ref{algo_ProperLoop}的时间复杂度为$O(n^2)$。
 
-\begin{proposition}\label{chap4_proposition_pl}
-给定正规逻辑程序$P$，$L$是$P$的特征环，且满足$R^-(L) \ne \emptyset$。如果$L'$是$P$的一个环，且满足$L' \subset L$，$head(R^-(L)) \subseteq L'$，那么$L'$不是特征环。
+
+\begin{proposition}
+	给定正规逻辑程序$P$，$L$是$P$的环。算法\ref{algo_ProperLoop}，将在$O(n^2)$时间内返回$L$或者原子集合$C$，$C\subseteq S$。其中，$n$为$P$的原子的数目，$C$满足如下的条件：
+	\begin{itemize}
+		\item $C\subset L$，$R^-(C)\subseteq R^-(L)$，或者
+		\item $R^-(C)\ne \emptyset$，$R^-(C)\subset R^-(L)$。
+	\end{itemize}
+	
+	同时，算法\ref{algo_ProperLoop}返回$L$，当且仅当$L$是$P$在$S$下的特征环。
 \end{proposition}
 \begin{proof}
-因为$L$是特征环，且满足$L' \subset L$，由定义\ref{chap4_definition_nlp_properloop}，有$R^-(L') \nsubseteq R^-(L)$。另一方面，由$head(R^-(L)) \subseteq L'$，得$R^-(L) \subseteq R^-(L')$，所以，$R^-(L) \subset R^-(L')$。根据定义\ref{chap4_definition_nlp_properloop}，$L$使得$L'$不是特征环。\quad
+	首先，如果算法\ref{algo_ProperLoop}返回原子集合$C$，$C\ne L$，$C\subseteq S$，那么$C$是$P$的环，且满足：
+	\begin{itemize}
+		\item $C\subset L$，$R^-(C)\subseteq R^-(L)$，或者
+		\item $R^-(C)\ne \emptyset$，$R^-(C)\subset R^-(L)$。
+	\end{itemize}
+	
+	下面，我们将证明，如果存在环$L'$，满足上述的条件之一，那么算法\ref{algo_ProperLoop}将会返回原子集合$C'$，$C'\subseteq S$，$C'\ne L$。注意到，$L'$肯定在$G_P^S$的强连通分量里。令$L'$所在的强连通分量为$C$，那么有如下的4种情况：
+	\begin{enumerate}
+		\item 如果$C\subset L$，$R^-(C)\subseteq R^-(L)$，那么算法\ref{algo_ProperLoop}将返回$C$，显然，此时，$C$满足条件1，$C$就是我们要找的环$L'$；
+		\item 如果$R^-(C)\ne \emptyset$，$R^-(C)\subset R^-(L)$，那么算法\ref{algo_ProperLoop}将返回$C$，此时，$C$满足条件2，$C$就是我们要找的环$L'$；
+		\item 如果$R^-(C)=\emptyset$，$R^-(C)=R^-(L)$，那么$L'$在$G_P^S$关于某个原子集合$C\backslash \{a\}$的诱导子图中，其中$a\in C$。注意到，这个强连通分量会被加入到$SCC$中，并在之后的迭代被分析；
+		\item 如果$R^-C\nsubseteq R^-(L)$，那么肯定会有$head(R^-(C)\backslash R^-(L))\cap L'=\emptyset$，否则，存在规则$r$，满足$head(r)\in L'$，$head(r)\in R^-(C)$，注意到，$L'\subseteq C$，所以$r\in R^-(L')$，$r\notin R^-(L)$，即$R^-(L')\nsubseteq R^-(L)$，这与我们的假设矛盾。因此，$L'$仍然会在$G_P^S$关于原子集合$C\backslash head(R^-(C)\backslash R^(L))$的诱导子图的强连通分量中。另一方面，这个强连通分量会被加入到$SCC$，并在之后的迭代被分析。
+	\end{enumerate}
+	
+	因此，算法\ref{algo_ProperLoop}最终会返回一个原子集合$C$，$C\ne L$。
+	综合上述，只有在不存在这样的环的情况下，算法\ref{algo_ProperLoop}才会返回$L$，根据定义\ref{chap4_definition_nlp_properloop_set}，此时$L$为特征环。
+\end{proof}
+
+
+\begin{proposition}\label{chap4_proposition_pl}
+	给定正规逻辑程序$P$，$L$是$P$的特征环，且满足$R^-(L) \ne \emptyset$。如果$L'$是$P$的一个环，且满足$L' \subset L$，$head(R^-(L)) \subseteq L'$，那么$L'$不是特征环。
+\end{proposition}
+\begin{proof}
+	因为$L$是特征环，且满足$L' \subset L$，由定义\ref{chap4_definition_nlp_properloop}，有$R^-(L') \nsubseteq R^-(L)$。另一方面，由$head(R^-(L)) \subseteq L'$，得$R^-(L) \subseteq R^-(L')$，所以，$R^-(L) \subset R^-(L')$。根据定义\ref{chap4_definition_nlp_properloop}，$L$使得$L'$不是特征环。\quad
 \end{proof}
 
 想要求得程序的所有特征环，一个直接的方法是，使用算法\ref{algo_ProperLoop}去对程序的每个环进行过滤。
@@ -125,198 +156,9 @@ $D=\bigvee_{p \in R^-(L_2)} body(r)$，则：
 与之前的算法一样，算法\ref{algo_ProperLoops}也是采用自顶向下的方式考虑所有环。
 记$G_P$为程序的正依赖图，$G_P^S$为$G_P$关于原子集合$S$的诱导子图。
 首先，算法\ref{algo_ProperLoops}求得$G_P^S$的强连通分量$SCC$，然后，对$SCC$里面的每个强连通分量$C$使用算法\ref{algo_ProperLoop}判断其是否为特征环。
-如果$C$是特征环，那么根据推论\ref{chap4_proposition_pl}，我们并不需要遍历$C$的所有子环，所以此时，每次删除$C$中的一个原子$a$，其中$a \in head(R^-(C))$，然后把残留图的强连通分量加入$SCC$中，并重复整个判断过程；如果$C$不是特征环，那么我们需要遍历其$C$的所有子环，此时每次删除$C$中的一个原子，破坏其连通性，然后把残留图的强连通分量加入$SCC$中，并重复整个判断过程。
-
-\section{析取逻辑程序的特征环}
-
-上节，我们介绍了正规逻辑程序的特征环，本节，我们将继续把特征环的概念拓展到析取逻辑程序。
-\subsection{特征环的定义}
-析取逻辑程序的头部可能会有多个原子，对于环$L$来说，我们需要关注的是$head(R^-(L))\cap L$部分，因此对于析取逻辑程序，我们使用$\bigwedge_{p\in head(R^-(L))\cap L}p$去替换公式\ref{chap2_definition_clf}中的$\bigwedge_{p\in L}p$，从而得到另一种形式的环公式。
-\begin{definition}
-给定析取逻辑程序$P$，$L$为$P$中的环。用$RLF(L,P)$表示以下的蕴含式：
-\begin{equation}
-\bigwedge_{p \in head(R^-(L)) \cap L} p \supset \bigvee_{p \in R^-(L)}(body(r) \wedge \bigwedge_{q \in head(r)\backslash L} \neg q)
-\end{equation}
-
-特别地，如果$R^-(L)=\emptyset$，则：
-\begin{equation}
-\bigwedge_{p \in L} p \supset \bot
-\end{equation}
-
-显然，$RLF(L,P)$是$LF(L,P)$的一个特殊形式。当使用这种形式的环公式时，我们可以在基本环的基础上，排除更多的环。
-\end{definition}
-
-\begin{corollary}\label{chap4_corollary_dlp_rlf}
-给定析取逻辑程序$P$，$L_1$和$L_2$为$P$的环。
-如果$R^-(L_1) \ne \emptyset$，$R^-(L_2)\\ \ne \emptyset$，$head(R^-(L_1)) \cap (L_1 \cup L_2) \subseteq head(R^-(L_2)) \cap L_2$，$R_{L_2}^-(L_1) \subseteq R^-(L_2)$，那么$RLF(L_1,P) \supset RLF(L_2,P)$。
-\end{corollary}
-\begin{proof}
-由$head(R^-(L_1)) \cap (L_1 \cup L_2) \subseteq head(R^-(L_2)) \cap L_2$，得$head(R^-(L_1)) \cap L_1 \subseteq head(R^-(L_2)) \cap L_2$，所以有：$$\bigwedge_{p\in head(R^-(L_2))\cap L_2} p\supset \bigwedge_{p\in head(R^-(L_1))\cap L_1} p$$
-
-对于任意的$r\in R^-(L_1)$，如果$r\in R_{L_2}^-(L_1)$，那么由$R^-_{L_2}(L_1)\subseteq R^-(L_2)$可知，$r\in R^-(L_2)$，因此$head(r)\cap L_1 \subseteq L_2$，$head(r)\cap (L_2\backslash L_1)=\emptyset$，从而有$head(r)\cap L_1=head(r)\cap L_2$。此时有：$$body(r)\wedge \bigwedge_{q\in head(r)\backslash L_1}\neg q\supset body(r)\wedge \bigwedge_{q\in head(r)\backslash L_2}\neg q$$
-
-如果$r\notin R_{L_2}^-(L_1)$，那么$head(r)\cap (L_2\backslash L_1)\ne \emptyset$。由于$head(r)\cap L_2\subseteq head(R^-(L_2))\\\cap L_2$，所以，存在$q\in head(r)\backslash L_1$且$q\in head(R^-(L_2))\cap L_2$。在$\bigwedge_{p\in head(R^-(L_2))\cap L_2} p$为真的条件下，$body(r)\wedge \bigwedge_{q\in head(r)\backslash L_1}\neg q$为假。因此，在$\bigwedge_{p\in head(R^-(L_2))\cap L_2} p$为真的条件下，也有：$$body(r)\wedge \bigwedge_{q\in head(r)\backslash L_1}\neg q\supset body(r)\wedge \bigwedge_{q\in head(r)\backslash L_2}\neg q$$
-
-所以，在$\bigwedge_{p\in head(R^-(L_2))\cap L_2} p$为真的条件下：
-$$\bigwedge_{r\in R^-(L_1)}(body(r)\wedge \bigwedge_{q\in head(r)\backslash L_1}\neg q)\supset \bigwedge_{r\in R^-(L_2)}(body(r)\wedge \bigwedge_{q\in head(r)\backslash L_2}\neg q)$$
-
-综合上述，$RLF(L_1,P)\supset RLF(L_2,P)$成立。\quad
-\end{proof}
-
-基于推论\ref{chap4_corollary_dlp_rlf}，我们给出析取逻辑程序的特征环的定义。
-\begin{definition}[析取逻辑程序的特征环]
-给定析取逻辑程序$P$，$L$为$P$的环。我们称$L$为$P$的特征环，如果$L$满足：
-\begin{enumerate}
-	\item $L$是$P$的基本环；
-	\item 不存在$P$中的其他基本环$L'$，使得$R^-(L') \ne \emptyset$，$head(R^-(L')) \cap (L' \cup L) \subseteq head(R^-(L)) \cap L$，$R_{L}^-(L') \subset R^-(L)$。
-\end{enumerate}
-\end{definition}
-
-\begin{example}
-例\ref{chap2_program_p2}的程序$P_2$有4个特征环：$\{p\},\{q\},\{p,r\},\{r,q\}$。
-对于环$\{r,q,p\}$，因为它不是基本环，所以它也不可能是特征环；对于环$\{r\}$，因为$R_{\{r\}}^-(\{r,q\})=\{r \leftarrow q.\}$，$R^-(\{r\})=\{r \leftarrow p.\ r \leftarrow q.\}$，所以它不是特征环。
-\end{example}
-
-对于所有环的外部支持都不为空的程序，特征环的定义可以更为简洁。
-
-\begin{definition}[简化的]
-给定析取逻辑程序$P$，我们称$P$是简化的$(simplified)$，如果$P$不存在任何外部支持为空的环。
-\end{definition}
-
-任意的析取逻辑程序$P$都可以转化为化简的析取逻辑程序，记为$simp(P)$，具体操作如下：
-\begin{enumerate}
-	\item 删除规则$r$，其中，$r$和$P$的某个环$L$满足$body^+(r) \cap L \ne \emptyset$，$R^-(L)=\emptyset$；
-	\item 对于剩下的公式，若规则头部有$p$，则删除$p$；若规则体部有$not\ p$，则删除规则，其中，$p \in L$，$L$为$P$的环且满足$R^-(L)=\emptyset$。
-\end{enumerate}
-
-该操作是个递归调用的过程，若$simp(P)$还不是简化的，那么我们需要继续对结果进行化简，即$simp(simp(P))$，直到返回结果为简化的为止。
-
-\begin{proposition}
-给定简化的程序$P$，环$L$是特征环当且仅当：
-\begin{enumerate}
-	\item 不存在$L$的非空真子集$C$，使得$R_L^-(C) \subseteq R^-(L)$，同时，
-	\item 不存在非空原子集$C$，使得$head(R^-(C)) \cap (C \cup L) \subseteq head(R^-(L)) \cap L$， $R_L^-(C) \\\subset R^-(L)$。
-\end{enumerate}
-\end{proposition}
-
-
-\subsection{特征环的识别}
-
-和析取逻辑程序的基本环类似，识别析取逻辑程序的特征环是coNP-complete的。
-下面，我们将给出多项式时间复杂度的近似算法\ref{algo_PLxing}$PL^*(L,P)$，它可以判断一个环是否属于特征环的超集，记为$PL^*(P)$。
-
-在下文中，我们将使用$PL(P)$表示程序$P$的所有特征环，使用$PL^*(P)$表示$PL^*(L,P)$返回L的所有环。
-对于简化的析取逻辑程序$P$，$PL(P) \subseteq PL^*(P)$。特别地，如果$P$是正规逻辑程序，则$PL(P)=PL^*(P)$。
-
-给定析取逻辑程序$P$，$L$为$P$中的环。记$P$的正依赖图为$G_P$。
-首先，算法\ref{algo_PLxing}找出$G_P$的所有强连通分量的集合$SCC$。对于每个强连通分量$C \in SCC$：
-
-\begin{enumerate}
-	\item 若$C \subset L$且$R_L^-(C) \subseteq R^-(L)$，则返回$C$，表示$L$不属于$PL^*(L,P)$；
-	\item 若$head(R^-(C))\cap (C\cup L)\subseteq head(R^-(L))\cap L$且$R^-_L(C)\subset R^-(L)$，则返回$C$，表示$L$不属于$PL^*(L,P)$；
-	\item 若$R^-_L(C)=R^-(L)$，此时需要考虑$C$的子环，我们将每次删除$C$的一个原子，并把对应的诱导子图的新强连通分量加入到$SCC$中去，然后对其重复整个判断过程；
-	\item 若$head(R^-(C))\cap (C\cup L)\nsubseteq head(R^-(L))\cap L$且$C\nsubseteq L$，此时，把$C\backslash ((head(R^-\\(C))\cap C)\backslash head(R^-(L))\cap L))$对应的诱导子图的强连通分量加入到$SCC$中去，并重复整个判断过程；
-	\item 其他情况，则把$C\backslash head(R^-_L(C)\backslash R^-(L))$对应的诱导子图的强连通分量加入到$SCC$中去，并重复整个判断过程；
-\end{enumerate}
-
-\RestyleAlgo{ruled}\LinesNumbered\input{algo/PLxing.tex}
-
-对于简化的析取逻辑程序$P$及其环$L$，$PL^*(L,P)$将返回环$L$或者环$C$，其中，环$C$满足$C\subset L$，$R_L^-(C)\subseteq R^-(L)$，或者$head(R^-(C))\cap (C\cup L)\subseteq head(R^-(L))\cap L$，$R^-_L(C)\subset R^-(L)$。
-
-\section{$HPF$程序}
-
-基于特征环的概念，我们可以定义一种叫做$HPF$(Head-Proper-loop-Free)程序的析取逻辑程序类别。
-\begin{definition}[HPF程序]\label{chap4_definition_hpf}
-给定析取逻辑程序$P$，我们称$P$是$HPF$程序，如果对于任何规则$r$和特征环$L$，有$|head(r) \cap L|\le 1$。
-\end{definition}
-
-与$HEF$程序类似，对于任意的$HPF$程序$P$，原子集合$S$是$P$的回答集当且仅当$S$是$sh(P)$的回答集。
-
-\begin{proposition}
-给定析取逻辑程序$P$，如果$P$是$HEF$程序，那么$P$同时也是$HPF$程序。
-\end{proposition}
-\begin{proof}
-使用反证法，假设$P$不是$HPF$程序，那么存在特征环$L$和规则$r$，满足$|head(r)\cap L|>1$。由于特征环同时也是基本环，所以$P$不是$HEF$程序，矛盾，因此命题成立。\quad
-\end{proof}
-
-与$HEF$程序一样，判断析取逻辑程序是否为$HPF$程序的时间复杂性是coNP-complete的。
-
-\section{弱特征环}
-
-针对识别析取逻辑程序的特征环和$HPF$程序的时间复杂性都为coNP-complete的问题，
-本节，我们提出了弱特征环和$HWPF$程序的概念，其中，弱特征环是特征环的超集，$HWPF$程序是$HPF$程序的子集。
-\begin{corollary}
-给定析取逻辑程序$P$，$L_1$和$L_2$是$P$的环。
-如果$R^-(L_1) \ne \emptyset$，$head(R^-\\(L_1)) \cap L_1 \subseteq head(R^-(L_2)) \cap L_2$，$R^-(L_1) \subseteq R^-(L_2)$，那么$RLF(L_1,P) \supset RLF(L_1,P)$。
-\end{corollary}
-\begin{proof}
-由$R^-(L_1) \ne \emptyset$，$head(R^-(L_1)) \cap L_1 \subseteq head(R^-(L_2)) \cap L_2$，有:$$\bigwedge_{p\in head(R^-(L_2))\cap L_2} p\supset \bigwedge_{p\in head(R^-(L_1))\cap L_1} p$$
-
-对于规则$r\in R^-(L_1)$，由$head(r)\cap L_1\subseteq head(r)\cap L_2$，有$head(r)\backslash L_2 \subseteq head(r)\backslash L_1$。因此，$\bigwedge_{q\in head(r)\backslash L_1}\neg q \supset \bigwedge_{q\in head(r)\backslash L_2}\neg q$。所以，我们有：$$\bigvee_{r\in R^-(L_1)}(body(r)\wedge \bigwedge_{q\in head(r)\backslash L_1}\neg q) \supset \bigvee_{r\in R^-(L_2)}(body(r)\wedge \bigwedge_{q\in head(r)\backslash L_2}\neg q)$$
-
-综合上述，$RLF(L_1,P) \supset RLF(L_2,P)$成立。\quad
-\end{proof}
-
-下面，我们给出弱特征环的定义。
-\begin{definition}[弱特征环]
-给定析取逻辑程序$P$，$L$为$P$的环。
-我们称$L$是弱特征环，如果$L$是弱基本环，同时不存在其他弱基本环$L'$，满足$R^-(L') \ne \emptyset$，$head(R^-(L')) \cap L' \subseteq head(R^-(L)) \cap L$，$R^-(L') \subset R^-(L)$。
-\end{definition}
-\begin{example}
-程序$P_2$有5个弱特征环：$\{p\},\{q\},\{p,r\},\{q,r\},\{p,q,r\}$。
-对于环$\{r\}$，由于$R^-(\{r\})=\{r \leftarrow p.\ r \leftarrow q.\}$，$R^-(\{r,q\})=\{r \leftarrow p.\}$，所以它不是弱基本环。
-\end{example}
-\begin{theorem}
-给定析取逻辑程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论和定理\ref{chap2_theorem_eq1}、定理\ref{chap2_theorem_eq2}、定理\ref{chap3_theorem_eq3}以及定理\ref{chap4_theorem_eq4}都是等价的：
-\begin{enumerate}
-	\item 对于$P$中任意弱特征环$L$，$S$满足$RLF(L,P)$；
-	\item 对于$P$中任意弱特征环$L$，$S$满足$DLF(L,P)$；
-\end{enumerate}
-\end{theorem}
-
-显然，如果环$L$是程序的特征环，那么它也会是程序的弱特征环，反过来则不一定成立。
-
-
-
-各种环种类之间的关系如图\ref{chap4_fig_loops}所示，其中，$PL$表示特征环，$PL^*$表示算法$PL^*(L,P)$识别出来的环，$WPL$表示弱特征环，$EL$表示基本环，$EL^*$表示算法$EL^*(L,P)$识别出来的环，$WEL$表示弱基本环，$\rightarrow$ 表示子集关系：
-\begin{figure}[htb]
-	\center
-	\includegraphics[width=300pt]{img/loops.png}\\
-	\caption{环种类之间的关系}\label{chap4_fig_loops}
-\end{figure}
-
-利用简化的的概念，我们可以更简洁地去定义弱特征环。
-
-\begin{proposition}[简化程序的弱特征环]
-给定简化的析取逻辑程序$P$，环$L$是$P$的弱特征环，当且仅当不存在$L$的非空真子集C，
-使得$R^-(C) \subseteq R^-(L)$，同时，也不存在非空原子集$C$，使得$head(R^-(C)) \cap C \subseteq head(R^-(L)) \cap L$，$R^-(C) \subset R^-(L)$。
-\end{proposition}
-
-与特征环的识别不同，简化的程序的弱特征环的识别可以在多项式时间内完成。
-考虑到弱特征环和特征环在定义上的相似性，我们只需要把算法\ref{algo_PLxing}中的$R_L^-(C)$替换成$R^-(C)$、$head(R^-(C)) \cap (C \cup L)$替换成$head(R^-(C)) \cap C$，就可以得到用于识别弱特征环的算法。%\ref{algo_WeakPL}，具体的算法细节与算法\ref{algo_PLxing}类似。
-
-%\RestyleAlgo{ruled}\LinesNumbered\input{algo/WeakPL.tex}
-
-\section{$HWPF$程序}
-
-同样，我们可以使用弱基本环的概念，定义一种叫$HWPF$(Head-Weak-Proper-loop-Free)程序的类别。
-\begin{definition}[$HWPF$程序]
-给定简化的析取逻辑程序$P$，我们称$P$是$HWPF$程序，如果对于$P$的任意规则$r$和任意弱特征环$L$，有$|head(r) \cap L| \le 1$。
-\end{definition}
-
-各种程序类别之间的关系如图\ref{chap4_fig_programs}所示，其中，$\rightarrow$表示子集关系：
-\begin{figure}[htb]
-	\center
-	\includegraphics[width=300pt]{img/programs.png}\\
-	\caption{各种程序类别之间的关系}\label{chap4_fig_programs}
-\end{figure}
-
+如果$C$是特征环，那么根据推论\ref{chap4_proposition_pl}，我们并不需要遍历$C$的所有子环，所以此时，每次删除$C$中的一个原子$a$，其中$a \in head(R^-(C))$，然后把诱导子图的强连通分量加入$SCC$中，并重复整个判断过程；如果$C$不是特征环，那么我们需要遍历其$C$的所有子环，此时每次删除$C$中的一个原子，破坏其连通性，然后把诱导子图的强连通分量加入$SCC$中，并重复整个判断过程。
 
 
 \section{本章小结}
-
-在上一章的基础上，本章进一步提出了特征环的概念，并证明了特征环已经足以完成逻辑程序的回答集的求解。
-基于这些概念，本章给出了正规逻辑程序的基本环的识别算法和析取逻辑程序的近似识别算法。
-针对析取逻辑程序的特征环的识别效率低这一难题，本章还提出了弱特征环的概念，同时，还给出了弱基本环的识别算。
-在本章的最后部分，我们还提出了$HPF$程序和$HWPF$程序的概念，同时，还总结了各种程序类别之间的关系。
+在上一章的基础上，本章从外部支持和环公式的关系出发，提出了正规逻辑程序的特征环的概念，并证明了特征环可以在基本环的基础上，进一步地删除更多的环。本章还讨论了两个重要的算法：算法$ProperLoop(L,P,S)$可以判断某环是否为正规逻辑程序的特征环；算法$ProperLoops(P,S)$可以求出正规逻辑程序的所有特征环。
 

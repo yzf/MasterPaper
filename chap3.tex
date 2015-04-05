@@ -114,7 +114,7 @@ $(\Leftarrow)$
 		\item 如果$R^-(C)\nsubseteq R^-(L)$，那么必定有$head(R^-(C)\backslash R^-(L))\cap L'=\emptyset$，否则，就会存在$r\in P$，满足$head(r)\in L'$，$head(r)\in R^-(C)$。注意到，$L'\subseteq C$，所以$r\in R^-(L')$，$r\notin R^-(L)$，即$R^-(L')\nsubseteq R^-(L)$，这与我们的假定矛盾。所以，$L'$仍然在$G_P$关于原子集合$C\backslash head(R^-(C)\backslash R^-(L))$的诱导子图的强连通分量中，并且该强连通分量会被加入到$SCC^*$。在之后的迭代，算法\ref{algo_ElementaryLoop}会继续分析该连通分量。所以，原子集合$C$，$C\subset L$最终会被算法\ref{algo_ElementaryLoop}返回。
 	\end{enumerate}
 	
-	综合上述，如果返回$L$，那就说明不存在$P$的其他环$L'$，满足$L'\subset L$，$R^-(L')\subseteq R^-(L)$。根据定义\ref{chap3_definition_el}，$L$是基本环。
+	综合上述，如果返回$L$，那就说明不存在$P$的其他环$L'$，满足$L'\subset L$，$R^-(L')\subseteq R^-(L)$。根据定义\ref{chap3_definition_el}，$L$是基本环。\quad
 \end{proof}
 
 
@@ -144,7 +144,7 @@ $(\Leftarrow)$
 	$$body(r) \wedge \bigwedge_{q \in head(r)\backslash L_1}\neg q \supset body(r) \wedge \bigwedge_{q \in head(r)\backslash L_2}\neg q$$
 	另一方面，注意到$R_{L_2}^-(L_1) \subseteq R^-(L_2)$，所以在$\bigwedge_{p\in L_2} p$为真的情况下，有：
 	$$\bigvee_{r\in R^-(L_1)}(body(r) \wedge \bigwedge_{q \in head(r)\backslash L_1}\neg q) \supset \bigvee_{r\in R^-(L_2)}(body(r) \wedge \bigwedge_{q \in head(r)\backslash L_2}\neg q)$$
-	综合上述，$CLF(L_1,P) \supset CLF(L_2,P)$成立。\quad
+	综合上述，$CLF(L_1,P) \supset CLF(L_2,P)$成立。
 \end{proof}
 
 由推论\ref{chap3_corollary_dlp_el_clf}，我们知道$L_1$的合取环公式已经可以蕴含$L_2$的合取环公式，因此$L_2$的合取环公式在回答集的计算中是多余的。
@@ -220,3 +220,9 @@ Gebser等人(2011)证明了识别析取逻辑程序的基本环属于是coNP-complete的难题\upcite{g
 记$EL(P)$为程序$P$的基本环的集合，$EL^*(P)$为使用算法\ref{algo_ElementaryLoopXing}求得的环的集合，即$EL^*(P)=\lbrace L|L$是程序$P$的环且$ElementaryLoop^*(L,P)$返回$L\rbrace$。
 那么，对于任意析取逻辑程序$P$，有$EL(P) \subseteq EL^*(P)$。特别地，如果$P$为正规逻辑程序，那么$EL(P)=EL^*(P)$。
 另外，$HEF$程序虽然属于析取逻辑程序，但是由于它有性质$|head(r) \cap L| \le 1$，所以$EL(P)=EL^*(P)$。
+
+
+
+\section{本章小结}
+本章从外部支持的角度出发，重新定义了回答集逻辑程序的基本环的概念。
+基于这种定义，本章给出了两个重要的算法：算法$ElementaryLoop(L,P)$用于识别正规逻辑程序的基本环；算法$ElementaryLoop^*(L,P)$是近似算法，用来识别析取逻辑程序的基本环的超集。

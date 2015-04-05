@@ -412,11 +412,19 @@ Gebser和Schaub在2005年首次提出了正规逻辑程序的基本环(elementary loops)的概念\upc
 
 
 \begin{definition}[基本环]\label{chap2_definition_elementaryloop}
-给定回答集逻辑程序$P$及其环$L$，若$L$的所有非空真子集在$L$里都是向外的，那么我们称$L$是基本环(elementary loop)。特别地，对于正规逻辑程序，非空真子集可以被替换为$L$的子环\upcite{gebser2011elementary}。
+给定回答集逻辑程序$P$及其环$L$，若$L$的所有非空真子集在$L$里都是向外的，那么我们称$L$是基本环(elementary loop)。
 \end{definition}
 \begin{example}
 程序\ref{chap2_program_p4}有6个基本环：$\{p\}$，$\{r\}$，$\{q\}$，$\{p,r\}$，$\{q,r\}$，$\{p,q,r\}$。
 \end{example}
+
+实际上，Gesber(2010)已经证明了，定义\ref{chap2_definition_elementaryloop}的条件换成所有是基本环的子环\upcite{gebser2011elementary}。
+\begin{proposition}\label{chap2_proposition_el_ob}
+	给定回答集逻辑程序$P$，$X$是$P$中的环。$X$是基本环，当且仅当$X$的所有是基本环的子环在$X$中都是向外的\upcite{gebser2011elementary}。
+\end{proposition}
+
+显然，把命题\ref{chap2_proposition_el_ob}的条件换成$X$的所有子环，也是可以的。
+
 \begin{theorem}\label{chap2_theorem_eq2}
 给定回答集逻辑程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论与定理\ref{chap2_theorem_eq1}的都是等价的：
 	\begin{enumerate}

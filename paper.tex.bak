@@ -3,7 +3,7 @@
 \def\qed{\hfill \vrule height6pt width 6pt depth 0pt}
 %\def\QEDclosed{\mbox{\rule[0pt]{1.3ex}{1.3ex}}} % 定义实心符
 %\def\QEDopen{{\setlength{\fboxsep}{0pt}\setlength{\fboxrule}{0.2pt}\fbox{\rule[0pt]{0pt}{1.3ex}\rule[0pt]{1.3ex}{0pt}}}} %定义空心符
-\def\QED{\QEDclosed} % 选填\QEDclosed得到实心
+%\def\QED{\QEDclosed} % 选填\QEDclosed得到实心
 %\def\proof{\noindent{\bf Proof}: } %定义证明，注意选择中英文
 %\def\endproof{\hspace*{\fill}~\QED\par\endtrivlist\unskip}%在proof环境自动添加结束符。
 
@@ -19,7 +19,7 @@
 %\usepackage[top=2cm,bottom=1.9cm,left=2.5cm,right=2.3cm,includehead,includefoot%]{geometry}                 % 清泉模板的页面设置(有改动)
 
 \usepackage[top=2cm,bottom=1.9cm,left=3.0cm,right=3.0cm,includehead,includefoot%
-]{geometry}                 % 清泉模板的页面设置(有改动)
+            ]{geometry}                 % 清泉模板的页面设置(有改动)
 
 %目录宏包
 \usepackage{titletoc}
@@ -70,10 +70,10 @@
 %\usepackage{graphicx}   % 图形支持
 \usepackage{subfigure}
 %\usepackage{flafter}    % 因为图形可浮动到当前页的顶部，所以它可能会出现在它所在文本的前面。
-% 要防止这种情况，可使用 flafter 宏包
+                        % 要防止这种情况，可使用 flafter 宏包
 \usepackage[below]{placeins}    % 要求浮动的图形在它们所在的章节中排出，加 [section] 选项。
-% 而 [below] 选项则更加宽松一些，允许上一个section的浮动图形
-% 出现在下一个section的开始部分
+                % 而 [below] 选项则更加宽松一些，允许上一个section的浮动图形
+                % 出现在下一个section的开始部分
 
 % 图文混排用宏包，目前选用 floatflt.sty
 \usepackage{floatflt}
@@ -94,7 +94,7 @@
 
 
 \usepackage[below]{placeins}    % 提供处理浮动对象的 \FloatBarrier 命令，
-% 使所有未处理的浮动图形立即被处理
+                % 使所有未处理的浮动图形立即被处理
 
 \usepackage[sf]{titlesec}
 \usepackage{caption2}
@@ -104,7 +104,7 @@
 %\usepackage{vatola}
 
 %\usepackage{endfloat}   % 有些期刊要求将图表和正文文本分开排放。
-% 这时用endfloat宏包可将浮动对象放置到文件的最后
+                        % 这时用endfloat宏包可将浮动对象放置到文件的最后
 
 %\begin{CJK*}{GBK}{song}
 %\settowidth\parindent{中文}     % 段前缩进两个中文字符
@@ -114,7 +114,7 @@
 \setlength{\parskip}{2pt plus1pt minus1pt} %段落之间的竖直距离
 %\setlength{\baselineskip}{20pt plus2pt minus1pt}%段落内的行距
 \renewcommand{\baselinestretch}{1.2} % This command is to define space between lines.
-% Use 2.0 for double-space lines, 1.2 for single-space lines.
+        % Use 2.0 for double-space lines, 1.2 for single-space lines.
 
 %\addtolength{\topsep}{-0.5em} \setlength{\partopsep}{0pt}
 % 注：公式的精调
@@ -183,8 +183,8 @@
 \usepackage{fancyhdr}
 
 \newcommand{\makeheadrule}{%
-	\makebox[0pt][l]{\rule[.7\baselineskip]{\headwidth}{1.2pt}}%
-	\rule[.6\baselineskip]{\headwidth}{0.2pt}\vskip-.8\baselineskip}
+    \makebox[0pt][l]{\rule[.7\baselineskip]{\headwidth}{1.2pt}}%
+    \rule[.6\baselineskip]{\headwidth}{0.2pt}\vskip-.8\baselineskip}
 
 %\newcommand{\makeheadrule}{%
 %    \makebox[-3pt][l]{\rule[.7\baselineskip]{\headwidth}{0.4pt}}
@@ -192,8 +192,8 @@
 
 \makeatletter
 \renewcommand{\headrule}{%
-	{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
-		\makeheadrule}}
+    {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+     \makeheadrule}}
 
 
 %下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的
@@ -211,16 +211,16 @@
 %\renewcommand \sectionformat{}     %去掉中间对齐的sectionformat，这样就把节的标题左对齐了。
 
 % \renewcommand{\mathbf}[1]{\mbox{\boldmath $ #1 $}}
-%Redefine the default command \mathbf to make math symbol both bold and italic.
-% It is only for math mode. By PENG Zhaowang on July 12, 1999
-% Note: the default \mathbf produce bold but not italic math symbol.
+    %Redefine the default command \mathbf to make math symbol both bold and italic.
+    % It is only for math mode. By PENG Zhaowang on July 12, 1999
+    % Note: the default \mathbf produce bold but not italic math symbol.
 %% ** Do NOT use this command,
 %% **  instead, use bm.sty macros to make math symbol both bold and italic
 
 \newcommand{\ucite}[1]{$^{\mbox{\scriptsize \cite{#1}}}$}
-%Define a new command \ucite to generate upper-script (i.e., superscript) cite.
-% It is only for paragraph mode. By PENG Zhaowang on July 15, 1999
-% Note: the command \cite generates in-text citation, not superscript one.
+    %Define a new command \ucite to generate upper-script (i.e., superscript) cite.
+    % It is only for paragraph mode. By PENG Zhaowang on July 15, 1999
+    % Note: the command \cite generates in-text citation, not superscript one.
 
 % 重定义字体命令
 \newcommand{\song}{\CJKfamily{song}}    % 宋体   (Windows自带simsun.ttf)
@@ -261,29 +261,29 @@
 
 \newcount\CJK@ZihaoNo
 \def\defCJKfontsize#1#2#3#4{%
-	\fontsize{#1\bp@}{#2pt plus#3pt minus #4pt}\selectfont\CJKindent}
+         \fontsize{#1\bp@}{#2pt plus#3pt minus #4pt}\selectfont\CJKindent}
 \def\zihao#1{\CJK@ZihaoNo=#1 %
-	\ifnum #11<0
-	\ifnum \CJK@ZihaoNo=-0  \defCJKfontsize\@cjk@smallzerobp\@cjk@smallzeroskip{.5}{.3}
-	\else\ifnum \CJK@ZihaoNo=-1  \defCJKfontsize\@cjk@smallonebp\@cjk@smalloneskip{.5}{.3}
-	\else\ifnum \CJK@ZihaoNo=-2  \defCJKfontsize\@cjk@smalltwobp\@cjk@smalltwoskip{.3}{.2}
-	\else\ifnum \CJK@ZihaoNo=-3  \defCJKfontsize\@cjk@smallthreebp\@cjk@smallthreeskip{.3}{.2}
-	\else\ifnum \CJK@ZihaoNo=-4  \defCJKfontsize\@cjk@smallfourbp\@cjk@smallfourskip{.3}{.2}
-	\else\ifnum \CJK@ZihaoNo=-5  \defCJKfontsize\@cjk@smallfivebp\@cjk@smallfiveskip{.2}{.1}
-	\else\ifnum \CJK@ZihaoNo=-6  \defCJKfontsize\@cjk@smallsixbp\@cjk@smallsixskip{.2}{.1}
-	\fi\fi\fi\fi\fi\fi\fi
-	\else
-	\ifnum \CJK@ZihaoNo=0   \defCJKfontsize\@cjk@normalzerobp\@cjk@normalzeroskip{.5}{.3}
-	\else\ifnum \CJK@ZihaoNo=1   \defCJKfontsize\@cjk@normalonebp\@cjk@normaloneskip{.5}{.3}
-	\else\ifnum \CJK@ZihaoNo=2   \defCJKfontsize\@cjk@normaltwobp\@cjk@normaltwoskip{.5}{.3}
-	\else\ifnum \CJK@ZihaoNo=3   \defCJKfontsize\@cjk@normalthreebp\@cjk@normalthreeskip{.3}{.2}
-	\else\ifnum \CJK@ZihaoNo=4   \defCJKfontsize\@cjk@normalfourbp\@cjk@normalfourskip{.3}{.2}
-	\else\ifnum \CJK@ZihaoNo=5   \defCJKfontsize\@cjk@normalfivebp\@cjk@normalfiveskip{.3}{.2}
-	\else\ifnum \CJK@ZihaoNo=6   \defCJKfontsize\@cjk@normalsixbp\@cjk@normalsixskip{.2}{.1}
-	\else\ifnum \CJK@ZihaoNo=7   \defCJKfontsize\@cjk@normalsevenbp\@cjk@normalsevenskip{.1}{.1}
-	\else\ifnum \CJK@ZihaoNo=8   \defCJKfontsize\@cjk@normaleightbp\@cjk@normaleightskip{.1}{.1}
-	\fi\fi\fi\fi\fi\fi\fi\fi\fi
-	\fi}
+             \ifnum #11<0
+                        \ifnum \CJK@ZihaoNo=-0  \defCJKfontsize\@cjk@smallzerobp\@cjk@smallzeroskip{.5}{.3}
+                   \else\ifnum \CJK@ZihaoNo=-1  \defCJKfontsize\@cjk@smallonebp\@cjk@smalloneskip{.5}{.3}
+                   \else\ifnum \CJK@ZihaoNo=-2  \defCJKfontsize\@cjk@smalltwobp\@cjk@smalltwoskip{.3}{.2}
+                   \else\ifnum \CJK@ZihaoNo=-3  \defCJKfontsize\@cjk@smallthreebp\@cjk@smallthreeskip{.3}{.2}
+                   \else\ifnum \CJK@ZihaoNo=-4  \defCJKfontsize\@cjk@smallfourbp\@cjk@smallfourskip{.3}{.2}
+                   \else\ifnum \CJK@ZihaoNo=-5  \defCJKfontsize\@cjk@smallfivebp\@cjk@smallfiveskip{.2}{.1}
+                   \else\ifnum \CJK@ZihaoNo=-6  \defCJKfontsize\@cjk@smallsixbp\@cjk@smallsixskip{.2}{.1}
+                   \fi\fi\fi\fi\fi\fi\fi
+             \else
+                        \ifnum \CJK@ZihaoNo=0   \defCJKfontsize\@cjk@normalzerobp\@cjk@normalzeroskip{.5}{.3}
+                   \else\ifnum \CJK@ZihaoNo=1   \defCJKfontsize\@cjk@normalonebp\@cjk@normaloneskip{.5}{.3}
+                   \else\ifnum \CJK@ZihaoNo=2   \defCJKfontsize\@cjk@normaltwobp\@cjk@normaltwoskip{.5}{.3}
+                   \else\ifnum \CJK@ZihaoNo=3   \defCJKfontsize\@cjk@normalthreebp\@cjk@normalthreeskip{.3}{.2}
+                   \else\ifnum \CJK@ZihaoNo=4   \defCJKfontsize\@cjk@normalfourbp\@cjk@normalfourskip{.3}{.2}
+                   \else\ifnum \CJK@ZihaoNo=5   \defCJKfontsize\@cjk@normalfivebp\@cjk@normalfiveskip{.3}{.2}
+                   \else\ifnum \CJK@ZihaoNo=6   \defCJKfontsize\@cjk@normalsixbp\@cjk@normalsixskip{.2}{.1}
+                   \else\ifnum \CJK@ZihaoNo=7   \defCJKfontsize\@cjk@normalsevenbp\@cjk@normalsevenskip{.1}{.1}
+                   \else\ifnum \CJK@ZihaoNo=8   \defCJKfontsize\@cjk@normaleightbp\@cjk@normaleightskip{.1}{.1}
+                   \fi\fi\fi\fi\fi\fi\fi\fi\fi
+            \fi}
 %------------------------------------------------------------------------
 \fi
 
@@ -314,12 +314,12 @@
 
 \iffalse
 \newcaptionstyle{one}{%
-	\usecaptionmargin\captionfont%
-	\onelinecaption%
-	{{\bfseries\captionlabelfont\captionlabel\captionlabeldelim}
-		\captiontext}%
-	{{\centering\bfseries\captionlabelfont\captionlabel\par}%
-		\captiontext}}
+\usecaptionmargin\captionfont%
+\onelinecaption%
+{{\bfseries\captionlabelfont\captionlabel\captionlabeldelim}
+\captiontext}%
+{{\centering\bfseries\captionlabelfont\captionlabel\par}%
+\captiontext}}
 \fi
 
 %下面这组命令可以使公式编号随着每开始新的一节而重新开始。
@@ -331,47 +331,47 @@
 
 
 
-\begin{CJK*}{GBK}{}
-	\makeatletter
-	\newtheoremstyle{myplain}% 定义自己的定理风格。首行缩进2个汉字，其余部分与环境外的格式相同
-	%   {\item[　　\hskip\labelsep \theorem@headerfont ##1\ ##2\theorem@separator]}%
-	%   {\item[　　\hskip\labelsep \theorem@headerfont ##1\ ##2\ (##3)\theorem@separator]}
-	{\item[　　\hskip\labelsep \theorem@headerfont ##1\ ##2]}%      %把上面两句中的  \theorem@separator   删掉后，定义XX、证明XX 等就不会在XX后面出现冒号！！！
-	{\item[　　\hskip\labelsep \theorem@headerfont ##1\ ##2\ (##3)]}
-	\makeatother
-	\theoremstyle{myplain}
-	\theoremheaderfont{\CJKfamily{hei}\rmfamily}
-	\theorembodyfont{\CJKfamily{kai}\rmfamily}
-	\theoremseparator{：}
-	\newtheorem{definition}{\hei 定义}[chapter]
-	\newtheorem{proposition}{\hei 命题}[chapter]
-	%\newtheorem{lemma}[definition]{\hei 引理}
-	\newtheorem{lemma}{\hei 引理}[chapter]    %若引理单独从 X.1 开始的话，就使用这一句，否则使用上面一句！！
-	\newtheorem{theorem}{\hei 定理}[chapter]
-	\newtheorem{axiom}{\hei 公理}
-	\newtheorem{corollary}{\hei 推论}[chapter]
-	%\theorembodyfont{\CJKfamily{song}\rmfamily} % body部分为书宋体
-	\newtheorem{exercise}[definition]{\hei 练习}
-	\newtheorem{example}{\hei 例}[chapter]
-	
-	
-	% 定义自己的定理风格。首行缩进2个汉字，其余部分与环境外的格式相同。但定理的证明无须标号
-	\makeatletter
-	\newtheoremstyle{mynonumberplain}%
-	{\item[\hspace*{2em}\theorem@headerfont\hskip\labelsep ##1\theorem@separator]}%如果换成与上面的相同，
-	% 则“证明”也将出现标号。为什么？
-	{\item[\hspace*{2em}\theorem@headerfont\hskip\labelsep ##1\ (##3)\theorem@separator]}
-	\makeatother
-	\theoremstyle{mynonumberplain}
-	\theoremheaderfont{\CJKfamily{hei}\rmfamily}
-	\theorembodyfont{\CJKfamily{kai}\rmfamily}
-	\theoremseparator{：}
-	%\theoremsymbol{$\blacksquare$}
-	\newtheorem{proof}{\hei 证明}
-	
-	%\theoremsymbol{$\square$}
-	%\newtheorem{example}{\hei 例}[chapter]
-	
+ \begin{CJK*}{GBK}{}
+ \makeatletter
+ \newtheoremstyle{myplain}% 定义自己的定理风格。首行缩进2个汉字，其余部分与环境外的格式相同
+%   {\item[　　\hskip\labelsep \theorem@headerfont ##1\ ##2\theorem@separator]}%
+%   {\item[　　\hskip\labelsep \theorem@headerfont ##1\ ##2\ (##3)\theorem@separator]}
+    {\item[　　\hskip\labelsep \theorem@headerfont ##1\ ##2]}%      %把上面两句中的  \theorem@separator   删掉后，定义XX、证明XX等就不会在XX后面出现冒号！！！
+    {\item[　　\hskip\labelsep \theorem@headerfont ##1\ ##2\ (##3]}
+ \makeatother
+ \theoremstyle{myplain}
+ \theoremheaderfont{\CJKfamily{hei}\rmfamily}
+ \theorembodyfont{\CJKfamily{kai}\rmfamily}
+ \theoremseparator{：}
+ \newtheorem{definition}{\hei 定义}[chapter]
+ \newtheorem{proposition}[definition]{\hei 命题}
+ %\newtheorem{lemma}[definition]{\hei 引理}
+ \newtheorem{lemma}{\hei 引理}[chapter]    %若引理单独从 X.1 开始的话，就使用这一句，否则使用上面一句！！
+ \newtheorem{theorem}{\hei 定理}[chapter]
+ \newtheorem{axiom}{\hei 公理}
+ \newtheorem{corollary}[definition]{\hei 推论}
+ %\theorembodyfont{\CJKfamily{song}\rmfamily} % body部分为书宋体
+ \newtheorem{exercise}[definition]{\hei 练习}
+ \newtheorem{example}{\hei 例}[chapter]
+
+
+ % 定义自己的定理风格。首行缩进2个汉字，其余部分与环境外的格式相同。但定理的证明无须标号
+ \makeatletter
+ \newtheoremstyle{mynonumberplain}%
+  {\item[\hspace*{2em}\theorem@headerfont\hskip\labelsep ##1\theorem@separator]}%如果换成与上面的相同，
+                                  % 则“证明”也将出现标号。为什么？
+  {\item[\hspace*{2em}\theorem@headerfont\hskip\labelsep ##1\ (##3)\theorem@separator]}
+ \makeatother
+ \theoremstyle{mynonumberplain}
+ \theoremheaderfont{\CJKfamily{hei}\rmfamily}
+ \theorembodyfont{\CJKfamily{kai}\rmfamily}
+ \theoremseparator{：}
+ %\theoremsymbol{$\blacksquare$}
+ \newtheorem{proof}{\hei 证明}
+
+ %\theoremsymbol{$\square$}
+ %\newtheorem{example}{\hei 例}[chapter]
+
 \end{CJK*}
 
 \allowdisplaybreaks[4]  % The reason is bellow
@@ -399,21 +399,21 @@
 
 \newlength\CJKtwospaces
 
-\def\CJKindent{%用于中文段落缩进
-	\settowidth\CJKtwospaces{\CJKchar{"0A1}{"0A1}\CJKchar{"0A1}{"0A1}}%
-	\parindent\CJKtwospaces
-}
+  \def\CJKindent{%用于中文段落缩进
+    \settowidth\CJKtwospaces{\CJKchar{"0A1}{"0A1}\CJKchar{"0A1}{"0A1}}%
+    \parindent\CJKtwospaces
+  }
 
 
-%\ifx\pdfoutput\undefined  %========此段程序有问题？即PDF的输出有缺字、少字、出怪字？
-%\usepackage[dvips]{graphicx}
+  %\ifx\pdfoutput\undefined  %========此段程序有问题？即PDF的输出有缺字、少字、出怪字？
+         %\usepackage[dvips]{graphicx}
 %\usepackage[dvips]{thumbpdf}
 %\usepackage[ps2pdf,
-%           pdfstartview=FitH,
-%           CJKbookmarks=true,
-%           colorlinks=true,
-%           linkcolor=blue,
-%           citecolor=blue]{hyperref}
+ %           pdfstartview=FitH,
+ %           CJKbookmarks=true,
+ %           colorlinks=true,
+ %           linkcolor=blue,
+ %           citecolor=blue]{hyperref}
 %\AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
 %\else
 %\usepackage[pdftex]{graphicx}
@@ -434,16 +434,16 @@
 \DeclareGraphicsExtensions{.eps}   %
 \usepackage[dvips]{thumbpdf}
 \usepackage[ps2pdf,
-% pdfstartview=FitH,
-CJKbookmarks=true, colorlinks=true]{hyperref}
+           % pdfstartview=FitH,
+            CJKbookmarks=true]{hyperref}
 \AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
 \else
 \usepackage[pdftex]{graphicx}
 \DeclareGraphicsExtensions{.pdf}   %%% standard extension for included graphics
 \usepackage[pdftex]{thumbpdf}
 \usepackage[pdftex,
-% pdfstartview=FitH,
-CJKbookmarks=true, colorlinks=true,citecolor=blue]{hyperref}
+           % pdfstartview=FitH,
+            CJKbookmarks=true]{hyperref}
 %\AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
 \pdfadjustspacing=1
 \fi
@@ -451,11 +451,11 @@ CJKbookmarks=true, colorlinks=true,citecolor=blue]{hyperref}
 %%%%%%%%%%%%%%%%%%%%%%
 \usepackage{tweaklist} % 调整列表环境
 \renewcommand{\itemhook}{\setlength{\topsep}{-0.1em}%
-	%\renewcommand{\enumhook}{\setlength{\topsep}{-10mm}%
-	% \setlength{\itemsep}{-0.5\baselineskip}}
-	\setlength{\itemsep}{-0.35em}
-	%\setlength{\itemindent}{0.5em}
-	\setlength{\leftmargin}{3.1em}}
+%\renewcommand{\enumhook}{\setlength{\topsep}{-10mm}%
+ % \setlength{\itemsep}{-0.5\baselineskip}}
+  \setlength{\itemsep}{-0.35em}
+  %\setlength{\itemindent}{0.5em}
+  \setlength{\leftmargin}{3.1em}}
 
 
 \usepackage{ccmap}  %解决生成的pdf复制是乱码的问题
@@ -465,7 +465,7 @@ CJKbookmarks=true, colorlinks=true,citecolor=blue]{hyperref}
 \usepackage{moreverb}
 \usepackage[lined,boxed,commentsnumbered]{algorithm2e}
 %\newcommand{\papername}{基于知识的~Golog~的一阶解释器：理论与实现}
-\newcommand{\papername}{回答集逻辑程序特征环的研究}
+\newcommand{\papername}{一阶限定理论的计算方法的研究}
 \newcommand{\schoolname}{中山大学硕士学位论文}
 %\newcommand{\sll}{$\mathcal{SL}$}
 \newcommand{\prolog}{\texttt{Prolog}}
@@ -525,154 +525,154 @@ CJKbookmarks=true, colorlinks=true,citecolor=blue]{hyperref}
 
 
 \begin{document}
-	\begin{CJK*}{GBK}{song}
-		\CJKtilde
-		\CJKcaption{GB_452}
-		\CJKindent
-		
-		%\graphicspath{{images/}}
-		
-		\titleformat{\chapter}[hang]
-		{\filcenter\xiaoerhao\CJKfamily{hei}}
-		%{第~\CJKnumber{\thechapter}~章}   % 加入 \CJKnumber 之后，让每一章的标题 1、2、3``` 变成了大写的 一、二、三···
-		{第~{\thechapter}~章}
-		{20pt}{\xiaoerhao}
-		\titlespacing{\chapter}{0pt}{-3ex  plus .1ex minus .2ex}{2.5ex plus .1ex minus .2ex}
-		
-		\titleformat{\section}[hang]{\sihao\bfseries\song}% add \bfseries if you want to use bold fonts
-		{\Large \ \thesection}{1em}{}{}
-		\titlespacing{\section}%
-		{0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}%{1ex plus .1ex minus .2ex}
-		
-		\titleformat{\subsection}[hang]{\sihao\bfseries\song}
-		{\large \ \thesubsection}{1em}{}{}
-		\titlespacing{\subsection}%
-		{0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
-		
-		\pagestyle{fancy}
-		%\renewcommand{\chaptermark}[1]{\markboth{\chaptername \ #1}{}}
-		\renewcommand{\chaptermark}[1]{\markboth{第\thechapter 章\ #1}{}}
-		%以上指令中\chaptermark用于重新定义页眉内之章标题；
-		%其内容取自LaTeX的\markboth指令。事实上\markboth指令用于存放两项信息，分别
-		%存放于指令之后的两个大括号内。在book文件类别中，第一项为章名的相关信息；
-		%第二项为节标题的相关信息。故以上命令是重新定义章标题存放于页眉/页脚的内容，
-		%节标题不变，因此第二对大括号内为空白
-		% \fancyhf[LO,RO]{\thepage}
-		% \fancyhead[LE,RO]{\thepage}
-		%注：在book文件类别下,\leftmark自动存录各章之章名,\rightmark记录节标题
-		\fancyhead[LO]{\CJKfamily{fs}\nouppercase\rightmark}
-		\fancyhead[L]{\CJKfamily{fs}\papername} %蔡明辉的版本
-		\fancyhead[R]{\CJKfamily{fs}\leftmark}
-		% \fancyhead[L]{\CJKfamily{fs}\schoolname} %页眉的左边
-		% \fancyhead[R]{\CJKfamily{fs}\papername}  %页眉的右边
-		
-		
-		
-		
-		
-		%\pagestyle{empty}
-		%\pagenumbering{}
-		\input{cover}
-		\newpage
-		\mbox{}
-		\newpage
-		\input{copy-right}  %声明
-		\newpage
-		\mbox{}
-		\newpage
-		\renewcommand\contentsname{目\quad 录}
-		\titlecontents{chapter}
-		[0.0em]
-		{\bfseries\song  \addvspace{2bp minus 0bp}}  %\song
-		%{\song  \addvspace{2bp minus 0bp}}  %\song
-		{\contentslabel{2em}}
-		{}
-		{\titlerule*[4pt]{.}\contentspage}
-		\titlecontents{section}
-		[2.0em]
-		{\song  \addvspace{2bp minus 0bp}}  %\song
-		{\thecontentslabel\hspace{1em}}
-		{}
-		{\titlerule*[4pt]{.}\contentspage}
-		
-		\frontmatter
-		\pagestyle{plain}
-		\pagenumbering{Roman}
-		%\biaozhunzihao
-		\biaozhunzihao
-		%中文摘要
-		\include{abstract1}
-		%\newpage
-		%\mbox{}
-		%\newpage
-		%\newpage{}~   %该命令用于加入一页空白页
-		
-		%英文摘要
-		\include{abstract2}
-		%\include{phd-term}
-		\setcounter{tocdepth}{1}
-		\phantomsection
-		%\addcontentsline{toc}{chapter}{\contentsname}
-		\tableofcontents
-		%\listoffigures
-		%\listoftables
-		\mainmatter
-		\pagestyle{fancy}
-		\biaozhunzihao
-		%\include{Prefix}
-		
-		%\include{draft01}
-		%\include{chap0}
-		
-		\include{chap1}
-		\include{chap2}
-		\include{chap3}
-		\include{chap4}
-		\include{chap5}
-		%\include{chap6}
-		%\include{chap7}
-		
-		\backmatter %结束章节自动编号
-		%\addcontentsline{toc}{chapter}{\numberline{}\bibname} % 解决目录中没有相应的参考文献的条目问题
-		% (其位置对生成pdf书签也有问题.2004.4.9)
-		
-		
-		%\begin{thebibliography}{99}
-		\addtolength{\itemsep}{-0.8 em} % 缩小参考文献间的垂直间距
-		%\input{phD.bib}
-		%\bibliographystyle{chinesebst}
-		%\bibliographystyle{plain}
-		%\bibliographystyle{unsrtnat}
-		\bibliographystyle{paper2}
-		\phantomsection
-		%\addcontentsline{toc}{chapter}{参考文献}
-		\addcontentsline{toc}{chapter}{参考文献} % 解决目录中没有相应的参考文献的条目问题
-		
-		%\nocite{*} % 列出所有的参考文献
-		\bibliography{reference}
-		%\end{thebibliography}
-		%\include{ack}
-		
-		%\addcontentsline{toc}{chapter}{\numberline{}\appendixname} % 解决目录中没有相应的附录的条目问题
-		%\begin{appendix}
-		%    \renewcommand{\chaptername}{附录\Alph{chapter}}
-		%    \input{ack}
-		%\end{appendix}
-		
-		%$\mathscr{ABC}$.
-		
-		\include{public}
-		\thispagestyle{empty}
-		
-		\include{ack}   %论文感谢部分
-		\newpage
-		\mbox{}
-		\thispagestyle{empty}
-		\newpage
-		
-		%\include{copy-right}
-		\clearpage
-	\end{CJK*}
+\begin{CJK*}{GBK}{song}
+\CJKtilde
+ \CJKcaption{GB_452}
+ \CJKindent
+
+%\graphicspath{{images/}}
+
+\titleformat{\chapter}[hang]
+    {\filcenter\xiaoerhao\CJKfamily{hei}}
+    %{第~\CJKnumber{\thechapter}~章}   % 加入 \CJKnumber 之后，让每一章的标题 1、2、3``` 变成了大写的 一、二、三···
+    {第~{\thechapter}~章}
+    {20pt}{\xiaoerhao}
+\titlespacing{\chapter}{0pt}{-3ex  plus .1ex minus .2ex}{2.5ex plus .1ex minus .2ex}
+
+\titleformat{\section}[hang]{\sihao\bfseries\song}% add \bfseries if you want to use bold fonts
+    {\Large \ \thesection}{1em}{}{}
+\titlespacing{\section}%
+    {0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}%{1ex plus .1ex minus .2ex}
+
+\titleformat{\subsection}[hang]{\sihao\bfseries\song}
+    {\large \ \thesubsection}{1em}{}{}
+\titlespacing{\subsection}%
+    {0pt}{1.5ex plus .1ex minus .2ex}{\wordsep}
+
+\pagestyle{fancy}
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername \ #1}{}}
+ \renewcommand{\chaptermark}[1]{\markboth{第\thechapter 章\ #1}{}}
+%以上指令中\chaptermark用于重新定义页眉内之章标题；
+%其内容取自LaTeX的\markboth指令。事实上\markboth指令用于存放两项信息，分别
+%存放于指令之后的两个大括号内。在book文件类别中，第一项为章名的相关信息；
+%第二项为节标题的相关信息。故以上命令是重新定义章标题存放于页眉/页脚的内容，
+%节标题不变，因此第二对大括号内为空白
+% \fancyhf[LO,RO]{\thepage}
+% \fancyhead[LE,RO]{\thepage}
+%注：在book文件类别下,\leftmark自动存录各章之章名,\rightmark记录节标题
+ \fancyhead[LO]{\CJKfamily{fs}\nouppercase\rightmark}
+ \fancyhead[L]{\CJKfamily{fs}\papername} %蔡明辉的版本
+ \fancyhead[R]{\CJKfamily{fs}\leftmark}
+% \fancyhead[L]{\CJKfamily{fs}\schoolname} %页眉的左边
+% \fancyhead[R]{\CJKfamily{fs}\papername}  %页眉的右边
+
+
+
+
+
+%\pagestyle{empty}
+%\pagenumbering{}
+\input{cover}
+\newpage
+\mbox{}
+\newpage
+\input{copy-right}  %声明
+\newpage
+\mbox{}
+\newpage
+\renewcommand\contentsname{目\quad 录}
+\titlecontents{chapter}
+              [0.0em]
+              {\bfseries\song  \addvspace{2bp minus 0bp}}  %\song
+              %{\song  \addvspace{2bp minus 0bp}}  %\song
+              {\contentslabel{2em}}
+              {}
+              {\titlerule*[4pt]{.}\contentspage}
+\titlecontents{section}
+              [2.0em]
+              {\song  \addvspace{2bp minus 0bp}}  %\song
+              {\thecontentslabel\hspace{1em}}
+              {}
+              {\titlerule*[4pt]{.}\contentspage}
+
+ \frontmatter
+ \pagestyle{plain}
+ \pagenumbering{Roman}
+ %\biaozhunzihao
+ \biaozhunzihao
+ %中文摘要
+ \include{abstract1}
+%\newpage
+%\mbox{}
+%\newpage
+ %\newpage{}~   %该命令用于加入一页空白页
+
+ %英文摘要
+ \include{abstract2}
+ %\include{phd-term}
+ \setcounter{tocdepth}{1}
+ \phantomsection
+ %\addcontentsline{toc}{chapter}{\contentsname}
+ \tableofcontents
+ %\listoffigures
+ %\listoftables
+ \mainmatter
+ \pagestyle{fancy}
+ \biaozhunzihao
+%\include{Prefix}
+
+ %\include{draft01}
+ %\include{chap0}
+
+ \include{chap1}
+ \include{chap2}
+ \include{chap3}
+ %\include{chap4}
+ %\include{chap5}
+ %\include{chap6}
+ %\include{chap7}
+
+\backmatter %结束章节自动编号
+%\addcontentsline{toc}{chapter}{\numberline{}\bibname} % 解决目录中没有相应的参考文献的条目问题
+                                                       % (其位置对生成pdf书签也有问题.2004.4.9)
+
+
+%\begin{thebibliography}{99}
+\addtolength{\itemsep}{-0.8 em} % 缩小参考文献间的垂直间距
+    %\input{phD.bib}
+    %\bibliographystyle{chinesebst}
+    %\bibliographystyle{plain}
+%\bibliographystyle{unsrtnat}
+\bibliographystyle{paper2}
+\phantomsection
+%\addcontentsline{toc}{chapter}{参考文献}
+\addcontentsline{toc}{chapter}{参考文献} % 解决目录中没有相应的参考文献的条目问题
+
+%\nocite{*} % 列出所有的参考文献
+\bibliography{cfo2lp}
+%\end{thebibliography}
+%\include{ack}
+
+%\addcontentsline{toc}{chapter}{\numberline{}\appendixname} % 解决目录中没有相应的附录的条目问题
+%\begin{appendix}
+%    \renewcommand{\chaptername}{附录\Alph{chapter}}
+%    \input{ack}
+%\end{appendix}
+
+%$\mathscr{ABC}$.
+
+\include{public}
+\thispagestyle{empty}
+
+\include{ack}   %论文感谢部分
+\newpage
+\mbox{}
+\thispagestyle{empty}
+\newpage
+
+%\include{copy-right}
+\clearpage
+\end{CJK*}
 \end{document}
 
 % 专题：eps文件的制作技巧
