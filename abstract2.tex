@@ -27,18 +27,19 @@ As a result, research and implementation of more efficient ASP solvers for logic
 The notions of loops and loop formulas for normal logic programs were first proposed by Lin in 2002, making the computation of answer set reduce to finding models of propositional logic.
 Loops and loop formulas play an important role in answer set computation. 
 However, there will be an exponential number of loops in the worst case. 
-In 2005, Gebser and Schaub showed that not all loops are necessary for selecting the answer sets among the models of a program, they introduced the subclass elementary loops, which greatly decrease the number of loops needed in answer set computation and promote the development of ASP solver.
+In 2005, Gebser and Schaub showed that not all loops are necessary for selecting the answer sets among the models of a program, they introduced the subclass elementary loops, later in 2011, they extended it to disjunctive logic programs. Elementary loops greatly decrease the number of loops needed in answer set computation and promote the development of ASP solver.
 
-The main contribution and innovation of this paper are as follows:
+Basing on the notions of loops and loop formulas, we did a deep research on elementary loops, and found that not all elementary loops are needed in answer set computation. The main contribution and innovation of this paper are as follows:
 
-1. We introduce a subclass proper loops of elementary loops for normal logic programs, and show that a proper loop can be recognized in polynomial time. 
-For certain programs, identifying all proper loops is more efficient than that of all elementary loops.
+1. We redefine the notion of elementary loops from the aspect of external support. Basing on this definition, we provide a new algorithm, which follows a top-down strategy, for deciding whether a loop is an elementary loop.
 
-2. We extend the notion of proper loops for disjunctive logic programs. Different from normal logic programs, the computational complexities of recognizing proper loops for disjunctive logic programs is coNP-complete. 
+2. We introduce a subclass proper loops of elementary loops for normal logic programs, and show that a proper loop can be recognized in polynomial time. For certain programs, identifying all proper loops is more efficient than that of all elementary loops.
+
+3. We extend the notion of proper loops for disjunctive logic programs. Different from normal logic programs, the computational complexities of recognizing proper loops for disjunctive logic programs is coNP-complete. 
 To address this problem, we introduce weaker version of proper loops and provide polynomial time algorithm for identifying it.
 
-Proper loops further reduce the number of loops needed in answer set computation, which will make great contribution to the development of ASP solver.
+Proper loops further reduce the number of loops needed in answer set computation which will make great contribution to the development of ASP solver.
 
 
-{\bf Key Words:  ASP, normal logic programs, disjunctive logic programs, loop formulas}
+{\bf Key Words:  ASP, normal logic programs, disjunctive logic programs, loop formulas, elementary loops, proper loops}
 %\clearpage

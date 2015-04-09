@@ -5,6 +5,11 @@ Davis R, Shrobe H, Szolovits P.
 \newblock What is a knowledge representation? [J].
 \newblock AI magazine, 1993, 14(1):17.
 
+\bibitem{nzg2007zs}
+年志刚, 梁式, 麻芳兰, et~al.
+\newblock 知识表示方法研究与应用 [J].
+\newblock 计算机应用研究, 2007, 24(5):234--236.
+
 \bibitem{rada1989development}
 Rada R, Mili H, Bicknell E, et~al.
 \newblock Development and application of a metric on semantic nets [J].
@@ -31,6 +36,11 @@ McCarthy J, Hayes P.
 McDermott D, Doyle J.
 \newblock Non-monotonic logic I [J].
 \newblock Artificial intelligence, 1980, 13(1):41--72.
+
+\bibitem{abdallah2012logic}
+Abdallah A~N.
+\newblock The logic of partial information [M].
+\newblock Springer Publishing Company, Incorporated, 2012.
 
 \bibitem{mccarthy1987circumscription}
 McCarthy J.
@@ -62,6 +72,12 @@ Colmeraner A, Kanoui H, Pasero R, et~al.
 Kowalski R.
 \newblock Algorithm= logic+ control [J].
 \newblock Communications of the ACM, 1979, 22(7):424--436.
+
+\bibitem{lifschitz1994splitting}
+Lifschitz V, Turner H.
+\newblock Splitting a Logic Program. [C].// ICLP.
+\newblock vol~94.
+\newblock 1994:  23--37.
 
 \bibitem{clark1978negation}
 Clark K~L.
@@ -95,6 +111,13 @@ Gelfond M, Lifschitz V.
 \newblock 提高 ASP 效率的若干途径及服务机器人上应用 [D].
 \newblock 合肥: 中国科学技术大学, 2010.
 
+\bibitem{lifschitz2008answer}
+Lifschitz V.
+\newblock What is answer set programming? [C].// Proceedings of the 23rd
+  national conference on Artificial intelligence-Volume 3.
+\newblock AAAI Press.
+\newblock 2008:  1594--1597.
+
 \bibitem{davis1962machine}
 Davis M, Logemann G, Loveland D.
 \newblock A machine program for theorem-proving [J].
@@ -116,6 +139,11 @@ Gebser M, Kaufmann B, Neumann A, et~al.
   and Nonmonotonic Reasoning.
 \newblock Springer, 2007:  260--265.
 
+\bibitem{sorensson2005minisat}
+Sorensson N, Een N.
+\newblock Minisat v1. 13-a sat solver with conflict-clause minimization [J].
+\newblock SAT, 2005, 2005:53.
+
 \bibitem{lin2004assat}
 Lin F, Zhao Y.
 \newblock ASSAT: Computing answer sets of a logic program by SAT solvers [J].
@@ -126,6 +154,11 @@ Lierler Y.
 \newblock cmodels--SAT-based disjunctive answer set solver [G].// Logic
   Programming and Nonmonotonic Reasoning.
 \newblock Springer, 2005:  447--451.
+
+\bibitem{gu1999algorithms}
+Gu J, Purdom P~W, Franco J, et~al.
+\newblock Algorithms for the satisfiability (sat) problem [M].
+\newblock Springer, 1999.
 
 \bibitem{lee2003loop}
 Lee J, Lifschitz V.
@@ -165,20 +198,71 @@ Chen X, Ji J, Lin F.
 \newblock 面向计算机科学的数理逻辑 [M].
 \newblock 北京大学出版社, 1989.
 
+\bibitem{zqz2002logic}
+周巧姝.
+\newblock 关于数理逻辑在解决数学命题中的探讨 [J].
+\newblock 长春师范学院学报, 2002, 5:022.
+
+\bibitem{scy2000sllj}
+石纯一, 王家.
+\newblock 数理逻辑与集合论 [M].
+\newblock 清华大学出版社, 2000.
+
 \bibitem{rosen2011discrete}
 Rosen K.
 \newblock Discrete Mathematics and Its Applications 7th edition [M].
 \newblock McGraw-Hill, 2011.
+
+\bibitem{bonatti2010answer}
+Bonatti P, Calimeri F, Leone N, et~al.
+\newblock Answer Set Programming [J].
+\newblock A 25-Year Perspective on Logic Programming, 2010,  159--182.
+
+\bibitem{eiter2009answer}
+Eiter T, Ianni G, Krennwallner T.
+\newblock Answer set programming: A primer [M].
+\newblock Springer, 2009.
+
+\bibitem{lkc1995tlyy}
+卢开澄, 卢华明.
+\newblock 图论及其应用 [M].
+\newblock 清华大学出版社有限公司, 1995.
+
+\bibitem{xd2005tlyy}
+先迪, 正良.
+\newblock 图论及其应用 [M].
+\newblock 高等教育出版社, 2005.
 
 \bibitem{cormen2001introduction}
 Cormen T~H, Leiserson C~E, Rivest R~L, et~al.
 \newblock Introduction to algorithms [M].
 \newblock MIT press Cambridge, 2001.
 
+\bibitem{gebser2006elementary}
+Gebser M, Lee J, Lierler Y.
+\newblock Elementary Sets of Logic Programs [C].// AAAI.
+\newblock 2006:  244--249.
+
+\bibitem{gebser2007head}
+Gebser M, Lee J, Lierler Y.
+\newblock Head-elementary-set-free logic programs [G].// Logic Programming and
+  Nonmonotonic Reasoning.
+\newblock Springer, 2007:  149--161.
+
 \bibitem{fassetti2010complexity}
 Fassetti F, Palopoli L.
 \newblock On the complexity of identifying head-elementary-set-free programs
   [J].
 \newblock Theory and Practice of Logic Programming, 2010, 10(01):113--123.
+
+\bibitem{levine2009flex}
+Levine J.
+\newblock Flex \& Bison: Text Processing Tools [M].
+\newblock " O'Reilly Media, Inc.", 2009.
+
+\bibitem{garey1976planar}
+Garey M~R, Johnson D~S, Tarjan R~E.
+\newblock The planar Hamiltonian circuit problem is NP-complete [J].
+\newblock SIAM Journal on Computing, 1976, 5(4):704--714.
 
 \end{thebibliography}

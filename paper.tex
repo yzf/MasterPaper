@@ -30,7 +30,7 @@
 \usepackage[perpage,symbol]{footmisc}   % 脚注控制
 
 \renewcommand{\thefootnote}{\arabic{footnote}}  % 将脚注变成从阿拉伯数字 1 开始，若没有这句话则脚注为罗马符号！！！
-
+\usepackage{multirow}
 \usepackage{type1cm}
 \usepackage{palatino}
 \usepackage{listings}  % 源代码列表
@@ -629,8 +629,8 @@ CJKbookmarks=true, colorlinks=true,citecolor=blue]{hyperref}
 		\include{chap3}
 		\include{chap4}
 		\include{chap5}
-		%\include{chap6}
-		%\include{chap7}
+		\include{chap6}
+		\include{chap7}
 		
 		\backmatter %结束章节自动编号
 		%\addcontentsline{toc}{chapter}{\numberline{}\bibname} % 解决目录中没有相应的参考文献的条目问题

@@ -4,12 +4,12 @@
 第1节介绍了经典命题逻辑的相关知识，这是后续章节的基础；
 第2节介绍了回答集逻辑程序的语法和语义，从而引出回答集的概念；
 第3节从回答集逻辑程序的正依赖图出发，介绍了环和环公式的概念及其在回答集求解中的意义；
-第4节介绍了基本环的概念及其性质。
+第4节介绍了传统的基本环的概念及其性质。
 
 \section{命题逻辑}
 
 命题逻辑是数理逻辑的一部分，命题逻辑包含一部分的逻辑形式和规律\upcite{zlw1989sllj}。
-命题(proposition)是非真即假的陈述句，比如2是质数。简单命题(或原子命题)为简单陈述句，它不能分解成更简单的句子，一般我们用英文字母$p$，$q$，$r$等表示。
+命题(proposition)是一个非真即假的陈述句\upcite{zqz2002logic}，比如2是质数。简单命题(或原子命题)为简单陈述句，它不能分解成更简单的句子，一般我们用英文字母$p$，$q$，$r$等表示\upcite{scy2000sllj}。
 使用联结词，简单命题可以联结成复合命题。命题逻辑主要就是研究复合命题。
 
 命题逻辑的形式语言的符号表包括三类逻辑符号：
@@ -19,7 +19,7 @@
 	\item 标点符号，包括“(”和“)”。
 \end{enumerate}
 
-下面，我们将给出命题逻辑公式各类范式的定义及其相关的定理。这些知识点主要来源于文献\upcite{zlw1989sllj, rosen2011discrete}。
+下面，我们将给出命题逻辑公式各类范式的定义及其相关的定理。这些知识点主要来源于文献\upcite{zlw1989sllj, zqz2002logic, scy2000sllj, rosen2011discrete}。
 
 \begin{definition}[否定式]
 命题变量的否定称为命题的否定式。
@@ -81,7 +81,7 @@ $p$，$p \wedge q$，$(p \vee q) \wedge (r \vee q)$都是合取范式，而$(p \wedge q) \
 
 \subsection{正规逻辑程序}
 \begin{definition}[正规逻辑程序]
-普通规则(normal rule)的有限集合称为正规逻辑程序(NLP：Normal Logic Program)。一个普通规则具有如下形式：
+普通规则(normal rule)的有限集合称为正规逻辑程序(NLP：Normal Logic Program)\upcite{bonatti2010answer}。一个普通规则具有如下形式：
 \begin{equation}
 H \leftarrow a_1, ..., a_m, not\ a_{m+1}, ..., not\ a_n.
 \end{equation}
@@ -122,10 +122,11 @@ Lit(P)=Atoms(P) \cup \lbrace \neg\ a|a \in Atoms(P)\rbrace.
 
 \subsection{析取逻辑程序}
 \begin{definition}[析取逻辑程序]
-析取规则(disjunctive rule)的有限集合称为析取逻辑程序(DLP：Disjunctive Logic Program)。一个析取规则具有如下形式：
+析取规则(disjunctive rule)的有限集合称为析取逻辑程序(DLP：Disjunctive Logic Program)\upcite{bonatti2010answer}。一个析取规则具有如下形式：
 \begin{equation}
 a_1 \vee ... \vee a_k \leftarrow a_{k+1}, ..., a_m, not\ a_{m+1}, ..., not\ a_n.
 \end{equation}
+
 其中，$1 \le k \le m \le n$，$a_1, ..., a_n$为原子，即正文字。若$k=1$，则为普通规则。类似地，我们定义$head(r)=\lbrace a_1, ..., a_k\rbrace$，$body^+(r)=\lbrace a_{k+1}, ..., a_m\rbrace$，$body^-(r)=\lbrace a_{m+1}, ..., a_n\rbrace$。
 \end{definition}
 \begin{example}
@@ -159,7 +160,7 @@ a_1 \vee ... \vee a_k \leftarrow a_{k+1}, ..., a_m, not\ a_{m+1}, ..., not\ a_n.
 
 
 \begin{definition}[不含约束的回答集逻辑程序的回答集]
-给定一个不含约束的回答集逻辑程序$P$，原子集合$S$是$P$的一个回答集当且仅当$S\in \Gamma(P^S)$。
+给定一个不含约束的回答集逻辑程序$P$，原子集合$S$是$P$的一个回答集当且仅当$S\in \Gamma(P^S)$\upcite{eiter2009answer}。
 \end{definition}
 \begin{example}
 程序\ref{chap2_program_p2}不含约束，对于$S=\{a,c\}$，其基于$S$的GL规约结果$P^S=\{a\vee b\leftarrow c.\ a\leftarrow b.\ c\leftarrow .\}$。注意到，$P^S$的最小模型$\Gamma(P^S)=\{\{a,c\}\}$，所以$S$是原程序的回答集。
@@ -170,7 +171,7 @@ a_1 \vee ... \vee a_k \leftarrow a_{k+1}, ..., a_m, not\ a_{m+1}, ..., not\ a_n.
 更一般的情况是，逻辑程序$P$中是含有约束的。
 
 \begin{definition}[回答集逻辑程序的回答集]
-给定一个回答集逻辑程序$P$和原子集合$S$，记$P$去掉约束后的程序为$P'$。$S$是$P$的回答集，当且仅当$S$是$P'$的回答集且$S$满足$P$中的所有约束。
+给定一个回答集逻辑程序$P$和原子集合$S$，记$P$去掉约束后的程序为$P'$。$S$是$P$的回答集，当且仅当$S$是$P'$的回答集且$S$满足$P$中的所有约束\upcite{ji2010asp}。
 \end{definition}
 \begin{example}
 记程序\ref{chap2_program_p1}不含约束部分为$P'$，对于$S=\{b,c\}$，$P'^S=\{b\leftarrow .\ b\leftarrow c.\ c\leftarrow . \}$。注意到，$P'^S$的最小模型$\Gamma(P^S)=\{\{b,c\}\}$，所以$S$是$P'$的回答集。另一方面，$S$满足原程序的约束，所以$S$是原程序的回答集。
@@ -260,10 +261,10 @@ Gelfond等人提出了一个转换，通过把析取逻辑程序$P$头部的原子移动(shifting)到体部，
 	\end{figure}
 \end{example}
 \begin{definition}[子图]
-记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。令$G'=(V',E')$，$V' \subseteq V$，$E' \subseteq E$，则我们称$G'$为$G$的子图(subgraph)。
+记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。令$G'=(V',E')$，$V' \subseteq V$，$E' \subseteq E$，则我们称$G'$为$G$的子图(subgraph)\upcite{lkc1995tlyy}。
 \end{definition}
 \begin{definition}[诱导子图]
-记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。令$G'=(V',E')$，$V' \subseteq V$，$E'=\{(u,v)|u,v \in V',(u,v) \in E\}$，则我们称$G'$为$G$的诱导子图(induced subgraph)。
+记有向图$G=(V,E)$，其中，$V$为顶点的集合，$E$为有向边的集合。令$G'=(V',E')$，$V' \subseteq V$，$E'=\{(u,v)|u,v \in V',(u,v) \in E\}$，则我们称$G'$为$G$的诱导子图(induced subgraph)\upcite{xd2005tlyy}。
 \end{definition}
 
 注意：对于$V'$，只要在$G$中有边，那么在$G'$中同样应该有边。
@@ -310,12 +311,6 @@ R^-(L,P)=\lbrace r | r \in P\ and\ head(r) \cap L \ne \emptyset\ and\ body^+(r) 
 
 需要注意的是，外部支持的概念并不针对环，我们可以把环替换成任意原子集合。
 
-\begin{proposition}\label{chap2_proposition_dag}
-	给定回答集逻辑程序$P$，$L$都是$P$的环，$E$是$L$的非空真子集。如果$R^-(E) \subseteq R^-(L)$，那么存在环$L'$，满足$R^-(L')\subseteq R^-(L)$，$L'\subset L$。
-\end{proposition}
-\begin{proof}
-	如果$E$是环，那么$L'=E$满足要求。如果$E$不是环，那么对于$E$在正依赖图$G_P$中的诱导子图$G^E_P$，我们可以把$G^E_P$的强连通分量看成一个整体，则会形成有向无环图，而有向无环图是肯定存在出度为0的节点的。因此，总会存在强连通分量$L'\subset E$，使得不存在规则$r$，满足$head(r)\cap L'\ne \emptyset$，$body^+(r)\cap L'=\emptyset$，$body^+(r)\cap (E\backslash L')\ne \emptyset$。换句话说，对于所有$r\in R^-(L')$，有$body^+(r)\cap E=\emptyset$，由此可得$R^-(L')\subseteq R^-(E)$，所以存在环$L'$，满足$R^-(L')\subseteq R^-(L)$，$L'\subset L$。\quad
-\end{proof}
 
 \begin{example}\label{chap2_program_p5}
 考虑回答集逻辑程序\ref{chap2_program_p4}的环$L=\{p, r\}$，有：
@@ -406,7 +401,7 @@ Gebser和Schaub在2005年首次提出了正规逻辑程序的基本环(elementary loops)的概念\upc
 		\item $body^+(r) \cap Y = \emptyset$
 	\end{enumerate}
 	
-	则称Y在X里是向外的(outbound)。特别地，当$P$是正规逻辑程序时，条件1则化简为$head(r)\in Y$。
+	则称Y在X里是向外的(outbound)\upcite{gebser2006elementary}。特别地，当$P$是正规逻辑程序时，条件1则化简为$head(r)\in Y$。
 \end{definition}
 
 
@@ -414,7 +409,7 @@ Gebser和Schaub在2005年首次提出了正规逻辑程序的基本环(elementary loops)的概念\upc
 \begin{definition}[基本环]\label{chap2_definition_elementaryloop}
 给定回答集逻辑程序$P$及其环$L$，若$L$的所有非空真子集在$L$里都是向外的，那么我们称$L$是基本环(elementary loop)。
 \end{definition}
-\begin{example}
+\begin{example}\label{chap2_example_el}
 程序\ref{chap2_program_p4}有6个基本环：$\{p\}$，$\{r\}$，$\{q\}$，$\{p,r\}$，$\{q,r\}$，$\{p,q,r\}$。
 \end{example}
 
@@ -446,7 +441,7 @@ Gebser等人(2005)给出了正规逻辑程序的基本环的识别方法\upcite{gebser2005loops}，该
 		$EC_P(X)=\bigcup_{i \ge 0} EC^i_P(X)$
 	\end{center}
 	
-	有向图$(X,EC_P(X))$称为原子集合$X$关于程序$P$的基本子图(elementary subgraph)。
+	有向图$(X,EC_P(X))$称为原子集合$X$关于程序$P$的基本子图(elementary subgraph)\upcite{gebser2006elementary}。
 \end{definition}
 \begin{theorem}\label{chap2_theorem_es}
 给定正规逻辑程序$P$和非空原子集合$X$，$X$是$P$的基本环，当且仅当$X$关于$P$的基本子图是强连通(strongly connected)\upcite{gebser2005loops}。
@@ -456,9 +451,24 @@ Gebser等人(2005)给出了正规逻辑程序的基本环的识别方法\upcite{gebser2005loops}，该
 然而，识别析取逻辑程序的基本环则是coNP-complete问题\upcite{gebser2011elementary}，这是当今计算机无法承受的。
 
 \begin{definition}[HEF程序]\label{chap2_definition_hef}
-给定一个回答集逻辑程序$P$，对于$P$的每个基本环$L$和每条规则$r$，如果$|head(r) \cap  L| \le 1$，那么该程序称为头部无基本环程序(HEF程序：Head-Elementary-loop-Free Program)。
+给定一个回答集逻辑程序$P$，对于$P$的每个基本环$L$和每条规则$r$，如果$|head(r) \cap  L| \le 1$，那么该程序称为头部无基本环程序(HEF程序：Head-Elementary-loop-Free Program)\upcite{gebser2007head}。
 \end{definition}
 
+
+由于基本环同时也是环，所以HCF程序同时也是HEF程序。不过，反过来则不成立。
+\begin{example}
+	考虑如下的程序：
+	\begin{equation}
+	\begin{array}{rcl}
+	&& p\leftarrow r.\\
+	&& q\leftarrow r.\\
+	&& r\leftarrow p,\ q.\\
+	&& p\vee q\leftarrow .
+	\end{array}
+	\end{equation}
+	
+	该程序有6个环：$\{p\}$，$\{q\}$，$\{r\}$，$\{p,r\}$，$\{q,r\}$，$\{p,q,r\}$。由于$head(p\vee q\leftarrow.)\cap \{p,q,r\}=\{p,q\}>1$，所以该程序不是HCF程序。另一方面，$\{p,r\}$和$\{q,r\}$在$\{p,\\q,r\}$里不是向外的，所以$\{p,q,r\}$不是基本环。因此，该程序是HEF程序。
+\end{example}
 
 给定HEF程序$P$的回答集和$sh(P)$的回答集一一对应\upcite{gebser2011elementary}。和HCF程序相似，HEF程序可以在多项式时间内，转化为非析取逻辑程序\upcite{gebser2011elementary}。与普通的析取逻辑程序不同，HEF程序的基本环的识别只需要多项式的时间复杂度，这是它的一个很好的性质，
 然而，判断一个程序是否为HEF程序则是coNP-complete难题\upcite{fassetti2010complexity}。

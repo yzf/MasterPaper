@@ -5,7 +5,7 @@
 \section{特征环}
 本节，我们将把特征环的概念拓展到析取逻辑程序。
 \subsection{特征环的定义}
-析取逻辑程序的头部可能会有多个原子，与正规逻辑程序类似，对于环$L$来说，我们需要关注的只是$head(R^-(L))\cap L$部分，因此，对于析取逻辑程序，我们可以使用$\bigwedge_{p\in head(R^-(L))\cap L}p$去替换公式\ref{chap2_definition_clf}中的$\bigwedge_{p\in L}p$，从而得到另一种形式的环公式。
+析取逻辑程序和正规逻辑程序不同的是，它的头部可能会有多个原子。另一方面，与正规逻辑程序类似，对于环$L$来说，我们需要关注的应该是$L$与其外部支持的头部的交集，即$head(R^-(L))\cap L$部分，因此，对于析取逻辑程序，我们可以使用$\bigwedge_{p\in head(R^-(L))\cap L}p$去替换公式\ref{chap2_definition_clf}中的$\bigwedge_{p\in L}p$，从而得到另一种形式的环公式。
 \begin{definition}
 	给定析取逻辑程序$P$，$L$为$P$中的环。用$RLF(L,P)$表示以下的蕴含式：
 	\begin{equation}
@@ -20,7 +20,7 @@
 	显然，$RLF(L,P)$是$LF(L,P)$的一个特殊形式。当使用这种形式的环公式时，我们可以在基本环的基础上，加入额外的限制，排除更多的环。
 \end{definition}
 
-下面，我们先证明与$RLF(L,P)$相关的一个重要推论。
+下面，我们先证明与$RLF(L,P)$相关的一个重要推论。该推论是特征环的一个重要基础。
 
 \begin{corollary}\label{chap5_corollary_dlp_rlf}
 	给定析取逻辑程序$P$，$L_1$和$L_2$为$P$的环。
@@ -59,7 +59,7 @@
 	\end{array}
 	\end{equation}
 	
-	程序\ref{chap5_program_p6}的正依赖图如图\ref{chap2_fig_dg}所示，该程序有6个环：$\{p\}$，$\{r\}$，$\{q\}$，$\{p,r\}$，$\{q,\\r\}$，$\{p,q,r\}$。对于环$\{p,q,r\}$，因为它不是基本环，所以它也不可能是特征环；对于环$\{r\}$，因为$R_{\{r\}}^-(\{r,q\})=\{r \leftarrow q.\}$，$R^-(\{r\})=\{r \leftarrow p.\ r \leftarrow q.\}$，所以它不是特征环。因此，该程序有4个特征环：$\{p\}$，$\{q\}$，$\{p,r\}$，$\{q,r\}$。
+	程序\ref{chap5_program_p6}的正依赖图如图\ref{chap2_fig_dg}所示，该程序有6个环：$\{p\}$，$\{r\}$，$\{q\}$，$\{p,r\}$，$\{q,\\r\}$，$\{p,q,r\}$。其中，有5个基本环：$\{p\}$，$\{r\}$，$\{q\}$，$\{p,r\}$，$\{q,r\}$。对于环$\{p,q,r\}$，因为它不是基本环，所以它也不可能是特征环；对于环$\{r\}$，因为$R_{\{r\}}^-(\{r,q\})=\{r \leftarrow q.\}$，$R^-(\{r\})=\{r \leftarrow p.\ r \leftarrow q.\}$，所以它不是特征环。因此，该程序有4个特征环：$\{p\}$，$\{q\}$，$\{p,r\}$，$\{q,r\}$。
 \end{example}
 
 对于所有环的外部支持都不为空的程序，特征环的定义以及识别过程中的处理都会显得更加方便简洁。
@@ -68,13 +68,26 @@
 	给定析取逻辑程序$P$，我们称$P$是简化的$(simplified)$，如果$P$不存在任何外部支持为空的环。
 \end{definition}
 
-任意的析取逻辑程序$P$都可以转化为简化的析取逻辑程序，记为$simp(P)$，具体操作如下：
+任意的析取逻辑程序$P$都可以转化为与其等价的简化析取逻辑程序，记为$simp(P)$，具体操作如下：
 \begin{enumerate}
 	\item 删除规则$r$，其中，$r$和$P$的某个环$L$满足$body^+(r) \cap L \ne \emptyset$，$R^-(L)=\emptyset$；
 	\item 对于剩下的公式，若规则头部有$p$，则删除$p$；若规则体部有$not\ p$，则删除规则，其中，$p \in L$，$L$为$P$的环且满足$R^-(L)=\emptyset$。
 \end{enumerate}
 
 该操作是个递归调用的过程，若$simp(P)$还不是简化的，那么我们需要继续对结果进行化简，即$simp(simp(P))$，直到返回结果为简化的为止。
+
+\begin{example}
+	给定如下的程序$P$：
+	\begin{equation}\label{chap5_program_p7}
+	\begin{array}{rcl}
+	&& p\vee q\leftarrow r.\\
+	&& r\leftarrow q.\\
+	&&　p\leftarrow .
+	\end{array}
+	\end{equation}
+	
+	则$simp(P)=\{p\leftarrow.\}$。显然，$P$和$simp(P)$的回答集都为$\{\{p\}\}$。
+\end{example}
 
 \begin{proposition}
 	给定简化的程序$P$，环$L$是特征环当且仅当：
@@ -87,8 +100,8 @@
 
 
 \subsection{特征环的识别}
-和析取逻辑程序的基本环类似，识别析取逻辑程序的特征环是coNP-complete的。
-下面，我们将给出多项式时间复杂度的近似算法\ref{algo_PLxing}$PL^*(L,P)$，它可以判断一个环是否属于特征环的超集，记为$PL^*(P)$。
+和析取逻辑程序的基本环类似，识别析取逻辑程序的特征环是coNP-complete难题。
+下面，我们将给出多项式时间复杂度的近似算法\ref{algo_PLxing}，记为$PL^*(L,P)$，它可以判断一个环是否属于特征环的超集，记为$PL^*(P)$。
 
 在下文中，我们将使用$PL(P)$表示程序$P$的所有特征环，使用$PL^*(P)$表示$PL^*(L,P)$返回L的所有环。
 对于简化的析取逻辑程序$P$，$PL(P) \subseteq PL^*(P)$。特别地，如果$P$是正规逻辑程序，则$PL(P)=PL^*(P)$。
@@ -116,10 +129,14 @@
 
 \section{弱基本环和弱特征环}
 
+在上一章和本章上一节，我们分别讨论过析取逻辑程序的基本环和特征环的概念。
+本节，我们将提出基本环的一个超集——弱基本环以及特征环的一个超集——弱特征环，同时，给出多项式时间复杂度的识别算法。
+
 \subsection{弱基本环的定义}
 
-在上一章，我们讨论过析取逻辑程序的基本环的概念。
-本节，我们将提出基本环的一个超集，同时，给出多项式时间复杂度的识别算法。
+识别析取逻辑程序的基本环属于coNP-complete难题，但是，我们可以降低基本环的要求，由此提出限制小一点的弱基本环。下面，我们将提出弱特征环概念，并给出识别弱特征环的算法。
+
+首先，我们给出与弱基本环相关的环公式推论。
 
 \begin{corollary}\label{chap5_corollary_nlp_wel_clf}
 	给定析取逻辑程序$P$，$L_1$和$L_2$为$P$中的环。如果$L_1 \subseteq L_2$且$R^-(L_1) \subseteq R^-(L_2)$，那么有$CLF(L_1,P) \supset CLF(L_2,P)$。
@@ -169,7 +186,7 @@
 
 \subsection{弱特征环的定义}
 
-识别析取逻辑程序的特征环属于coNP-complete难题，但是，我们可以降低特征环的要求，由此提出另一种限制更小的环----弱特征环。本节，我们提出了弱特征环概念，并给出识别弱特征环的算法。
+识别析取逻辑程序的特征环属于coNP-complete难题，但是，我们可以降低特征环的要求，由此提出限制小一点的弱特征环。下面，我们将提出弱特征环概念，并给出识别弱特征环的算法。
 
 首先，我们给出与弱特征环相关的环公式推论。
 \begin{corollary}
@@ -205,7 +222,7 @@
 
 利用简化的的概念，我们可以更简洁地去定义弱特征环。
 
-\begin{proposition}[简化程序的弱特征环]
+\begin{proposition}[简化的程序的弱特征环]
 	给定简化的析取逻辑程序$P$，环$L$是$P$的弱特征环，当且仅当不存在$L$的非空真子集C，
 	使得$R^-(C) \subseteq R^-(L)$，同时，也不存在非空原子集$C$，使得$head(R^-(C)) \cap C \subseteq head(R^-(L)) \cap L$，$R^-(C) \subset R^-(L)$。
 \end{proposition}
@@ -245,7 +262,7 @@
 
 
 
-基于上节给出的弱基本环的概念，我们可以定义HWEF(Head-Weak-Elementary-loop-Free)程序。
+同样，基于上节给出的弱基本环的概念，我们可以定义HWEF(Head-Weak-Elementary-loop-Free)程序。
 
 \begin{definition}[HWEF程序]\label{chap5_definition_hwef}
 	给定析取逻辑程序$P$，如果对于任意规则$r \in P$和任意弱基本环$L$，有$|head(r) \cap L| \le 1$，那么我们称$P$为HWEF程序。
@@ -274,7 +291,7 @@
 	由命题\ref{chap5_proposition_dag}可知，存在环$L'\subseteq L$，满足：
 	$$R^-(L') \subseteq R^-(L)$$
 	
-	所以$L$不符合弱基本环的定义。
+	所以$L$不是弱基本环。
 \end{proof}
 
 基于命题\ref{chap5_proposition_weak_el}，我们给出了算法\ref{algo_WeakElementaryLoopDLP2}，用来判断对于非空原子集$E$，是否不存在弱基本环$L$，$E \subset L$。
@@ -297,7 +314,7 @@
 所以对于非HWEF程序，算法\ref{algo_WeakElementaryLoopDLP3}肯定返回假。然而，对于HWEF程序，则可能返回真，也可能返回假。由此可见，HWEF*是HWEF的一个子类。
 另一方面，算法\ref{algo_WeakElementaryLoopDLP3}只有一层循环，里面所调用的算法\ref{algo_WeakElementaryLoopDLP}和算法\ref{algo_WeakElementaryLoopDLP2}的时间复杂度分别为$O(n^2 )$和$O(m)$，所以算法\ref{algo_WeakElementaryLoopDLP3}的时间复杂度为$O(mn^2)$，其中，$m$为规则的个数，$n$为原子的个数。
 
-\begin{example}\label{chap5_program_p7}
+\begin{example}\label{chap5_program_p8}
 	考虑如下的程序$P$：
 	\begin{equation}
 	\begin{array}{rcl}
@@ -308,19 +325,23 @@
 	\end{equation}
 	
 	程序$P$有6个环：$\{ p\}$，$\{q\}$，$\{r\}$，$\{ p,r\}$，$\{r,q\}$，$\{p,q,r\}$。
-	由于$R^-(\{p,q,r\})=\{p\leftarrow.\}$，$R^-(\{r ,q\})=\emptyset$。
-	$\{p, q, r\}$不是弱基本环，即弱基本环有：$\{p\}$，$\{ q\}$，$\{r\}$，\\$\{p,r\}$，$\{r,q\}$。同时，$P$是HWEF程序。
+	由于$R^-(\{p,q,r\})=\{p\leftarrow.\}$，$R^-(\{r ,q\})=\emptyset$，
+	所以$\{p, q, r\}$不是弱基本环。
+	
+	因此，弱基本环有：$\{p\}$，$\{ q\}$，$\{r\}$，$\{p,r\}$，$\{r,q\}$。
+	
+	另一方面，$P$是HWEF程序。
 	但是，对于$E=\{ p,q\}$，$EWEL(P,E)$返回真，所以$HWEF^*(P)$返回假。所以，$P$是HWEF程序，但不是HWEF*程序。
 \end{example}
 
 
 
-同样，我们可以使用弱基本环的概念，定义一种叫HWPF(Head-Weak-Proper-loop-Free)程序的类别。
+同样，我们可以使用弱特征环的概念，定义一种叫HWPF(Head-Weak-Proper-loop-Free)程序的类别。
 \begin{definition}[HWPF程序]
 	给定简化的析取逻辑程序$P$，我们称$P$是HWPF程序，如果对于$P$的任意规则$r$和任意弱特征环$L$，有$|head(r) \cap L| \le 1$。
 \end{definition}
 
-各种程序类别之间的关系如图\ref{chap5_fig_programs}所示，其中，$\rightarrow$表示子集关系：
+一个HWPF程序同时也会是HPF程序，一个HWEF程序同时也会是HWPF程序。各种程序类别之间的关系如图\ref{chap5_fig_programs}所示，其中，$\rightarrow$表示子集关系：
 \begin{figure}[htb]
 	\center
 	\includegraphics[width=300pt]{img/programs.png}\\

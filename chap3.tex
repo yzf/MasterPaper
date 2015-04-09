@@ -70,7 +70,9 @@ $(\Leftarrow)$
 \begin{definition}[正规逻辑程序的基本环]\label{chap3_definition_el}
 给定正规逻辑程序$P$，$L$是$P$的环。如果不存在$P$的其他环$L'\subset L$，满足$R^-(L')\subseteq R^-(L)$，那么我们称$L$是$P$的基本环。
 \end{definition}
-
+\begin{example}
+	程序\ref{chap2_program_p4}的6个环的外部支持为：$R^-(\{p\})=\{p\leftarrow.\ \ p\leftarrow r.\}$，$R^-(\{q\})=\{q\leftarrow r.\}$，$R^-(\{r\})=\{r\leftarrow p.\ \ r\leftarrow q.\}$，$R^-(\{p,r\})=\{p\leftarrow.\ \ r\leftarrow q.\}$，$R^-(\{q,r\})=\{r\leftarrow p.\}$，$R^-(\{p,q,r\})=\{p\leftarrow.\}$。因此，它们都是基本环。这和例\ref{chap2_example_el}的结果一样。
+\end{example}
 
 
 
@@ -91,7 +93,7 @@ $(\Leftarrow)$
 
 \RestyleAlgo{ruled}\LinesNumbered\input{algo/ElementaryLoop.tex}
 
-与Gebser等人\cite{gebser2005loops}提出的基本环识别算法不同的是，算法\ref{algo_ElementaryLoop}采取自顶向下的策略，先大环开始，逐步深入到小环。
+与Gebser等人\upcite{gebser2005loops}提出的基本环识别算法不同的是，算法\ref{algo_ElementaryLoop}采取自顶向下的策略，先大环开始，逐步深入到小环。
 注意到，该算法每次都至少删除子图中的一个原子。所以，在最坏的情况下，算法\ref{algo_ElementaryLoop}将迭代$n^2$次，其中，$n$为环$L$中的原子数目。
 另一方面，由于图的强连通分量可以在线性时间里面计算出，所以整个算法的时间复杂性为$O(n^2)$。
 
@@ -100,7 +102,7 @@ $(\Leftarrow)$
 给定正规逻辑程序$P$，$L$为$P$的环。算法\ref{algo_ElementaryLoop}将在$O(n^2)$时间内返回$L$，或者环$C$，其中$C$满足：
 \begin{enumerate}
 	\item $C\subset L$；
-	\item $R^-(C)\subseteq R$。
+	\item $R^-(C)\subseteq R^-(L)$。
 \end{enumerate}
 
 算法\ref{algo_ElementaryLoop}会返回$L$，当且仅当$L$是$P$的基本环。

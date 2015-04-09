@@ -3,7 +3,7 @@
 \ttl@change@v {chapter}{}{}{}\relax 
 \ttl@change@i {\@ne }{section}{2.0em}{\song \addvspace {2bp minus 0bp}}{\thecontentslabel \hspace {1em}}{}{\titlerule *[4pt]{.}\contentspage }\relax 
 \ttl@change@v {section}{}{}{}\relax 
-\contentsline {chapter}{Abstract}{II}{section*.2}
+\contentsline {chapter}{Abstract}{III}{section*.2}
 \contentsline {chapter}{\numberline {}第一章\hspace {0.8em}引言}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}研究背景}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}研究现状}{2}{section.1.2}
@@ -40,9 +40,24 @@
 \contentsline {subsection}{\numberline {5.2.2}弱基本环的识别}{45}{subsection.5.2.2}
 \contentsline {subsection}{\numberline {5.2.3}弱特征环的定义}{46}{subsection.5.2.3}
 \contentsline {subsection}{\numberline {5.2.4}弱特征环的识别}{47}{subsection.5.2.4}
-\contentsline {section}{\numberline {5.3}HPF程序、HWEF程序和HWPF程序}{47}{section.5.3}
-\contentsline {section}{\numberline {5.4}本章小结}{52}{section.5.4}
-\contentsline {chapter}{参考文献}{55}{section*.5}
-\contentsline {chapter}{在学期间论文发表情况}{59}{chapter*.7}
-\contentsline {chapter}{致\hskip 1em\relax 谢}{61}{chapter*.8}
+\contentsline {section}{\numberline {5.3}HPF程序、HWEF程序和HWPF程序}{49}{section.5.3}
+\contentsline {section}{\numberline {5.4}本章小结}{53}{section.5.4}
+\contentsline {chapter}{\numberline {}第六章\hspace {0.8em}实验过程以及结果分析}{55}{chapter.6}
+\contentsline {section}{\numberline {6.1}实验工具}{55}{section.6.1}
+\contentsline {section}{\numberline {6.2}程序框架}{55}{section.6.2}
+\contentsline {section}{\numberline {6.3}实验环境}{56}{section.6.3}
+\contentsline {section}{\numberline {6.4}正规逻辑程序的基本环和特征环的对比实验}{56}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}实验描述}{57}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}实验设计}{57}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}实验结果与数据分析}{58}{subsection.6.4.3}
+\contentsline {section}{\numberline {6.5}析取逻辑程序的各种环的对比实验}{59}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}实验设计}{59}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}实验结果与数据分析}{59}{subsection.6.5.2}
+\contentsline {section}{\numberline {6.6}本章小结}{60}{section.6.6}
+\contentsline {chapter}{\numberline {}第七章\hspace {0.8em}总结与展望}{61}{chapter.7}
+\contentsline {section}{\numberline {7.1}本文的研究总结}{61}{section.7.1}
+\contentsline {section}{\numberline {7.2}后续研究工作}{62}{section.7.2}
+\contentsline {chapter}{参考文献}{63}{section*.5}
+\contentsline {chapter}{在学期间论文发表情况}{69}{chapter*.7}
+\contentsline {chapter}{致\hskip 1em\relax 谢}{71}{chapter*.8}
 \contentsfinish 
