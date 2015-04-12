@@ -26,38 +26,38 @@
 \contentsline {section}{\numberline {3.2}析取逻辑程序的基本环}{24}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}基本环的定义}{24}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}基本环的识别}{26}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}本章小结}{29}{section.3.3}
-\contentsline {chapter}{\numberline {}第四章\hspace {0.8em}正规逻辑程序的特征环}{30}{chapter.4}
-\contentsline {section}{\numberline {4.1}特征环的定义}{30}{section.4.1}
-\contentsline {section}{\numberline {4.2}特征环的识别}{32}{section.4.2}
-\contentsline {section}{\numberline {4.3}本章小结}{36}{section.4.3}
-\contentsline {chapter}{\numberline {}第五章\hspace {0.8em}析取逻辑程序的特征环}{37}{chapter.5}
-\contentsline {section}{\numberline {5.1}特征环}{37}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}特征环的定义}{37}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}特征环的识别}{40}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}弱基本环和弱特征环}{42}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}弱基本环的定义}{42}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}弱基本环的识别}{43}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}弱特征环的定义}{44}{subsection.5.2.3}
-\contentsline {subsection}{\numberline {5.2.4}弱特征环的识别}{45}{subsection.5.2.4}
-\contentsline {section}{\numberline {5.3}HPF程序、HWEF程序和HWPF程序}{45}{section.5.3}
-\contentsline {section}{\numberline {5.4}本章小结}{50}{section.5.4}
-\contentsline {chapter}{\numberline {}第六章\hspace {0.8em}实验过程以及结果分析}{51}{chapter.6}
-\contentsline {section}{\numberline {6.1}实验工具}{51}{section.6.1}
-\contentsline {section}{\numberline {6.2}程序框架}{51}{section.6.2}
-\contentsline {section}{\numberline {6.3}实验环境}{52}{section.6.3}
-\contentsline {section}{\numberline {6.4}正规逻辑程序的基本环和特征环的对比实验}{52}{section.6.4}
-\contentsline {subsection}{\numberline {6.4.1}实验描述}{53}{subsection.6.4.1}
-\contentsline {subsection}{\numberline {6.4.2}实验设计}{53}{subsection.6.4.2}
-\contentsline {subsection}{\numberline {6.4.3}实验结果与数据分析}{54}{subsection.6.4.3}
-\contentsline {section}{\numberline {6.5}析取逻辑程序的各种环的对比实验}{54}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}实验设计}{54}{subsection.6.5.1}
-\contentsline {subsection}{\numberline {6.5.2}实验结果与数据分析}{55}{subsection.6.5.2}
-\contentsline {section}{\numberline {6.6}本章小结}{55}{section.6.6}
-\contentsline {chapter}{\numberline {}第七章\hspace {0.8em}总结与展望}{57}{chapter.7}
-\contentsline {section}{\numberline {7.1}本文的研究总结}{57}{section.7.1}
-\contentsline {section}{\numberline {7.2}后续研究工作}{58}{section.7.2}
-\contentsline {chapter}{参考文献}{59}{section*.5}
-\contentsline {chapter}{在学期间论文发表情况}{64}{chapter*.7}
-\contentsline {chapter}{致\hskip 1em\relax 谢}{65}{chapter*.8}
+\contentsline {section}{\numberline {3.3}本章小结}{28}{section.3.3}
+\contentsline {chapter}{\numberline {}第四章\hspace {0.8em}正规逻辑程序的特征环}{29}{chapter.4}
+\contentsline {section}{\numberline {4.1}特征环的定义}{29}{section.4.1}
+\contentsline {section}{\numberline {4.2}特征环的识别}{31}{section.4.2}
+\contentsline {section}{\numberline {4.3}本章小结}{34}{section.4.3}
+\contentsline {chapter}{\numberline {}第五章\hspace {0.8em}析取逻辑程序的特征环}{35}{chapter.5}
+\contentsline {section}{\numberline {5.1}特征环}{35}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}特征环的定义}{35}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}特征环的识别}{38}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}弱基本环和弱特征环}{40}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}弱基本环的定义}{41}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}弱基本环的识别}{42}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}弱特征环的定义}{43}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}弱特征环的识别}{44}{subsection.5.2.4}
+\contentsline {section}{\numberline {5.3}HPF程序、HWEF程序和HWPF程序}{44}{section.5.3}
+\contentsline {section}{\numberline {5.4}本章小结}{49}{section.5.4}
+\contentsline {chapter}{\numberline {}第六章\hspace {0.8em}实验过程以及结果分析}{50}{chapter.6}
+\contentsline {section}{\numberline {6.1}实验工具}{50}{section.6.1}
+\contentsline {section}{\numberline {6.2}程序框架}{50}{section.6.2}
+\contentsline {section}{\numberline {6.3}实验环境}{51}{section.6.3}
+\contentsline {section}{\numberline {6.4}正规逻辑程序的基本环和特征环的对比实验}{51}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}实验描述}{52}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}实验设计}{52}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}实验结果与数据分析}{53}{subsection.6.4.3}
+\contentsline {section}{\numberline {6.5}析取逻辑程序的各种环的对比实验}{53}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}实验设计}{53}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}实验结果与数据分析}{54}{subsection.6.5.2}
+\contentsline {section}{\numberline {6.6}本章小结}{54}{section.6.6}
+\contentsline {chapter}{\numberline {}第七章\hspace {0.8em}总结与展望}{56}{chapter.7}
+\contentsline {section}{\numberline {7.1}本文的研究总结}{56}{section.7.1}
+\contentsline {section}{\numberline {7.2}后续研究工作}{57}{section.7.2}
+\contentsline {chapter}{参考文献}{58}{section*.5}
+\contentsline {chapter}{在学期间论文发表情况}{63}{chapter*.7}
+\contentsline {chapter}{致\hskip 1em\relax 谢}{64}{chapter*.8}
 \contentsfinish 

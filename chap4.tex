@@ -47,20 +47,21 @@
 	\qed
 \end{proof}
 
-基于推论\ref{chap5_corollary_nlp_clf}，我们可以给出一种特征环的定义。
+基于推论\ref{chap5_corollary_nlp_clf}，我们可以给出正规逻辑程序的特征环的定义。
 \begin{definition}[正规逻辑程序的特征环]\label{chap4_definition_nlp_properloop}
-	给定正规逻辑程序$P$，$L$为$P$的环。我们称$L$为$P$的特征环，如果$L$是基本环，同时，不存在$P$的基本环$L'$，使得$R^-(L') \ne \emptyset$，$R^-(L') \subset R^-(L)$。
+	给定正规逻辑程序$P$，$L$为$P$的环。如果$L$是基本环，同时，不存在$P$的其他基本环$L'$，满足$R^-(L') \ne \emptyset$，$R^-(L') \subset R^-(L)$，那么称$L$为$P$的特征环，
 \end{definition}
 
 注意到，特征环是在基本环的基础上，再加入了额外的限制，所以特征环是基本环的子集。
 
-\begin{theorem}\label{chap5_theorem_eq4}
+\begin{theorem}\label{chap4_theorem_eq4}
 	给定正规逻辑程序$P$和原子集合$S$，如果$S$满足$P$，那么以下结论和定理\ref{chap2_theorem_eq1}与定理\ref{chap2_theorem_eq2}都是等价的：
 	\begin{enumerate}
 		\item 对于$P$中任意特征环$L$，$S$满足$RLF(L,P)$；
 		\item 对于$P$中任意特征环$L$，$S$满足$DLF(L,P)$；
 	\end{enumerate}
 \end{theorem}
+
 \begin{example}
 	考虑程序\ref{chap2_program_p4}，由于$R^-(\{p,r\})=\{p \leftarrow .,\ r \leftarrow q.\}$，$R^-(\{p\})=\{p \leftarrow .,\ p \leftarrow r.\}$，$R^-(\{p,q,r\})=\{p \leftarrow .\}$，所以$\{p,r\}$和$\{p\}$都不是特征环。
 	
@@ -86,32 +87,19 @@
 
 \section{特征环的识别}
 
-下面，基于定义\ref{chap4_definition_nlp_properloop_set}，我们将介绍正规逻辑程序的特征环的识别算法。
+基于定义\ref{chap4_definition_nlp_properloop_set}，下面，本文将介绍正规逻辑程序的特征环的识别算法，记为$ProperLoop(L,P,S)$。
 
 \RestyleAlgo{ruled}\LinesNumbered\input{algo/ProperLoop.tex}
-
-给定正规逻辑程序$P$，原子集合$S$，$L$为$P$中的环。记$P$的正依赖图为$G_P$，原子集合$S$在$P$中的诱导子图为$G_P^S$。
-首先，算法\ref{algo_ProperLoop}找出$G_P^S$的所有强连通分量的集合$SCC$。对于每个强连通分量$C \in SCC$：
-
-\begin{enumerate}
-	\item 若$C \subset L$且$R^-(C) \subseteq R^-(L)$，那么此时符合定义\ref{chap4_definition_nlp_properloop_set}的第一种情况，返回$C$，表示$C$使得$L$不是特征环；
-	\item 若$R^-(C) \ne \emptyset$且$R^-(C) \subset R^-(L)$，那么此时符合定义\ref{chap4_definition_nlp_properloop_set}的第二种情况，返回$C$，表示$C$使得$L$不是特征环；
-	\item 若$R^-(C)=\emptyset$，那么$C$对$L$没有影响，但是，$C$的子环则有可能使得$L$不是特征环。所以这种情况，我们将删除$C$的一个原子，获得诱导子图，并把诱导子图的新的强连通分量加入到$SCC$中，然后重复次整个判断过程；
-	\item 若$R^-(C)=R^-(L)$，那么意味着$RLF(C,P)$和$RLF(L,P)$是一样的，从环公式的角度来看，只需要保留一个即可。由于现在我们是在判断$L$是否为特征环，而$C$并不能否决$L$，所以这种情况的处理实际和情况3是一样的：获取$C$的诱导子图的强连通分量，并对其重复整个判断过程；
-	\item 其他情况，即$C$和$L$或者$R^-(C)$和$R^-(L)$都没有直接的包含关系。此时的处理和情况3、4是一样的，不过，我们可以做一些优化：考虑到在$R^-(C)$中，实际上我们只需要关注的是在$R^-(C)$和$R^-(L)$的交集，所以，可以直接删掉$C$中的原子集$head(R^-(C)\backslash R^-(L))$得到诱导子图$G_C$，并获得$G_C$的强连通分量，最后对其重复整个判断过程。
-\end{enumerate}
-
-若没有找到任何$C$，使得$L$不是特征环，那么算法\ref{algo_ProperLoop}将返回$L$，表示$L$是特征环。
 
 
 
 算法\ref{algo_ProperLoop}采取自顶向下的策略，先大环开始，逐步深入到小环。
 需要注意的是，该算法每次都至少删除子图中的一个原子。
-所以，在最坏的情况下，算法将迭代$n^2$次，其中，$n$为环$L$中的原子数目，即算法\ref{algo_ProperLoop}的时间复杂度为$O(n^2)$。
+所以，在最坏的情况下，算法将迭代$n^2$次，其中，$n$为环$L$中的原子数目，即算法\ref{algo_ProperLoop}的时间复杂度为$O(n^3)$。
 
 
 \begin{proposition}
-	给定正规逻辑程序$P$，$L$是$P$的环。算法\ref{algo_ProperLoop}，将在$O(n^2)$时间内返回$L$或者原子集合$C$，$C\subseteq S$。其中，$n$为$P$的原子的数目，$C$满足如下的条件：
+	给定正规逻辑程序$P$，$L$是$P$的环。算法\ref{algo_ProperLoop}，将在$O(n^3)$时间内返回$L$或者原子集合$C$，$C\subseteq S$。其中，$n$为$P$的原子的数目，$C$满足如下的条件：
 	\begin{itemize}
 		\item $C\subset L$，$R^-(C)\subseteq R^-(L)$，或者
 		\item $R^-(C)\ne \emptyset$，$R^-(C)\subset R^-(L)$。
@@ -130,12 +118,12 @@
 	\begin{enumerate}
 		\item 如果$C\subset L$，$R^-(C)\subseteq R^-(L)$，那么算法\ref{algo_ProperLoop}将返回$C$，显然，此时，$C$满足条件1，$C$就是我们要找的环$L'$；
 		\item 如果$R^-(C)\ne \emptyset$，$R^-(C)\subset R^-(L)$，那么算法\ref{algo_ProperLoop}将返回$C$，此时，$C$满足条件2，$C$就是我们要找的环$L'$；
-		\item 如果$R^-(C)=\emptyset$，$R^-(C)=R^-(L)$，那么$L'$在$G_P^S$关于某个原子集合$C\backslash \{a\}$的诱导子图中，其中$a\in C$。注意到，这个强连通分量会被加入到$SCC$中，并在之后的迭代被分析；
-		\item 如果$R^-C\nsubseteq R^-(L)$，那么肯定会有$head(R^-(C)\backslash R^-(L))\cap L'=\emptyset$，否则，存在规则$r$，满足$head(r)\in L'$，$head(r)\in R^-(C)$，注意到，$L'\subseteq C$，所以$r\in R^-(L')$，$r\notin R^-(L)$，即$R^-(L')\nsubseteq R^-(L)$，这与我们的假设矛盾。因此，$L'$仍然会在$G_P^S$关于原子集合$C\backslash head(R^-(C)\backslash R^(L))$的诱导子图的强连通分量中。另一方面，这个强连通分量会被加入到$SCC$，并在之后的迭代被分析。
+		\item 如果$R^-(C)=\emptyset$或者$R^-(C)=R^-(L)$，那么$L'$在$G_P^S$关于某个原子集合$C\backslash \{a\}$的诱导子图中，其中$a\in C$。注意到，这个强连通分量会被加入到$SCC$中，并在之后的迭代被分析；
+		\item 如果$R^-C\nsubseteq R^-(L)$，那么肯定会有$head(R^-(C)\backslash R^-(L))\cap L'=\emptyset$，否则，存在规则$r$，满足$head(r)\in L'$，$head(r)\in R^-(C)$，注意到，$L'\subseteq C$，所以$r\in R^-(L')$，$r\notin R^-(L)$，即$R^-(L')\nsubseteq R^-(L)$，这与我们的假设矛盾。因此，$L'$仍然会在$G_P^S$关于原子集合$C\backslash head(R^-(C)\backslash R^-(L))$的诱导子图的强连通分量中。另一方面，这个强连通分量会被加入到$SCC$，并在之后的迭代被分析。
 	\end{enumerate}
 	
 	因此，算法\ref{algo_ProperLoop}最终会返回一个原子集合$C$，$C\ne L$。
-	综合上述，只有在不存在这样的环的情况下，算法\ref{algo_ProperLoop}才会返回$L$，根据定义\ref{chap4_definition_nlp_properloop_set}，此时$L$为特征环。
+	综合上述，只有在不存在这样的环的情况下，算法\ref{algo_ProperLoop}才会返回$L$，根据定义\ref{chap4_definition_nlp_properloop_set}，此时$L$为原子集合$S$下的特征环。
 \end{proof}
 
 
@@ -147,13 +135,13 @@
 \end{proof}
 
 想要求得程序的所有特征环，一个直接的方法是，使用算法\ref{algo_ProperLoop}去对程序的每个环进行过滤。
-显然，这样做的效率并不高，毕竟程序的环的数目是可能指数爆炸的。
+显然，这样做的效率并不高，毕竟环的数目随着程序规模的增长可能会出现指数爆炸。
 利用命题\ref{chap4_proposition_pl}，我们可以直接忽略掉部分不可能是特征环的环，从而在一定的程度上提高算法的效率。
 
 \RestyleAlgo{ruled}\LinesNumbered\input{algo/ProperLoops.tex}
 
 给定正规逻辑程序$P$，算法\ref{algo_ProperLoops}将计算程序$P$在原子集合$S$下的所有特征环。
-与之前的算法一样，算法\ref{algo_ProperLoops}也是采用自顶向下的方式考虑所有环。
+与之前的算法一样，算法\ref{algo_ProperLoops}也是采用自顶向下的方式考虑所有值得检测的环。
 记$G_P$为程序的正依赖图，$G_P^S$为$G_P$关于原子集合$S$的诱导子图。
 首先，算法\ref{algo_ProperLoops}求得$G_P^S$的强连通分量$SCC$，然后，对$SCC$里面的每个强连通分量$C$使用算法\ref{algo_ProperLoop}判断其是否为特征环。
 如果$C$是特征环，那么根据推论\ref{chap4_proposition_pl}，我们并不需要遍历$C$的所有子环，所以此时，每次删除$C$中的一个原子$a$，其中$a \in head(R^-(C))$，然后把诱导子图的强连通分量加入$SCC$中，并重复整个判断过程；如果$C$不是特征环，那么我们需要遍历其$C$的所有子环，此时每次删除$C$中的一个原子，破坏其连通性，然后把诱导子图的强连通分量加入$SCC$中，并重复整个判断过程。

@@ -83,18 +83,11 @@ $(\Leftarrow)$
 
 根据定义\ref{chap3_definition_el}，下面给出正规逻辑程序基本环的识别算法。
 算法\ref{algo_ElementaryLoop}采用广度优先搜索(Breadth-First-Search)\upcite{cormen2001introduction}的方式，从环$L$出发，考虑其子环的性质。
-为了得到$L$的子环，我们的方法是先通过剔除$L$中的一个原子破坏$L$的连通性，得到诱导子图，
-然后通过求诱导子图的强连通分量得到部分子环的集合，对于每个子环$C$：
-
-\begin{enumerate}
-	\item 如果$R^-(C) \subseteq R^-(L)$，根据定义\ref{chap3_definition_el}，$L$不符合条件，此时，返回$C$，表示$C$使得$L$不是基本环；
-	\item 如果$R^-(C) \nsubseteq R^-(L)$，那么我们需要考虑$C$的子环。注意到，对于任意的$r \in R^-(C) \backslash R^-(L)$，有$r \notin R^-(L)$，同时$head(r)$肯定不属于任意非向外的子环$L'$中，因为如果$head(r)\in L'$，则有$r \in R^-(L')$。因为$L'$是非向外的，所以有$R^-(L') \subseteq R^-(L)$，这样就会得出$r \in R^-(L)$，导致矛盾。所以在这种情况下，我们可以直接把$head(R^-(C) \backslash R^-(L))$从当前子图中删除，从而得到更小的子图和子环，然后继续进行检测。
-\end{enumerate}
-
-\RestyleAlgo{ruled}\LinesNumbered\input{algo/ElementaryLoop.tex}
 
 与Gebser和Schaub\upcite{gebser2005loops}提出的基本环识别算法不同的是，算法\ref{algo_ElementaryLoop}采取自顶向下的策略，先大环开始，逐步深入到小环。
 
+
+\RestyleAlgo{ruled}\LinesNumbered\input{algo/ElementaryLoop.tex}
 
 \begin{proposition}
 给定正规逻辑程序$P$，$L$为$P$的环。算法\ref{algo_ElementaryLoop}将在$O(n^3)$时间内返回$L$，或者环$C$，其中$n$是$P$的原子数目，$C$满足：
@@ -118,7 +111,6 @@ $(\Leftarrow)$
 	
 	最后，我们将证明算法\ref{algo_ElementaryLoop}的时间复杂度为$O(n^3)$。令$n=Atoms(L)$，显然算法\ref{algo_ElementaryLoop}的第1行将迭代$n$次。第2-10行是广度优先搜索的过程。由$R^-(C)\nsubseteq R^-(L)$可知，$head(R^-(C)\backslash R^-(L))$至少会含有一个原子，因此，搜索树的每一层都至少会删除$k_i$个原子，其中，$k_i$表示第$i$层的强连通分量个数。对于第$i$层，求该层所有节点的强连通分量的时间代价总和为$n-(k_1+...+k_{i-1})-k_i$。在最坏的情况下，搜索树会退化成单向链表的结构，此时，每层只能删除一个原子，搜索树的深度达到最大，$n-1$层。所以，$T(n)=n\times (n+(n-1+n-2+...+1))=n\times (n+\frac{(n-1+1)\times (n-1)}{2})=\frac{n^3}{2}+\frac{n^2}{2}$。因此，算法\ref{algo_ElementaryLoop}的时间复杂度为$O(n^3)$。
 \end{proof}
-
 
 
 
@@ -177,19 +169,9 @@ $(\Leftarrow)$
 \subsection{基本环的识别}
 
 Gebser等(2011)证明了识别析取逻辑程序的基本环是coNP-complete的\upcite{gebser2011elementary}。
-虽然准确地识别析取逻辑程序的基本环的时间代价太大，但是，如果可以容忍一定的出错率，在识别过程中，可以使用近似处理，那么就能在多项式时间内判断一个环$L$是否属于基本环的一个超集，记为$EL^*(P)$。
+虽然准确地识别析取逻辑程序的基本环的时间代价太大，但是，如果可以容忍一定的出错率，在识别过程中，可以考虑使用近似处理，那么就能在多项式时间内判断一个环$L$是否属于基本环的一个超集，记为$EL^*(P)$。
 
-下面，我们给出算法\ref{algo_ElementaryLoopXing}。算法\ref{algo_ElementaryLoopXing}的过程和算法\ref{algo_ElementaryLoop}相似，通过自顶向下的策略进行广度优先搜索，仅考虑环$L$的子环中所有值得检测的部分。对于每一个子环$C$，有两种情况：
-
-\begin{enumerate}
-	\item 如果$R_L^-(C) \subseteq R^-(L)$，那么根据定义\ref{chap3_definition_el_dlp}，环$L$不是基本环；
-	\item 如果$R_L^-(C) \nsubseteq R^-(L)$，那么对于任意规则$r \in R_L^-(C) \backslash R^-(L)$：
-	\begin{enumerate}
-		\item 若$|head(r) \cap C|=1$，则$head(r) \cap C$不可能在非向外的环$L'$里，其中，$L' \subset C$。否则，就会有$r \in R_L^-(L')$，而由$L'$是非向外的，有$R_L^-(L') \subseteq R^-(L)$，从而得出$r \in R_L^-(L)$，矛盾。因此，此时可以删除$head(r)$；
-		\item 若$|head(r) \cap C|>1$，则可能会有$L' \subseteq C$，使得$r \in R^-(L')$，$head(r) \cap (L \backslash L') \neq \emptyset$。此时，$L' \cap (head(r) \cap C) \neq \emptyset$，根据基本环的定义，不能删除$head(r)$。然而，为了优化识别时间，该算法采取了近似操作，在这里同样对$head(r)$进行删除。
-	\end{enumerate}
-\end{enumerate}
-
+下面，我们给出算法\ref{algo_ElementaryLoopXing}。算法\ref{algo_ElementaryLoopXing}的过程和算法\ref{algo_ElementaryLoop}相似，通过自顶向下的策略进行广度优先搜索，仅考虑环$L$的子环中所有值得检测的部分。
 \RestyleAlgo{ruled}\LinesNumbered\input{algo/ElementaryLoopXing.tex}
 
 算法\ref{algo_ElementaryLoopXing}是算法\ref{algo_ElementaryLoop}的一样，每次迭代至少删除一个原子。
@@ -207,7 +189,7 @@ Gebser等(2011)证明了识别析取逻辑程序的基本环是coNP-complete的\upcite{gebser2011e
 	令原子$a\in L\backslash L'$，则$L'$在$G_P$关于原子集合$L\backslash \{a\}$的诱导子图的强连通分量中。记$L'$所在的强连通分量为$C$，那么会有两种情况：
 	\begin{enumerate}
 		\item 如果$R^-_L(C)\subseteq R^-(L)$，那么算法\ref{algo_ElementaryLoopXing}将返回$C$，此时$C$就是我们在找的环；
-		\item 如果$R^-_L(C)\nsubseteq R^-(L)$，那么对于任意的$r\in R^-_L(C)\backslash R^-(L)$，若$|head(r)\cap C|=1$，则$head(r)\cap C$不可能属于$L$中的任何非向外的子环$L''$。否则，就会有$r\in R^-_L(L'')$，这个$R^-_L(L'')\subseteq R^-(L)$矛盾；若$|head(r)\cap C|>1$，则可能会有$L''\subseteq C$，满足$r\in R^-(L'')$，$head(r)\cap (L\backslash L'')\ne \emptyset$，所以有$L''\cap (head(r)\cap C)\ne \emptyset$。因此，如果$|head(r)\cap C|=1$，那么$L'$仍然在$G_P$关于原子集合$C\backslash head(R^-_L(C)\backslash R^-(L))$的诱导子图的强连通分量中，并且该强连通分量会被加入到$SCC^*$。在之后的迭代，算法\ref{algo_ElementaryLoopXing}会继续分析该强连通分量。而如果$|head(r)\cap C|>1$，那么$L'$可能不在$G_P$关于原子集合$C\backslash head(R^-_L(C)\backslash R^-(L))$的诱导子图的强连通分量中，然而，算法\ref{algo_ElementaryLoopXing}直接把$head(R^-_L(C)\backslash R^-(L))$删除，它只会处理$G_P$关于原子集合$C\backslash head(R^-_L(C)\backslash \\ R^-(L))$的诱导子图的强连通分量，因此，它可能会错过这个$L'$。
+		\item 如果$R^-_L(C)\nsubseteq R^-(L)$，那么对于任意的$r\in R^-_L(C)\backslash R^-(L)$，若$|head(r)\cap C|=1$，则$head(r)\cap C$不可能属于$L$中的非向外的子环$L'$。否则，就会有$r\in R^-_L(L')$，这与$R^-_L(L')\subseteq R^-(L)$矛盾；若$|head(r)\cap C|>1$，则可能会有$L'\subseteq C$，满足$r\in R^-(L')$，$head(r)\cap (L\backslash L')\ne \emptyset$，所以有$L'\cap (head(r)\cap C)\ne \emptyset$。因此，如果$|head(r)\cap C|=1$，那么$L'$仍然在$G_P$关于原子集合$C\backslash head(R^-_L(C)\backslash R^-(L))$的诱导子图的强连通分量中，并且该强连通分量会被加入到$SCC^*$。在之后的迭代，算法\ref{algo_ElementaryLoopXing}会继续分析该强连通分量。而如果$|head(r)\cap C|>1$，那么$L'$可能不在$G_P$关于原子集合$C\backslash head(R^-_L(C)\backslash R^-(L))$的诱导子图的强连通分量中，然而，算法\ref{algo_ElementaryLoopXing}直接把$head(R^-_L(C)\backslash R^-(L))$删除，它只会处理$G_P$关于原子集合$C\backslash head(R^-_L(C)\backslash \\ R^-(L))$的诱导子图的强连通分量，因此，它可能会错过这个$L'$。
 	\end{enumerate}
 	
 	综合上述，算法\ref{algo_ElementaryLoopXing}如果返回$C$，$C\ne L$，那么$L$不是基本环；如果返回$L$，那么$L$可能是基本环。
