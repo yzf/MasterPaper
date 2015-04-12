@@ -4,33 +4,32 @@
 
  \section{研究背景}
 
-在人工智能领域，知识表示与推理(KR：Knowledge Representation and Reasoning)\upcite{davis1993knowledge}是一个重要的研究方向。知识表示与推理的主要目标为存储知识，让计算机能够处理，以达到人类的智慧\upcite{nzg2007zs}。常见的知识表示方法有语义网(semantic nets)\upcite{rada1989development}、规则(rules)和本体(ontologies)\upcite{uschold1996ontologies}等。这里的知识包括常识(common sense)，所谓的常识，指的是人生活在社会中所应该具备的基本知识，特别指总所周知的知识。
+在人工智能领域，知识表示与推理(KR：Knowledge Representation and Reasoning)\upcite{davis1993knowledge}是一个重要的研究方向。常见的知识表示方法有语义网(semantic nets)\upcite{rada1989development}、规则(rules)和本体(ontologies)\upcite{uschold1996ontologies}等。常见的知识推理方法有归纳推理(inductive reasoning)\upcite{arthur1994inductive}和演绎推理(deductive reasoning)\upcite{goel1997seats}。这里的知识包括常识(common sense)，所谓的常识，指的是人生活在社会中所应该具备的基本知识，特别指总所周知的知识。
 
-早在1958年，图灵奖获得者、“人工智能之父”之一的John McCarthy就在考虑如何实现可以处理常识的人工智能系统。他在《具有常识的程序》一文中提到，该系统应该可以接受用户的建议并且能够根据这些建议来改进自身的性能和行为\upcite{mccarthy1963programs}。这一系统的构建理论指出了常识推理是人工智能的关键，标志着他向常识推理的难题开始宣战，同时也拉开了常识知识表示和推理的研究序幕。1959年，McCarthy与Hayes提出，知识表示与常识推理应该要分离开来，即分为认识论与启发式两部分\upcite{mccarthy1968some}。然而，在常识推理中，知识库加入了新的知识后，原有的推论往往会被推翻。换句话说，知识库的推论不会随着知识的增长而增长，是非单调(non-monotonic)\upcite{mcdermott1980non}的。而经典逻辑则是单调的，无法处理非单调的推理问题\upcite{abdallah2012logic}。因此，研究者便开始了新的逻辑形式的研究，伴随着而诞生的比较著名的非单调逻辑有McCarthy的限定理论(circumscription)\upcite{mccarthy1987circumscription}、Reiter的缺省逻辑(default logic)\upcite{reiter1980logic}和McDermott的非单调模态逻辑(non-monotonic modal logic)\upcite{mcdermott1980non}。
+早在1958年，图灵奖获得者、人工智能领域先驱McCarthy就在考虑实现可以处理常识的人工智能系统。他提到，该系统应该可以接受用户的建议并且能够根据这些建议改进自身的性能和行为\upcite{mccarthy1963programs}。这一系统的构建理论指出了常识推理是人工智能的关键，同时拉开了常识知识表示和推理的研究序幕。1959年，McCarthy与Hayes提出，知识表示与常识推理应该要分离开来，即分为认识论与启发式两部分\upcite{mccarthy1968some}。然而，在常识推理中，知识库加入了新的知识后，原有的推论往往会被推翻。换句话说，知识库的推论不会随着知识的增长而增长，是非单调(non-monotonic)\upcite{mcdermott1980non}的。而经典逻辑则是单调的，因此，它无法处理非单调的推理问题\upcite{abdallah2012logic}。因此，研究者便开始了新的逻辑形式的研究，伴随着而诞生的比较著名的非单调逻辑有McCarthy的限定理论(circumscription)\upcite{mccarthy1987circumscription}、Reiter的缺省逻辑(default logic)\upcite{reiter1980logic}和McDermott的非单调模态逻辑(non-monotonic modal logic)\upcite{mcdermott1980non}。
 
-另一方面，随着人工智能各领域知识理论的发展，六十年代末到七十年代初，逻辑程序的概念慢慢地形成。1965年，Robinson提出了非常重要的消除原理(resolution principle)\upcite{robinson1965machine}。1967年，Green将逻辑当做一个带有自动推导和构造性逻辑的表示语言\upcite{green1969application}。在这些理论的推动下，1972年，Colmerauer等人实现了第一个逻辑程序设计语言Prolog\upcite{colmeraner1973systeme}。对传统的程序设计来说，算法的逻辑意义往往被程序复杂的控制成分所掩盖，使得程序的正确性难以得到证明。逻辑程序设计的主要思想就是把逻辑和控制分开。Kowalski提到，算法=逻辑+控制\upcite{kowalski1979algorithm}。其中，逻辑部分刻画了算法要实现的功能，控制部分刻画了如何实现这些功能。作为程序员，只需要关心算法的逻辑部分，而算法的控制部分则留给逻辑程序解释系统去完成。传统的逻辑程序是基于正程序(positive programs)\upcite{lifschitz1994splitting}的，即程序的规则中不会出现任何形式的否定(negation)。然而，不使用否定去描述实际问题是很不方便的。为了解决这一难题，失败即否定(negation as failure)的概念就被研究者提出来了。为了刻画这一性质，各种全新的语义先后被提出，包括Clark完备(Clark completion)\upcite{clark1978negation}概念、Reiter的闭世界假设(CWA：Closed World Assumption)\upcite{reiter1978closed}和Van Gelder的良序(well-founded)语义\upcite{van1991well}。1988年，Lifschitz等人提出了稳定模型语义(stable models semantics)\upcite{gelfond1988stable}，首次利用非单调推理领域的成果成功解释了失败即否定，并将其推广到正规逻辑程序中。1991年，他们又将稳定模型语义拓展到析取逻辑程序\upcite{gelfond1991classical}。稳定模型语义不仅仅可以解释逻辑程序中的失败即否定，还与非单调推理中的很多工作密切联系，从而被认可为一个实用的非单调推理工具和可以表达常识知识的知识表示语言\upcite{ji2010asp}。正因为稳定模型语义有着这些良好的性质，越来越多的研究者关注这个方向，同时这也推进了该语义的逻辑程序设计的发展。这一全新的研究领域被研究者们称为回答集程序设计(ASP：Answer Set Programming)\upcite{lifschitz2008answer}。
+另一方面，随着人工智能各领域知识理论的发展，六十年代末到七十年代初，逻辑程序的概念慢慢地形成。1965年，Robinson提出了非常重要的消除原理(resolution principle)\upcite{robinson1965machine}。1967年，Green将逻辑当做一个带有自动推导和构造性逻辑的表示语言\upcite{green1969application}。在这些理论的推动下，1972年，Colmerauer等实现了第一个逻辑程序设计语言Prolog\upcite{colmeraner1973systeme}。对传统的程序设计来说，算法的逻辑意义往往被程序复杂的控制成分所掩盖，使得程序的正确性难以得到证明。逻辑程序设计的主要思想就是把逻辑和控制分开。Kowalski提到，算法=逻辑+控制\upcite{kowalski1979algorithm}。其中，逻辑部分刻画了算法要实现的功能，控制部分刻画了如何实现这些功能。作为程序员，只需要关心算法的逻辑部分，而算法的控制部分则留给逻辑程序解释系统去完成。传统的逻辑程序是基于正程序(positive programs)\upcite{lifschitz1994splitting}的，即程序的规则中不会出现任何形式的否定(negation)。然而，不使用否定去描述实际问题是很不方便的。为了解决这一难题，失败即否定(negation as failure)的概念就被研究者提出来了。刻画这一性质的各种全新的语义随之被提出，包括Clark完备(Clark completion)\upcite{clark1978negation}概念、Reiter的闭世界假设(CWA：Closed World Assumption)\upcite{reiter1978closed}和Gelder的良序(well-founded)语义\upcite{van1991well}。1988年，Lifschitz等人提出了稳定模型语义(stable models semantics)\upcite{gelfond1988stable}，首次利用非单调推理领域的成果成功解释了失败即否定，并将其推广到正规逻辑程序中。1991年，他们又将稳定模型语义扩展到析取逻辑程序\upcite{gelfond1991classical}。稳定模型语义不仅仅可以解释逻辑程序中的失败即否定，还与非单调推理中的很多工作密切联系，从而被认可为一个实用的非单调推理工具和可以表达常识知识的知识表示语言\upcite{ji2010asp}。正因为稳定模型语义有着这些良好的性质，越来越多的研究者关注这个方向，同时这也推进了该语义的逻辑程序设计的发展。这个新的研究领域被研究者们称为回答集程序设计(ASP：Answer Set Programming)\upcite{lifschitz2008answer}。
 
  \section{研究现状}
 
 近十几年来，随着ASP的快速发展，先后出现了很多ASP求解器(ASP solver)。
-由于计算ASP程序的回答集属于NP-complete问题，大部分求解器都是通过搜索的方式查找回答集。ASP求解器主要分为两大类，一类是基于DPLL算法(Davis-Putnam-Logemann-Loveland procedure)\upcite{davis1962machine}的，主要代表有DLV\upcite{leone2006dlv}、smodels\upcite{niemela2000smodels}和clasp\upcite{gebser2007clasp}。另一类则是基于SAT求解器\upcite{sorensson2005minisat}的，主要代表有ASSAT\upcite{lin2004assat}和cmodels\upcite{lierler2005cmodels}等。
-
-求解器的发展离不开理论的支持。2002年，Lin与Zhao首次提出了正规逻辑程序的环(loops)和环公式(loop formulas)的概念\upcite{lin2004assat}，将逻辑程序回答集的求解归约为命题逻辑公式模型的求解，即SAT问题\upcite{gu1999algorithms}，并使用SAT求解器进行求解。Lin-Zhao规约理论的核心思想在于，通过引入正规逻辑程序的环公式，对逻辑程序的正依赖图(positive dependency graph)中的每一个环，添加一个与之相对应的环公式到原逻辑程序的克拉克完备(Clark completion)\upcite{clark1978negation}中，从而得到模型与原逻辑程序的回答集一一对应的命题逻辑公式集。不久之后，Lin-Zhao的规约理论被Lifschitz等人拓展到析取逻辑程序\upcite{lee2003loop}。
+由于计算回答集逻辑程序的回答集是NP-complete的，大部分求解器都是通过搜索的方式查找回答集。ASP求解器主要分为两大类，一类是基于DPLL算法(Davis-Putnam-Logemann-Loveland procedure)\upcite{davis1962machine}的，主要代表有DLV\upcite{leone2006dlv}、smodels\upcite{niemela2000smodels}和clasp\upcite{gebser2007clasp}。另一类则是基于SAT求解器\upcite{sorensson2005minisat}的，主要代表有ASSAT\upcite{lin2004assat}和cmodels\upcite{lierler2005cmodels}。
+求解器的发展离不开理论的支持。2002年，Lin与Zh-ao首次提出了正规逻辑程序的环(loops)和环公式(loop formulas)的概念\upcite{lin2002assat}，将逻辑程序回答集的求解归约为命题逻辑公式的可满足性问题，即SAT问题\upcite{gu1999algorithms}，并使用SAT求解器进行求解。Lin-Zhao规约理论的核心思想在于，通过引入正规逻辑程序的环公式，对程序的正依赖图(positive dependency graph)中的每一个环，添加一个与之相对应的环公式到原逻辑程序的克拉克完备(Clark completion)\upcite{clark1978negation}中，从而得到模型与原逻辑程序的回答集一一对应的命题逻辑公式集。不久之后，Lin-Zhao规约理论被Lifschitz等扩展到析取逻辑程序\upcite{lee2003loop}。
 这些理论的提出，保证了基于SAT求解器的ASP求解器的正确性(correctness)和完备性(completeness)，极大地推进了ASP求解器的发展。
 
-然而，通常情况下，ASP程序的环的数目可能出现指数爆炸\upcite{lifschitz2006there}。2005年，G-ebser等人发现，并非所有环对于从正规逻辑程序的模型中挑选回答集都是必须的。他们提出了基本环(elementary loops)的概念，并且在仅考虑基本环的情况下，重新定义了Lin-Zhao的环公式理论\upcite{gebser2005loops}。2011年，Gebser等人把基本环的概念拓展到析取逻辑程序，并且指出，只利用这些基本环，已经足以完成从析取逻辑程序的模型中选取回答集这一操作\upcite{gebser2011elementary}。同时，他们还提出了头部无基本环的逻辑程序(HEF程序：Head-Elementary-loop-Free Program)，并指出了，这类析取逻辑程序与头部无环的逻辑程序(HCF程序：Head-Cycle-Free Program)\upcite{ben1994propositional}一样，可以通过把规则头部的原子移动到规则体部，在多项式时间内转换为与其等价的正规逻辑程序。Ji等人在2013年通过实验观察到，对于特定的逻辑程序，如果它的所有环的外部支持(external support)都不超过一个，那么使用环公式理论进行转化后，可以显著地提高回答集的计算效率\upcite{chen2013computing}。
+然而，通常情况下，回答集逻辑程序的环的数目会随着程序规模增大而出现指数爆炸\upcite{lifschitz2006there}。2005年，Gebser等发现，并非所有环对于正规逻辑程序的回答集的求解都是必须的。他们提出了基本环(elementary loops)的概念，并且在仅考虑基本环的情况下，重新定义了Lin-Zhao的规约理论\upcite{gebser2005loops}。2011年，他们又把基本环的概念扩展到析取逻辑程序，并且指出，只利用基本环，已经足以完成析取逻辑程序的回答集的求解\upcite{gebser2011elementary}。同时，他们还提出了头部无基本环的逻辑程序(HEF程序：Head-Elementary-loop-Free Program)\upcite{gebser2011elementary}，并且指出了，这类析取逻辑程序与头部无环的逻辑程序(HCF程序：Head-Cycle-Free Program)\upcite{ben1994propositional}一样，可以通过把规则头部的原子移动到规则体部，在多项式时间内转换为与其等价的正规逻辑程序。Ji等人在2013年通过实验观察到，对于正依赖图符合特定结构的逻辑程序，如果它的所有环的外部支持(external support)都不超过一个，那么使用环公式理论进行转化后，可以显著地提高回答集的计算效率\upcite{chen2013computing}。
 
  \section{本文的工作}
 
 影响ASP的推广的最大问题是ASP求解器的效率。本文的主要关注点的是提高基于SAT求解器的ASP求解器的效率。总的来说，本文的主要工作包括：
 
-第一，本文深入研究了Gebser等人提出的基本环的性质及其基于自底向上策略的识别算法\upcite{gebser2005loops}，并从外部支持(external support)的角度，提出了基本环的另一种更直观的定义，同时还给出了一种基于自顶向下策略的识别算法，该算法的时间复杂度和Gebser等人给出的一样。
+第一，本文深入研究了Gebser等提出的基本环的性质及其基于自底向上策略的识别算法\upcite{gebser2005loops}，并从外部支持(external support)的角度，重新定义了回答集逻辑程序的基本环，同时还给出了一种基于自顶向下策略的识别算法，该算法的时间复杂度和Gebser等给出的一样。
 
-第二，针对正规逻辑程序，本文提出了特征环(proper loops)的概念，并证明了特征环已经足以完成ASP程序的回答集的求解，同时还给出一个多项式时间复杂度的算法，用于识别特征环。此外，本文还证明了，对于依赖图符合特定结构的正规逻辑程序，特征环的数量比基本环少很多，同时，特征环的识别效率也比基本环高很多。这一结论很好地解释了Ji等人的观察结果\upcite{chen2013computing}，即如果ASP程序的所有环的外部支持都不超过一个，那么使用环公式理论进行转化后，可以显著地提升回答集的计算效率。
+第二，针对正规逻辑程序，本文提出了特征环(proper loops)的概念，并证明了特征环已经足以完成ASP程序的回答集的求解，同时还给出一个多项式时间复杂度的算法，用于识别特征环。此外，本文还验证了，对于正依赖图符合特定结构的正规逻辑程序，特征环的数量比基本环少很多，同时，特征环的识别效率也比基本环高很多。这一结论很好地解释了Ji等的观察结果\upcite{chen2013computing}，即如果回答集逻辑程序的所有环的外部支持都不超过一个，那么使用环公式理论进行转化后，可以显著地提升回答集的计算效率。
 
-第三，本文将特征环的概念拓展到析取逻辑程序。和正规逻辑程序不一样的是，识别析取逻辑程序的特征环属于coNP-complete难题，这是当今的计算机无法承受的。针对这一问题，本文提出了弱特征环(weak proper loops)的概念，并且给出了一个多项式时间复杂度的识别算法。
+第三，本文将特征环的概念扩展到析取逻辑程序。和正规逻辑程序不一样的是，识别析取逻辑程序的特征环是coNP-complete的。针对这一问题，本文提出了弱基本环和(weak elementary loops)和弱特征环(weak proper loops)的概念，并且分别给出了多项式时间复杂度的算法，用于识别一个环是否为弱基本环或弱特征环。
 
-第四，本文进行了两个主要实验。实验一对比了正规逻辑程序的基本环与特征环的数量和计算效率，用实际用例说明了特征环的优越性；实验二对比了析取逻辑程序的各种环的数量，并说明了在实际用例中，弱基本环与弱特征环和基本环与特征环在数量上差别不大。
+第四，本文进行了两个对比实验。实验一对比了正依赖图符合特定结构的正规逻辑程序的基本环与特征环的数量和计算效率，用实际用例说明了特征环的优越性；实验二对比了析取逻辑程序的各种环的数量，并说明了在实际用例中，弱基本环与弱特征环和基本环与特征环在数量上差别不大。
 
 \section{本文的安排}
 
@@ -40,12 +39,12 @@
 
 第2章，详细介绍了与本文相关的预备知识，包括命题逻辑、回答集编程、环公式和传统的基本环。
 
-第3章，从外部支持的角度，提出了基本环的另一种定义。对于正规逻辑程序，本章给出了多项式时间复杂度的算法，用于判定其环是否为基本环。而对于析取逻辑程序，本章同样给出了多项式时间复杂度的近似算法，用于判定其环是否属于基本环的一个超类。
+第3章，从外部支持的角度，重新定义了基本环。对于正规逻辑程序，本章给出了多项式时间复杂度的算法，用于判定其环是否为基本环。而对于析取逻辑程序，本章同样给出了多项式时间复杂度的近似算法，用于判定其环是否属于基本环的一个超集。
 
 第4章，针对正规逻辑程序，详细地介绍了特征环的概念和性质，并给出了识别特征环以及计算程序的所有特征环的算法，同时还证明了这些算法的可靠性和完备性。
 
-第5章，把特征环的概念拓展到析取逻辑程序。针对识别析取逻辑程序的特征环的时间复杂度太高的问题，本章给出多项式时间复杂度的近似算法。基于这些理论基础，本章在最后部分还提出了弱基本环和弱特征环的概念以及他们相对应的HWEF程序和HWPF程序，并总结了各种程序类别之间的关系。
+第5章，把特征环的概念扩展到析取逻辑程序。针对识别析取逻辑程序的特征环是coNP-complete的问题，本章给出多项式时间复杂度的近似算法。基于这些理论基础，本章在最后部分还提出了弱基本环和弱特征环的概念以及他们相对应的HWEF程序和HWPF程序，并总结了各种环以及各种程序类别之间的关系。
 
-第6章，主要介绍了两个对比实验。第一个实验比较正规逻辑程序下，基本环与特征环的数量和计算效率；第二个实验室比较析取逻辑程序下，各种环的数量，包括基本环、特征环及其弱化版本。
+第6章，主要介绍了两个对比实验。实验一针对正依赖图符合特定结构的正规逻辑程序，比较基本环与特征环的数量和计算效率；实验二比较析取逻辑程序下，各种环的数量，包括基本环、特征环及其弱化版本。
 
 第7章，主要对本文的工作进行了总结，指出本文未完成的工作，并对未来下一步的研究工作进行了展望。

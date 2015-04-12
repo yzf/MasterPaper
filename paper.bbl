@@ -5,11 +5,6 @@ Davis R, Shrobe H, Szolovits P.
 \newblock What is a knowledge representation? [J].
 \newblock AI magazine, 1993, 14(1):17.
 
-\bibitem{nzg2007zs}
-年志刚, 梁式, 麻芳兰, et~al.
-\newblock 知识表示方法研究与应用 [J].
-\newblock 计算机应用研究, 2007, 24(5):234--236.
-
 \bibitem{rada1989development}
 Rada R, Mili H, Bicknell E, et~al.
 \newblock Development and application of a metric on semantic nets [J].
@@ -20,6 +15,17 @@ Rada R, Mili H, Bicknell E, et~al.
 Uschold M, Gruninger M.
 \newblock Ontologies: Principles, Methods and Applications [J].
 \newblock To appear in Knowledge Engineering Review, 1996, 11(2).
+
+\bibitem{arthur1994inductive}
+Arthur W~B.
+\newblock Inductive reasoning and bounded rationality [J].
+\newblock The American economic review, 1994,  406--411.
+
+\bibitem{goel1997seats}
+Goel V, Gold B, Kapur S, et~al.
+\newblock The seats of reason? An imaging study of deductive and inductive
+  reasoning [J].
+\newblock NeuroReport, 1997, 8(5):1305--1310.
 
 \bibitem{mccarthy1963programs}
 McCarthy J.
@@ -155,6 +161,12 @@ Lierler Y.
   Programming and Nonmonotonic Reasoning.
 \newblock Springer, 2005:  447--451.
 
+\bibitem{lin2002assat}
+Lin F, Zhao Y.
+\newblock ASSAT: Computing answer sets of a logic program by SAT solvers [C].//
+  AAAI.
+\newblock 2002:  112--118.
+
 \bibitem{gu1999algorithms}
 Gu J, Purdom P~W, Franco J, et~al.
 \newblock Algorithms for the satisfiability (sat) problem [M].
@@ -198,20 +210,16 @@ Chen X, Ji J, Lin F.
 \newblock 面向计算机科学的数理逻辑 [M].
 \newblock 北京大学出版社, 1989.
 
-\bibitem{zqz2002logic}
-周巧姝.
-\newblock 关于数理逻辑在解决数学命题中的探讨 [J].
-\newblock 长春师范学院学报, 2002, 5:022.
-
-\bibitem{scy2000sllj}
-石纯一, 王家.
-\newblock 数理逻辑与集合论 [M].
-\newblock 清华大学出版社, 2000.
-
 \bibitem{rosen2011discrete}
 Rosen K.
 \newblock Discrete Mathematics and Its Applications 7th edition [M].
 \newblock McGraw-Hill, 2011.
+
+\bibitem{eiter2008combining}
+Eiter T, Ianni G, Lukasiewicz T, et~al.
+\newblock Combining answer set programming with description logics for the
+  semantic web [J].
+\newblock Artificial Intelligence, 2008, 172(12):1495--1539.
 
 \bibitem{bonatti2010answer}
 Bonatti P, Calimeri F, Leone N, et~al.
@@ -223,15 +231,20 @@ Eiter T, Ianni G, Krennwallner T.
 \newblock Answer set programming: A primer [M].
 \newblock Springer, 2009.
 
-\bibitem{lkc1995tlyy}
-卢开澄, 卢华明.
-\newblock 图论及其应用 [M].
-\newblock 清华大学出版社有限公司, 1995.
+\bibitem{west2001introduction}
+West D~B, et~al.
+\newblock Introduction to graph theory [M].
+\newblock Prentice hall Upper Saddle River, 2001.
 
-\bibitem{xd2005tlyy}
-先迪, 正良.
-\newblock 图论及其应用 [M].
-\newblock 高等教育出版社, 2005.
+\bibitem{even2011graph}
+Even S.
+\newblock Graph algorithms [M].
+\newblock Cambridge University Press, 2011.
+
+\bibitem{tarjan1972depth}
+Tarjan R.
+\newblock Depth-first search and linear graph algorithms [J].
+\newblock SIAM journal on computing, 1972, 1(2):146--160.
 
 \bibitem{cormen2001introduction}
 Cormen T~H, Leiserson C~E, Rivest R~L, et~al.
@@ -254,11 +267,6 @@ Fassetti F, Palopoli L.
 \newblock On the complexity of identifying head-elementary-set-free programs
   [J].
 \newblock Theory and Practice of Logic Programming, 2010, 10(01):113--123.
-
-\bibitem{levine2009flex}
-Levine J.
-\newblock Flex \& Bison: Text Processing Tools [M].
-\newblock " O'Reilly Media, Inc.", 2009.
 
 \bibitem{garey1976planar}
 Garey M~R, Johnson D~S, Tarjan R~E.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.19)  9 APR 2015 21:58
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.19)  12 APR 2015 14:52
 entering extended mode
 **paper.tex
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\paper.tex"
@@ -740,7 +740,7 @@ File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: includehead includefoot twoside 
+* modes: includehead includefoot 
 * h-part:(L,W,R)=(85.35826pt, 426.79135pt, 85.35826pt)
 * v-part:(T,H,B)=(56.9055pt, 734.08128pt, 54.06006pt)
 * \paperwidth=597.50787pt
@@ -754,7 +754,7 @@ File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 * \headsep=19.8738pt
 * \topskip=12.0pt
 * \footskip=30.0pt
-* \marginparwidth=88.0pt
+* \marginparwidth=38.0pt
 * \marginparsep=7.0pt
 * \columnsep=10.0pt
 * \skip\footins=10.8pt plus 4.0pt minus 2.0pt
@@ -762,8 +762,8 @@ File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 * \voffset=0.0pt
 * \mag=1000
 * \@twocolumnfalse
-* \@twosidetrue
-* \@mparswitchtrue
+* \@twosidefalse
+* \@mparswitchfalse
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
@@ -891,19 +891,16 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <18> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 18.
 
-Underfull \vbox (badness 1742) has occurred while \output is active []
-
- [3
+[3
 
 
-])
-[4] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\paper.toc" [5
+]) [4] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\paper.toc"
+[5
 
 
 ])
 \tf@toc=\write4
-
-[6] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap1.tex"
+ [6] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap1.tex"
 µ⁄“ª’¬
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -923,11 +920,8 @@ l.12
 
 
 ]
-Underfull \vbox (badness 6675) has occurred while \output is active []
-
-LaTeX Font Info:    Try loading font information for C19+fs on input line 17.
-
-(C:\CTEX\CTeX\tex\latex\CJK\GB\c19fs.fd
+LaTeX Font Info:    Try loading font information for C19+fs on input line 19.
+ (C:\CTEX\CTeX\tex\latex\CJK\GB\c19fs.fd
 File: c19fs.fd 2009/09/23 4.8.2
 )
 
@@ -940,26 +934,19 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.17 
-      [2]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
-been already used, duplicate ignored
+l.19 
+      [2]pdfTeX warning (ext4): destination with the same identifier (name{page
+.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.26 
+l.27 
       [3]pdfTeX warning (ext4): destination with the same identifier (name{page
 .4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.42 
+l.43 
       [4]) [5] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap2.tex
-" [6
-
-
-
-]
+"
 µ⁄∂˛’¬
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -969,7 +956,11 @@ Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
 nput line 24.
 Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
 t line 28.
-[7]
+[6
+
+
+
+]
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
 t line 49.
 Package hyperref Info: bookmark level for unknown proposition defaults to 0 on 
@@ -978,7 +969,7 @@ Package hyperref Info: bookmark level for unknown proof defaults to 0 on input
 line 74.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 82.
- [8]
+ [7]
 Overfull \hbox (15.0661pt too wide) in paragraph at lines 101--102
 []\C19/song/bx/n/12/42 â \C19/song/bx/n/12/40 Ω \C19/song/bx/n/12/61 ò \C19/son
 g/bx/n/12/42 á \C19/song/bx/n/12/64  \C19/song/bx/n/12/43 5 \C19/song/bx/n/12/
@@ -1006,7 +997,7 @@ n/12/54 e$\OML/cmm/m/it/12 l$\C19/song/bx/n/12/58 è \C19/song/bx/n/12/63  \C19
  \OML/cmm/m/it/12 a$\C19/song/bx/n/12/26 ß
  []
 
-[9]
+[8]
 Overfull \hbox (13.3149pt too wide) in paragraph at lines 130--131
 \C19/kai/m/n/12/63 K \C19/kai/m/n/12/25 " \C19/kai/m/n/12/48 a \C19/kai/m/n/12/
 56 q \C19/kai/m/n/12/40 / \C19/kai/m/n/12/26 ß \C19/kai/m/n/12/58 ∑ \C19/kai/m/
@@ -1018,22 +1009,21 @@ t/12 a[]; :::; a[]\OMS/cmsy/m/n/12 g$\C19/kai/m/n/12/26 ß$\OML/cmm/m/it/12 body
 /12 body[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r\OT1/cmr/m/n/12 ) =$
  []
 
-[10]
-Overfull \hbox (53.92235pt too wide) in paragraph at lines 184--185
+[9]
+Overfull \hbox (2.37259pt too wide) in paragraph at lines 184--185
 []\C19/kai/m/n/12/42 â \C19/kai/m/n/12/40 Ω \C19/kai/m/n/12/61 ò \C19/kai/m/n/1
 2/42 á \C19/kai/m/n/12/44 £ \C19/kai/m/n/12/39 â \C19/kai/m/n/12/45 8 \C19/kai/
 m/n/12/49 ‹ \C19/kai/m/n/12/45 6 \C19/kai/m/n/12/38 ß \C19/kai/m/n/12/60 S$\OML
 /cmm/m/it/12 P$\C19/kai/m/n/12/26 ß \C19/kai/m/n/12/52 Ÿ \C19/kai/m/n/12/37 ÷ \
-C19/kai/m/n/12/54 $\OML/cmm/m/it/12 Comp\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 P\OT
-1/cmr/m/n/12 )$\C19/kai/m/n/12/55 ¥$\OML/cmm/m/it/12 P$\C19/kai/m/n/12/40 
+C19/kai/m/n/12/54 $\OML/cmm/m/it/12 Comp[] $
  []
 
-[11] [12]
+[10] [11]
 Underfull \hbox (badness 10000) in paragraph at lines 245--246
 
  []
 
-[13] <img/dg.png, id=632, 541.27219pt x 161.85469pt>
+[12] <img/dg.png, id=634, 541.27219pt x 161.85469pt>
 File: img/dg.png Graphic file (type png)
  <use img/dg.png>
 Package pdftex.def Info: img/dg.png used on input line 259.
@@ -1050,13 +1040,13 @@ kai/m/n/12/58 ∑ \C19/kai/m/n/12/50 Ç \C19/kai/m/n/12/38 °$\OML/cmm/m/it/12 G[]$
  f \C19/kai/m/n/12/57 „\OT1/ppl/m/n/12 (subgraph)$[]$\C19/kai/m/n/12/25 " 
  []
 
-<img/sg.png, id=638, 331.99031pt x 161.85469pt>
+<img/sg.png, id=640, 331.99031pt x 161.85469pt>
 File: img/sg.png Graphic file (type png)
  <use img/sg.png>
 Package pdftex.def Info: img/sg.png used on input line 276.
 (pdftex.def)             Requested size: 150.0pt x 73.1303pt.
- [14 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/dg.png> <C:/User
-s/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/sg.png>] [15]
+ [13 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/dg.png> <C:/User
+s/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/sg.png>] [14]
 Overfull \hbox (9.02136pt too wide) in paragraph at lines 345--346
 []\C19/kai/m/n/12/57 œ \C19/kai/m/n/12/38 ~ \C19/kai/m/n/12/26 ß$\OML/cmm/m/it/
 12 DLF\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L; P\OT1/cmr/m/n/12 )$\C19/kai/m/n/12/4
@@ -1072,7 +1062,7 @@ F\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 )$
 
 LaTeX Warning: File ot144.cmap not found on input line 353.
 
-[16]
+[15]
 Overfull \hbox (6.57965pt too wide) in paragraph at lines 360--361
 []\C19/kai/m/n/12/57 œ \C19/kai/m/n/12/38 ~ \C19/kai/m/n/12/26 ß$\OML/cmm/m/it/
 12 CLF\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L; P\OT1/cmr/m/n/12 )$\C19/kai/m/n/12/4
@@ -1085,7 +1075,7 @@ Overfull \hbox (6.57965pt too wide) in paragraph at lines 360--361
 F\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 )$ 
  []
 
-[17] [18] [19]
+[16] [17] [18]
 Overfull \hbox (10.64825pt too wide) in paragraph at lines 470--471
 $\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 \ f\OML/cmm/m/it/12 p; q;
  r\OMS/cmsy/m/n/12 g \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 p; q\
@@ -1099,7 +1089,7 @@ i/m/n/12/43 ⁄$\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 q; r\OMS/cmsy/m/n/12 g$\C19/ka
 i/m/n/12/63 3$\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 p; [] $
  []
 
-) [20] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap3.tex"
+) [19] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap3.tex"
 µ⁄»˝’¬
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -1116,12 +1106,26 @@ it/12 p$\C19/kai/m/n/12/26 ß$\OML/cmm/m/it/12 C \OT1/cmr/m/n/12 = [][] \OML/cmm
 12/26 ß$\OML/cmm/m/it/12 D \OT1/cmr/m/n/12 = [][] [] $
  []
 
-[21
+[20
 
 
 
-]pdfTeX warning (ext4): destination with the same identifier (name{definition.1
-}) has been already used, duplicate ignored
+]
+Overfull \hbox (11.25966pt too wide) in paragraph at lines 42--44
+[]\C19/song/bx/n/12/62 d \C19/song/bx/n/12/57 Ì \C19/song/bx/n/12/49 ÿ[][]\OT1/
+ppl/m/n/12 3.1[][]\C19/song/bx/n/12/26 ß \C19/song/bx/n/12/47 å \C19/song/bx/n/
+12/61 ± \C19/song/bx/n/12/64  \C19/song/bx/n/12/40  \C19/song/bx/n/12/26 ß \C
+19/song/bx/n/12/40 È \C19/song/bx/n/12/62 u \C19/song/bx/n/12/49 ˜ \C19/song/bx
+/n/12/65 v$\OML/cmm/m/it/12 L[] \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 L[]$\C19/so
+ng/bx/n/12/53 Ö$\OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L[]\OT1/c
+mr/m/n/12 ) \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/
+it/12 L[]\OT1/cmr/m/n/12 )$\C19/song/bx/n/12/40  \C19/song/m/n/12/48 ¸ \C19/so
+ng/bx/n/12/42 á \C19/song/bx/n/12/44 Ç$\OML/cmm/m/it/12 L[]$\C19/song/bx/n/12/4
+3 ⁄$\OML/cmm/m/it/12 L[]$\C19/song/bx/n/12/26 ß
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{definition.1}
+) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.46 \begin{definition}
@@ -1144,7 +1148,7 @@ kai/m/n/12/25 "$\OML/cmm/m/it/12 L$\C19/kai/m/n/12/55 ¥$\OML/cmm/m/it/12 P$\C19
 t/12 P$\C19/kai/m/n/12/64 •
  []
 
-[22]pdfTeX warning (ext4): destination with the same identifier (name{definitio
+[21]pdfTeX warning (ext4): destination with the same identifier (name{definitio
 n.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1182,24 +1186,34 @@ $\C19/kai/m/n/12/26 ß$\OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 f\O
 ML/cmm/m/it/12 q; r\OMS/cmsy/m/n/12 g\OT1/cmr/m/n/12 ) =$
  []
 
-[23]
+[22]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/ElementaryLoop.tex"
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 22.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 5.
 
-LaTeX Warning: File ot136.cmap not found on input line 22.
+LaTeX Font Warning: Font shape `U/wasy/b/n' in size <5> not available
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 7.
 
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 22.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 22.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 23.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 23.
+
+LaTeX Warning: File ot136.cmap not found on input line 23.
+
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 23.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 23.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 23.
 )pdfTeX warning (ext4): destination with the same identifier (name{proposition.
 2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.101 \begin{proposition}
-                          [24]
-Overfull \hbox (8.76152pt too wide) in paragraph at lines 119--120
+l.99 \begin{proposition}
+                         [23]
+Overfull \hbox (8.76152pt too wide) in paragraph at lines 117--118
 []\C19/kai/m/n/12/65 n \C19/kai/m/n/12/43 ‹ \C19/kai/m/n/12/54 ˛ \C19/kai/m/n/1
 2/55 „ \C19/kai/m/n/12/26 ß \C19/kai/m/n/12/54 X \C19/kai/m/n/12/43 J \C19/kai/
 m/n/12/41 à \C19/kai/m/n/12/44 £$\OML/cmm/m/it/12 L$\C19/kai/m/n/12/26 ß \C19/k
@@ -1217,7 +1231,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{definition.3}
 <to be read again> 
                    \relax 
 l.132 \begin{definition}
-                        [ ‹œﬁµƒÕ‚≤ø÷ß≥÷]
+                        [ ‹œﬁµƒÕ‚≤ø÷ß≥÷] [24]
 Overfull \hbox (0.41284pt too wide) in paragraph at lines 138--139
 []\C19/kai/m/n/12/42 â \C19/kai/m/n/12/40 Ω \C19/kai/m/n/12/58 € \C19/kai/m/n/1
 2/54  \C19/kai/m/n/12/49 ‹ \C19/kai/m/n/12/45 6 \C19/kai/m/n/12/38 ß \C19/kai/
@@ -1230,9 +1244,6 @@ ai/m/n/12/43 ⁄$\OML/cmm/m/it/12 L[]$\C19/kai/m/n/12/58 è$\OML/cmm/m/it/12 P$\C1
  []
 
 
-LaTeX Warning: File ot162.cmap not found on input line 141.
-
-[25]
 Overfull \hbox (13.35548pt too wide) in paragraph at lines 144--146
 \C19/kai/m/n/12/54 X \C19/kai/m/n/12/43 J$\OML/cmm/m/it/12 r [] R[]\OT1/cmr/m/n
 /12 (\OML/cmm/m/it/12 L[]\OT1/cmr/m/n/12 )$\C19/kai/m/n/12/26 ß \C19/kai/m/n/12
@@ -1247,7 +1258,10 @@ ai/m/n/12/50 o \C19/kai/m/n/12/39  \C19/kai/m/n/12/63 3$\OML/cmm/m/it/12 q$\C1
 mm/m/it/12 q \OMS/cmsy/m/n/12 2$
  []
 
-[26]pdfTeX warning (ext4): destination with the same identifier (name{definitio
+
+LaTeX Warning: File ot155.cmap not found on input line 164.
+
+[25]pdfTeX warning (ext4): destination with the same identifier (name{definitio
 n.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1266,24 +1280,26 @@ L/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L[]\OT1/cmr/m/n/12 ) \OMS/cm
 sy/m/n/12 $
  []
 
-[27]
+[26]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/ElementaryLoopXing.
 tex"
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 22.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 22.
-)pdfTeX warning (ext4): destination with the same identifier (name{example.2}) 
-has been already used, duplicate ignored
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 23.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 23.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 23.
+)
+
+LaTeX Warning: File ot159.cmap not found on input line 205.
+
+[27]pdfTeX warning (ext4): destination with the same identifier (name{example.2
+}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.202 \begin{example}
+l.216 \begin{example}
                      \label{chap3_program_p5} [28]) [29]
-("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap4.tex" [30
-
-
-
-]
+("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap4.tex"
 µ⁄Àƒ’¬
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -1303,7 +1319,11 @@ it/12 body\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r\OT1/cmr/m/n/12 )$\C19/kai/m/n/12/
 12/26 ß 
  []
 
-[31]
+[30
+
+
+
+]
 Overfull \hbox (1.62196pt too wide) in paragraph at lines 37--39
 \C19/kai/m/n/12/45 =$\OML/cmm/m/it/12 C \OMS/cmsy/m/n/12 ! \OML/cmm/m/it/12 A$\
 C19/kai/m/n/12/58 è \C19/kai/m/n/12/63 ˝ \C19/kai/m/n/12/25 " \C19/kai/m/n/12/6
@@ -1321,7 +1341,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{definition.1}
                    \relax 
 l.51 \begin{definition}
                        [’˝πÊ¬ﬂº≠≥Ã–ÚµƒÃÿ’˜ª∑]\label{chap4_definition_nlp_pro...
-[32]pdfTeX warning (ext4): destination with the same identifier (name{example.1
+[31]pdfTeX warning (ext4): destination with the same identifier (name{example.1
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1333,17 +1353,25 @@ l.64 \begin{example}
 l.77 \begin{definition}
                        [’˝πÊ¬ﬂº≠≥Ã–Ú‘⁄‘≠◊”ºØ∫œœ¬µƒÃÿ’˜ª∑]\label{chap4_defini...
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/ProperLoop.tex"
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 31.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 31.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 31.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 31.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 31.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 31.
 )
-[33] [34]pdfTeX warning (ext4): destination with the same identifier (name{prop
-osition.1}) has been already used, duplicate ignored
+[32]
+
+LaTeX Warning: File ot156.cmap not found on input line 108.
+
+[33]pdfTeX warning (ext4): destination with the same identifier (name{propositi
+on.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.113 \begin{proposition}
@@ -1355,7 +1383,7 @@ File: omsppl.fd
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 116.
- [35]pdfTeX warning (ext4): destination with the same identifier (name{proposit
+ [34]pdfTeX warning (ext4): destination with the same identifier (name{proposit
 ion.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1363,26 +1391,27 @@ l.142 \begin{proposition}
                          \label{chap4_proposition_pl}
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/ProperLoops.tex"
 
-LaTeX Warning: File ot145.cmap not found on input line 29.
+LaTeX Warning: File ot145.cmap not found on input line 30.
 
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 29.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 29.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 29.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 29.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 29.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 29.
-) [36]) [37] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap5.tex"
-[38
-
-
-
-]
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
+) [35]) [36] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap5.tex"
 µ⁄ŒÂ’¬
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -1398,7 +1427,11 @@ er (name{corollary.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.25 \begin{corollary}
-                      \label{chap5_corollary_dlp_rlf} [39]
+                      \label{chap5_corollary_dlp_rlf} [37
+
+
+
+]
 Overfull \hbox (12.09346pt too wide) in paragraph at lines 34--34
 []\C19/kai/m/n/12/54 X \C19/kai/m/n/12/43 J$\OML/cmm/m/it/12 r [] R[]\OT1/cmr/m
 /n/12 (\OML/cmm/m/it/12 L[]\OT1/cmr/m/n/12 )$\C19/kai/m/n/12/26 ß \C19/kai/m/n/
@@ -1429,7 +1462,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{definition.2}
 <to be read again> 
                    \relax 
 l.43 \begin{definition}
-                       [Œˆ»°¬ﬂº≠≥Ã–ÚµƒÃÿ’˜ª∑] [40]pdfTeX warning (ext4): destin
+                       [Œˆ»°¬ﬂº≠≥Ã–ÚµƒÃÿ’˜ª∑] [38]pdfTeX warning (ext4): destin
 ation with the same identifier (name{example.1}) has been already used, duplica
 te ignored
 <to be read again> 
@@ -1476,31 +1509,37 @@ l.67 \begin{definition}
 <to be read again> 
                    \relax 
 l.79 \begin{example}
-                     [41]pdfTeX warning (ext4): destination with the same ident
+                     [39]pdfTeX warning (ext4): destination with the same ident
 ifier (name{proposition.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.92 \begin{proposition}
-                         [42]
+                         [40]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/PLxing.tex"
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 33.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 33.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 33.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 33.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 33.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 33.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 34.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 34.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 34.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 34.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 34.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 34.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 34.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 34.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 34.
 )pdfTeX warning (ext4): destination with the same identifier (name{proposition.
 2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.122 \begin{proposition}
-                          [43]pdfTeX warning (ext4): destination with the same 
+                          [41]pdfTeX warning (ext4): destination with the same 
 identifier (name{corollary.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1525,7 +1564,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{definition.4}
 l.151 \begin{definition}
                         [»ıª˘±æª∑]\label{chap5_definition_weak_elementary_loop}
 
-LaTeX Warning: Reference `chap5_proposition_dlp_elementaryloop' on page 44 unde
+LaTeX Warning: Reference `chap5_proposition_dlp_elementaryloop' on page 42 unde
 fined on input line 159.
 
 
@@ -1546,19 +1585,21 @@ as been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.163 \begin{example}
-                      [44]
+                      [42]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/WeakElementaryLoop.
 tex"
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 22.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 22.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 23.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 23.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 23.
 )pdfTeX warning (ext4): destination with the same identifier (name{proposition.
 3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.180 \begin{proposition}
-                          [45]
+                          [43]
 Overfull \hbox (22.13667pt too wide) in paragraph at lines 193--195
 $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L[]\OT1/cmr/m/n/12 )) \OMS/cmsy/m/n/12 \ \OM
 L/cmm/m/it/12 L[] \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 head\OT1/cmr/m/n/12 (\OML
@@ -1582,22 +1623,37 @@ ame identifier (name{example.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.209 \begin{example}
-                      [46]
+                     
+
+LaTeX Warning: File ot148.cmap not found on input line 223.
+
+[44]pdfTeX warning (ext4): destination with the same identifier (name{propositi
+on.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.225 \begin{proposition}
+                         [ºÚªØµƒ≥Ã–Úµƒ»ıÃÿ’˜ª∑]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/WeakPL.tex"
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 35.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 35.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 35.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 35.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 35.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 35.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 36.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 36.
 )
-<img/loops.png, id=1132, 1059.20718pt x 225.09094pt>
+<img/loops.png, id=1154, 1059.20718pt x 225.09094pt>
 File: img/loops.png Graphic file (type png)
  <use img/loops.png>
 Package pdftex.def Info: img/loops.png used on input line 242.
@@ -1607,16 +1663,16 @@ pdfTeX warning (ext4): destination with the same identifier (name{definition.6}
 <to be read again> 
                    \relax 
 l.248 \begin{definition}
-                        [HPF≥Ã–Ú]\label{chap5_definition_hpf} [47 <C:/Users/yzf
-/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/loops.png>] [48]pdfTeX warning (ex
-t4): destination with the same identifier (name{definition.7}) has been already
- used, duplicate ignored
+                        [HPF≥Ã–Ú]\label{chap5_definition_hpf} [45 <C:/Users/yzf
+/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/loops.png>]pdfTeX warning (ext4): 
+destination with the same identifier (name{definition.7}) has been already used
+, duplicate ignored
 <to be read again> 
                    \relax 
 l.267 \begin{definition}
-                        [HWEF≥Ã–Ú]\label{chap5_definition_hwef} [49]
+                        [HWEF≥Ã–Ú]\label{chap5_definition_hwef} [46] [47]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/WeakElementaryLoop2
-.tex") [50]
+.tex") [48]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/WeakElementaryLoop3
 .tex")pdfTeX warning (ext4): destination with the same identifier (name{example
 .5}) has been already used, duplicate ignored
@@ -1624,9 +1680,6 @@ l.267 \begin{definition}
                    \relax 
 l.317 \begin{example}
                      \label{chap5_program_p8}
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [51]
 Overfull \hbox (7.36588pt too wide) in paragraph at lines 327--330
 []\C19/kai/m/n/12/38 ß \C19/kai/m/n/12/60 S$\OML/cmm/m/it/12 P$\C19/kai/m/n/12/
 62 k\OT1/ppl/m/n/12 6\C19/kai/m/n/12/42 á \C19/kai/m/n/12/44 Ç \C19/kai/m/n/12/
@@ -1645,46 +1698,38 @@ pdfTeX warning (ext4): destination with the same identifier (name{definition.8}
 <to be read again> 
                    \relax 
 l.340 \begin{definition}
-                        [HWPF≥Ã–Ú]
-<img/programs.png, id=1231, 1420.55719pt x 237.13594pt>
+                        [HWPF≥Ã–Ú] [49]
+<img/programs.png, id=1262, 1420.55719pt x 237.13594pt>
 File: img/programs.png Graphic file (type png)
  <use img/programs.png>
 Package pdftex.def Info: img/programs.png used on input line 347.
 (pdftex.def)             Requested size: 300.0pt x 50.07863pt.
-) [52] [53 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/programs.p
-ng>] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap6.tex" [54
-
-
-
-]
+) [50 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/programs.png>]
+("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap6.tex"
 µ⁄¡˘’¬
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\CJKnumber' on input line 1.
 
-[55] <img/module.png, id=1268, 418.56375pt x 261.97874pt>
+[51
+
+
+
+] <img/module.png, id=1279, 418.56375pt x 261.97874pt>
 File: img/module.png Graphic file (type png)
  <use img/module.png>
-Package pdftex.def Info: img/module.png used on input line 38.
+Package pdftex.def Info: img/module.png used on input line 36.
 (pdftex.def)             Requested size: 300.0pt x 187.76909pt.
 
-[56 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/module.png>]
-<img/2_3_1.png, id=1280, 396.7322pt x 157.33781pt>
+[52 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/module.png>]
+<img/2_3_1.png, id=1291, 396.7322pt x 157.33781pt>
 File: img/2_3_1.png Graphic file (type png)
  <use img/2_3_1.png>
-Package pdftex.def Info: img/2_3_1.png used on input line 72.
+Package pdftex.def Info: img/2_3_1.png used on input line 70.
 (pdftex.def)             Requested size: 300.0pt x 118.97777pt.
+ [53 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/2_3_1.png>] [54]
 
-Underfull \vbox (badness 5771) has occurred while \output is active []
-
- [57 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/2_3_1.png>] [58]
-
-
-LaTeX Font Warning: Font shape `U/wasy/b/n' in size <5> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 137.
-
-
-Overfull \hbox (7.59538pt too wide) in paragraph at lines 133--154
+Overfull \hbox (7.59538pt too wide) in paragraph at lines 153--174
 []\C19/song/bx/n/12/55 ¢ \C19/song/bx/n/12/61  \C19/song/bx/n/12/46 ( \C19/son
 g/bx/n/12/43 J \C19/song/bx/n/12/54 X \C19/song/bx/n/12/37 L[][]\OT1/ppl/m/n/12
  6.4[][]\C19/song/bx/n/12/56 § \C19/song/bx/n/12/55 ´ \C19/song/m/n/12/25 " \C1
@@ -1697,7 +1742,7 @@ x/n/12/37 L
  []
 
 
-Overfull \hbox (0.23074pt too wide) in paragraph at lines 155--156
+Overfull \hbox (0.23074pt too wide) in paragraph at lines 175--176
 []\C19/song/bx/n/12/55 ¢ \C19/song/bx/n/12/61  \C19/song/bx/n/12/46 ( \C19/son
 g/bx/n/12/43 J \C19/song/bx/n/12/59 w \C19/song/bx/n/12/55 ´ \C19/song/bx/n/12/
 26 ß \C19/song/bx/n/12/40 È \C19/song/bx/n/12/62 u \C19/song/bx/n/12/63 ˘ \C19/
@@ -1712,42 +1757,42 @@ m/it/12 P\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 j$\C19/song/bx/n/12/26 ß$\OMS/cmsy/m
 )\OMS/cmsy/m/n/12 j$\C19/song/bx/n/12/43 ⁄ 
  []
 
-[59]) [60] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap7.tex"
+[55]) [56] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap7.tex"
 µ⁄∆ﬂ’¬
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\CJKnumber' on input line 1.
 
-[61
+[57
 
 
 
-]) [62] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\paper.bbl"
-[63
+]) [58] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\paper.bbl"
+[59
 
 
 
-] [64] [65]<<c1976.cmap>> [66]) [67]
-("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\public.tex" [68
-
-
-]
+] [60] [61] [62]) [63]
+("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\public.tex"
 Overfull \hbox (0.57053pt too wide) in paragraph at lines 7--8
 \OT1/ppl/m/n/12 put-ing Gen-er-al First-order Par-al-lel and Pri-or-i-tized Cir
 -cum-scrip-tion [C]. Pro-
  []
 
-) [69] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\ack.tex" [70
+) [64
 
 
-
-]
+] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\ack.tex"
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                \hskip 12.0pt
 (hyperref)                replaced by space on input line 3.
 
-) [71] [72
+) [65
+
+
+
+] [66
 
 ]
 \tf@thm=\write5
@@ -1768,94 +1813,96 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 676.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 676.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 676.
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: F63E3B9B6852A246B714183F7EDBEDCC;2215.
+(rerunfilecheck)             Checksum: EA3FF005472C9BE843C633142A5FAF07;2217.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 16514 strings out of 495354
- 243966 string characters out of 3183859
- 362520 words of memory out of 3000000
- 18255 multiletter control sequences out of 15000+200000
- 105763 words of font info for 349 fonts, out of 3000000 for 9000
+ 16627 strings out of 495354
+ 246025 string characters out of 3183859
+ 364209 words of memory out of 3000000
+ 18322 multiletter control sequences out of 15000+200000
+ 118588 words of font info for 388 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 44i,18n,58p,1918b,1515s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Windows/Fonts/simhei.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf>
-<C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/s
-imhei.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf>{C:/CTEX/
-MiKTeX/fonts/enc/dvips/fontname/8r.enc}<C:/CTEX/CTeX/fonts/truetype/chinese/sim
-sun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/tru
-etype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CT
-EX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/
-simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/
-truetype/chinese/simsun.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/sim
-fang.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/Windows/Fonts/simf
-ang.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/tru
-etype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CT
-EX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/
-simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/Windows/Fonts/si
-mfang.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows
-/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:
-/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simhei
-.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Font
-s/simkai.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C:/Wind
-ows/Fonts/simhei.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.tt
-f><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/
-simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C:/Window
-s/Fonts/simkai.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C
-:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simfa
-ng.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/
-Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><
-C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/si
-mfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windo
-ws/Fonts/simfang.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf>
-<C:/Windows/Fonts/simhei.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C
-:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/CTEX/CTeX/fonts/tru
-etype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CT
-EX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/
-simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/
-truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:
-/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chine
-se/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fon
-ts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf>
-<C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/ch
-inese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/
-fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.t
-tf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/
-simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Window
-s/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C
-:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simka
-i.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fon
-ts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Win
-dows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf
-><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/si
-mkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/
-Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/
-Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.
-ttf><C:/Windows/Fonts/simkai.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.tt
-f><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/
-chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTe
-X/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun
-.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truety
-pe/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/
+ 45i,18n,58p,1906b,1525s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/
+simfang.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simfang.ttf><C:/Wind
+ows/Fonts/simfang.ttf>{C:/CTEX/MiKTeX/fonts/enc/dvips/fontname/8r.enc}<C:/CTEX/
 CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/sim
 sun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/tru
 etype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CT
-EX/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/CTEX/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmmi12.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/c
-mmi8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/CTEX/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/CTEX/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmr8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
-C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/CTEX/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmsy8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/s
-ymbols/msbm10.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/CTEX/
-MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/pala
-tino/uplri8a.pfb>
-Output written on paper.pdf (82 pages, 1349530 bytes).
+EX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/
+simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/Windows/Fonts/si
+mfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/si
+msun.ttf><C:/Windows/Fonts/simfang.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/sim
+sun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/tru
+etype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CT
+EX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/
+simsun.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Window
+s/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C
+:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simhe
+i.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fon
+ts/simkai.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simfang.ttf><C:/Wi
+ndows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simkai.
+ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts
+/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windo
+ws/Fonts/simkai.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><
+C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simf
+ang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows
+/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf>
+<C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/s
+imfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Windows/Fonts/simfang.ttf><C:/Wind
+ows/Fonts/simfang.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf
+><C:/Windows/Fonts/simhei.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><
+C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/CTEX/CTeX/fonts/tr
+uetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/C
+TEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese
+/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts
+/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C
+:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chin
+ese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fo
+nts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf
+><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/c
+hinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX
+/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.
+ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts
+/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windo
+ws/Fonts/simhei.ttf><C:/Windows/Fonts/simhei.ttf><C:/Windows/Fonts/simkai.ttf><
+C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simk
+ai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fo
+nts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Wi
+ndows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.tt
+f><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/s
+imkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows
+/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:
+/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai.ttf><C:/Windows/Fonts/simkai
+.ttf><C:/Windows/Fonts/simkai.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.t
+tf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype
+/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CT
+eX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsu
+n.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truet
+ype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX
+/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/si
+msun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/tr
+uetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/C
+TEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/CTEX/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmmi10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmmi12.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/CTEX/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/CTEX/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pf
+b><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/CTEX/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmr7.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmr8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/CTEX/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/CTEX/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmsy7.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/CTEX/MiK
+TeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/palatin
+o/uplr8a.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on paper.pdf (76 pages, 1400315 bytes).
 PDF statistics:
- 1920 PDF objects out of 2073 (max. 8388607)
- 509 named destinations out of 1000 (max. 500000)
- 483 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1933 PDF objects out of 2073 (max. 8388607)
+ 511 named destinations out of 1000 (max. 500000)
+ 479 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -8,8 +8,8 @@
 %\def\endproof{\hspace*{\fill}~\QED\par\endtrivlist\unskip}%在proof环境自动添加结束符。
 
 
-\documentclass[12pt,a4paper]{book}
-%\documentclass[12pt,a4paper,openany,oneside]{book}  %去掉参数openany与oneside，用以实现论文的每一个章节从奇数页开始打印
+%\documentclass[12pt,a4paper]{book}
+\documentclass[12pt,a4paper,openany,oneside]{book}  %去掉参数openany与oneside，用以实现论文的每一个章节从奇数页开始打印
 
 
 \usepackage{indentfirst}    % 首行缩进宏包
@@ -443,7 +443,7 @@ CJKbookmarks=true, colorlinks=true]{hyperref}
 \usepackage[pdftex]{thumbpdf}
 \usepackage[pdftex,
 % pdfstartview=FitH,
-CJKbookmarks=true, colorlinks=true,citecolor=blue]{hyperref}
+CJKbookmarks=true, colorlinks=true,linkcolor=black,citecolor=blue]{hyperref}
 %\AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
 \pdfadjustspacing=1
 \fi
@@ -643,12 +643,12 @@ CJKbookmarks=true, colorlinks=true,citecolor=blue]{hyperref}
 		%\bibliographystyle{chinesebst}
 		%\bibliographystyle{plain}
 		%\bibliographystyle{unsrtnat}
-		\bibliographystyle{paper2}
 		\phantomsection
 		%\addcontentsline{toc}{chapter}{参考文献}
 		\addcontentsline{toc}{chapter}{参考文献} % 解决目录中没有相应的参考文献的条目问题
 		
 		%\nocite{*} % 列出所有的参考文献
+		\bibliographystyle{paper2}
 		\bibliography{reference}
 		%\end{thebibliography}
 		%\include{ack}

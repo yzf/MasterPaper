@@ -1,4 +1,5 @@
 \begin{algorithm}\label{algo_ElementaryLoop}
+\footnotesize
 \SetAlgoVlined
 \SetKw{return}{return}\SetKw{Break}{break}
 \SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
@@ -7,16 +8,16 @@
 \Output{若返回$L$，则$L$是基本环；若返回环$C$，则$L$不是基本环}
 
 \For{原子$a \in L$} {
-	$G^*:=$原子集合$L \backslash \lbrace a \rbrace$在$G_P$的诱导子图；\\
-	$SCC^*:=G^*$的强连通分量的集合；\\
+	$G^*:=$原子集合$L \backslash \lbrace a \rbrace$在$G_P$的诱导子图\\
+	$SCC^*:=G^*$的强连通分量的集合\\
 	\For{强连通分量$C \in SCC^*$} {
 		\If{$R^-(C) \subseteq R^-(L)$} {
 			\return $C$
 		}
 		\Else {
-			$G_C:=$原子集合$C \backslash head(R^-(C) \backslash R^-(L))$在$G^*$的诱导子图；\\
-			$SCC_C:=G_C$的强连通分量的集合；\\
-			把所有$SCC_C$中所有新的强连通分量加入$SCC^*$；
+			$G_C:=$原子集合$C \backslash head(R^-(C) \backslash R^-(L))$在$G^*$的诱导子图\\
+			$SCC_C:=G_C$的强连通分量的集合\\
+			把所有$SCC_C$中所有新的强连通分量加入$SCC^*$
 		}
 	}
 }

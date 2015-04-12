@@ -1,4 +1,5 @@
 \begin{algorithm}\label{algo_ProperLoops}
+\footnotesize
 \SetAlgoVlined
 \SetKw{return}{return}\SetKw{Break}{break}
 \SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
@@ -6,24 +7,24 @@
 \Input{析取逻辑程序$P$，原子集合$S$}
 \Output{返回程序的所有特征环}
 
-$Loops:=\emptyset$；\\
-$G^S_P:=$原子集合$S$在$G_P$中的诱导子图；\\
-$SCC:=G^S_P$的强连通分量的集合；\\
+$Loops:=\emptyset$\\
+$G^S_P:=$原子集合$S$在$G_P$中的诱导子图\\
+$SCC:=G^S_P$的强连通分量的集合\\
 \For{$C \in SCC$} {
-	$C^*:=ProperLoop(C,P,S)$；\\
+	$C^*:=ProperLoop(C,P,S)$\\
 	\If{$C^*=C$} {
-		将$C$加入到$Loops$；\\
+		将$C$加入到$Loops$\\
 		\For{$a \in head(R^-(C))$} {
-			$G_C:=$原子集合$C\backslash \{a\}$在$G^S_P$的诱导子图；\\
-			$SCC_C:=G_C$的强连通分量的集合；\\
-			把$SCC_C$里面的新元素加入到$SCC$；\\
+			$G_C:=$原子集合$C\backslash \{a\}$在$G^S_P$的诱导子图\\
+			$SCC_C:=G_C$的强连通分量的集合\\
+			把$SCC_C$里面的新元素加入到$SCC$\\
 		}
 	}
 	\Else{
 		\For{$a \in C$} {
-			$G_C:=$原子集合$C\backslash \{a\}$在$G^S_P$的诱导子图；\\
-			$SCC_C:=G_C$的强连通分量的集合；\\
-			把$SCC_C$里面的新元素加入到$SCC$；\\
+			$G_C:=$原子集合$C\backslash \{a\}$在$G^S_P$的诱导子图\\
+			$SCC_C:=G_C$的强连通分量的集合\\
+			把$SCC_C$里面的新元素加入到$SCC$\\
 		}
 	}
 }
