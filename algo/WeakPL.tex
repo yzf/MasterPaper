@@ -5,7 +5,7 @@
 \SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
 \caption{析取逻辑程序的弱特征环的识别算法$WPL(L,P)$}
 \Input{正依赖图中的环$L$，正规逻辑程序$P$}
-\Output{若返回$L$，则$L$在特征环超集里；若返回环$C$，则$L$不在特征环的超集里}
+\Output{若返回$L$，则$L$是弱特征环；若返回环$C$，则$L$不是弱特征环}
 
 $SCC:=G_P$的强连通分量的集合\\
 \For{$C \in SCC$} {
@@ -29,7 +29,7 @@ $SCC:=G_P$的强连通分量的集合\\
 		把$SCC'$的所有新元素加入到$SCC$中
 	}
 	\Else {
-		$G_C:=$原子集合$C \backslash head(R^-(C) \ R^-(L))$在$G_P$的诱导子图\\
+		$G_C:=$原子集合$C \backslash head(R^-(C) \backslash R^-(L))$在$G_P$的诱导子图\\
 		$SCC_C:=G_C$的强连通分量的集合\\
 		把$SCC_C$的所有新元素加入到$SCC$中
 	}

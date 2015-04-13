@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.19)  13 APR 2015 01:55
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.19)  14 APR 2015 00:08
 entering extended mode
 **paper.tex
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\paper.tex"
@@ -1211,7 +1211,7 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
 <to be read again> 
                    \relax 
 l.92 \begin{proposition}
-                         [22]
+                        \label{chap3_algo_el} [22]
 Overfull \hbox (8.76152pt too wide) in paragraph at lines 110--111
 []\C19/kai/m/n/12/65 n \C19/kai/m/n/12/43 ‹ \C19/kai/m/n/12/54 ˛ \C19/kai/m/n/1
 2/55 „ \C19/kai/m/n/12/26 ß \C19/kai/m/n/12/54 X \C19/kai/m/n/12/43 J \C19/kai/
@@ -1276,7 +1276,7 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
 .2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.198 \begin{example}
+l.200 \begin{example}
                      \label{chap3_program_p5} [27]) [28]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap4.tex"
 µ⁄Àƒ’¬
@@ -1359,15 +1359,16 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
 <to be read again> 
                    \relax 
 l.101 \begin{proposition}
-                         
+                         \label{chap4_proposition_algo_pl}
 LaTeX Font Info:    Try loading font information for OMS+ppl on input line 104.
 
- (C:\CTEX\MiKTeX\tex\latex\psnfss\omsppl.fd
+
+(C:\CTEX\MiKTeX\tex\latex\psnfss\omsppl.fd
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 104.
- [31]
+ [31] [32]
 Overfull \hbox (7.17575pt too wide) in paragraph at lines 121--122
 []\C19/kai/m/n/12/54 X \C19/kai/m/n/12/43 J$\OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12
  (\OML/cmm/m/it/12 C\OT1/cmr/m/n/12 ) = \OMS/cmsy/m/n/12 ;$\C19/kai/m/n/12/44 Ω
@@ -1381,12 +1382,12 @@ mr/m/n/12 )$\C19/kai/m/n/12/26 ß \C19/kai/m/n/12/51 @ \C19/kai/m/n/12/50 o$\OML
 /40 
  []
 
-[32]pdfTeX warning (ext4): destination with the same identifier (name{propositi
-on.2}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{proposition.2
+}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.130 \begin{proposition}
-                         \label{chap4_proposition_pl}
+l.132 \begin{proposition}
+                         \label{chap4_proposition_pl} [33]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/ProperLoops.tex"
 
 LaTeX Warning: File ot145.cmap not found on input line 30.
@@ -1409,7 +1410,13 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 30.
-) [33]) [34] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap5.tex"
+)pdfTeX warning (ext4): destination with the same identifier (name{proposition.
+3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.148 \begin{proposition}
+                          [34]) [35]
+("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap5.tex"
 µ⁄ŒÂ’¬
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -1425,7 +1432,7 @@ er (name{corollary.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.25 \begin{corollary}
-                      \label{chap5_corollary_dlp_rlf} [35
+                      \label{chap5_corollary_dlp_rlf} [36
 
 
 
@@ -1470,7 +1477,7 @@ kai/m/n/12/25 " \C19/kai/m/n/12/54 X \C19/kai/m/n/12/43 J$\OML/cmm/m/it/12 L$\C
 19/kai/m/n/12/49 ˜
  []
 
-[36]pdfTeX warning (ext4): destination with the same identifier (name{example.1
+[37]pdfTeX warning (ext4): destination with the same identifier (name{example.1
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1520,7 +1527,7 @@ l.83 \begin{example}
 
 LaTeX Warning: File ot142.cmap not found on input line 84.
 
-[37]pdfTeX warning (ext4): destination with the same identifier (name{definitio
+[38]pdfTeX warning (ext4): destination with the same identifier (name{definitio
 n.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
@@ -1550,7 +1557,7 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
 <to be read again> 
                    \relax 
 l.116 \begin{proposition}
-                          [38] [39]
+                          [39] [40]
 Overfull \hbox (6.6538pt too wide) in paragraph at lines 134--135
 []\C19/kai/m/n/12/54 X \C19/kai/m/n/12/43 J$\OML/cmm/m/it/12 head\OT1/cmr/m/n/1
 2 (\OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C\OT1/cmr/m/n/12 )) \O
@@ -1578,13 +1585,13 @@ cmsy/m/n/12 n\OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L\OT1/cmr/m/
 n/12 ))$\C19/kai/m/n/12/40 
  []
 
-[40]pdfTeX warning (ext4): destination with the same identifier (name{corollary
+[41]pdfTeX warning (ext4): destination with the same identifier (name{corollary
 .2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.152 \begin{corollary}
+l.154 \begin{corollary}
                        \label{chap5_corollary_nlp_wel_clf}
-Overfull \hbox (7.21202pt too wide) in paragraph at lines 156--159
+Overfull \hbox (7.21202pt too wide) in paragraph at lines 158--161
 []\C19/kai/m/n/12/40 È \C19/kai/m/n/12/62 u \C19/kai/m/n/12/44 Ç$\OML/cmm/m/it/
 12 L[]$\C19/kai/m/n/12/26 ß \C19/kai/m/n/12/59 w \C19/kai/m/n/12/54 , \C19/kai/
 m/n/12/58 ∑ \C19/kai/m/n/12/50 Ç \C19/kai/m/n/12/62 k$\OML/cmm/m/it/12 R[]\OT1/
@@ -1600,15 +1607,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{definition.5}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.162 \begin{definition}
+l.164 \begin{definition}
                         [»ıª˘±æª∑]\label{chap5_definition_weak_elementary_loop}
 pdfTeX warning (ext4): destination with the same identifier (name{proposition.2
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.166 \begin{proposition}
+l.168 \begin{proposition}
                          \label{chap5_proposition_el_wel}
-Overfull \hbox (11.10658pt too wide) in paragraph at lines 170--173
+Overfull \hbox (11.10658pt too wide) in paragraph at lines 172--175
 []\C19/kai/m/n/12/61 œ \C19/kai/m/n/12/58 è$\OML/cmm/m/it/12 L$\C19/kai/m/n/12/
 55 ¥$\OML/cmm/m/it/12 P$\C19/kai/m/n/12/40  \C19/kai/m/n/12/44 ƒ \C19/kai/m/n/
 12/37  \C19/kai/m/n/12/44 Ç \C19/kai/m/n/12/26 ß \C19/kai/m/n/12/42 ä \C19/kai
@@ -1624,8 +1631,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{example.3}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.174 \begin{example}
-                      [41]
+l.176 \begin{example}
+                      [42]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/WeakElementaryLoop.
 tex"
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
@@ -1638,9 +1645,41 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
 3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.191 \begin{proposition}
-                          [42]
-Overfull \hbox (22.13667pt too wide) in paragraph at lines 204--206
+l.188 \begin{proposition}
+                         
+Overfull \hbox (4.51108pt too wide) in paragraph at lines 192--193
+[]\C19/kai/m/n/12/55 ƒ \C19/kai/m/n/12/59 k \C19/kai/m/n/12/26 ß \C19/kai/m/n/1
+2/54 X \C19/kai/m/n/12/43 J \C19/kai/m/n/12/56 é \C19/kai/m/n/12/41 {[][]\OT1/p
+pl/m/n/12 6[][]\C19/kai/m/n/12/41 à \C19/kai/m/n/12/44 £ \C19/kai/m/n/12/63  \
+C19/kai/m/n/12/65 f \C19/kai/m/n/12/45 8 \C19/kai/m/n/12/43 ‹$\OML/cmm/m/it/12 
+C$\C19/kai/m/n/12/26 ß$\OML/cmm/m/it/12 C \OMS/cmsy/m/n/12 6\OT1/cmr/m/n/12 = \
+OML/cmm/m/it/12 L$\C19/kai/m/n/12/26 ß \C19/kai/m/n/12/51 @ \C19/kai/m/n/12/50 
+o$\OML/cmm/m/it/12 C$\C19/kai/m/n/12/49 ˜ \C19/kai/m/n/12/65 v$\OML/cmm/m/it/12
+ C \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 L$\C19/kai/m/n/12/26 ß$\OML/cmm/m/it/12 
+R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C\OT1/cmr/m/n/12 )[] $
+ []
+
+[43]
+Overfull \hbox (8.76152pt too wide) in paragraph at lines 200--201
+[]\C19/kai/m/n/12/65 n \C19/kai/m/n/12/43 ‹ \C19/kai/m/n/12/54 ˛ \C19/kai/m/n/1
+2/55 „ \C19/kai/m/n/12/26 ß \C19/kai/m/n/12/54 X \C19/kai/m/n/12/43 J \C19/kai/
+m/n/12/41 à \C19/kai/m/n/12/44 £$\OML/cmm/m/it/12 L$\C19/kai/m/n/12/26 ß \C19/k
+ai/m/n/12/51 @ \C19/kai/m/n/12/46 “ \C19/kai/m/n/12/56 ` \C19/kai/m/n/12/50 ≤ \
+C19/kai/m/n/12/37 ÿ \C19/kai/m/n/12/39  \C19/kai/m/n/12/63 3$\OML/cmm/m/it/12 
+P$\C19/kai/m/n/12/40  \C19/kai/m/n/12/52 Ÿ \C19/kai/m/n/12/56 ¶ \C19/kai/m/n/1
+2/44 Ç$\OML/cmm/m/it/12 L[]$\C19/kai/m/n/12/26 ß \C19/kai/m/n/12/49 ˜ \C19/kai/
+m/n/12/65 v$\OML/cmm/m/it/12 L[] \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 L$\C19/kai
+/m/n/12/26 ß$\OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L[]\OT1/cmr/
+m/n/12 ) \OMS/cmsy/m/n/12 $
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{proposition.4
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.208 \begin{proposition}
+                         
+Overfull \hbox (22.13667pt too wide) in paragraph at lines 221--223
 $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L[]\OT1/cmr/m/n/12 )) \OMS/cmsy/m/n/12 \ \OM
 L/cmm/m/it/12 L[] \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 head\OT1/cmr/m/n/12 (\OML
 /cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L[]\OT1/cmr/m/n/12 )) \OMS/cm
@@ -1653,28 +1692,23 @@ t/12 RLF\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L[]; P\OT1/cmr/m/n/12 )$\C19/kai/m/n/
 12/25 " 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{definition.6}
-) has been already used, duplicate ignored
+[44]pdfTeX warning (ext4): destination with the same identifier (name{definitio
+n.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.216 \begin{definition}
+l.233 \begin{definition}
                         [»ıÃÿ’˜ª∑]pdfTeX warning (ext4): destination with the s
 ame identifier (name{example.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.220 \begin{example}
+l.237 \begin{example}
                      pdfTeX warning (ext4): destination with the same identifie
-r (name{proposition.4}) has been already used, duplicate ignored
+r (name{definition.7}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.232 \begin{proposition}
-                          [43]pdfTeX warning (ext4): destination with the same 
-identifier (name{definition.7}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.244 \begin{definition}
-                        [ºÚªØµƒ≥Ã–Úµƒ»ıÃÿ’˜ª∑]
-("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/WeakPL.tex"
+l.261 \begin{definition}
+                        [ºÚªØµƒ≥Ã–Úµƒ»ıÃÿ’˜ª∑]\label{chap5_definition_sim_wpl}
+[45] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/WeakPL.tex"
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 36.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
@@ -1694,34 +1728,60 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6> not available
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <6.94446> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 36.
 )
-<img/loops.png, id=1143, 1059.20718pt x 225.09094pt>
+[46]
+Overfull \hbox (8.95123pt too wide) in paragraph at lines 293--294
+[]\C19/kai/m/n/12/54 X \C19/kai/m/n/12/43 J$\OML/cmm/m/it/12 head\OT1/cmr/m/n/1
+2 (\OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C\OT1/cmr/m/n/12 )) \O
+MS/cmsy/m/n/12 \ \OML/cmm/m/it/12 C \U/msb/m/n/12 * \OML/cmm/m/it/12 head\OT1/c
+mr/m/n/12 (\OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L\OT1/cmr/m/n/
+12 )) \OMS/cmsy/m/n/12 \ \OML/cmm/m/it/12 L$\C19/kai/m/n/12/53 Ö$\OML/cmm/m/it/
+12 C \U/msb/m/n/12 * \OML/cmm/m/it/12 L$\C19/kai/m/n/12/26 ß \C19/kai/m/n/12/51
+ @ \C19/kai/m/n/12/50 o \C19/kai/m/n/12/47 í \C19/kai/m/n/12/40 Ω \C19/kai/m/n/
+12/62 k$\OT1/cmr/m/n/12 ((\OML/cmm/m/it/12 head\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
+2 R[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 C\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 \$
+ []
+
+[47] <img/loops.png, id=1229, 1059.20718pt x 225.09094pt>
 File: img/loops.png Graphic file (type png)
  <use img/loops.png>
-Package pdftex.def Info: img/loops.png used on input line 261.
+Package pdftex.def Info: img/loops.png used on input line 309.
 (pdftex.def)             Requested size: 300.0pt x 63.75316pt.
 pdfTeX warning (ext4): destination with the same identifier (name{definition.8}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.267 \begin{definition}
-                        [HPF≥Ã–Ú]\label{chap5_definition_hpf} [44] [45 <C:/User
-s/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/loops.png>]pdfTeX warning (ex
-t4): destination with the same identifier (name{definition.9}) has been already
- used, duplicate ignored
+l.315 \begin{definition}
+                        [HPF≥Ã–Ú]\label{chap5_definition_hpf} [48 <C:/Users/yzf
+/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/loops.png>]pdfTeX warning (ext4): 
+destination with the same identifier (name{definition.9}) has been already used
+, duplicate ignored
 <to be read again> 
                    \relax 
-l.286 \begin{definition}
-                        [HWEF≥Ã–Ú]\label{chap5_definition_hwef} [46]
+l.334 \begin{definition}
+                        [HWEF≥Ã–Ú]\label{chap5_definition_hwef} [49]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/WeakElementaryLoop2
-.tex") [47]
+.tex") [50]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\algo/WeakElementaryLoop3
-.tex")pdfTeX warning (ext4): destination with the same identifier (name{example
-.5}) has been already used, duplicate ignored
+.tex")
+Overfull \hbox (5.73926pt too wide) in paragraph at lines 383--384
+[]\C19/kai/m/n/12/55 ƒ \C19/kai/m/n/12/59 k \C19/kai/m/n/12/26 ß \C19/kai/m/n/1
+2/56 é \C19/kai/m/n/12/41 {[][]\OT1/ppl/m/n/12 9[][]\C19/kai/m/n/12/55 ) \C19/k
+ai/m/n/12/38 §$\OML/cmm/m/it/12 S \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 ff\OML/cmm
+/m/it/12 a; b\OMS/cmsy/m/n/12 gj$\C19/kai/m/n/12/39  \C19/kai/m/n/12/63 3 \C19
+/kai/m/n/12/43 5 \C19/kai/m/n/12/63 K$\OML/cmm/m/it/12 r \OMS/cmsy/m/n/12 2 \OM
+L/cmm/m/it/12 P$\C19/kai/m/n/12/26 ß \C19/kai/m/n/12/55 ¶ \C19/kai/m/n/12/40 $
+\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 a; b\OMS/cmsy/m/n/12 g  \OML/cmm/m/it/12 he
+ad\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$\C19/k
+ai/m/n/12/25 "
+ []
+
+[51]pdfTeX warning (ext4): destination with the same identifier (name{example.5
+}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.336 \begin{example}
-                     \label{chap5_program_p8}
-Overfull \hbox (7.36588pt too wide) in paragraph at lines 346--349
+l.400 \begin{example}
+                     \label{chap5_program_p8} [52]
+Overfull \hbox (7.36588pt too wide) in paragraph at lines 410--413
 []\C19/kai/m/n/12/38 ß \C19/kai/m/n/12/60 S$\OML/cmm/m/it/12 P$\C19/kai/m/n/12/
 62 k\OT1/ppl/m/n/12 6\C19/kai/m/n/12/42 á \C19/kai/m/n/12/44 Ç \C19/kai/m/n/12/
 26 µ$\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 p\OMS/cmsy/m/n/12 g$\C19/kai/m/n/12/26 
@@ -1734,44 +1794,41 @@ C19/kai/m/n/12/62 d u$\OML/cmm/m/it/12 R[]\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 f\O
 ML/cmm/m/it/12 p; q; r\OMS/cmsy/m/n/12 g\OT1/cmr/m/n/12 ) =$
  []
 
-
-LaTeX Warning: File ot149.cmap not found on input line 352.
-
-[48]pdfTeX warning (ext4): destination with the same identifier (name{definitio
-n.10}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{definition.10
+}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.359 \begin{definition}
+l.423 \begin{definition}
                         [HWPF≥Ã–Ú]
-<img/programs.png, id=1252, 1420.55719pt x 237.13594pt>
+<img/programs.png, id=1334, 1420.55719pt x 237.13594pt>
 File: img/programs.png Graphic file (type png)
  <use img/programs.png>
-Package pdftex.def Info: img/programs.png used on input line 366.
+Package pdftex.def Info: img/programs.png used on input line 430.
 (pdftex.def)             Requested size: 300.0pt x 50.07863pt.
-) [49 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/programs.png>]
+) [53 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/programs.png>]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap6.tex"
 µ⁄¡˘’¬
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\CJKnumber' on input line 1.
 
-[50
+[54
 
 
 
-] <img/module.png, id=1268, 418.56375pt x 261.97874pt>
+] <img/module.png, id=1351, 418.56375pt x 261.97874pt>
 File: img/module.png Graphic file (type png)
  <use img/module.png>
 Package pdftex.def Info: img/module.png used on input line 36.
 (pdftex.def)             Requested size: 300.0pt x 187.76909pt.
 
-[51 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/module.png>]
-<img/2_3_1.png, id=1281, 396.7322pt x 157.33781pt>
+[55 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/module.png>]
+<img/2_3_1.png, id=1363, 396.7322pt x 157.33781pt>
 File: img/2_3_1.png Graphic file (type png)
  <use img/2_3_1.png>
 Package pdftex.def Info: img/2_3_1.png used on input line 70.
 (pdftex.def)             Requested size: 300.0pt x 118.97777pt.
- [52 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/2_3_1.png>] [53]
+ [56 <C:/Users/yzf/Desktop/yzf/00 ÊØï‰∏öËÆ∫Êñá/MasterPaper/img/2_3_1.png>] [57]
 
 Overfull \hbox (7.59538pt too wide) in paragraph at lines 153--174
 []\C19/song/bx/n/12/55 ¢ \C19/song/bx/n/12/61  \C19/song/bx/n/12/46 ( \C19/son
@@ -1801,29 +1858,29 @@ m/it/12 P\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 j$\C19/song/bx/n/12/26 ß$\OMS/cmsy/m
 )\OMS/cmsy/m/n/12 j$\C19/song/bx/n/12/43 ⁄ 
  []
 
-[54]) [55] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap7.tex"
+[58]) [59] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\chap7.tex"
 µ⁄∆ﬂ’¬
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\CJKnumber' on input line 1.
 
-[56
+[60
 
 
 
-]) [57] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\paper.bbl"
-[58
+]) [61] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\paper.bbl"
+[62
 
 
 
-] [59] [60] [61]) [62]
+] [63] [64] [65]) [66]
 ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\public.tex"
 Overfull \hbox (0.57053pt too wide) in paragraph at lines 7--8
 \OT1/ppl/m/n/12 put-ing Gen-er-al First-order Par-al-lel and Pri-or-i-tized Cir
 -cum-scrip-tion [C]. Pro-
  []
 
-) [63
+) [67
 
 
 ] ("C:\Users\yzf\Desktop\yzf\00 ÊØï‰∏öËÆ∫Êñá\MasterPaper\ack.tex"
@@ -1832,11 +1889,11 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                \hskip 12.0pt
 (hyperref)                replaced by space on input line 3.
 
-) [64
+) [68
 
 
 
-] [65
+] [69
 
 ]
 \tf@thm=\write5
@@ -1860,10 +1917,10 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: EA3FF005472C9BE843C633142A5FAF07;2217.
  ) 
 Here is how much of TeX's memory you used:
- 16602 strings out of 495354
- 245725 string characters out of 3183859
- 364504 words of memory out of 3000000
- 18311 multiletter control sequences out of 15000+200000
+ 16648 strings out of 495354
+ 246358 string characters out of 3183859
+ 364380 words of memory out of 3000000
+ 18333 multiletter control sequences out of 15000+200000
  118588 words of font info for 388 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  45i,19n,58p,1906b,1525s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1940,9 +1997,9 @@ lic/amsfonts/cm/cmsy7.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.
 pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/CTEX/MiK
 TeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/palatin
 o/uplr8a.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on paper.pdf (75 pages, 1393121 bytes).
+Output written on paper.pdf (79 pages, 1430595 bytes).
 PDF statistics:
- 1920 PDF objects out of 2073 (max. 8388607)
- 499 named destinations out of 1000 (max. 500000)
+ 2008 PDF objects out of 2073 (max. 8388607)
+ 524 named destinations out of 1000 (max. 500000)
  479 words of extra memory for PDF output out of 10000 (max. 10000000)
 

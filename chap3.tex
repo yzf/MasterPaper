@@ -89,7 +89,7 @@ $(\Leftarrow)$
 
 \RestyleAlgo{ruled}\LinesNumbered\input{algo/ElementaryLoop.tex}
 
-\begin{proposition}
+\begin{proposition}\label{chap3_algo_el}
 给定正规逻辑程序$P$，$L$为$P$的环。算法\ref{algo_ElementaryLoop}将在$O(n^3)$时间内返回$L$，或者环$C$，其中$n$是$P$的原子数目，$C$满足：
 \begin{enumerate}
 	\item $C\subset L$；
@@ -109,7 +109,7 @@ $(\Leftarrow)$
 	
 	综合上述，如果返回$L$，那就说明不存在$P$的其他环$L'$，满足$L'\subset L$，$R^-(L')\subseteq R^-(L)$。根据定义\ref{chap3_definition_el}，$L$是基本环。
 	
-	最后，我们将证明算法\ref{algo_ElementaryLoop}的时间复杂度为$O(n^3)$。令$n=Atoms(L)$，显然算法\ref{algo_ElementaryLoop}的第1行将迭代$n$次。第2-10行是广度优先搜索的过程。由$R^-(C)\nsubseteq R^-(L)$可知，$head(R^-(C)\backslash R^-(L))$至少会含有一个原子，因此，搜索树的每一层都至少会删除$k_i$个原子，其中，$k_i$表示第$i$层的强连通分量个数。对于第$i$层，求该层所有节点的强连通分量的时间代价总和为$n-(k_1+...+k_{i-1})-k_i$。在最坏的情况下，搜索树会退化成单向链表的结构，此时，每层只能删除一个原子，搜索树的深度达到最大，$n-1$层。所以，$T(n)=n\times (n+(n-1+n-2+...+1))=n\times (n+\frac{(n-1+1)\times (n-1)}{2})=\frac{n^3}{2}+\frac{n^2}{2}$。因此，算法\ref{algo_ElementaryLoop}的时间复杂度为$O(n^3)$。
+	最后，我们将证明算法\ref{algo_ElementaryLoop}的时间复杂度为$O(n^3)$。令$n=Atoms(L)$，显然算法\ref{algo_ElementaryLoop}的第1行将迭代$n$次。第2-10行是广度优先搜索的过程。由$R^-(C)\nsubseteq R^-(L)$可知，$head(R^-(C)\backslash R^-(L))$至少会含有一个原子，因此，搜索树的每一层都至少会删除$k_i$个原子，其中，$k_i$表示第$i$层的强连通分量个数。对于第$i$层，求该层所有节点的强连通分量的时间代价总和为$n-(k_1+...+k_{i-1})-k_i$。在最坏的情况下，搜索树会退化成单向链表的结构，此时，每层只能删除一个原子，搜索树的深度达到最大，$n-1$层。所以，$T=n\times (n+(n-1+n-2+...+1))=n\times (n+\frac{(n-1+1)\times (n-1)}{2})=\frac{n^3}{2}+\frac{n^2}{2}$。因此，算法\ref{algo_ElementaryLoop}的时间复杂度为$O(n^3)$。
 \end{proof}
 
 
@@ -193,6 +193,8 @@ Gebser等(2011)证明了识别析取逻辑程序的基本环是coNP-complete的\upcite{gebser2011e
 	\end{enumerate}
 	
 	综合上述，算法\ref{algo_ElementaryLoopXing}如果返回$C$，$C\ne L$，那么$L$不是基本环；如果返回$L$，那么$L$可能是基本环。
+	
+	算法\ref{algo_ElementaryLoopXing}的执行过程与算法\ref{algo_ElementaryLoop}类似，由命题\ref{chap3_algo_el}可以知道，算法\ref{algo_ElementaryLoopXing}的时间复杂度为$O(n^3)$。
 \end{proof}
 
 \begin{example}\label{chap3_program_p5}
