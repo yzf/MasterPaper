@@ -1,276 +1,277 @@
 \begin{thebibliography}{10}
 
 \bibitem{davis1993knowledge}
-Davis R, Shrobe H, Szolovits P.
-\newblock What is a knowledge representation? [J].
-\newblock AI magazine, 1993, 14(1):17.
+Randall Davis, Howard Shrobe, and Peter Szolovits.
+\newblock What is a knowledge representation?
+\newblock {\em AI magazine}, 14(1):17, 1993.
 
 \bibitem{rada1989development}
-Rada R, Mili H, Bicknell E, et~al.
-\newblock Development and application of a metric on semantic nets [J].
-\newblock Systems, Man and Cybernetics, IEEE Transactions on, 1989,
-  19(1):17--30.
+Roy Rada, Hafedh Mili, Ellen Bicknell, and Maria Blettner.
+\newblock Development and application of a metric on semantic nets.
+\newblock {\em Systems, Man and Cybernetics, IEEE Transactions on},
+  19(1):17--30, 1989.
 
 \bibitem{uschold1996ontologies}
-Uschold M, Gruninger M.
-\newblock Ontologies: Principles, Methods and Applications [J].
-\newblock To appear in Knowledge Engineering Review, 1996, 11(2).
+Mike Uschold and Michael Gruninger.
+\newblock Ontologies: Principles, methods and applications.
+\newblock {\em To appear in Knowledge Engineering Review}, 11(2), 1996.
 
 \bibitem{arthur1994inductive}
-Arthur W~B.
-\newblock Inductive reasoning and bounded rationality [J].
-\newblock The American economic review, 1994,  406--411.
+W~Brian Arthur.
+\newblock Inductive reasoning and bounded rationality.
+\newblock {\em The American economic review}, pages 406--411, 1994.
 
 \bibitem{goel1997seats}
-Goel V, Gold B, Kapur S, et~al.
-\newblock The seats of reason? An imaging study of deductive and inductive
-  reasoning [J].
-\newblock NeuroReport, 1997, 8(5):1305--1310.
+Vinod Goel, Brian Gold, Shitij Kapur, and Sylvain Houle.
+\newblock The seats of reason? an imaging study of deductive and inductive
+  reasoning.
+\newblock {\em NeuroReport}, 8(5):1305--1310, 1997.
 
 \bibitem{mccarthy1963programs}
-McCarthy J.
-\newblock Programs with common sense [M].
+John McCarthy.
+\newblock {\em Programs with common sense}.
 \newblock Defense Technical Information Center, 1963.
 
 \bibitem{mccarthy1968some}
-McCarthy J, Hayes P.
-\newblock Some philosophical problems from the standpoint of artificial
-  intelligence [M].
+John McCarthy and Patrick Hayes.
+\newblock {\em Some philosophical problems from the standpoint of artificial
+  intelligence}.
 \newblock Stanford University USA, 1968.
 
 \bibitem{mcdermott1980non}
-McDermott D, Doyle J.
-\newblock Non-monotonic logic I [J].
-\newblock Artificial intelligence, 1980, 13(1):41--72.
+Drew McDermott and Jon Doyle.
+\newblock Non-monotonic logic i.
+\newblock {\em Artificial intelligence}, 13(1):41--72, 1980.
 
 \bibitem{abdallah2012logic}
-Abdallah A~N.
-\newblock The logic of partial information [M].
+Areski~Nait Abdallah.
+\newblock {\em The logic of partial information}.
 \newblock Springer Publishing Company, Incorporated, 2012.
 
-\bibitem{mccarthy1987circumscription}
-McCarthy J.
-\newblock Circumscription—a form of nonmonotonic reasoning [J].
-\newblock \& \&, 1987.
-
 \bibitem{reiter1980logic}
-Reiter R.
-\newblock A logic for default reasoning [J].
-\newblock Artificial intelligence, 1980, 13(1):81--132.
+Raymond Reiter.
+\newblock A logic for default reasoning.
+\newblock {\em Artificial intelligence}, 13(1):81--132, 1980.
+
+\bibitem{mccarthy1987circumscription}
+John McCarthy.
+\newblock Circumscription—a form of nonmonotonic reasoning.
+\newblock {\em \& \&}, 1987.
 
 \bibitem{robinson1965machine}
-Robinson J~A.
-\newblock A machine-oriented logic based on the resolution principle [J].
-\newblock Journal of the ACM (JACM), 1965, 12(1):23--41.
+John~Alan Robinson.
+\newblock A machine-oriented logic based on the resolution principle.
+\newblock {\em Journal of the ACM (JACM)}, 12(1):23--41, 1965.
 
 \bibitem{green1969application}
-Green C.
-\newblock Application of theorem proving to problem solving [R].
-\newblock DTIC Document, 1969.
+Cordell Green.
+\newblock Application of theorem proving to problem solving.
+\newblock Technical report, DTIC Document, 1969.
 
 \bibitem{colmeraner1973systeme}
-Colmeraner A, Kanoui H, Pasero R, et~al.
-\newblock Un systeme de communication homme-machine en francais [C].//.
-\newblock Luminy.
-\newblock 1973.
+A~Colmeraner, Henri Kanoui, Robert Pasero, and Philippe Roussel.
+\newblock Un systeme de communication homme-machine en francais.
+\newblock Luminy, 1973.
 
 \bibitem{kowalski1979algorithm}
-Kowalski R.
-\newblock Algorithm= logic+ control [J].
-\newblock Communications of the ACM, 1979, 22(7):424--436.
+Robert Kowalski.
+\newblock Algorithm= logic+ control.
+\newblock {\em Communications of the ACM}, 22(7):424--436, 1979.
 
 \bibitem{lifschitz1994splitting}
-Lifschitz V, Turner H.
-\newblock Splitting a Logic Program. [C].// ICLP.
-\newblock vol~94.
-\newblock 1994:  23--37.
+Vladimir Lifschitz and Hudson Turner.
+\newblock Splitting a logic program.
+\newblock In {\em ICLP}, volume~94, pages 23--37, 1994.
 
 \bibitem{clark1978negation}
-Clark K~L.
-\newblock Negation as failure [G].// Logic and data bases.
-\newblock Springer, 1978:  293--322.
+Keith~L Clark.
+\newblock Negation as failure.
+\newblock In {\em Logic and data bases}, pages 293--322. Springer, 1978.
 
 \bibitem{reiter1978closed}
-Reiter R.
-\newblock On closed world data bases [M].
+Raymond Reiter.
+\newblock {\em On closed world data bases}.
 \newblock Springer, 1978.
 
 \bibitem{van1991well}
-Van~Gelder A, Ross K~A, Schlipf J~S.
-\newblock The well-founded semantics for general logic programs [J].
-\newblock Journal of the ACM (JACM), 1991, 38(3):619--649.
+Allen Van~Gelder, Kenneth~A Ross, and John~S Schlipf.
+\newblock The well-founded semantics for general logic programs.
+\newblock {\em Journal of the ACM (JACM)}, 38(3):619--649, 1991.
 
 \bibitem{gelfond1988stable}
-Gelfond M, Lifschitz V.
-\newblock The stable model semantics for logic programming. [C].// ICLP/SLP.
-\newblock vol~88.
-\newblock 1988:  1070--1080.
+Michael Gelfond and Vladimir Lifschitz.
+\newblock The stable model semantics for logic programming.
+\newblock In {\em ICLP/SLP}, volume~88, pages 1070--1080, 1988.
 
 \bibitem{gelfond1991classical}
-Gelfond M, Lifschitz V.
-\newblock Classical negation in logic programs and disjunctive databases [J].
-\newblock New generation computing, 1991, 9(3-4):365--385.
+Michael Gelfond and Vladimir Lifschitz.
+\newblock Classical negation in logic programs and disjunctive databases.
+\newblock {\em New generation computing}, 9(3-4):365--385, 1991.
 
 \bibitem{ji2010asp}
 吉建民.
-\newblock
-\newblock 提高 ASP 效率的若干途径及服务机器人上应用 [D].
-\newblock 合肥: 中国科学技术大学, 2010.
+\newblock {\em 提高 ASP 效率的若干途径及服务机器人上应用}.
+\newblock PhD thesis, 合肥: 中国科学技术大学, 2010.
 
 \bibitem{lifschitz2008answer}
-Lifschitz V.
-\newblock What is answer set programming? [C].// Proceedings of the 23rd
-  national conference on Artificial intelligence-Volume 3.
-\newblock AAAI Press.
-\newblock 2008:  1594--1597.
+Vladimir Lifschitz.
+\newblock What is answer set programming?
+\newblock In {\em Proceedings of the 23rd national conference on Artificial
+  intelligence-Volume 3}, pages 1594--1597. AAAI Press, 2008.
 
 \bibitem{davis1962machine}
-Davis M, Logemann G, Loveland D.
-\newblock A machine program for theorem-proving [J].
-\newblock Communications of the ACM, 1962, 5(7):394--397.
+Martin Davis, George Logemann, and Donald Loveland.
+\newblock A machine program for theorem-proving.
+\newblock {\em Communications of the ACM}, 5(7):394--397, 1962.
 
 \bibitem{leone2006dlv}
-Leone N, Pfeifer G, Faber W, et~al.
-\newblock The DLV system for knowledge representation and reasoning [J].
-\newblock ACM Transactions on Computational Logic (TOCL), 2006, 7(3):499--562.
+Nicola Leone, Gerald Pfeifer, Wolfgang Faber, Thomas Eiter, Georg Gottlob,
+  Simona Perri, and Francesco Scarcello.
+\newblock The dlv system for knowledge representation and reasoning.
+\newblock {\em ACM Transactions on Computational Logic (TOCL)}, 7(3):499--562,
+  2006.
 
 \bibitem{niemela2000smodels}
-Niemela I, Simons P, Syrjanen T.
-\newblock Smodels: a system for answer set programming [J].
-\newblock arXiv preprint cs/0003033, 2000.
+Ilkka Niemela, Patrik Simons, and Tommi Syrjanen.
+\newblock Smodels: a system for answer set programming.
+\newblock {\em arXiv preprint cs/0003033}, 2000.
 
 \bibitem{gebser2007clasp}
-Gebser M, Kaufmann B, Neumann A, et~al.
-\newblock clasp: A conflict-driven answer set solver [G].// Logic Programming
-  and Nonmonotonic Reasoning.
-\newblock Springer, 2007:  260--265.
+Martin Gebser, Benjamin Kaufmann, Andr{\'e} Neumann, and Torsten Schaub.
+\newblock clasp: A conflict-driven answer set solver.
+\newblock In {\em Logic Programming and Nonmonotonic Reasoning}, pages
+  260--265. Springer, 2007.
 
 \bibitem{sorensson2005minisat}
-Sorensson N, Een N.
-\newblock Minisat v1. 13-a sat solver with conflict-clause minimization [J].
-\newblock SAT, 2005, 2005:53.
+Niklas Sorensson and Niklas Een.
+\newblock Minisat v1. 13-a sat solver with conflict-clause minimization.
+\newblock {\em SAT}, 2005:53, 2005.
 
 \bibitem{lin2004assat}
-Lin F, Zhao Y.
-\newblock ASSAT: Computing answer sets of a logic program by SAT solvers [J].
-\newblock Artificial Intelligence, 2004, 157(1):115--137.
+Fangzhen Lin and Yuting Zhao.
+\newblock Assat: Computing answer sets of a logic program by sat solvers.
+\newblock {\em Artificial Intelligence}, 157(1):115--137, 2004.
 
 \bibitem{lierler2005cmodels}
-Lierler Y.
-\newblock cmodels--SAT-based disjunctive answer set solver [G].// Logic
-  Programming and Nonmonotonic Reasoning.
-\newblock Springer, 2005:  447--451.
+Yuliya Lierler.
+\newblock cmodels--sat-based disjunctive answer set solver.
+\newblock In {\em Logic Programming and Nonmonotonic Reasoning}, pages
+  447--451. Springer, 2005.
 
 \bibitem{lin2002assat}
-Lin F, Zhao Y.
-\newblock ASSAT: Computing answer sets of a logic program by SAT solvers [C].//
-  AAAI.
-\newblock 2002:  112--118.
+Fangzhen Lin and Yuting Zhao.
+\newblock Assat: Computing answer sets of a logic program by sat solvers.
+\newblock In {\em AAAI}, pages 112--118, 2002.
 
 \bibitem{gu1999algorithms}
-Gu J, Purdom P~W, Franco J, et~al.
-\newblock Algorithms for the satisfiability (sat) problem [M].
+Jun Gu, Paul~W Purdom, John Franco, and Benjamin~W Wah.
+\newblock {\em Algorithms for the satisfiability (sat) problem}.
 \newblock Springer, 1999.
 
 \bibitem{lee2003loop}
-Lee J, Lifschitz V.
-\newblock Loop formulas for disjunctive logic programs [G].// Logic
-  Programming.
-\newblock Springer, 2003:  451--465.
+Joohyung Lee and Vladimir Lifschitz.
+\newblock Loop formulas for disjunctive logic programs.
+\newblock In {\em Logic Programming}, pages 451--465. Springer, 2003.
 
 \bibitem{lifschitz2006there}
-Lifschitz V, Razborov A.
-\newblock Why are there so many loop formulas? [J].
-\newblock ACM Transactions on Computational Logic (TOCL), 2006, 7(2):261--268.
+Vladimir Lifschitz and Alexander Razborov.
+\newblock Why are there so many loop formulas?
+\newblock {\em ACM Transactions on Computational Logic (TOCL)}, 7(2):261--268,
+  2006.
 
 \bibitem{gebser2005loops}
-Gebser M, Schaub T.
-\newblock Loops: relevant or redundant? [G].// Logic Programming and
-  Nonmonotonic Reasoning.
-\newblock Springer, 2005:  53--65.
+Martin Gebser and Torsten Schaub.
+\newblock Loops: relevant or redundant?
+\newblock In {\em Logic Programming and Nonmonotonic Reasoning}, pages 53--65.
+  Springer, 2005.
 
 \bibitem{gebser2011elementary}
-Gebser M, Lee J, Lierler Y.
-\newblock On elementary loops of logic programs [J].
-\newblock Theory and Practice of Logic Programming, 2011, 11(06):953--988.
+Martin Gebser, Joohyung Lee, and Yuliya Lierler.
+\newblock On elementary loops of logic programs.
+\newblock {\em Theory and Practice of Logic Programming}, 11(06):953--988,
+  2011.
 
 \bibitem{ben1994propositional}
-Ben-Eliyahu R, Dechter R.
-\newblock Propositional semantics for disjunctive logic programs [J].
-\newblock Annals of Mathematics and Artificial intelligence, 1994,
-  12(1-2):53--87.
+Rachel Ben-Eliyahu and Rina Dechter.
+\newblock Propositional semantics for disjunctive logic programs.
+\newblock {\em Annals of Mathematics and Artificial intelligence},
+  12(1-2):53--87, 1994.
 
 \bibitem{chen2013computing}
-Chen X, Ji J, Lin F.
-\newblock Computing loops with at most one external support rule [J].
-\newblock ACM Transactions on Computational Logic (TOCL), 2013, 14(1):3.
+Xiaoping Chen, Jianmin Ji, and Fangzhen Lin.
+\newblock Computing loops with at most one external support rule.
+\newblock {\em ACM Transactions on Computational Logic (TOCL)}, 14(1):3, 2013.
 
 \bibitem{zlw1989sllj}
 陆钟万.
-\newblock 面向计算机科学的数理逻辑 [M].
+\newblock {\em 面向计算机科学的数理逻辑}.
 \newblock 北京大学出版社, 1989.
 
 \bibitem{rosen2011discrete}
-Rosen K.
-\newblock Discrete Mathematics and Its Applications 7th edition [M].
+Kenneth Rosen.
+\newblock {\em Discrete Mathematics and Its Applications 7th edition}.
 \newblock McGraw-Hill, 2011.
 
 \bibitem{eiter2008combining}
-Eiter T, Ianni G, Lukasiewicz T, et~al.
+Thomas Eiter, Giovambattista Ianni, Thomas Lukasiewicz, Roman Schindlauer, and
+  Hans Tompits.
 \newblock Combining answer set programming with description logics for the
-  semantic web [J].
-\newblock Artificial Intelligence, 2008, 172(12):1495--1539.
+  semantic web.
+\newblock {\em Artificial Intelligence}, 172(12):1495--1539, 2008.
 
 \bibitem{bonatti2010answer}
-Bonatti P, Calimeri F, Leone N, et~al.
-\newblock Answer Set Programming [J].
-\newblock A 25-Year Perspective on Logic Programming, 2010,  159--182.
+Piero Bonatti, Francesco Calimeri, Nicola Leone, and Francesco Ricca.
+\newblock Answer set programming.
+\newblock {\em A 25-Year Perspective on Logic Programming}, pages 159--182,
+  2010.
 
 \bibitem{eiter2009answer}
-Eiter T, Ianni G, Krennwallner T.
-\newblock Answer set programming: A primer [M].
+Thomas Eiter, Giovambattista Ianni, and Thomas Krennwallner.
+\newblock {\em Answer set programming: A primer}.
 \newblock Springer, 2009.
 
 \bibitem{west2001introduction}
-West D~B, et~al.
-\newblock Introduction to graph theory [M].
+Douglas~Brent West et~al.
+\newblock {\em Introduction to graph theory}, volume~2.
 \newblock Prentice hall Upper Saddle River, 2001.
 
 \bibitem{even2011graph}
-Even S.
-\newblock Graph algorithms [M].
+Shimon Even.
+\newblock {\em Graph algorithms}.
 \newblock Cambridge University Press, 2011.
 
 \bibitem{tarjan1972depth}
-Tarjan R.
-\newblock Depth-first search and linear graph algorithms [J].
-\newblock SIAM journal on computing, 1972, 1(2):146--160.
+Robert Tarjan.
+\newblock Depth-first search and linear graph algorithms.
+\newblock {\em SIAM journal on computing}, 1(2):146--160, 1972.
 
 \bibitem{cormen2001introduction}
-Cormen T~H, Leiserson C~E, Rivest R~L, et~al.
-\newblock Introduction to algorithms [M].
+Thomas~H Cormen, Charles~E Leiserson, Ronald~L Rivest, Clifford Stein, et~al.
+\newblock {\em Introduction to algorithms}, volume~2.
 \newblock MIT press Cambridge, 2001.
 
 \bibitem{gebser2006elementary}
-Gebser M, Lee J, Lierler Y.
-\newblock Elementary Sets of Logic Programs [C].// AAAI.
-\newblock 2006:  244--249.
+Martin Gebser, Joohyung Lee, and Yuliya Lierler.
+\newblock Elementary sets of logic programs.
+\newblock In {\em AAAI}, pages 244--249, 2006.
 
 \bibitem{gebser2007head}
-Gebser M, Lee J, Lierler Y.
-\newblock Head-elementary-set-free logic programs [G].// Logic Programming and
-  Nonmonotonic Reasoning.
-\newblock Springer, 2007:  149--161.
+Martin Gebser, Joohyung Lee, and Yuliya Lierler.
+\newblock Head-elementary-set-free logic programs.
+\newblock In {\em Logic Programming and Nonmonotonic Reasoning}, pages
+  149--161. Springer, 2007.
 
 \bibitem{fassetti2010complexity}
-Fassetti F, Palopoli L.
-\newblock On the complexity of identifying head-elementary-set-free programs
-  [J].
-\newblock Theory and Practice of Logic Programming, 2010, 10(01):113--123.
+Fabio Fassetti and Luigi Palopoli.
+\newblock On the complexity of identifying head-elementary-set-free programs.
+\newblock {\em Theory and Practice of Logic Programming}, 10(01):113--123,
+  2010.
 
-\bibitem{garey1976planar}
-Garey M~R, Johnson D~S, Tarjan R~E.
-\newblock The planar Hamiltonian circuit problem is NP-complete [J].
-\newblock SIAM Journal on Computing, 1976, 5(4):704--714.
+\bibitem{niemela1999logic}
+Ilkka Niemel{\"a}.
+\newblock Logic programs with stable model semantics as a constraint
+  programming paradigm.
+\newblock {\em Annals of Mathematics and Artificial Intelligence},
+  25(3-4):241--273, 1999.
 
 \end{thebibliography}

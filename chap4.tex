@@ -146,7 +146,7 @@
 与之前的算法类似，算法\ref{algo_ProperLoops}也是基于自顶向下的策略，它将会考虑所有值得检测的环。
 
 \begin{proposition}
-	给定正规逻辑程序$P$，$S$为$P$中的原子集合。算法\ref{algo_ProperLoops}返回的集合包含$P$在$S$下的所有特征环。
+	给定正规逻辑程序$P$，$S$为$P$中的原子集合。算法\ref{algo_ProperLoops}返回$P$在$S$下的所有特征环。
 \end{proposition}
 \begin{proof}
 	首先，对于算法\ref{algo_ProperLoops}返回的集合中的每一个$L$，由于$L$通过了$ProperLoop\\(L,P,S)$的检测，根据命题\ref{chap4_proposition_algo_pl}，$L$是$P$在$S$下的特征环。
@@ -161,7 +161,7 @@
 	
 	因此，特征环$L'$最终会在算法\ref{algo_ProperLoops}返回的集合中。
 	
-	综合上述，算法\ref{algo_ProperLoops}返回的集合包含$P$在$S$下的所有特征环。
+	综合上述，算法\ref{algo_ProperLoops}返回$P$在$S$下的所有特征环。
 \end{proof}
 
 

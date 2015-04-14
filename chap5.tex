@@ -75,10 +75,18 @@
 任意的析取逻辑程序$P$都可以转化为与其等价的简化析取逻辑程序，记为$simp(P)$，具体操作如下：
 \begin{enumerate}
 	\item 删除规则$r$，其中，$r$和$P$的某个环$L$满足$body^+(r) \cap L \ne \emptyset$，$R^-(L)=\emptyset$；
-	\item 对于剩下的公式，若规则头部有$p$，则删除$p$；若规则体部有$not\ p$，则删除规则，其中，$p \in L$，$L$为$P$的环且满足$R^-(L)=\emptyset$。
+	\item 对于剩下的公式，若规则头部有$p$，则删除$p$；若规则体部有$not\ p$，则删除$not\ p$，其中，$p \in L$，$L$为$P$的环且满足$R^-(L)=\emptyset$。
 \end{enumerate}
 
 该操作是个递归调用的过程，若$simp(P)$还不是简化的，那么我们需要继续对结果进行化简，即$simp(simp(P))$，直到返回结果为简化的为止。
+
+\begin{proposition}
+	给定析取逻辑程序$P$。$P$的回答集与$simp(P)$的一一对应。
+\end{proposition}
+\begin{proof}
+	对于满足$body^+(r)\cap L\ne \emptyset$，$R^-(L)=\emptyset$的规则$r$和环$L$，由环公式理论可以知道，$L$中的原子是不可能属于$P$的任何回答集的，因此$r$的体部不可能成立，即$r$是多余的。所以$simp(P)$的操作1不会对程序的回答集造成影响；另一方面，由于$L$中原子不属于$P$的任何回答集，由失败即否定的语义，我们知道任意$p\in L$都为假，所以$simp(P)$的操作2不会对程序的回答集造成影响。综合上述，$P$的回答集和$simp(P)$的一一对应。
+\end{proof}
+
 
 \begin{example}
 	给定如下的程序$P$：

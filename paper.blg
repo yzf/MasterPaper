@@ -8,13 +8,9 @@ A level-1 auxiliary file: chap4.aux
 A level-1 auxiliary file: chap5.aux
 A level-1 auxiliary file: chap6.aux
 A level-1 auxiliary file: chap7.aux
-The style file: paper2.bst
+The style file: unsrt.bst
 A level-1 auxiliary file: public.aux
 A level-1 auxiliary file: ack.aux
-bibinfo is an unknown function---line 207 of file paper2.bst
-bibinfo.check is an unknown function---line 207 of file paper2.bst
 Database file #1: reference.bib
 Warning--empty booktitle in colmeraner1973systeme
-You can't pop an empty literal stack for entry ji2010asp
-while executing---line 866 of file paper2.bst
-(There were 3 error messages)
+(There was 1 warning)

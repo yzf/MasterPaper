@@ -47,17 +47,19 @@
 \contentsline {section}{\numberline {6.2}程序框架}{54}{section.6.2}
 \contentsline {section}{\numberline {6.3}实验环境}{55}{section.6.3}
 \contentsline {section}{\numberline {6.4}正规逻辑程序的基本环和特征环的对比实验}{55}{section.6.4}
-\contentsline {subsection}{\numberline {6.4.1}实验描述}{56}{subsection.6.4.1}
-\contentsline {subsection}{\numberline {6.4.2}实验设计}{56}{subsection.6.4.2}
-\contentsline {subsection}{\numberline {6.4.3}实验结果与数据分析}{57}{subsection.6.4.3}
+\contentsline {subsection}{\numberline {6.4.1}实验设计}{56}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}实验结果与数据分析}{56}{subsection.6.4.2}
 \contentsline {section}{\numberline {6.5}析取逻辑程序的各种环的对比实验}{57}{section.6.5}
 \contentsline {subsection}{\numberline {6.5.1}实验设计}{57}{subsection.6.5.1}
 \contentsline {subsection}{\numberline {6.5.2}实验结果与数据分析}{58}{subsection.6.5.2}
-\contentsline {section}{\numberline {6.6}本章小结}{58}{section.6.6}
-\contentsline {chapter}{\numberline {}第七章\hspace {0.8em}总结与展望}{60}{chapter.7}
-\contentsline {section}{\numberline {7.1}本文的研究总结}{60}{section.7.1}
-\contentsline {section}{\numberline {7.2}后续研究工作}{61}{section.7.2}
-\contentsline {chapter}{参考文献}{62}{section*.5}
+\contentsline {section}{\numberline {6.6}HWEF*程序的检测实验}{59}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}实验设计}{59}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}实验结果与数据分析}{59}{subsection.6.6.2}
+\contentsline {section}{\numberline {6.7}本章小结}{60}{section.6.7}
+\contentsline {chapter}{\numberline {}第七章\hspace {0.8em}总结与展望}{61}{chapter.7}
+\contentsline {section}{\numberline {7.1}本文的研究总结}{61}{section.7.1}
+\contentsline {section}{\numberline {7.2}后续研究工作}{62}{section.7.2}
+\contentsline {chapter}{参考文献}{63}{section*.5}
 \contentsline {chapter}{在学期间论文发表情况}{67}{chapter*.7}
 \contentsline {chapter}{致\hskip 1em\relax 谢}{68}{chapter*.8}
 \contentsfinish 

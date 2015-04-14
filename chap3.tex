@@ -84,7 +84,7 @@ $(\Leftarrow)$
 根据定义\ref{chap3_definition_el}，下面给出正规逻辑程序基本环的识别算法。
 算法\ref{algo_ElementaryLoop}采用广度优先搜索(Breadth-First-Search)\upcite{cormen2001introduction}的方式，从环$L$出发，考虑其子环的性质。
 
-与Gebser和Schaub\upcite{gebser2005loops}提出的基本环识别算法不同的是，算法\ref{algo_ElementaryLoop}采取自顶向下的策略，先大环开始，逐步深入到小环。
+与Gebser和Schaub\upcite{gebser2005loops}提出的基本环识别算法不同的是，算法\ref{algo_ElementaryLoop}采取自顶向下的策略，先大环开始，逐步深入到小环，并且，在搜索过程中，算法\ref{algo_ElementaryLoop}会直接排除
 
 
 \RestyleAlgo{ruled}\LinesNumbered\input{algo/ElementaryLoop.tex}
@@ -99,12 +99,12 @@ $(\Leftarrow)$
 算法\ref{algo_ElementaryLoop}会返回$L$，当且仅当$L$是$P$的基本环。
 \end{proposition}
 \begin{proof}
-	首先，如果算法\ref{algo_ElementaryLoop}返回原子集合$C$，$C\ne L$，那么$C$是原程序的正依赖图$G_P$的诱导子图的强连通分量，且满足$R^-(C)\subseteq R^-(L)$。显然，$C$是$P$的环。
+	首先，如果算法\ref{algo_ElementaryLoop}返回原子集合$C$，$C\ne L$，那么$C$是原程序的正依赖图$G_P$的诱导子图的强连通分量，且满足$R^-(C)\subseteq R^-(L)$。显然，$C$使得$L$不是基本环。
 	
 	下面，我们将证明，如果存在$P$的环$L'$，满足$L'\subset L$，$R^-(L')\subseteq R^-(L)$，那么算法\ref{algo_ElementaryLoop}将返回一个原子集合$C'$，$C'\subset L$。令原子$a\in L\backslash L'$，则$L'$在$G_P$关于原子集合$L\backslash \{a\}$的诱导子图的强连通分量中。令$L'$所在的强连通分量为$C$，那么会有如下的两种情况：
 	\begin{enumerate}
 		\item 如果$R^-(C)\subseteq R^-(L)$，那么算法\ref{algo_ElementaryLoop}将会返回$C$，此时$C$就是我们在找的环；
-		\item 如果$R^-(C)\nsubseteq R^-(L)$，那么必定有$head(R^-(C)\backslash R^-(L))\cap L'=\emptyset$，否则，就会存在$r\in P$，满足$head(r)\in L'$，$head(r)\in R^-(C)$。注意到，$L'\subseteq C$，所以$r\in R^-(L')$，$r\notin R^-(L)$，即$R^-(L')\nsubseteq R^-(L)$，这与我们的假定矛盾。所以，$L'$仍然在$G_P$关于原子集合$C\backslash head(R^-(C)\backslash R^-(L))$的诱导子图的强连通分量中，并且该强连通分量会被加入到$SCC^*$。在之后的迭代，算法\ref{algo_ElementaryLoop}会继续分析该连通分量。所以，原子集合$C$，$C\subset L$最终会被算法\ref{algo_ElementaryLoop}返回。
+		\item 如果$R^-(C)\nsubseteq R^-(L)$，那么必定有$head(R^-(C)\backslash R^-(L))\cap L'=\emptyset$，否则，就会存在$r\in P$，满足$head(r)\in L'$，$head(r)\in R^-(C)$。注意到，$L'\subseteq C$，所以$r\in R^-(L')$，$r\notin R^-(L)$，即$R^-(L')\nsubseteq R^-(L)$，这与我们的假定矛盾。所以，$L'$仍然在$G_P$关于原子集合$C\backslash head(R^-(C)\backslash R^-(L))$的诱导子图的强连通分量中，并且该强连通分量会被加入到$SCC^*$。在之后的迭代，算法\ref{algo_ElementaryLoop}会继续分析该连通分量。所以，原子集合$C(C\subset L)$最终会被算法\ref{algo_ElementaryLoop}返回。
 	\end{enumerate}
 	
 	综合上述，如果返回$L$，那就说明不存在$P$的其他环$L'$，满足$L'\subset L$，$R^-(L')\subseteq R^-(L)$。根据定义\ref{chap3_definition_el}，$L$是基本环。
@@ -143,7 +143,7 @@ $(\Leftarrow)$
 
 由推论\ref{chap3_corollary_dlp_el_clf}，可以知道$L_1$的合取环公式已经可以蕴含$L_2$的合取环公式，因此$L_2$的合取环公式在回答集的计算中是多余的。
 
-根据基本环的定义，如果环$L$的所有非空真子集在$L$中都是向外的，$L$才是程序的基本环。而原子集合$C$在$L$中是向外的，当且仅当存在规则$r\in P$，使得$r\in R_L^-(C)$，$r\notin R^-(L)$，当且仅当$R^-_L(C) \nsubseteq R^-(L)$。利用这些已有结论，我们从外部支持的角度，判断一个环是否为基本环。
+根据基本环的定义，如果环$L$的所有非空真子集在$L$中都是向外的，$L$才是程序的基本环。而原子集合$C$在$L$中是向外的，当且仅当存在规则$r\in P$，使得$r\in R_L^-(C)$，$r\notin R^-(L)$，当且仅当$R^-_L(C) \nsubseteq R^-(L)$。利用这些已有结论，我们可以从外部支持的角度，判断一个环是否为基本环。
 
 \begin{proposition}\label{chap3_proposition_dlp_elementaryloop}
 	给定析取逻辑程序$P$，$L$是$P$的环。$L$是$P$的基本环，当且仅当不存在$L$的非空真子集$L'$，使得$R_L^-(L') \subseteq R^-(L)$。
@@ -176,7 +176,7 @@ Gebser等(2011)证明了识别析取逻辑程序的基本环是coNP-complete的\upcite{gebser2011e
 
 算法\ref{algo_ElementaryLoopXing}是算法\ref{algo_ElementaryLoop}的一样，每次迭代至少删除一个原子。
 在最坏的情况下，整个算法迭代$n^2$次，$n$为环的原子的数目。
-由于强连通分量可以在线性时间内求得，所以算法\ref{algo_ElementaryLoopXing}的时间复杂度为$O(n^3)$。
+由于强连通分量可以在线性时间内求得\upcite{tarjan1972depth}，所以算法\ref{algo_ElementaryLoopXing}的时间复杂度也是$O(n^3)$。
 
 \begin{proposition}
 	给定析取逻辑程序$P$，$L$为$P$的环。算法\ref{algo_ElementaryLoopXing}将在$O(n^3)$时间内返回$L$或者环$C$，其中$n$是$P$的原子数目，$C$满足$C\subset L$，$R^-_L(C)\subseteq R^-(L)$。如果算法\ref{algo_ElementaryLoopXing}返回$C$，$C\ne L$，那么$L$不是基本环；如果算法\ref{algo_ElementaryLoopXing}返回$L$，那么$L$可能是基本环。

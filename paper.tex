@@ -648,8 +648,10 @@ CJKbookmarks=true, colorlinks=true,linkcolor=black,citecolor=blue]{hyperref}
 		\addcontentsline{toc}{chapter}{参考文献} % 解决目录中没有相应的参考文献的条目问题
 		
 		%\nocite{*} % 列出所有的参考文献
-		\bibliographystyle{paper2}
+		\normalsize {\setlength{\bibsep}{0.5ex}
+		\bibliographystyle{unsrt}
 		\bibliography{reference}
+		}
 		%\end{thebibliography}
 		%\include{ack}
 		
