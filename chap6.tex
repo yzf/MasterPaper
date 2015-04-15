@@ -2,7 +2,7 @@
 基于前几章的理论，本章进行了三个实验。实验一针对正规逻辑程序，对比基本环和特征环的数目以及识别效率；实验二针对析取逻辑程序，对比程序的各种环的数目；实验三检测实际用例的程序中，HWEF*程序所占的比例。
 
 \section{实验工具}
-词法分析器Flex和语法分析器Bison\footnote{关于Flex和Bison的更多说明，请参阅《Flex \& Bison:Text Processing Tools》}是本文的实验所采用的预处理工具，它们所生成的程序能够处理结构化输入。
+词法分析器Flex和语法分析器Bison\footnote{关于Flex和Bison的更多说明，请参阅《Flex \& Bison:Text Processing Tools》}是本文的实验所采用的预处理工具，它们所生成的程序能够处理结构化的输入。
 
 简单来说，Flex可以把输入分割成一个个有意义的词块，称为记号(token)；而Bison则用来确定这些记号是如何彼此关联的。例如，有如下的C代码片段：$$alpha=beta+gamma;$$
 

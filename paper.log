@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.19)  14 APR 2015 23:17
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.19)  15 APR 2015 22:26
 entering extended mode
 **paper.tex
 ("C:\Users\yzf\Desktop\yzf\00 姣曚笟璁烘枃\MasterPaper\paper.tex"
@@ -940,17 +940,13 @@ l.19
 <to be read again> 
                    \relax 
 l.27 
-      [3]
-
-LaTeX Warning: File ot140.cmap not found on input line 42.
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
-been already used, duplicate ignored
+      [3]pdfTeX warning (ext4): destination with the same identifier (name{page
+.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.42 第
-       3章，从外部支持的角度，重新定义了基本环。对于正规逻辑程序，本章给出了...
-[4]) [5] ("C:\Users\yzf\Desktop\yzf\00 姣曚笟璁烘枃\MasterPaper\chap2.tex"
+l.41 
+      [4]) [5] ("C:\Users\yzf\Desktop\yzf\00 姣曚笟璁烘枃\MasterPaper\chap2.tex
+"
 第二章
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -1928,12 +1924,12 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  16768 strings out of 495354
- 248342 string characters out of 3183859
- 366452 words of memory out of 3000000
- 18407 multiletter control sequences out of 15000+200000
+ 248369 string characters out of 3183859
+ 366494 words of memory out of 3000000
+ 18408 multiletter control sequences out of 15000+200000
  127414 words of font info for 416 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 45i,19n,58p,1830b,1557s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,19n,58p,1830b,1555s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Windows/Fonts/simhei.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf>
 <C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/ch
 inese/simsun.ttf><C:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf><C:/CTEX/CTeX/
@@ -2015,7 +2011,7 @@ blic/amsfonts/cm/cmsy8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/euler/eu
 fm10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/CTE
 X/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/pa
 latino/uplr8a.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on paper.pdf (79 pages, 1523406 bytes).
+Output written on paper.pdf (79 pages, 1524909 bytes).
 PDF statistics:
  2073 PDF objects out of 2073 (max. 8388607)
  530 named destinations out of 1000 (max. 500000)

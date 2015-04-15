@@ -161,7 +161,8 @@ Yuliya Lierler.
 \bibitem{lin2002assat}
 Fangzhen Lin and Yuting Zhao.
 \newblock Assat: Computing answer sets of a logic program by sat solvers.
-\newblock In {\em AAAI}, pages 112--118, 2002.
+\newblock In {\em Proceedings of 18th AAAI Conference on Artificial
+  Intelligence}, pages 112--118, 2002.
 
 \bibitem{gu1999algorithms}
 Jun Gu, Paul~W Purdom, John Franco, and Benjamin~W Wah.
@@ -253,7 +254,8 @@ Thomas~H Cormen, Charles~E Leiserson, Ronald~L Rivest, Clifford Stein, et~al.
 \bibitem{gebser2006elementary}
 Martin Gebser, Joohyung Lee, and Yuliya Lierler.
 \newblock Elementary sets of logic programs.
-\newblock In {\em AAAI}, pages 244--249, 2006.
+\newblock In {\em Proceedings of 21st AAAI Conference on Artificial
+  Intelligence}, pages 244--249, 2006.
 
 \bibitem{gebser2007head}
 Martin Gebser, Joohyung Lee, and Yuliya Lierler.

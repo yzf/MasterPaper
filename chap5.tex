@@ -105,7 +105,7 @@
 	给定简化的程序$P$，$L$是$P$的环。如果$L$满足：
 	\begin{enumerate}
 		\item 不存在$L$的子环$C$，满足$R^-_L(C)\subseteq R^-(L)$，同时，
-		\item 不存在$L$的子环$C$，满足$head(R^-(C)) \cap (C \cup L) \subseteq head(R^-(L)) \cap L$， $R_L^-(C) \\\subset R^-(L)$。
+		\item 不存在原子集合$C$，满足$head(R^-(C)) \cap (C \cup L) \subseteq head(R^-(L)) \cap L$， $R_L^-(C) \\\subset R^-(L)$。
 	\end{enumerate}
 	
 	那么$L$是特征环。
@@ -140,7 +140,7 @@
 		\item 如果$C\subset L$，$R^-_L(C)\subseteq R^-(L)$，或者$head(R^-(C))\cap (C\cap L)\subseteq head(R^-(L))\cap L$，$R^-_L(C)\subset R^-(L)$，那么算法\ref{algo_PLxing}将返回$C$，此时$C$就是我们在找的环；
 		\item 如果$R^-_L(C)\subseteq R^-(L)$，那么$L'$在$G_P$关于某个原子集合$C\backslash \{a\}$的诱导子图中，其中$a\in C$。注意到，这个强连通分量会被加入到$SCC$中，并在之后的迭代被分析；
 		\item 如果$head(R^-(C))\cap (C\cup L)\nsubseteq head(R^-(L))\cap L$且$C\nsubseteq L$，那么有$((head(R^-(C))\\\cap C)\backslash (head(R^-(L))\cap L)) \cap L'=\emptyset$，因此，$L'$仍然会在$G_P$关于原子集合$C\backslash ((head(R^-(C))\cap C)\backslash (head(R^-(L))\cap L))$的诱导子图的强连通分量中。另一方面，这个强连通分量会被加入到$SCC$，并在之后的迭代被分析；
-		\item 其他情况，此时$R^-_L(C)\nsubseteq R^-(L)$。对于任意的规则$r\in R^-_L(C)\backslash R^-(L)$，若$|head(r)\cap C|=1$，则$r\notin R^-_L(L')$，因为这与$R^-_L(L')\subseteq R^-(L)$矛盾，此时有$L'\cap (head(r)\cap C)= \emptyset$；若$|head(r)\cap C|>1$，则可能会有$r\in R^-(L')$，$head(r)\cap (L\backslash L')\ne \emptyset$，所以有$L'\cap (head(r)\cap C)\ne \emptyset$。因此，如果$|head(r)\cap C|=1$，那么$L'$仍然在$G_P$关于原子集合$C\backslash (head(R_L^-(C)\backslash R^-(L))$的诱导子图的强连通分量中，并且该连通分量会被加入到$SCC$。在之后的迭代，算法\ref{algo_PLxing}会继续分析该强连通分量。而如果$|head(r)\cap C|>1$，那么$L'$可能不在$G_P$关于原子集合$C\backslash head(R_L^-(C)\backslash R^-(L))$的诱导子图的强连通分量中，然而，算法\ref{algo_PLxing}同样把$head(R_L^-(C)\backslash R^-(L))$删除了，在之后的迭代，它只会处理到$G_P$关于原子集合$C\backslash head(R_L^-(C)\backslash R^-(L))$的诱导子图的强连通分量，因此，它可能会错过这个$L'$。
+		\item 其他情况，此时$R^-_L(C)\nsubseteq R^-(L)$。对于任意的规则$r\in R^-_L(C)\backslash R^-(L)$，若$|head(r)\cap C|=1$，则必定有$r\notin R^-_L(L')$。否则，与$R^-_L(L')\subseteq R^-(L)$矛盾，此时有$L'\cap (head(r)\cap C)= \emptyset$；若$|head(r)\cap C|>1$，则可能会有$r\in R^-(L')$，$head(r)\cap (L\backslash L')\ne \emptyset$，所以有$L'\cap (head(r)\cap C)\ne \emptyset$。因此，如果$|head(r)\cap C|=1$，那么$L'$仍然在$G_P$关于原子集合$C\backslash (head(R_L^-(C)\backslash R^-(L))$的诱导子图的强连通分量中，并且该连通分量会被加入到$SCC$。在之后的迭代，算法\ref{algo_PLxing}会继续分析该强连通分量。而如果$|head(r)\cap C|>1$，那么$L'$可能不在$G_P$关于原子集合$C\backslash head(R_L^-(C)\backslash R^-(L))$的诱导子图的强连通分量中，然而，算法\ref{algo_PLxing}同样把$head(R_L^-(C)\backslash R^-(L))$删除了，在之后的迭代，它只会处理到$G_P$关于原子集合$C\backslash head(R_L^-(C)\backslash R^-(L))$的诱导子图的强连通分量，因此，它可能会错过这个$L'$。
 	\end{enumerate}
 	
 	综合上述，如果算法\ref{algo_PLxing}返回$C$，$C\ne L$，那么$L$不是特征环；如果返回$L$，那么$L$可能是特征环。
@@ -352,7 +352,7 @@
 	给定析取逻辑程序$P$，$L$都是$P$的环，$E$是$L$的非空真子集。如果$R^-(E) \subseteq R^-(L)$，那么存在环$L'$，使得$R^-(L')\subseteq R^-(L)$，$L'\subset L$。
 \end{proposition}
 \begin{proof}
-	如果$E$是环，那么$L'=E$满足要求。如果$E$不是环，那么对于$E$在程序的正依赖图的诱导子图，把该诱导子图的在同一强连通分量的原子看成一个整体，则形成有向无环图，而有向无环图是肯定存在入度或出度为0的节点的。因此，总会存在强连通分量$L'$，使得不存在规则$r$，满足$head(r)\cap L'\ne \emptyset$，$body^+(r)\cap L'=\emptyset$，$body^+(r)\cap (E\backslash L')\ne \emptyset$。换句话说，对于所有$r\in R^-(L')$，有$body^+(r)\cap E=\emptyset$，由此可得$R^-(L')\subseteq R^-(E)$，所以存在$R^-(L')\subseteq R^-(L)$，$L'\subset L$。
+	如果$E$是环，那么$L'=E$满足要求。如果$E$不是环，那么对于$E$在程序的正依赖图的诱导子图，把该诱导子图的在同一强连通分量的原子看成一个整体，则形成有向无环图，而有向无环图是肯定存在出度为0的节点的。因此，总会存在强连通分量$L'$，使得不存在规则$r$，满足$head(r)\cap L'\ne \emptyset$，$body^+(r)\cap L'=\emptyset$，$body^+(r)\cap (E\backslash L')\ne \emptyset$。换句话说，对于所有$r\in R^-(L')$，有$body^+(r)\cap E=\emptyset$，由此可得$R^-(L')\subseteq R^-(E)$，所以存在$R^-(L')\subseteq R^-(L)$，$L'\subset L$。
 \end{proof}
 
 \begin{proposition}\label{chap5_proposition_weak_el}
@@ -380,7 +380,7 @@
 \end{proof}
 
 
-利用算法\ref{algo_WeakElementaryLoopDLP}和算法\ref{algo_WeakElementaryLoopDLP2}，本文在HWEF程序的判断过程中，使用近似处理，那么就可以在多项式时间内判断给定程序是否属于HWEF程序的子类，记该子类为HWEF*。下面，本文给出算法\ref{algo_WeakElementaryLoopDLP3}。
+利用算法\ref{algo_WeakElementaryLoopDLP}和算法\ref{algo_WeakElementaryLoopDLP2}，本文在HWEF程序的判断过程中，使用近似处理，那么就可以在多项式时间内判断给定程序是否属于HWEF程序的子类，记该子类为HWEF*程序。下面，本文给出算法\ref{algo_WeakElementaryLoopDLP3}。
 
 \RestyleAlgo{ruled}\LinesNumbered\input{algo/WeakElementaryLoop3.tex}
 
@@ -400,7 +400,7 @@
 	
 	综合上述，如果算法\ref{algo_WeakElementaryLoopDLP3}返回真，那么$P$是HWEF程序。
 	
-	下面，我们将证明算法\ref{algo_WeakElementaryLoopDLP3}的时间复杂度。算法\ref{algo_WeakElementaryLoopDLP3}包括两部分的操作：生成$S$和验证$S$中的元素。其中，最坏情况下，生成$S$的时间代价$T_1=n^2$，其中$n$为原子数目。注意到，$|S|=T_1=n^2$。因此，验证$S$中的元素的时间代价$T_2=|S|\times (|E|^3+nm)=n^2\times (2^3+nm)$，其中$m$为规则数目。所以，算法\ref{algo_WeakElementaryLoopDLP3}的时间代价为$T=T_1+T_2=n^2\times (9+nm)$，即$O(mn^3)$。
+	下面，我们将证明算法\ref{algo_WeakElementaryLoopDLP3}的时间复杂度。算法\ref{algo_WeakElementaryLoopDLP3}包括两部分的操作：生成$S$和验证$S$中的元素。其中，最坏情况下，生成$S$的时间代价$T_1=n\times (n-1)$，其中$n$为原子数目。注意到，$|S|=T_1=n\times (n-1)$。因此，验证$S$中的元素的时间代价$T_2=|S|\times (|E|^3+nm)=n\times(n-1)\times (2^3+nm)$，其中$m$为规则数目。所以，算法\ref{algo_WeakElementaryLoopDLP3}的时间代价为$T=T_1+T_2=n\times(n-1)\times (9+nm)$，即$O(mn^3)$。
 \end{proof}
 
 对于非HWEF程序，算法\ref{algo_WeakElementaryLoopDLP3}肯定返回假。然而，对于HWEF程序，则可能返回真，也可能返回假。由此可见，HWEF*是HWEF的一个子类。
