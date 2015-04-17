@@ -2,13 +2,13 @@
 \footnotesize
 \SetAlgoVlined
 \SetKw{return}{return}\SetKw{Break}{break}
-\SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
 \caption{析取逻辑程序的弱特征环的识别算法$WPL(L,P)$}
-\Input{正依赖图中的环$L$，正规逻辑程序$P$}
-\Output{若返回$L$，则$L$是弱特征环；若返回环$C$，则$L$不是弱特征环}
+\Input{$L$ a loop of $P$，$P$ a disjunctive logic program}
+\Output{if returns $L$, then $L$ is a weak proper loop}
 
-$SCC:=G_P$的强连通分量的集合\\
-\For{$C \in SCC$} {
+$SCC:=$ the set of SCCs of $G_P$\\
+\For{each $C \in SCC$} {
 	\If{$C \subset L$且$R^-(C) \subseteq R^-(L)$} {
 		\return $C$
 	}
@@ -16,22 +16,22 @@ $SCC:=G_P$的强连通分量的集合\\
 		\return $C$
 	}
 	\ElseIf{$R^-(C)=R^-(L)$} {
-		\For{$a \in C$} {
-			$G^*:=$原子集合$C \backslash \{a\}$在$G_P$的诱导子图\\
-			$SCC^*:=G^*$的强连通分量的集合\\
-			把$SCC^*$的所有新元素加入到$SCC$中
+		\For{each atom $a \in C$} {
+			$G^*:=$ the $C \backslash \{a\}$ induced subgraph of $G_P$\\
+			$SCC^*:=$ the set of SCCs of $G^*$\\
+			append new elements from $SCC^*$ to $SCC$
 		}
 	}
 	\ElseIf{$head(R^-(C)) \cap C \nsubseteq head(R^-(L)) \cap L$且$C \nsubseteq L$} {
 		$C':=C \backslash ((head(R^-(C)) \cap C) \backslash (head(R^-(L)) \cap L))$\\
-		$G':=$原子集合$C'$在$G_P$的诱导子图\\
-		$SCC':=G'$的强连通分量的集合\\
-		把$SCC'$的所有新元素加入到$SCC$中
+		$G':=$ the $C'$ induced subgraph of $G_P$\\
+		$SCC':=$ the set of SCCs of $G'$\\
+		append new elements from $SCC'$ to $SCC$
 	}
-	\Else {
-		$G_C:=$原子集合$C \backslash head(R^-(C) \backslash R^-(L))$在$G_P$的诱导子图\\
-		$SCC_C:=G_C$的强连通分量的集合\\
-		把$SCC_C$的所有新元素加入到$SCC$中
+	\Else {		
+		$G_C:=$ the $C \backslash head(R^-(C) \backslash R^-(L))$ induced subgraph of $G_P$\\
+		$SCC_C:=$ the set of SCCs of $G_C$\\
+		append new elements from $SCC_C$ to $SCC$
 	}
 }
 \return $L$

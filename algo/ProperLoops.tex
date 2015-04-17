@@ -2,22 +2,22 @@
 \footnotesize
 \SetAlgoVlined
 \SetKw{return}{return}\SetKw{Break}{break}
-\SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
 \caption{正规逻辑程序所有特征环的识别算法$ProperLoops(P,S)$}
-\Input{析取逻辑程序$P$，原子集合$S$}
-\Output{返回程序的所有特征环}
+\Input{$P$ a disjunctive logic program，$S$ a set of atoms}
+\Output{a set of all proper loops of $P$}
 
 $Loops:=\emptyset$\\
-$G^S_P:=$原子集合$S$在$G_P$中的诱导子图\\
-$SCC:=G^S_P$的强连通分量的集合\\
-\For{$C \in SCC$} {
+$G^S_P:=$ the $S$ induced subgraph of $G_P$\\
+$SCC:=$ the set of SCCs of $G_P^S$\\
+\For{each $C \in SCC$} {
 	$C^*:=ProperLoop(C,P,S)$\\
 	\If{$C^*=C$} {
-		将$C$加入到$Loops$\\
-		\For{$a \in head(R^-(C))$} {
-			$G_C:=$原子集合$C\backslash \{a\}$在$G^S_P$的诱导子图\\
-			$SCC_C:=G_C$的强连通分量的集合\\
-			把$SCC_C$里面的新元素加入到$SCC$\\
+		append $C$ to $Loops$\\
+		\For{each $a \in head(R^-(C))$} {
+			$G_C:=$ the $C\backslash \{a\}$ induced subgraph of $G_P^S$\\
+			$SCC_C:=$ the set of SCCs of $G_C$\\
+			append new elements from $SCC_C$ to $SCC$\\
 		}
 	}
 	\Else{

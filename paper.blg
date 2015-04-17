@@ -12,5 +12,8 @@ The style file: unsrt.bst
 A level-1 auxiliary file: public.aux
 A level-1 auxiliary file: ack.aux
 Database file #1: reference.bib
+Warning--empty publisher in mccarthy1987circumscription
 Warning--empty booktitle in colmeraner1973systeme
-(There was 1 warning)
+Warning--empty journal in ji2010asp
+Warning--empty publisher in gebser2007clasp
+(There were 4 warnings)

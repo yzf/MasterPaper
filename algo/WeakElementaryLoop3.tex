@@ -2,17 +2,17 @@
 \footnotesize
 \SetAlgoVlined
 \SetKw{return}{return}\SetKw{Break}{break}
-\SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
 \caption{判断程序是否属于HWEF*程序的算法$HWEF^*(P)$}
-\Input{析取逻辑程序$P$}
-\Output{若返回真，则是$HWEF$程序；若返回假，则可能是}
+\Input{$P$ a disjunctive logic program}
+\Output{if returns true, then $P$ is a HWEF program\\otherwise, $P$ may be a HWEF program}
 
-$S :=\{ \{ a, b \} |$存在规则$r \in P$，使得$\{ a, b \} \subseteq head(r)\}$\\
-\For{原子集$E \in S$} {
-	\If{$E$是$P$的基本环} {
+$S:=\{\{a,b\}|$there is a rule $r\in P s.t. \{a,b\}\subseteq head(r)\}$\\
+\For{each $E \in S$} {
+	\If{$E$ is a weak elementary loop of $P$} {
 		\return false
 	}
-	\If{$EWEL(P,E)$返回true} {
+	\If{$EWEL(P,E)$ returns true} {
 		\return false
 	}
 }

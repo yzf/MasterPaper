@@ -2,20 +2,20 @@
 \footnotesize
 \SetAlgoVlined
 \SetKw{return}{return}\SetKw{Break}{break}
-\SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
 \caption{判断是否不存在包含某环的弱基本环的算法$EWEL(P,E)$}
-\Input{析取逻辑程序$P$，正依赖图中的环$E$}
-\Output{若返回假，则不存在弱基本环$L(L \supset E)$；若返回真，则可能存在}
+\Input{$P$ a disjunctive logic program，$E$ a loop of $P$}
+\Output{if returns false, then there is no elementary loop $L\supset E$}
 
-$G:=P$的正依赖图；\\
-\If{不存在$G$的强连通分量$C$，使得$E \subseteq C$} {
+$G:=$ the positive dependency graph of $P$\\
+\If{there does not exist a SCC $C$ of $G$ s.t. $E \subseteq C$} {
 	\return false
 }
-$C:=$满足$E \subseteq C$的强连通分量\\
+$C:=$ the SCC of $G$ s.t. $E\subseteq C$\\
 $R_E:=\lbrace r|r \in P$ and $body^+(r) \cap E \ne \emptyset \rbrace$\\
-\For{规则$r \in R_E$} {
-	$G_r:=$原子集合$C \backslash (body^+(r) \backslash E)$在$G$的诱导子图；\\
-	\If{存在$G_r$中的强连通分量$C_r$，使得$E \subseteq C_r$，$head(r) \cap (C_r \backslash E) \ne \emptyset$} {
+\For{each $r \in R_E$} {
+	$G_r:=$ the $C \backslash (body^+(r) \backslash E)$ induced subgraph of $G$\\
+	\If{there exists a SCC $C_r$ of $G_r$ s.t. $E \subseteq C_r$ and $head(r) \cap (C_r \backslash E) \ne \emptyset$} {
 		\return true
 	}
 }

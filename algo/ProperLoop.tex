@@ -2,14 +2,14 @@
 \footnotesize
 \SetAlgoVlined
 \SetKw{return}{return}\SetKw{Break}{break}
-\SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
 \caption{正规逻辑程序特征环的识别算法$ProperLoop(L,P,S)$}
-\Input{正依赖图中的环$L$，析取逻辑程序$P$，原子集合$S$}
-\Output{若返回$L$，则$L$是特征环；否则，$L$不是特征环}
+\Input{$L$ a loop of $P$，$P$ a normal logic program，$S$ a set of atoms}
+\Output{if returns $L$, then $L$ is a proper loop\\otherwise, $L$ is not a proper loop}
 
-$G_P^S:=$原子集合$S$在$G_P$中的诱导子图\\
-$SCC:=G_P^S$的强连通分量的集合\\
-\For{$C \in SCC$} {
+$G_P^S:=$ the $S$ induced subgraph of $G_P$\\
+$SCC:=$ the set of SCCs of $G_P^S$\\
+\For{each $C \in SCC$} {
 	\uIf{$C \subset L$且$R^-(C) \subseteq R^-(L)$} {
 		\return $C$
 	} 
@@ -17,16 +17,16 @@ $SCC:=G_P^S$的强连通分量的集合\\
 		\return $C$
 	}
 	\ElseIf{$R^-(C)=\emptyset$或$R^-(C)=R^-(L)$} {
-		\For{$a \in C$} {
-			$G^*:=$原子集合$C\backslash \{a\}$在$G^S_P$的诱导子图\\
-			$SCC^*:=G^*$的强连通分量的集合\\
-			把$SCC^*$里面的新元素加入到$SCC$
+		\For{each atom $a \in C$} {
+			$G^*:=$ the $C\backslash \{a\}$ induced subgraph of $G_P^S$\\
+			$SCC^*:=$ the set of SCCs of $G^*$\\
+			append new elements from $SCC^*$ to $SCC$
 		}
 	}
 	\Else {
-		$G_C:=$原子集合$C\backslash head(R^-(C)\backslash R^-(L))$在$G^S_P$的诱导子图\\
-		$SCC_C:=G_C$的强连通分量的集合\\
-		把$SCC_C$里面的新元素加入到$SCC$
+		$G_C:=$ the $C\backslash head(R^-(C)\backslash R^-(L))$ induced subgraph of $G_P^S$\\
+		$SCC_C:=$ the set of SCCs of $G_C$\\
+		append new elements from $SCC_C$ to $SCC$
 	}
 }
 \return $L$

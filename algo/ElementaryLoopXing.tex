@@ -2,22 +2,22 @@
 \footnotesize
 \SetAlgoVlined
 \SetKw{return}{return}\SetKw{Break}{break}
-\SetKwInOut{Input}{输入}\SetKwInOut{Output}{输出}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
 \caption{析取逻辑程序基本环的近似识别算法$ElementaryLoop^*(L,P)$}
-\Input{正依赖图中的环$L$，析取逻辑程序$P$}
-\Output{若返回环$L$，则可能是基本环；若返回环$C$，则不是基本环}
+\Input{$L$ a loop of $P$，$P$ a disjunctive logic program}
+\Output{if returns $L$, then $L$ may be a elementary loop\\otherwise, $L$ is not a elementary loop}
 
-\For{原子$a \in L$} {
-	$G^*:=$原子集合$L \backslash \lbrace a \rbrace$在$G_P$的诱导子图\\
-	$SCC^*:=G^*$的强连通分量的集合\\
-	\For{强连通分量$C \in SCC^*$} {
+\For{each atom $a \in L$} {
+	$G^*:=$ the $L\backslash \{a\}$ induced subgraph of $G_P$\\
+	$SCC^*:=$ the set of SCCs of $G^*$\\
+	\For{each $C \in SCC^*$} {
 		\If{$R^-_L(C) \subseteq R^-(L)$} {
 			\return $C$
 		}
 		\Else {
-			$G_C:=$原子集合$C \backslash head(R^-_L(C) \backslash R^-(L))$在$G^*$的诱导子图\\
-			$SCC_C:=G_C$的强连通分量的集合\\
-			把所有$SCC_C$中所有新的强连通分量加入$SCC^*$
+			$G_C:=$ the $C\backslash head(R_L^-(C)\backslash R^-(L))$ induced subgraph of $G^*$\\
+			$SCC_C:=$ the set of SCCs of $G_C$\\
+			append new elements from $SCC_C$ to $SCC^*$
 		}
 	}
 }
