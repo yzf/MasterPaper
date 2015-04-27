@@ -10,13 +10,13 @@
 $G_P^S:=$ the $S$ induced subgraph of $G_P$\\
 $SCC:=$ the set of SCCs of $G_P^S$\\
 \For{each $C \in SCC$} {
-	\uIf{$C \subset L$гр$R^-(C) \subseteq R^-(L)$} {
+	\uIf{$C \subset L$ and $R^-(C) \subseteq R^-(L)$} {
 		\return $C$
 	} 
-	\ElseIf{$R^-(C) \ne \emptyset$гр$R^-(C) \subset R^-(L)$} {
+	\ElseIf{$R^-(C) \ne \emptyset$ and $R^-(C) \subset R^-(L)$} {
 		\return $C$
 	}
-	\ElseIf{$R^-(C)=\emptyset$╩Р$R^-(C)=R^-(L)$} {
+	\ElseIf{$R^-(C)=\emptyset$ or $R^-(C)=R^-(L)$} {
 		\For{each atom $a \in C$} {
 			$G^*:=$ the $C\backslash \{a\}$ induced subgraph of $G_P^S$\\
 			$SCC^*:=$ the set of SCCs of $G^*$\\

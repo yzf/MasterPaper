@@ -464,7 +464,6 @@ CJKbookmarks=true, colorlinks=true,linkcolor=black,citecolor=blue]{hyperref}
 \usepackage{makeidx}
 \usepackage{moreverb}
 \usepackage[lined,boxed,commentsnumbered]{algorithm2e}
-%\newcommand{\papername}{基于知识的~Golog~的一阶解释器：理论与实现}
 \newcommand{\papername}{回答集逻辑程序特征环的研究}
 \newcommand{\schoolname}{中山大学硕士学位论文}
 %\newcommand{\sll}{$\mathcal{SL}$}
@@ -614,15 +613,17 @@ CJKbookmarks=true, colorlinks=true,linkcolor=black,citecolor=blue]{hyperref}
 		\phantomsection
 		%\addcontentsline{toc}{chapter}{\contentsname}
 		\tableofcontents
-		%\listoffigures
-		%\listoftables
+		\listoffigures
+		\addcontentsline{toc}{chapter}{插图目录}
+		\listoftables
+		\addcontentsline{toc}{chapter}{表格目录}
+		\renewcommand{\listalgorithmcfname}{算法}
+		\listofalgorithms
+		\addcontentsline{toc}{chapter}{算法目录}
+		
 		\mainmatter
 		\pagestyle{fancy}
 		\biaozhunzihao
-		%\include{Prefix}
-		
-		%\include{draft01}
-		%\include{chap0}
 		
 		\include{chap1}
 		\include{chap2}

@@ -9,8 +9,8 @@
 
 $SCC:=$ the SCCs of $G_P$\\
 \For{each $C \in SCC$} {
-	\If{$C \subset L$гр$R_L^-(C) \subseteq R^-(L)$} {\return $C$}
-	\ElseIf{$head(R^-(C)) \cap (C \cup L) \subseteq head(R^-(L)) \cap L$гр$R^-_L(C) \subset R^-(L)$} {
+	\If{$C \subset L$ and $R_L^-(C) \subseteq R^-(L)$} {\return $C$}
+	\ElseIf{$head(R^-(C)) \cap (C \cup L) \subseteq head(R^-(L)) \cap L$ and $R^-_L(C) \subset R^-(L)$} {
 		\return $C$
 	}
 	\ElseIf{$R^-_L(C)=R^-(L)$} {
@@ -20,8 +20,8 @@ $SCC:=$ the SCCs of $G_P$\\
 			append new elements from $SCC^*$ to $SCC$
 		}
 	}
-	\ElseIf{$head(R^-(C)) \cap (C \cup L) \nsubseteq head(R^-(L)) \cap L$гр$C \nsubseteq L$} {		
-		$C':=C\backslash ((head(R^-(C))\cap C)\backslash (head(R^-(L))\cap L)$\\
+	\ElseIf{$head(R^-(C)) \cap (C \cup L) \nsubseteq head(R^-(L)) \cap L$ and $C \nsubseteq L$} {		
+		$C':=C\backslash ((head(R^-(C))\cap C)\backslash (head(R^-(L))\cap L))$\\
 		$G':=$ the $C'$ induced subgraph of $G_P$\\
 		$SCC':=$ the set of SCCs of $G'$\\
 		append new elements from $SCC'$ to $SCC$
